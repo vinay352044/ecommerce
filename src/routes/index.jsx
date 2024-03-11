@@ -4,7 +4,6 @@ import Nested from "../components/pages/Dashboard/Nested"
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
 
 const Layout = React.lazy(() => import("../components/layout/Layout"))
-const Dashboard = React.lazy(() => import("../components/pages/Dashboard/Dashboard"))
 const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
@@ -23,18 +22,18 @@ export const Router = (isAuthenticated = false) => {
 				{
 					element: <PrivateRoutesCheck isAuthenticated={isAuthenticated} />,
 					children: [
-						{
-							path: 'dashboard',
-							element: <Dashboard />,
-							children: [{
-								path: 'nested',
-								element: <Nested />
-							}]
-						},
-						{
-							path: 'about',
-							element: <About />
-						}
+						// {
+						// 	path: 'dashboard',
+						// 	element: <Dashboard />,
+						// 	children: [{
+						// 		path: 'nested',
+						// 		element: <Nested />
+						// 	}]
+						// },
+						// {
+						// 	path: 'about',
+						// 	element: <About />
+						// }
 					]
 				},
 				{
