@@ -3,6 +3,7 @@ import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import Pagination from "../../common/Pagination";
+import useDebounceHook from "../../common/useDebounceHook";
 import { addToCart, removeFromCart } from "../../../redux/actions/productActions";
 const user = [{
   "userId": "1",
@@ -15,14 +16,18 @@ const ProductCard = ({ productData,isAddToCart }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(6); 
     const dispatch = useDispatch();
-
+    const [searchQuery, setSearchQuery] = useState("");
+    const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
+    const filteredProducts = productData.filter(product =>
+      product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+  );
 
     function favourite(){
         console.log('clicked');
     }
-    const indexOfLastRecord = currentPage * recordsPerPage;   // for ex : 1*2=2
-    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;   // for ex = 2-2=0
-    const currentProducts = productData.slice(indexOfFirstRecord, indexOfLastRecord);  // slice is exclusive of last record, returns a shallow copy,original array would not be modified
+    const indexOfLastRecord = currentPage * recordsPerPage;   
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;   
+    const currentProducts = filteredProducts.slice(indexOfFirstRecord, indexOfLastRecord);  
     const nPages = Math.ceil(productData.length / recordsPerPage);
 
     function handleClick(product){
@@ -33,9 +38,22 @@ const ProductCard = ({ productData,isAddToCart }) => {
         }
         
     }
+    const handleSearchChange = e =>{
+      setSearchQuery(e.target.value)
+      setCurrentPage(1)
+    }
+    const shouldRenderPagi = filteredProducts.length > recordsPerPage
   return (
     <>
+    <input
+                type="text"
+                placeholder="Search..."
+                className=""
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
       <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
+        
         {currentProducts.map((product,key) => {
             
           return (
@@ -73,11 +91,13 @@ const ProductCard = ({ productData,isAddToCart }) => {
             
           );
         })}
+         {shouldRenderPagi && (
          <Pagination
               nPages={nPages}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}  
             />
+         )}
       </div>
     </>
   );
