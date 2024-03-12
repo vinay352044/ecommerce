@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-const Button = ({buttonName , className}) => {
+const Button = ({buttonText , className , handleClick}) => {
   return (
-    <button className={className}>
-      {buttonName}
+    <button className={className} onClick={handleClick}>
+      {buttonText}
     </button>
   )
 }
