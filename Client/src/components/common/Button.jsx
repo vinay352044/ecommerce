@@ -1,10 +1,9 @@
-import React from 'react'
-
-const Button = () => {
+/* eslint-disable react/prop-types */
+const Button = ({buttonName , className}) => {
   return (
-    <div>
-      Button
-    </div>
+    <button className={className}>
+      {buttonName}
+    </button>
   )
 }
 
