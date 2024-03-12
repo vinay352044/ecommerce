@@ -7,11 +7,12 @@ const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
 const RegisterUser = React.lazy(() => import("../components/pages/Register/register-user"));
+const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 
 export const Router = (isAuthenticated = false) => {
 	return createBrowserRouter([
 		{
-			element: <Layout/>,
+			element: <Layout />,
 			children: [
 				{
 					path: '/',
@@ -47,6 +48,10 @@ export const Router = (isAuthenticated = false) => {
 		{
 			path: 'register',
 			element: <RegisterUser />
+		},
+		{
+			path: 'admin',
+			element: <Admin />
 		}
 	])
 }
