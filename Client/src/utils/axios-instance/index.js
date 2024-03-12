@@ -1,6 +1,40 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: 'http://localhost:3000/products',
-  timeout: 5000
-})
+  baseURL: "http://localhost:3000",
+  timeout: 5000,
+});
+
+export const getProducts = async () => {
+  try {
+    const res = await API.get("/products");
+    return {
+      sucess: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      sucess: false,
+      data: [],
+      error: error.message,
+    };
+  }
+};
+
+export const addProduct = async (product) => {
+  try {
+    const res = await API.post("products");
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
