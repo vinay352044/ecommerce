@@ -9,7 +9,7 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
 
   const [admin, setAdmin] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [seller, setSeller] = useState(false);
 
   return (
@@ -128,6 +128,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ) : admin ? (
+              <>
               <li>
                 <NavLink
                   to="/buisness/register"
@@ -137,9 +138,34 @@ const Navbar = () => {
                     } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
                   }
                 >
-                  Become Seller
+                  Add Products
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/buisness/register"
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-black dark:text-black" : "text-white"
+                    } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
+                  }
+                >
+                  Add Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/buisness/register"
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-black dark:text-black" : "text-white"
+                    } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
+                  }
+                >
+                  Add Categories
+                </NavLink>
+              </li>
+              </>
             ) : (
               <>
                 <li>
