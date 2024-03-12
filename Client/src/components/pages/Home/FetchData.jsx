@@ -15,13 +15,14 @@ const FetchData = () => {
   }, []);
 
   const products = useSelector((state) => state.productReducer.products);
+  console.log(products);
   useEffect(()=>{
     setProductData(products);
   },[products])
   
 
   return (
-   <ProductCard productData={productData}/>
+   <ProductCard productData={productData} isAddToCart={true}/>
   );
 };
 
