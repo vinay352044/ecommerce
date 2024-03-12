@@ -7,7 +7,6 @@ const Index = () => {
 
   return (
     <>
-      <Navbar />
       <h1>Admin Dashboard</h1>
 
       <div className="relative inline-block text-left absolute left-1/2 transform -translate-x-1/2 top-1/2 z-10">
