@@ -1,17 +1,22 @@
 import React from "react";
-
+import Pagination from "../../common/Pagination";
 import { CiHeart } from "react-icons/ci";
-
+import { useState } from "react";
 const ProductCard = ({ productData }) => {
 
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(6); 
     function favourite(){
         console.log('clicked');
     }
+    const indexOfLastRecord = currentPage * recordsPerPage;   // for ex : 1*2=2
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;   // for ex = 2-2=0
+    const currentProducts = productData.slice(indexOfFirstRecord, indexOfLastRecord);  // slice is exclusive of last record, returns a shallow copy,original array would not be modified
+    const nPages = Math.ceil(productData.length / recordsPerPage);
   return (
     <>
       <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
-        {productData.map((product) => {
+        {currentProducts.map((product) => {
           return (
             <>
               <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -47,6 +52,11 @@ const ProductCard = ({ productData }) => {
             </>
           );
         })}
+        <Pagination
+              nPages={nPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}  
+            />
       </div>
     </>
   );
