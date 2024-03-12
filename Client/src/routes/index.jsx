@@ -8,6 +8,7 @@ const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
 const RegisterUser = React.lazy(() => import("../components/pages/Register/register-user"));
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
+const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
 
 export const Router = (isAuthenticated = false) => {
 	return createBrowserRouter([
@@ -52,6 +53,10 @@ export const Router = (isAuthenticated = false) => {
 		{
 			path: 'admin',
 			element: <Admin />
+		},
+		{
+			path: 'admin/users',
+			element: <AdminUsers />
 		}
 	])
 }
