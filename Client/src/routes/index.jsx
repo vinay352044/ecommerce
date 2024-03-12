@@ -15,6 +15,7 @@ const RegisterSeller = React.lazy(() => import("../components/pages/Register/reg
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
 const AdminProducts = React.lazy(() => import("../components/pages/Register/register-product/index"));
+const Whishlist = React.lazy(()=> import("../components/pages/Whishlist/Whishlist.jsx"))
 
 
 export const Router = (isAuthenticated = false) => {
@@ -67,6 +68,10 @@ export const Router = (isAuthenticated = false) => {
 				{
 					path: 'login',
 					element: <Login />
+				},
+				{
+					path: 'whishlist',
+					element: <Whishlist />
 				},
 				{
 					path: 'register',
