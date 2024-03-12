@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.2.1",
     "@redux-devtools/extension": "^3.3.0",
     "axios": "^1.6.7",
     "flowbite": "^2.3.0",
