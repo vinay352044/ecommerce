@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../../../layout/Navbar';
+import  { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../../../utils/axios-instance';
 
@@ -34,11 +33,10 @@ const Index = () => {
 
   return (
     <>
-
-      <h1>Admin Dashboard</h1>
       <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
       {/* <button className="text-2xl font-bold mb-4" onClick={()=> "/CreateProduct"}>Add Product</button> */}
       <button className="text-2xl font-bold mb-4" onClick={handleCreateProduct}>Add Product</button>
+
       <div className="relative inline-block text-left absolute left-1/2 transform -translate-x-1/2 top-1/2 z-10">
         <div>
           <button

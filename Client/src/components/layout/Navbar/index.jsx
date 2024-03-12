@@ -10,7 +10,7 @@ import SellerLinks from "./Links/SellerLinks";
 const Navbar = () => {
   const [show, setShow] = useState(false);
 
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(false);
   const [seller, setSeller] = useState(false);
 
