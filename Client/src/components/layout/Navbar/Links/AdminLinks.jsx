@@ -7,10 +7,10 @@ const AdminLinks = () => {
           <NavLink
             to="/buisness/register"
             className={({ isActive }) =>
-              `${
-                isActive ? "text-black dark:text-black" : "text-white"
-              } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-            }
+            `${
+              isActive ? '' : "text-white"
+            } text-lg block py-1  md:hover:text-black`
+          }
           >
             Add Products
           </NavLink>
@@ -19,10 +19,10 @@ const AdminLinks = () => {
           <NavLink
             to="/buisness/register"
             className={({ isActive }) =>
-              `${
-                isActive ? "text-black dark:text-black" : "text-white"
-              } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-            }
+            `${
+              isActive ? '' : "text-white"
+            } text-lg block py-1 md:hover:text-black`
+          }
           >
             Add Users
           </NavLink>
@@ -31,10 +31,10 @@ const AdminLinks = () => {
           <NavLink
             to="/buisness/register"
             className={({ isActive }) =>
-              `${
-                isActive ? "text-black dark:text-black" : "text-white"
-              } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-            }
+            `${
+              isActive ? '' : "text-white"
+            } text-lg block py-1 hover:text-black`
+          }
           >
             Add Categories
           </NavLink>
