@@ -1,6 +1,7 @@
 import React from "react"
 import PrivateRoutesCheck from "../utils/PrivateRoutesCheck"
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
+import UpdateUsers from "../components/pages/Register/register-user/updateuser"
 
 const Layout = React.lazy(() => import("../components/layout/Layout"))
 const Login = React.lazy(() => import("../components/pages/Login"))
@@ -45,6 +46,14 @@ export const Router = (isAuthenticated = false) => {
 		{
 			path: 'register',
 			element: <RegisterUser />
+		},
+		{
+			path: 'admin/createUser',
+			element: <RegisterUser />
+		},
+		{
+			path: 'admin/update/:id',
+			element: <UpdateUsers />
 		},
 		{
 			path: 'admin',
