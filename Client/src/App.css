@@ -9,3 +9,29 @@
 body{
   font-family: "Roboto", sans-serif !important;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination .page-item {
+  margin: 0 5px;
+}
+
+.pagination .page-link {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pagination .page-link:hover {
+  text-decoration: underline;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}

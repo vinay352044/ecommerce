@@ -8,10 +8,13 @@ const Layout = React.lazy(() => import("../components/layout/Layout"))
 const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
+const Contact = React.lazy(() => import("../components/pages/Contact"))
 const RegisterUser = React.lazy(() => import("../components/pages/Register/register-user"));
 const RegisterSeller = React.lazy(() => import("../components/pages/Register/register-seller"));
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
+const AdminProducts = React.lazy(() => import("../components/pages/Register/register-product/index"));
+
 
 export const Router = (isAuthenticated = false) => {
 	return createBrowserRouter([
@@ -21,6 +24,10 @@ export const Router = (isAuthenticated = false) => {
 				{
 					path: '/',
 					element: <Home />
+				},
+				{
+					path: '/contact',
+					element: <Contact />
 				},
 				{
 					element: <PrivateRoutesCheck isAuthenticated={isAuthenticated} />,
@@ -37,22 +44,34 @@ export const Router = (isAuthenticated = false) => {
 					]
 				},
 				{
-					path: '*',
-					element: <ErrorPage />
+					path: 'about',
+					element: <About />
+				},
+				{
+					path: 'login',
+					element: <Login />
+				},
+				{
+					path: 'register',
+					element: <RegisterUser />
+				},
+				{
+					path: 'buisness/register',
+					element: <RegisterSeller />
 				}
 			]
 		},
 		{
-			path: 'login',
-			element: <Login />
+			path: 'admin/create-products',
+			element: <AdminProducts/>
 		},
 		{
-			path: 'register',
-			element: <RegisterUser />
+			path: 'admin/create-products',
+			element: <AdminProducts/>
 		},
 		{
-			path: 'admin',
-			element: <Admin />
+			path: '*',
+			element: <ErrorPage/>
 		}
 	])
 }
