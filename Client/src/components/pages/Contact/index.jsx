@@ -68,15 +68,15 @@ const Contact = () => {
 	const inputGroupClass = "flex flex-col mt-2"
 	const inputLabelClass = "text text-gray-600"
 	const inputClass =
-		"px-2 py-1 border rounded-md focus:outline-none bg-[#0296db20!important] border-[#0296db20!important] focus:border-[#0295db]"
+		"px-2 py-1 border rounded-md focus:outline-none bg-[#fff!important] border-[#fff!important] focus:border-[#0295db]"
 
 	return (
 		<>
 			{isLoading && <h1>Loading...</h1>}
-			<div className="w-screen mt-5 text-center text-3xl">
+			<div className="w-screen mt-10 text-center text-3xl">
 				<h1>Contact Us</h1>
 			</div>
-			<div className="w-[max(300px,40vw)] mx-auto mt-3 p-6 rounded shadow">
+			<div className="w-[min(600px,85vw)] mx-auto mt-3 p-6 rounded shadow bg-slate-100">
 				<div className="contact-form">
 					<form onSubmit={handleSubmit}>
 						<div className={inputGroupClass}>
