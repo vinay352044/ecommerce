@@ -35,10 +35,6 @@ export const Router = (isAuthenticated = false) => {
 						// 	element: <About />
 						// }
 					]
-				},
-				{
-					path: '*',
-					element: <ErrorPage />
 				}
 			]
 		},
@@ -57,6 +53,10 @@ export const Router = (isAuthenticated = false) => {
 		{
 			path: 'admin/users',
 			element: <AdminUsers />
+		},
+		{
+			path: '*',
+			element: <ErrorPage />
 		}
 	])
 }
