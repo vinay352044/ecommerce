@@ -1,12 +1,15 @@
 import React from "react"
 import PrivateRoutesCheck from "../utils/PrivateRoutesCheck"
-import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
+import {createBrowserRouter} from "react-router-dom"
 
+
+const About = React.lazy(() => import("../components/pages/About"))
 const Layout = React.lazy(() => import("../components/layout/Layout"))
 const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
 const RegisterUser = React.lazy(() => import("../components/pages/Register/register-user"));
+const RegisterSeller = React.lazy(() => import("../components/pages/Register/register-seller"));
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
 
@@ -22,37 +25,34 @@ export const Router = (isAuthenticated = false) => {
 				{
 					element: <PrivateRoutesCheck isAuthenticated={isAuthenticated} />,
 					children: [
-						// {
-						// 	path: 'dashboard',
-						// 	element: <Dashboard />,
-						// 	children: [{
-						// 		path: 'nested',
-						// 		element: <Nested />
-						// 	}]
-						// },
-						// {
-						// 	path: 'about',
-						// 	element: <About />
-						// }
+						// protected routes should be declared here
+						{
+							path: 'admin',
+							element: <Admin />
+						},
+						{
+							path: 'admin/users',
+							element: <AdminUsers />
+						},
 					]
+				},
+				{
+					path: 'about',
+					element: <About />
+				},
+				{
+					path: 'login',
+					element: <Login />
+				},
+				{
+					path: 'register',
+					element: <RegisterUser />
+				},
+				{
+					path: 'buisness/register',
+					element: <RegisterSeller />
 				}
 			]
-		},
-		{
-			path: 'login',
-			element: <Login />
-		},
-		{
-			path: 'register',
-			element: <RegisterUser />
-		},
-		{
-			path: 'admin',
-			element: <Admin />
-		},
-		{
-			path: 'admin/users',
-			element: <AdminUsers />
 		},
 		{
 			path: '*',

@@ -17,11 +17,8 @@ export const fetchProductData = () =>{
      try{
       dispatch(setLoader(true))
       const response = await API.get("/");
-      
-      console.log(response.data);
       dispatch(fetchProductsSuccess(response.data))
       dispatch(setLoader(false))
-
      }catch(error){
         console.log("Error Occured while fetching data:",error);
      }

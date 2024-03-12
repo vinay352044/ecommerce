@@ -15,7 +15,6 @@ const FetchData = () => {
   }, []);
 
   const products = useSelector((state) => state.productReducer.products);
-  console.log(products);
   useEffect(()=>{
     setProductData(products);
   },[products])
