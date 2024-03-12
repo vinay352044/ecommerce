@@ -1,16 +1,23 @@
 import React from "react";
-
+import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { useDispatch } from "react-redux";
+import Pagination from "../../common/Pagination";
 import { addToCart, removeFromCart } from "../../../redux/actions/productActions";
 
 const ProductCard = ({ productData,isAddToCart }) => {
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(6); 
     const dispatch = useDispatch();
+
 
     function favourite(){
         console.log('clicked');
     }
+    const indexOfLastRecord = currentPage * recordsPerPage;   // for ex : 1*2=2
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;   // for ex = 2-2=0
+    const currentProducts = productData.slice(indexOfFirstRecord, indexOfLastRecord);  // slice is exclusive of last record, returns a shallow copy,original array would not be modified
+    const nPages = Math.ceil(productData.length / recordsPerPage);
 
     function handleClick(product){
         if(isAddToCart){
@@ -23,7 +30,7 @@ const ProductCard = ({ productData,isAddToCart }) => {
   return (
     <>
       <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
-        {productData.map((product,key) => {
+        {currentProducts.map((product,key) => {
             
           return (
             
@@ -60,6 +67,11 @@ const ProductCard = ({ productData,isAddToCart }) => {
             
           );
         })}
+         <Pagination
+              nPages={nPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}  
+            />
       </div>
     </>
   );
