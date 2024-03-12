@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../../../layout/Navbar';
+import  { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../../../utils/axios-instance';
 
