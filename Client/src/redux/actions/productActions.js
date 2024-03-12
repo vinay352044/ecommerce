@@ -16,7 +16,7 @@ export const fetchProductData = () =>{
   return async (dispatch) =>{
      try{
       dispatch(setLoader(true))
-      const response = await API.get("/");
+      const response = await API.get("/products");
       dispatch(fetchProductsSuccess(response.data))
       dispatch(setLoader(false))
      }catch(error){
