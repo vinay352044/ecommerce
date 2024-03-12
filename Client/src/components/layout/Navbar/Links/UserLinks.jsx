@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const UserLinks = () => {
   return (
@@ -8,36 +10,39 @@ const UserLinks = () => {
         <NavLink
           to="/buisness/register"
           className={({ isActive }) =>
-            `${
-              isActive ? "text-black dark:text-black" : "text-white"
-            } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-          }
+          `${
+            isActive ? '' : "text-white"
+          } flex items-center gap-2 text-lg py-1 hover:text-black`
+        }
         >
-          Whishlist
+          <FaHeart/>
+          Wishlist
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/buisness/register"
+          to="/cart"
           className={({ isActive }) =>
-            `${
-              isActive ? "text-black dark:text-black" : "text-white"
-            } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-          }
-        >
+          `${
+            isActive ? '' : "text-white"
+          } flex items-center gap-2 text-lg py-1  hover:text-black`
+        }
+        > 
+          <FaShoppingCart />
           Cart
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/buisness/register"
+          to='/profile'
           className={({ isActive }) =>
-            `${
-              isActive ? "text-black dark:text-black" : "text-white"
-            } text-xl block py-2 px-3 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-          }
+          `${
+            isActive ? '' : "text-white"
+          } flex items-center gap-2 text-lg py-1 hover:text-black`
+        }
         >
           <FaUserAlt />
+          Profile
         </NavLink>
       </li>
     </>
