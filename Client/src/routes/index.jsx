@@ -37,26 +37,22 @@ export const Router = (isAuthenticated = false) => {
 					]
 				},
 				{
-					path: 'about',
-					element: <About />
-				},
-				{
-					path: 'login',
-					element: <Login />
-				},
-				{
-					path: 'register',
-					element: <RegisterUser />
-				},
-				{
-					path: 'buisness/register',
-					element: <RegisterSeller />
+					path: '*',
+					element: <ErrorPage />
 				}
 			]
 		},
 		{
-			path: '*',
-			element: <ErrorPage />
+			path: 'login',
+			element: <Login />
+		},
+		{
+			path: 'register',
+			element: <RegisterUser />
+		},
+		{
+			path: 'admin',
+			element: <Admin />
 		}
 	])
 }
