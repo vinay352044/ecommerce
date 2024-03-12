@@ -17,7 +17,7 @@ function RegisterUser() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/users', values )
+        axios.post('http://localhost:3000/users', values  )
             .then(res => {
                 console.log(res);
                 navigate('/admin/users');

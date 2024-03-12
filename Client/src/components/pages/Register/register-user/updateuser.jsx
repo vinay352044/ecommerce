@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function UpdateUsers() {
     const navigate = useNavigate();
-    const { userId } = useParams();
+    const { id } = useParams();
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -12,18 +12,18 @@ function UpdateUsers() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/users/${userId}`)
+        axios.get(`http://localhost:3000/users/${id}`)
             .then(res => {
                 setValues(res.data);
                 console.log(values)
             })
             .catch(err => console.log(err));
-    }, [userId]);
+    }, [id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://:3000/users/${userId}`, values);
+            await axios.put(`http://localhost:3000/users/${id}`, values);
             alert('User updated successfully!');
             navigate('/admin/users');
         } catch (error) {
@@ -34,6 +34,7 @@ function UpdateUsers() {
 
     return (
         <div className="container mx-auto mt-5">
+            {console.log(values)}
             <h1 className="text-3xl mb-5">Update User Details</h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
