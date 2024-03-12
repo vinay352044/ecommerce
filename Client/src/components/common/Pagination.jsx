@@ -6,38 +6,56 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
   const goToNextPage = () => {
     if (currentPage !== nPages) setCurrentPage(currentPage + 1);
   };
+
   const goToPrevPage = () => {
     if (currentPage !== 1) setCurrentPage(currentPage - 1);
   };
+
   return (
-    <nav>
-      <ul className="pagination justify-content-center">
-        <li className="page-item">
-          <a className="page-link" onClick={goToPrevPage} href="#">
-            Previous
-          </a>
-        </li>
-        {pageNumbers.map((pgNumber) => (
-          <li
-            key={pgNumber}
-            className={`page-item ${currentPage == pgNumber ? "active" : ""} `}
-          >
-            <a
-              onClick={() => setCurrentPage(pgNumber)}
-              className="page-link"
-              href="#"
+    nPages > 0 && (
+      <div className="mt-6 flex justify-center">
+        <ul className="pagination">
+          {currentPage !== 1 && (
+            <li className="page-item">
+              <button
+                onClick={goToPrevPage}
+                className="page-link bg-light-blue-500 text-white px-4 py-2 rounded-l focus:outline-none"
+              >
+                Previous
+              </button>
+            </li>
+          )}
+          {pageNumbers.map((pgNumber) => (
+            <li
+              key={pgNumber}
+              className={`page-item ${
+                currentPage === pgNumber ? "active" : ""
+              }`}
             >
-              {pgNumber}
-            </a>
-          </li>
-        ))}
-        <li className="page-item">
-          <a className="page-link" onClick={goToNextPage} href="#">
-            Next
-          </a>
-        </li>
-      </ul>
-    </nav>
+              <button
+                onClick={() => setCurrentPage(pgNumber)}
+                className={`page-link bg-light-blue-500 text-white px-4 py-2 focus:outline-none ${
+                  currentPage === pgNumber ? "bg-light-blue-700" : ""
+                }`}
+              >
+                {pgNumber}
+              </button>
+            </li>
+          ))}
+
+          {currentPage !== nPages && (
+            <li className="page-item">
+              <button
+                onClick={goToNextPage}
+                className="page-link bg-light-blue-500 text-white px-4 py-2 rounded-r focus:outline-none"
+              >
+                Next
+              </button>
+            </li>
+          )}
+        </ul>
+      </div>
+    )
   );
 };
 
