@@ -1,20 +1,40 @@
 import React from "react";
-
+import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import Pagination from "../../common/Pagination";
+import { addToCart, removeFromCart } from "../../../redux/actions/productActions";
 
-const ProductCard = ({ productData }) => {
+const ProductCard = ({ productData,isAddToCart }) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(6); 
+    const dispatch = useDispatch();
 
 
     function favourite(){
         console.log('clicked');
     }
+    const indexOfLastRecord = currentPage * recordsPerPage;   // for ex : 1*2=2
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;   // for ex = 2-2=0
+    const currentProducts = productData.slice(indexOfFirstRecord, indexOfLastRecord);  // slice is exclusive of last record, returns a shallow copy,original array would not be modified
+    const nPages = Math.ceil(productData.length / recordsPerPage);
+
+    function handleClick(product){
+        if(isAddToCart){
+            dispatch(addToCart(product))
+        }else{
+            dispatch(removeFromCart(product.id))
+        }
+        
+    }
   return (
     <>
       <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
-        {productData.map((product) => {
+        {currentProducts.map((product,key) => {
+            
           return (
-            <>
-              <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            
+              <div key={product.id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <button className="justify-items-end h-5 w-6">
                   <CiHeart onClick={favourite}/>
                 </button>
@@ -38,15 +58,20 @@ const ProductCard = ({ productData }) => {
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">
                       ${product.price}
                     </span>
-                    <button className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800">
-                      Add to cart
+                    <button className={`text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 ${isAddToCart ? `addCartBtn`: `removeCartBtn`}`} onClick={()=>handleClick(product)}>
+                      {isAddToCart ? ('Add to cart') : ('Remove')}
                     </button>
                   </div>
                 </div>
               </div>
-            </>
+            
           );
         })}
+         <Pagination
+              nPages={nPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}  
+            />
       </div>
     </>
   );

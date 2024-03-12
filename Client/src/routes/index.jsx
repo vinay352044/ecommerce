@@ -1,6 +1,7 @@
 import React from "react"
 import PrivateRoutesCheck from "../utils/PrivateRoutesCheck"
-import {createBrowserRouter} from "react-router-dom"
+import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
+import UsersCart from "../components/pages/Home/UsersCart.jsx"
 
 
 const About = React.lazy(() => import("../components/pages/About"))
@@ -8,10 +9,13 @@ const Layout = React.lazy(() => import("../components/layout/Layout"))
 const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
+const Contact = React.lazy(() => import("../components/pages/Contact"))
 const RegisterUser = React.lazy(() => import("../components/pages/Register/register-user"));
 const RegisterSeller = React.lazy(() => import("../components/pages/Register/register-seller"));
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
+const AdminProducts = React.lazy(() => import("../components/pages/Register/register-product/index"));
+
 
 export const Router = (isAuthenticated = false) => {
 	return createBrowserRouter([
@@ -21,6 +25,10 @@ export const Router = (isAuthenticated = false) => {
 				{
 					path: '/',
 					element: <Home />
+				},
+				{
+					path: '/contact',
+					element: <Contact />
 				},
 				{
 					element: <PrivateRoutesCheck isAuthenticated={isAuthenticated} />,
@@ -34,6 +42,22 @@ export const Router = (isAuthenticated = false) => {
 							path: 'admin/users',
 							element: <AdminUsers />
 						},
+						{
+							path:'cart',
+							element: <UsersCart/>
+						}
+						// {
+						// 	path: 'dashboard',
+						// 	element: <Dashboard />,
+						// 	children: [{
+						// 		path: 'nested',
+						// 		element: <Nested />
+						// 	}]
+						// },
+						// {
+						// 	path: 'about',
+						// 	element: <About />
+						// }
 					]
 				},
 				{
@@ -55,8 +79,16 @@ export const Router = (isAuthenticated = false) => {
 			]
 		},
 		{
+			path: 'admin/create-products',
+			element: <AdminProducts/>
+		},
+		{
+			path: 'admin/create-products',
+			element: <AdminProducts/>
+		},
+		{
 			path: '*',
-			element: <ErrorPage />
+			element: <ErrorPage/>
 		}
 	])
 }

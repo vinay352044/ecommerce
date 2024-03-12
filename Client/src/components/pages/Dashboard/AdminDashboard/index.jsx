@@ -1,14 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../../layout/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getProducts } from '../../../../utils/axios-instance';
 
 const Index = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+
+  const handleCreateProduct = () => {
+    navigate("/admin/create-products")
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getProducts();
+        if (response.sucess) {
+          console.log(response.data)
+          setProducts(response.data);
+        }
+        else {
+          console.error("Failed to fetch the Products Data", response.error)
+        }
+      } catch (error) {
+        console.error("Error while Fetching products", error)
+
+      }
+    };
+
+    fetchData()
+  }, [])
 
   return (
     <>
-      <h1>Admin Dashboard</h1>
 
+      <h1>Admin Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+      {/* <button className="text-2xl font-bold mb-4" onClick={()=> "/CreateProduct"}>Add Product</button> */}
+      <button className="text-2xl font-bold mb-4" onClick={handleCreateProduct}>Add Product</button>
       <div className="relative inline-block text-left absolute left-1/2 transform -translate-x-1/2 top-1/2 z-10">
         <div>
           <button
@@ -51,6 +81,32 @@ const Index = () => {
           </div>
         )}
       </div>
+
+      <table className="table-auto w-full mt-8 border">
+        <thead>
+          <tr className="border-b">
+            <th className="w-1/2 p-2">Product ID</th>
+            <th className="w-1/2 p-2">Title</th>
+            <th className="w-1/2 p-2">Price</th>
+            <th className="w-1/4 p-2">Brand</th>
+            <th className="w-1/4 p-2">Category</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id} className="border-b">
+              <td className="p-2">{product.id}</td>
+              <td className="p-2">{product.title}</td>
+              <td className="p-2">{product.price}</td>
+              <td className="p-2">{product.brand}</td>
+              <td className="p-2">{product.category}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+
     </>
   );
 };
