@@ -335,7 +335,179 @@
       ]
     }
   ],
-	"sellers": [],
-	"users": [],
-	"orders": []
+  "sellers": [
+    {
+      "sellerId": "1",
+      "name": "Akash",
+      "businessName": "Akash Enterprises",
+      "gstin": "GSTIN123A",
+      "category": "Electronics",
+      "email": "akash@example.com",
+      "password": "akashpass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "2",
+      "name": "Neha",
+      "businessName": "Neha Traders",
+      "gstin": "GSTIN456B",
+      "category": "Clothing",
+      "email": "neha@example.com",
+      "password": "nehapass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "3",
+      "name": "Rahul",
+      "businessName": "Rahul Stores",
+      "gstin": "GSTIN789C",
+      "category": "Books",
+      "email": "rahul@example.com",
+      "password": "rahulpass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "4",
+      "name": "Priya",
+      "businessName": "Priya Creations",
+      "gstin": "GSTIN123D",
+      "category": "Jewelry",
+      "email": "priya@example.com",
+      "password": "priyapass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "5",
+      "name": "Amit",
+      "businessName": "Amit Exports",
+      "gstin": "GSTIN456E",
+      "category": "Furniture",
+      "email": "amit@example.com",
+      "password": "amitpass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "6",
+      "name": "Pooja",
+      "businessName": "Pooja Fashion House",
+      "gstin": "GSTIN789F",
+      "category": "Apparel",
+      "email": "pooja@example.com",
+      "password": "poojapass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "7",
+      "name": "Vikram",
+      "businessName": "Vikram Sports",
+      "gstin": "GSTIN123G",
+      "category": "Sports",
+      "email": "vikram@example.com",
+      "password": "vikrampass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "8",
+      "name": "Shalini",
+      "businessName": "Shalini Boutique",
+      "gstin": "GSTIN456H",
+      "category": "Fashion",
+      "email": "shalini@example.com",
+      "password": "shalinipass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "9",
+      "name": "Rajesh",
+      "businessName": "Rajesh Mart",
+      "gstin": "GSTIN789I",
+      "category": "Grocery",
+      "email": "rajesh@example.com",
+      "password": "rajeshpass",
+      "productsToSell": []
+    },
+    {
+      "sellerId": "10",
+      "name": "Deepika",
+      "businessName": "Deepika Cosmetics",
+      "gstin": "GSTIN123J",
+      "category": "Beauty",
+      "email": "deepika@example.com",
+      "password": "deepikapass",
+      "productsToSell": []
+    }
+  ],
+  "users": [
+    {
+      "userId": "1",
+      "name": "Aarav",
+      "email": "aarav@example.com",
+      "password": "aaravpass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "2",
+      "name": "Aisha",
+      "email": "aisha@example.com",
+      "password": "aishapass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "3",
+      "name": "Ishaan",
+      "email": "ishaan@example.com",
+      "password": "ishaanpass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "4",
+      "name": "Ananya",
+      "email": "ananya@example.com",
+      "password": "ananyapass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "5",
+      "name": "Arjun",
+      "email": "arjun@example.com",
+      "password": "arjunpass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "6",
+      "name": "Kavya",
+      "email": "kavya@example.com",
+      "password": "kavyapass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "7",
+      "name": "Aditi",
+      "email": "aditi@example.com",
+      "password": "aditipass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "8",
+      "name": "Rohan",
+      "email": "rohan@example.com",
+      "password": "rohanpass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "9",
+      "name": "Neha",
+      "email": "neha@example.com",
+      "password": "nehapass",
+      "favouriteProducts": []
+    },
+    {
+      "userId": "10",
+      "name": "Shreya",
+      "email": "shreya@example.com",
+      "password": "shreyapass",
+      "favouriteProducts": []
+    }
+  ],
+  "orders": []
 }

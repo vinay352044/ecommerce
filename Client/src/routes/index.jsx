@@ -6,7 +6,7 @@ const Layout = React.lazy(() => import("../components/layout/Layout"))
 const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
 const Home = React.lazy(() => import("../components/pages/Home/Home"))
-const Register = React.lazy(() => import("../components/pages/Register"))
+const RegisterUser = React.lazy(() => import("../components/pages/Register/register-user"));
 
 export const Router = (isAuthenticated = false) => {
 	return createBrowserRouter([
@@ -46,7 +46,7 @@ export const Router = (isAuthenticated = false) => {
 		},
 		{
 			path: 'register',
-			element: <Register />
+			element: <RegisterUser />
 		}
 	])
 }
