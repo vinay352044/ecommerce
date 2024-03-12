@@ -16,7 +16,7 @@ const Navbar = () => {
             <NavLink to="/about">About US</NavLink>
           </li>
           <li>
-            <NavLink to="/buisness/register">Become Seller</NavLink>
+            <NavLink to="/business/register">Become Seller</NavLink>
           </li>
         </ul>
         <div className="flex items-center">
