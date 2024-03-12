@@ -1,6 +1,7 @@
 import React from "react"
 import PrivateRoutesCheck from "../utils/PrivateRoutesCheck"
-import {createBrowserRouter} from "react-router-dom"
+import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
+import UsersCart from "../components/pages/Home/UsersCart.jsx"
 
 
 const About = React.lazy(() => import("../components/pages/About"))
@@ -34,6 +35,22 @@ export const Router = (isAuthenticated = false) => {
 							path: 'admin/users',
 							element: <AdminUsers />
 						},
+						{
+							path:'cart',
+							element: <UsersCart/>
+						}
+						// {
+						// 	path: 'dashboard',
+						// 	element: <Dashboard />,
+						// 	children: [{
+						// 		path: 'nested',
+						// 		element: <Nested />
+						// 	}]
+						// },
+						// {
+						// 	path: 'about',
+						// 	element: <About />
+						// }
 					]
 				},
 				{
