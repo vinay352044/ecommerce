@@ -2,20 +2,22 @@ import { useState } from "react";
 import Button from "../../common/Button";
 import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import AdminLinks from "./Links/AdminLinks";
+import UserLinks from "./Links/UserLinks";
+import SellerLinks from "./Links/SellerLinks";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
 
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [user, setUser] = useState(false);
   const [seller, setSeller] = useState(false);
 
   return (
     <nav className="bg-[#295db] dark:bg-[#0295db]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 px-10">
-        <NavLink to="/" className="flex items-center space-x-3">
+        <NavLink to={admin ? '/admin' : seller ? '/seller' : '/'} className="flex items-center space-x-3">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             logo
           </span>
@@ -51,7 +53,7 @@ const Navbar = () => {
           <ul className="font-medium text-lg flex flex-col items-center p-4 md:p-0 mt-4  md:flex-row md:space-x-8  md:mt-0 md:border-0 md:bg-transparent dark:bg-[#0295db] md:dark:bg-[#0295db]">
             <li>
               <NavLink
-                to="/"
+                to={admin ? '/admin' : seller ? '/seller' : '/'}
                 className={({ isActive }) =>
                   `${
                     isActive ? "text-black dark:text-black" : "text-white"
@@ -61,111 +63,12 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-black md:text-black dark:text-black"
-                      : "text-white"
-                  } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                }
-              >
-                About
-              </NavLink>
-            </li>
             {user ? (
-              <>
-                <li>
-                  <NavLink
-                    to="/buisness/register"
-                    className={({ isActive }) =>
-                      `${
-                        isActive ? "text-black dark:text-black" : "text-white"
-                      } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                    }
-                  >
-                    Whishlist
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/buisness/register"
-                    className={({ isActive }) =>
-                      `${
-                        isActive ? "text-black dark:text-black" : "text-white"
-                      } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                    }
-                  >
-                    Cart
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/buisness/register"
-                    className={({ isActive }) =>
-                      `${
-                        isActive ? "text-black dark:text-black" : "text-white"
-                      } text-xl block py-2 px-3 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                    }
-                  >
-                    <FaUserAlt />
-                  </NavLink>
-                </li>
-              </>
+              <UserLinks />
             ) : seller ? (
-              <li>
-                <NavLink
-                  to="/buisness/register"
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-black dark:text-black" : "text-white"
-                    } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                  }
-                >
-                  Become Seller
-                </NavLink>
-              </li>
+              <SellerLinks />
             ) : admin ? (
-              <>
-              <li>
-                <NavLink
-                  to="/buisness/register"
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-black dark:text-black" : "text-white"
-                    } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                  }
-                >
-                  Add Products
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/buisness/register"
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-black dark:text-black" : "text-white"
-                    } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                  }
-                >
-                  Add Users
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/buisness/register"
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-black dark:text-black" : "text-white"
-                    } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-                  }
-                >
-                  Add Categories
-                </NavLink>
-              </li>
-              </>
+              <AdminLinks />
             ) : (
               <>
                 <li>
@@ -205,3 +108,20 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+{
+  /* <li>
+  <NavLink
+    to="/about"
+    className={({ isActive }) =>
+      `${
+        isActive
+          ? "text-black md:text-black dark:text-black"
+          : "text-white"
+      } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
+    }
+  >
+    About
+  </NavLink>
+</li> */
+}
