@@ -7,7 +7,7 @@ export const API = axios.create({
 
 export const getProducts = async () => {
   try {
-    const res = await API.get("/products");
+    const res = await API.get("products");
     return {
       sucess: true,
       data: res.data,
@@ -24,7 +24,7 @@ export const getProducts = async () => {
 
 export const addProduct = async (product) => {
   try {
-    const res = await API.post("products");
+    const res = await API.post("products", product); 
     return {
       success: true,
       data: res.data,
