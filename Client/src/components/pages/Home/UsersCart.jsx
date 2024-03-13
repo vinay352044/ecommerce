@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import ProductCard from './ProductCard';
+import ProductCard from './Products';
 
 const UsersCart = () => {
-    const [quantity,setQuantity] = useState(1);
+    
 
     const cartItems = useSelector((state)=>state.CartReducer.cartItems)
     console.log(cartItems);

@@ -5,6 +5,7 @@ import UsersCart from "../components/pages/Home/UsersCart.jsx"
 import Profile from "../components/pages/Profile/index.jsx"
 import PrivateRoutesAdmin from "../utils/PrivateRoutes/PrivateRoutesAdmin/index.jsx"
 import PrivateRoutesSeller from "../utils/PrivateRoutes/PrivateRoutesSeller/index.jsx"
+import ProductViewDetais from "../components/pages/Home/ProductViewDetais.jsx"
 
 
 // const About = React.lazy(() => import("../components/pages/About"))
