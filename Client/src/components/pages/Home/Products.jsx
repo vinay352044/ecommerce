@@ -9,7 +9,7 @@ import Product from "../../common/Product";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductCard = ({ productData, isAddToCart }) => {
+const Products = ({ productData, isAddToCart }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(6); 
     const [searchQuery, setSearchQuery] = useState("");
@@ -93,4 +93,4 @@ const ProductCard = ({ productData, isAddToCart }) => {
     );
 };
 
-export default ProductCard;
+export default Products;
