@@ -297,23 +297,17 @@
   ],
   "sellers": [
     {
-      "sellerId": "1",
-      "name": "Akash",
-      "businessName": "Akash Enterprises",
-      "gstin": "GSTIN123A",
-      "category": "Electronics",
-      "email": "akash@example.com",
-      "password": "akashpass",
-      "brand": "Apple",
-      "productsToSell": [
-        "1",
-        "2",
-        "3"
-      ],
-      "id": "8685"
+      "id": "1",
+      "name": "Smartphone new",
+      "businessName": "dhruv electronics",
+      "gstin": "22AAAAA0000A1Z5",
+      "brand": "samsung",
+      "email": "vp@gmail.com",
+      "password": "Dhruv123@",
+      "productsToSell": []
     },
     {
-      "sellerId": "2",
+      "id": "2",
       "name": "Neha",
       "businessName": "Neha Traders",
       "gstin": "GSTIN456B",
@@ -323,11 +317,10 @@
       "brand": "Samsung",
       "productsToSell": [
         "4"
-      ],
-      "id": "9d92"
+      ]
     },
     {
-      "sellerId": "3",
+      "id": "3",
       "name": "Rahul",
       "businessName": "Rahul Stores",
       "gstin": "GSTIN789C",
@@ -337,11 +330,10 @@
       "brand": "Fog Scent Xpressio",
       "productsToSell": [
         "5"
-      ],
-      "id": "ebf0"
+      ]
     },
     {
-      "sellerId": "4",
+      "id": "4",
       "name": "Priya",
       "businessName": "Priya Creations",
       "gstin": "GSTIN123D",
@@ -351,11 +343,10 @@
       "brand": "Samsung Galaxy Book",
       "productsToSell": [
         "6"
-      ],
-      "id": "2959"
+      ]
     },
     {
-      "sellerId": "5",
+      "id": "5",
       "name": "Amit",
       "businessName": "Amit Exports",
       "gstin": "GSTIN456E",
@@ -365,11 +356,10 @@
       "brand": "Lord - Al-Rehab",
       "productsToSell": [
         "7"
-      ],
-      "id": "1203"
+      ]
     },
     {
-      "sellerId": "6",
+      "id": "6",
       "name": "Pooja",
       "businessName": "Pooja Fashion House",
       "gstin": "GSTIN789F",
@@ -379,11 +369,10 @@
       "brand": "L'Oreal Paris",
       "productsToSell": [
         "8"
-      ],
-      "id": "1bcd"
+      ]
     },
     {
-      "sellerId": "7",
+      "id": "7",
       "name": "Vikram",
       "businessName": "Vikram Sports",
       "gstin": "GSTIN123G",
@@ -393,11 +382,10 @@
       "brand": "Hemani Tea",
       "productsToSell": [
         "9"
-      ],
-      "id": "4b80"
+      ]
     },
     {
-      "sellerId": "8",
+      "id": "8",
       "name": "Shalini",
       "businessName": "Shalini Boutique",
       "gstin": "GSTIN456H",
@@ -407,11 +395,10 @@
       "brand": "Dermive",
       "productsToSell": [
         "10"
-      ],
-      "id": "087b"
+      ]
     },
     {
-      "sellerId": "9",
+      "id": "9",
       "name": "Rajesh",
       "businessName": "Rajesh Mart",
       "gstin": "GSTIN789I",
@@ -421,11 +408,10 @@
       "brand": "Bake Parlor Big",
       "productsToSell": [
         "11"
-      ],
-      "id": "4c5a"
+      ]
     },
     {
-      "sellerId": "10",
+      "id": "10",
       "name": "Deepika",
       "businessName": "Deepika Cosmetics",
       "gstin": "GSTIN123J",
@@ -435,11 +421,10 @@
       "brand": "Baking Food Items",
       "productsToSell": [
         "12"
-      ],
-      "id": "2d99"
+      ]
     },
     {
-      "sellerId": "11",
+      "id": "11",
       "name": "Sandeep",
       "businessName": "Sandeep Electronics",
       "gstin": "GSTIN789K",
@@ -449,11 +434,10 @@
       "brand": "Samsung",
       "productsToSell": [
         "13"
-      ],
-      "id": "0aec"
+      ]
     },
     {
-      "sellerId": "12",
+      "id": "12",
       "name": "Kavita",
       "businessName": "Kavita Home Decor",
       "gstin": "GSTIN123L",
@@ -463,11 +447,10 @@
       "brand": "Flying Wooden",
       "productsToSell": [
         "14"
-      ],
-      "id": "933e"
+      ]
     },
     {
-      "sellerId": "13",
+      "id": "13",
       "name": "Rohit",
       "businessName": "Rohit Lighting",
       "gstin": "GSTIN456M",
@@ -477,17 +460,16 @@
       "brand": "LED Lights",
       "productsToSell": [
         "15"
-      ],
-      "id": "f22d"
+      ]
     },
     {
-      "id": "NaN",
-      "name": "jay",
-      "businessName": "electronics world",
+      "id": "14",
+      "name": "Dhruv",
+      "businessName": "Dhruv electronics",
       "gstin": "22AAAAA0000A1Z5",
-      "brand": "HAIER",
-      "email": "jay@123",
-      "password": "Jay@123123",
+      "brand": "samsung",
+      "email": "abc@example.com",
+      "password": "Dhruv123@",
       "productsToSell": []
     }
   ],

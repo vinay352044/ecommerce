@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import ProductCard from './Products';
+
+import Products from './Products';
 
 const UsersCart = () => {
     
@@ -10,7 +11,7 @@ const UsersCart = () => {
 
   return (
     <div>
-       <ProductCard productData={cartItems} isAddToCart={false}/>
+       <Products productData={cartItems} isAddToCart={false}/>
        
        
     </div>
