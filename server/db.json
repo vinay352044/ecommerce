@@ -293,18 +293,6 @@
         "https://cdn.dummyjson.com/product-images/29/4.webp",
         "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
       ]
-    },
-    {
-      "id": "304a",
-      "title": "Delhi",
-      "description": "apple",
-      "price": "40000",
-      "discountPercentage": "39920",
-      "stock": "50",
-      "category": "New Mexico",
-      "brand": "Apple",
-      "total_sell": "50+",
-      "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s"
     }
   ],
   "sellers": [
@@ -486,13 +474,6 @@
     }
   ],
   "users": [
-    {
-      "id": "1",
-      "name": "Aarav",
-      "email": "aarav@example.com",
-      "password": "aaravpass",
-      "favouriteProducts": []
-    },
     {
       "id": "2",
       "name": "Aisha",
