@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../../../utils/axios-instance';
 
@@ -8,7 +8,11 @@ const Index = () => {
   const [products, setProducts] = useState([]);
 
   const handleCreateProduct = () => {
-    navigate("/admin/create-products")
+    navigate('/admin/create-products');
+  };
+
+  const handleProductUpdate = () => {
+    navigate('/admin/create-products');
   }
 
   useEffect(() => {
@@ -16,26 +20,24 @@ const Index = () => {
       try {
         const response = await getProducts();
         if (response.sucess) {
-          console.log(response.data)
           setProducts(response.data);
-        }
-        else {
-          console.error("Failed to fetch the Products Data", response.error)
+        } else {
+          console.error('Failed to fetch the Products Data', response.error);
         }
       } catch (error) {
-        console.error("Error while Fetching products", error)
-
+        console.error('Error while Fetching products', error);
       }
     };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <>
       <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-      {/* <button className="text-2xl font-bold mb-4" onClick={()=> "/CreateProduct"}>Add Product</button> */}
-      <button className="text-2xl font-bold mb-4" onClick={handleCreateProduct}>Add Product</button>
+      <button className="text-2xl font-bold mb-4" onClick={handleCreateProduct}>
+        Add Product
+      </button>
 
       <div className="relative inline-block text-left absolute left-1/2 transform -translate-x-1/2 top-1/2 z-10">
         <div>
@@ -83,11 +85,12 @@ const Index = () => {
       <table className="table-auto w-full mt-8 border">
         <thead>
           <tr className="border-b">
-            <th className="w-1/2 p-2">Product ID</th>
-            <th className="w-1/2 p-2">Title</th>
-            <th className="w-1/2 p-2">Price</th>
-            <th className="w-1/4 p-2">Brand</th>
-            <th className="w-1/4 p-2">Category</th>
+            <th className="w-1/6 p-2">Product ID</th>
+            <th className="w-1/3 p-2">Title</th>
+            <th className="w-1/6 p-2">Price</th>
+            <th className="w-1/6 p-2">Brand</th>
+            <th className="w-1/6 p-2">Category</th>
+            <th className="w-1/6 p-2">Actions</th>
           </tr>
         </thead>
 
@@ -99,12 +102,23 @@ const Index = () => {
               <td className="p-2">{product.price}</td>
               <td className="p-2">{product.brand}</td>
               <td className="p-2">{product.category}</td>
+              <td className="p-2">
+                <div className="flex space-x-2">
+                  <button onClick={handleProductUpdate} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                    Update
+                  </button>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                    View
+                  </button>
+                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                    Delete
+                  </button>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-
     </>
   );
 };
