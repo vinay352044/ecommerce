@@ -60,7 +60,7 @@ const RegisterUser = () => {
     if (emailExistsInUsers === -1 && emailExistsInSellers === -1) {
       // user not exists
       let userObj = {
-        id: (parseInt(users[users.length - 1].id) + 1).toString(),
+        id: users.length !== 0 ? (parseInt(users[users.length - 1].id) + 1).toString() : "1",
         name,
         email,
         password,
