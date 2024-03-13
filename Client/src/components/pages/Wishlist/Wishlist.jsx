@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { API } from '../../../utils/axios-instance';
-import { CiHeart } from 'react-icons/ci';
+
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Wishlist = () => {
   const data = useSelector((state) => state.role.user);
-  const existing = data.favouriteProducts
+  // const existing = data.favouriteProducts
   const [favouriteProducts, setFavouriteProducts] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchFavouriteProducts = async () => {
@@ -23,22 +25,22 @@ const Wishlist = () => {
     fetchFavouriteProducts();
   }, [data]);
 
-  const heartHandle = async (item) => {
-    const alreadyLiked = data.favouriteProducts.find(
-      (product) => product.id === item.id
-    );
+  // const heartHandle = async (item) => {
+  //   const alreadyLiked = data.favouriteProducts.find(
+  //     (product) => product.id === item.id
+  //   );
 
-    if (!alreadyLiked) {
-      data.favouriteProducts.push(item);
+  //   if (!alreadyLiked) {
+  //     data.favouriteProducts.push(item);
 
-      try {
-        const updatedUser = await API.patch(`/users/${data.id}`, data);
-        console.log(updatedUser);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  //     try {
+  //       const updatedUser = await API.patch(`/users/${data.id}`, data);
+  //       console.log(updatedUser);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
   const handleRemove= async(productId) => {
     try{
     const updatedProducts = favouriteProducts.filter(product => product.id != productId)
@@ -53,7 +55,6 @@ const Wishlist = () => {
 
   return (
     <div>
-      <h2>Wishlist</h2>
       <div className='grid grid-cols-3 gap-4'>
         {favouriteProducts.length > 0 ? (
           favouriteProducts.map((product, index) => (
@@ -74,12 +75,20 @@ const Wishlist = () => {
                 </Link>
                 <p className="text-gray-600">{product.description}</p>
                 <p className="text-blue-500 font-semibold">Price: ${product.price}</p>
-                <button onClick={()=> handleRemove(product.id)}>Remove</button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={()=> handleRemove(product.id)}>Remove</button>
               </div>
             </div>
           ))
         ) : (
-          <p>No favorite products found.</p>
+          <div className=" flex items-center justify-center h-screen ml-8">
+    <div className="p-6 bg-gray-100 rounded-lg">
+        <h3 className="text-lg font-bold mb-2">Your wishlist is empty</h3>
+        <p className="text-gray-700 mb-4">Add items that you like to your wishlist. <br/> Review them anytime and easily move them to the bag.</p>
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={()=> navigate('/')}>Continue Shopping</button>
+    </div>
+</div>
+
+
         )}
       </div>
     </div>
