@@ -1,4 +1,5 @@
 export const SET_ROLE = "SET_ROLE";
+export const REMOVE_ROLE = "REMOVE_ROLE";
 
 export const setRole = (roleType, roleData) => {
     return {
@@ -6,5 +7,11 @@ export const setRole = (roleType, roleData) => {
         payload: {
             roleType, roleData
         }
+    }
+}
+
+export const removeRole = () => {
+    return {
+        type: REMOVE_ROLE,
     }
 }

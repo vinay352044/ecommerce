@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
   const data = useSelector((state) => state.role.user);
-  console.log(data.favouriteProducts)
   const existing = data.favouriteProducts
-  console.log(existing[0].id)
   const [favouriteProducts, setFavouriteProducts] = useState([]);
 
   useEffect(() => {

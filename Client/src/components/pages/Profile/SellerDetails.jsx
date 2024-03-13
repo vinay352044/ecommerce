@@ -1,11 +1,11 @@
-import { IoIosMail } from "react-icons/io";
+import { FaShop } from "react-icons/fa6";
 
 const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass }) => {
   return (
     <>
       <div className="flex items-center">
         <label htmlFor="email" className={labelClass}>
-          <IoIosMail /> :
+          <FaShop /> :
         </label>
         <input
           type="text"
@@ -13,12 +13,13 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.businessName}
           readOnly={readOnly}
           onChange={handleChange}
-          className={inputClass}
+          className={`${inputClass} font-medium text-xl border-none`}
+          required
         />
       </div>
       <div className="flex items-center">
-        <label htmlFor="email" className={labelClass}>
-          <IoIosMail /> :
+        <label htmlFor="email" className={`${labelClass} text-xl`}>
+          GST No. :
         </label>
         <input
           type="text"
@@ -26,7 +27,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.gstin}
           readOnly={true}
           onChange={handleChange}
-          className={inputClass}
+          className={`${inputClass} font-medium text-lg border-none`}
         />
       </div>
     </>

@@ -4,24 +4,30 @@ import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeadphonesAlt } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AdminLinks from "./Links/AdminLinks";
 import UserLinks from "./Links/UserLinks";
 import SellerLinks from "./Links/SellerLinks";
 import logo from "/images/png/logo-no-background.png";
+import { useDispatch, useSelector } from "react-redux";
+import { REMOVE_ROLE, removeRole } from "../../../redux/actions/roleAction";
 
 const Navbar = () => {
-  const [show, setShow] = useState(false);
+  const {isAuth , user , seller , admin} = useSelector((state) => state.role);
+  const [show , setShow] = useState(false)
+  // const [render , setRender] = useState(false)
+  const dispatch = useDispatch();
 
-  const [admin, setAdmin] = useState(false);
-  const [user, setUser] = useState(true);
-  const [seller, setSeller] = useState(false);
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    dispatch(removeRole())
+  }
 
   return (
     <nav className="bg-[#0295db] sticky top-0 left-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-8">
         <NavLink
-          to={admin ? "/admin" : seller ? "/seller" : "/"}
+          to={admin ? "/admin" : seller ? "/" : "/"}
           className="flex items-center space-x-3"
         >
           <div className="w-[110px]">
@@ -59,7 +65,7 @@ const Navbar = () => {
           <ul className="font-medium text-lg flex flex-col items-center md:p-0 md:flex-row md:space-x-8">
             <li>
               <NavLink
-                to={admin ? "/admin" : seller ? "/seller" : "/"}
+                to={admin ? "/admin" : seller ? "/" : "/"}                                // seller to change
                 className={({ isActive }) =>
                   `${
                     isActive ? "" : "text-white"
@@ -106,13 +112,19 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/login"
-                className="border-transparent bg-white px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
-              >
-                <FaRegCircleUser />
-                Log In
-              </NavLink>
+              { !isAuth ? (
+                <NavLink
+                  to="/login"
+                  className="border-transparent bg-white px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
+                >
+                  <FaRegCircleUser />
+                  Log In
+                </NavLink>
+              ) : (
+                <NavLink onClick={(e) =>handleLogOut(e)} className="border-transparent bg-white px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white">
+                  Logout
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>
@@ -123,19 +135,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-{
-  /* <li>
-  <NavLink
-    to="/about"
-    className={({ isActive }) =>
-      `${
-        isActive
-          ? "text-black md:text-black dark:text-black"
-          : "text-white"
-      } text-lg block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:text-black`
-    }
-  >
-    About
-  </NavLink>
-</li> */
-}
