@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { addProduct, getProducts } from '../../../../utils/axios-instance';
+import { useNavigate } from "react-router-dom"
 
 const InitialValues = {
   title: '',
@@ -11,36 +12,50 @@ const InitialValues = {
   category: '',
   brand: '',
   total_sell: '',
-  images: '',
+  images: ''
 };
 
 
-
 const Index = () => {
+  const navigate = useNavigate()
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getProducts();
+        if (response.sucess) {
+          console.log(response.data)
+          setProducts(response.data);
+        }
+        else {
+          console.error("Failed to fetch the Products Data", response.error)
+        }
+      } catch (error) {
+        console.error("Error while Fetching products", error)
+
+      }
+    };
+
+    fetchData()
+  }, []);
 
   const handleSubmit = async (values) => {
     try {
-      // Get the existing products to determine the new product ID
-      const { success, data: products } = await getProducts();
+      const newProductId = products.length === 0 ? 1 : parseInt(products[products.length - 1].id) + 1;
+
+      const newProduct = {
+        ...values,
+        id: newProductId.toString(),
+      };
+
+      const { success, error } = await addProduct(newProduct);
 
       if (success) {
-        const newProductId = products.length === 0 ? 1 : parseInt(products[products.length - 1].productId) + 1;
-
-        // Add the new product with the generated ID
-        const newProduct = {
-          ...values,
-          productId: newProductId.toString(),
-        };
-
-        const { success: addSuccess, error: addError } = await addProduct(newProduct);
-
-        if (addSuccess) {
-          console.log('Product added successfully!');
-        } else {
-          console.error('Error adding product:', addError);
-        }
+        console.log('Product added successfully!');
+        navigate("/admin")
       } else {
-        console.error('Error fetching products:', products.error);
+        console.error('Error adding product:', error);
       }
     } catch (error) {
       console.error('Unexpected error:', error);
