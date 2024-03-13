@@ -5,7 +5,7 @@ const AdminLinks = () => {
       <>
         <li>
           <NavLink
-            to="/buisness/register"
+            to="/admin/create-products"
             className={({ isActive }) =>
             `${
               isActive ? '' : "text-white"
@@ -17,7 +17,7 @@ const AdminLinks = () => {
         </li>
         <li>
           <NavLink
-            to="/buisness/register"
+            to="/admin/createUser"
             className={({ isActive }) =>
             `${
               isActive ? '' : "text-white"
@@ -27,7 +27,7 @@ const AdminLinks = () => {
             Add Users
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/buisness/register"
             className={({ isActive }) =>
@@ -38,7 +38,7 @@ const AdminLinks = () => {
           >
             Add Categories
           </NavLink>
-        </li>
+        </li> */}
       </>
     );
   };

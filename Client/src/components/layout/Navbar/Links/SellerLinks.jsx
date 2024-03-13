@@ -1,3 +1,4 @@
+import { FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const SellerLinks = () => {
@@ -5,14 +6,15 @@ const SellerLinks = () => {
     <>
       <li>
         <NavLink
-          to="/buisness/register"
+          to='/seller/profile'
           className={({ isActive }) =>
           `${
             isActive ? '' : "text-white"
-          } text-lg block py-1 hover:text-black`
+          } flex items-center gap-2 text-lg py-1 hover:text-black`
         }
         >
-          yet to add
+          <FaUserAlt />
+          Profile
         </NavLink>
       </li>
     </>

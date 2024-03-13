@@ -5,9 +5,10 @@ import UsersCart from "../components/pages/Home/UsersCart.jsx"
 import Profile from "../components/pages/Profile/index.jsx"
 import PrivateRoutesAdmin from "../utils/PrivateRoutes/PrivateRoutesAdmin/index.jsx"
 import PrivateRoutesSeller from "../utils/PrivateRoutes/PrivateRoutesSeller/index.jsx"
-import ProductViewDetais from "../components/pages/Home/ProductViewDetais.jsx"
+// import ProductViewDetais from "../components/pages/Home/ProductViewDetais.jsx"
 import AdminCreateUser from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminCreateUser.jsx"
 import AdminUpdateUsers from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminUpdateUsers.jsx"
+import { useSelector } from "react-redux"
 
 
 // const About = React.lazy(() => import("../components/pages/About"))
@@ -26,6 +27,7 @@ const Wishlist = React.lazy(()=> import("../components/pages/Wishlist/Wishlist.j
 
 
 export const Router = () => {
+	const role = useSelector(state => state.role)
 	return createBrowserRouter([
 		{
 			element: <Layout />,
@@ -39,7 +41,7 @@ export const Router = () => {
 					element: <Contact />
 				},
 				{
-					element: <PrivateRoutesUser/>,
+					element: <PrivateRoutesUser isUserAuth = {role.user !== null ? true : false} />,
 					children: [
 						// protected routes for user should be declared here
 						{
@@ -57,7 +59,7 @@ export const Router = () => {
 					]
 				},
 				{
-					element: <PrivateRoutesAdmin/>,
+					element: <PrivateRoutesAdmin isAdminAuth = {role.admin !== null ? true : false}/>,
 					children: [
 						// protected routes for admin should be declared here
 						{
@@ -87,9 +89,13 @@ export const Router = () => {
 					]
 				},
 				{
-					element: <PrivateRoutesSeller/>,
+					element: <PrivateRoutesSeller isSellerAuth = {role.seller !== null ? true : false}/>,
 					children: [
 						// protected routes for seller should be declared here
+						{
+							path:'seller/profile',
+							element: <Profile/>
+						},
 						{
 							path: 'admin',
 							element: <Admin />

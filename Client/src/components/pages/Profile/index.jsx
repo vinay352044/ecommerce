@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
 import { FaShoppingCart } from "react-icons/fa";
-import { FaBoxOpen } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -71,19 +70,18 @@ const Profile = () => {
   const labelClass =
     "mr-2 font-bold text-3xl text-[#2590db] flex items-center gap-2";
   const inputClass =
-    "px-3 py-2 w-[45%] text-xl font-medium border-none bg-transparent focus:outline-none";
+    "px-3 py-2 w-[65%] text-xl font-medium border-none bg-transparent focus:outline-none";
 
   return (
     <div className="py-4 px-8 w-full h-[100%]">
-      {console.log(user)}
       <div className="w-full flex items-center gap-4 shadow-2xl">
         <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
           <img src={placeholder} alt="placeholder" className="w-full h-full" />
         </div>
         <div className="w-full h-full p-4 flex justify-between flex-col">
           <div className="mb-8">
-            <h1 className="text-3xl font-semibold text-slate-500 text-center">
-              User Information
+            <h1 className="text-3xl font-semibold text-slate-700 text-center">
+              Welcome {user ? user.name : seller.name} !
             </h1>
           </div>
           <form
@@ -101,6 +99,7 @@ const Profile = () => {
                 readOnly={readOnly}
                 onChange={handleChange}
                 className={inputClass}
+                required
               />
             </div>
             <div className="flex items-center">
@@ -114,6 +113,7 @@ const Profile = () => {
                 readOnly={readOnly}
                 onChange={handleChange}
                 className={inputClass}
+                required
               />
             </div>
             <div className="flex items-center">
@@ -127,6 +127,7 @@ const Profile = () => {
                   value={user ? user?.password : seller?.password}
                   readOnly={true}
                   className={`${inputClass} text-red-600`}
+                  required
                 />
                 {showPass ? (
                   <GoEye
@@ -168,14 +169,24 @@ const Profile = () => {
           </form>
           <div className="mt-6 w-full flex justify-center">
             <div className="w-full flex items-center gap-2 flex-col md:flex-row">
-              <NavLink to="/cart" className={linkClass}>
-                <FaShoppingCart />
-                Cart
-              </NavLink>
-              <NavLink to="/wishlist" className={linkClass}>
-                <FaHeart />
-                Wishlist
-              </NavLink>
+              {user ? (
+                <>
+                  <NavLink to="/cart" className={linkClass}>
+                    <FaShoppingCart />
+                    Cart
+                  </NavLink>
+                  <NavLink to="/wishlist" className={linkClass}>
+                    <FaHeart />
+                    Wishlist
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                 <NavLink to="/cart" className={linkClass}>
+                    Your Products
+                  </NavLink>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -12,7 +12,6 @@ import { API } from "../../../utils/axios-instance";
 
 const Products = ({ productData, isAddToCart }) => {
     const user = useSelector((state)=> state.role.user)
-    console.log(user)
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(6); 
     const [searchQuery, setSearchQuery] = useState("");
@@ -81,7 +80,7 @@ const Products = ({ productData, isAddToCart }) => {
             <br/>
             <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
                 {currentProducts.map(product => (
-                     <Product product={product} handleClick={handleClick} isAddToCart={isAddToCart}/>
+                     <Product product={product} key={product.id} handleClick={handleClick} isAddToCart={isAddToCart}/>
                 ))}
  
                 {shouldRenderPagination && (
