@@ -19,7 +19,7 @@ const Index = () => {
     const fetchData = async () => {
       try {
         const response = await getProducts();
-        if (response.sucess) {
+        if (response.success) {
           setProducts(response.data);
         } else {
           console.error('Failed to fetch the Products Data', response.error);

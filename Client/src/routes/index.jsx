@@ -6,6 +6,8 @@ import Profile from "../components/pages/Profile/index.jsx"
 import PrivateRoutesAdmin from "../utils/PrivateRoutes/PrivateRoutesAdmin/index.jsx"
 import PrivateRoutesSeller from "../utils/PrivateRoutes/PrivateRoutesSeller/index.jsx"
 import ProductViewDetais from "../components/pages/Home/ProductViewDetais.jsx"
+import AdminCreateUser from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminCreateUser.jsx"
+import AdminUpdateUsers from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminUpdateUsers.jsx"
 
 
 // const About = React.lazy(() => import("../components/pages/About"))
@@ -62,8 +64,16 @@ export const Router = () => {
 							element: <Admin />
 						},
 						{
-							path: 'admin/users',
+							path: 'admin/users',			//mansi admin homepage
 							element: <AdminUsers />
+						},
+						{
+							path: 'admin/createUser',		// mansi admin createuserpage
+							element: <AdminCreateUser />
+						},
+						{
+							path: 'admin/update/:id',		// mansi admin updateuserpage
+							element: <AdminUpdateUsers />
 						},
 						{
 							path: 'admin/create-products',
