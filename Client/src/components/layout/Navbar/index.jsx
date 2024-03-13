@@ -32,12 +32,12 @@ const Navbar = () => {
           handleClick={() => setShow(!show)}
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-black"
+          className="inline-flex items-center w-5 h-5 justify-center rounded-sm md:hidden"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
           <svg
-            className="w-5 h-5 text-white"
+            className="w-full h-full text-white hover:text-black"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
