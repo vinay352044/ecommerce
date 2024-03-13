@@ -12,9 +12,11 @@ const roleReducer = (state = initialState, action) => {
         case SET_ROLE: {
             const {roleType, roleData} = action.payload;
             const newState = {...state, isAuth : true , [roleType]: roleData};
+            localStorage.setItem('role' , JSON.stringify(newState))
             return newState;
         }
         case REMOVE_ROLE: {
+            localStorage.removeItem('role')
             return {
                 isAuth : false,
                 admin: null,
