@@ -17,6 +17,8 @@ const InitialValues = {
 
 
 const Index = () => {
+  const inputStyle = "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2";
+  const inputStyle1 = "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500";
   const navigate = useNavigate()
   const [products, setProducts] = useState([]);
 
@@ -67,7 +69,7 @@ const Index = () => {
         <Form className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label htmlFor="title" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="title" className={inputStyle}>
                 Title
               </label>
               <Field
@@ -75,11 +77,11 @@ const Index = () => {
                 id="title"
                 name="title"
                 placeholder="Product Title"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
             <div className="w-full md:w-1/2 px-3">
-              <label htmlFor="description" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="description" className={inputStyle}>
                 Description
               </label>
               <Field
@@ -87,14 +89,14 @@ const Index = () => {
                 id="description"
                 name="description"
                 placeholder="Product Description"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
           </div>
 
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3">
-              <label htmlFor="price" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="price" className={inputStyle}>
                 Price
               </label>
               <Field
@@ -102,13 +104,13 @@ const Index = () => {
                 id="price"
                 name="price"
                 placeholder="Product Price"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
               <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
             </div>
 
             <div className="w-full md:w-1/2 px-3">
-              <label htmlFor="discountPercentage" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="discountPercentage" className={inputStyle}>
                 Discount Percentage
               </label>
               <Field
@@ -116,14 +118,14 @@ const Index = () => {
                 id="discountPercentage"
                 name="discountPercentage"
                 placeholder="Discount Percentage"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
           </div>
 
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/3 px-3">
-              <label htmlFor="stock" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="stock" className={inputStyle}>
                 Stock
               </label>
               <Field
@@ -131,19 +133,19 @@ const Index = () => {
                 id="stock"
                 name="stock"
                 placeholder="Product Stock"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
 
             <div className="w-full md:w-1/3 px-3">
-              <label htmlFor="category" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="category" className={inputStyle}>
                 Category
               </label>
               <Field
                 as="select"
                 id="category"
                 name="category"
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               >
                 <option value="" disabled selected>Select Category</option>
                 <option>New Mexico</option>
@@ -153,7 +155,7 @@ const Index = () => {
             </div>
 
             <div className="w-full md:w-1/3 px-3">
-              <label htmlFor="brand" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="brand" className={inputStyle}>
                 Brand
               </label>
               <Field
@@ -161,14 +163,14 @@ const Index = () => {
                 id="brand"
                 name="brand"
                 placeholder="Product Brand"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
           </div>
 
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/3 px-3">
-              <label htmlFor="total_sell" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="total_sell" className={inputStyle}>
                 Total Sell
               </label>
               <Field
@@ -176,12 +178,12 @@ const Index = () => {
                 id="total_sell"
                 name="total_sell"
                 placeholder="Total Sell"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
 
             <div className="w-full md:w-1/3 px-3">
-              <label htmlFor="images" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label htmlFor="images" className={inputStyle}>
                 Images
               </label>
               <Field
@@ -189,7 +191,7 @@ const Index = () => {
                 id="images"
                 name="images"
                 placeholder="Image URLs"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className={inputStyle1}
               />
             </div>
           </div>
