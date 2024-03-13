@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductData } from "../../../redux/actions/productActions";
 import { useEffect } from "react";
@@ -21,7 +21,7 @@ const FetchData = () => {
   
 
   return (
-   <ProductCard productData={productData}/>
+   <ProductCard productData={productData} isAddToCart={true}/>
   );
 };
 
