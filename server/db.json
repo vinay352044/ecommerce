@@ -555,6 +555,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "11",
+      "name": "new product",
+      "email": "dhruv@example.com",
+      "password": "Dh!1",
+      "favouriteProducts": []
+    },
+    {
+      "id": "12",
+      "name": "dhruv",
+      "email": "u1@gmail.com",
+      "password": "Dh!1",
+      "favouriteProducts": []
+    },
+    {
+      "id": "13",
+      "name": "Smartphone new",
+      "email": "nu@gmail.com",
+      "password": "Dh!1",
+      "favouriteProducts": []
     }
   ],
   "orders": [
