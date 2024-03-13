@@ -24,7 +24,7 @@ const Index = () => {
     const fetchData = async () => {
       try {
         const response = await getProducts();
-        if (response.sucess) {
+        if (response.success) {
           console.log(response.data)
           setProducts(response.data);
         }

@@ -24,7 +24,7 @@ export const getProducts = async () => {
 
 export const addProduct = async (product) => {
   try {
-    const res = await API.post("products", product); 
+    const res = await API.post("products", product);
     return {
       success: true,
       data: res.data,
@@ -39,22 +39,73 @@ export const addProduct = async (product) => {
   }
 };
 
+export const getProductById = async (id) => {
+  try {
+    const res = await API.get(`products/${id}`);
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
+export const updateProduct = async (product) => {
+  try {
+    const res = await API.put(`products/${product.id}`, product);
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
+export const DeleteProductbyId = async (id) => {
+  try {
+    const res = await API.delete(`products/${id}`);
+    return {
+      success: true,
+      data: res.data,
+      error: null,      
+    };
+  } catch (error) {
+    return {  
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
 export const getUsers = async () => {
   try {
     const res = await API.get("users");
     return {
       sucess: true,
       data: res.data,
-      error: null
-    }
+      error: null,
+    };
   } catch (error) {
     return {
       sucess: false,
       data: [],
-      error: error.message
-    }
+      error: error.message,
+    };
   }
-}
+};
 
 export const getSellers = async () => {
   try {
@@ -62,49 +113,49 @@ export const getSellers = async () => {
     return {
       sucess: true,
       data: res.data,
-      error: null
-    }
+      error: null,
+    };
   } catch (error) {
     return {
       sucess: false,
       data: [],
-      error: error.message
-    }
+      error: error.message,
+    };
   }
-}
+};
 
 export const registerUser = async (userObj) => {
-  try{
+  try {
     const res = await API.post("users", userObj);
-    
-    return{
+
+    return {
       sucess: true,
       data: res.data,
-      error: null
-    }
+      error: null,
+    };
   } catch (error) {
     return {
       sucess: false,
       data: [],
-      error: error.message
-    }
+      error: error.message,
+    };
   }
-}
+};
 
 export const registerSeller = async (sellerObj) => {
-  try{
+  try {
     const res = await API.post("sellers", sellerObj);
-    
-    return{
+
+    return {
       sucess: true,
       data: res.data,
-      error: null
-    }
+      error: null,
+    };
   } catch (error) {
     return {
       sucess: false,
       data: [],
-      error: error.message
-    }
+      error: error.message,
+    };
   }
-}
+};
