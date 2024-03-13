@@ -1,9 +1,29 @@
 import React, { useState } from 'react'
-
+import { useSelector } from 'react-redux';
 import { CiHeart } from "react-icons/ci";
 import { Link } from 'react-router-dom';
-
+import { API } from '../../utils/axios-instance';
 const Product = ({product,handleClick,isAddToCart}) => {
+  const user = useSelector((state)=> state.role.user)
+  console.log(user)
+  const heartHandle = async(item) => {
+    console.log('user', user)
+    const alreaydLiked = user.favouriteProducts.filter(
+      (product) => product.id === item.id
+    );
+
+    if (alreaydLiked.length === 0) {
+      user.favouriteProducts.push(item);
+
+      try {
+          const data = await API.patch(`/users/${user.id}`, user);
+            console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+
+    }
+  }
     const [quantity, setQuantity] = useState(1);
   return (
     <div>
@@ -12,7 +32,7 @@ const Product = ({product,handleClick,isAddToCart}) => {
               className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
               <button className="justify-items-end h-5 w-6">
-                <CiHeart  />
+                <CiHeart  onClick={()=> heartHandle(product)}/>
               </button>
               <Link to={`/products/${product.id}`}>
                 <img

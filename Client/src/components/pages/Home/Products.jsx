@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CiHeart } from "react-icons/ci";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../common/Pagination";
 import useDebounceHook from "../../common/useDebounceHook";
 import { addToCart, removeFromCart } from "../../../redux/actions/productActions";
@@ -8,8 +8,11 @@ import Sorting from "../../common/Sorting";
 import Product from "../../common/Product";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API } from "../../../utils/axios-instance";
 
 const Products = ({ productData, isAddToCart }) => {
+    const user = useSelector((state)=> state.role.user)
+    console.log(user)
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(6); 
     const [searchQuery, setSearchQuery] = useState("");
