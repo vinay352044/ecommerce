@@ -90,3 +90,21 @@ export const registerUser = async (userObj) => {
     }
   }
 }
+
+export const registerSeller = async (sellerObj) => {
+  try{
+    const res = await API.post("sellers", sellerObj);
+    
+    return{
+      sucess: true,
+      data: res.data,
+      error: null
+    }
+  } catch (error) {
+    return {
+      sucess: false,
+      data: [],
+      error: error.message
+    }
+  }
+}

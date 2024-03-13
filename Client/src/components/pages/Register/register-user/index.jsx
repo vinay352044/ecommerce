@@ -10,7 +10,7 @@ import {
 import {useDispatch} from 'react-redux';
 import { setRole } from "../../../../redux/actions/roleAction";
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const userSchema = yup.object({
   name: yup
     .string()
@@ -22,11 +22,11 @@ const userSchema = yup.object({
   password: yup
     .string()
     .required("required")
-    .matches(passwordRules, { message: "Please create a stronger password" }),
+    .matches(passwordRules, "Please create a stronger password"),
   cpassword: yup
     .string()
     .required("required")
-    .matches(passwordRules, { message: "Please create a stronger password" })
+    .matches(passwordRules, "Please create a stronger password")
     .oneOf([yup.ref("password")], "Passwords must match"),
 });
 
@@ -35,7 +35,7 @@ const RegisterUser = () => {
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
 
-  const { values, errors, touched, handleChange, handleSubmit, handleBlur } =
+  const { values, errors, touched, handleChange, handleSubmit, handleBlur, handleReset } =
     useFormik({
       initialValues: {
         name: "",
@@ -60,7 +60,7 @@ const RegisterUser = () => {
     if (emailExistsInUsers === -1 && emailExistsInSellers === -1) {
       // user not exists
       let userObj = {
-        userId: (parseInt(users[users.length - 1].userId) + 1).toString(),
+        id: (parseInt(users[users.length - 1].id) + 1).toString(),
         name,
         email,
         password,
@@ -71,6 +71,7 @@ const RegisterUser = () => {
       console.log(sucess, data, error);
       if(sucess){
         dispatch(setRole("user", userObj));
+        handleReset();
       }
     } else {
       // user exists already
@@ -108,7 +109,7 @@ const RegisterUser = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form onSubmit={handleSubmit} onReset={handleReset} className="flex flex-col">
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -156,6 +157,7 @@ const RegisterUser = () => {
         ) : null}
 
         <button type="submit">submit</button>
+        <button type="reset">Reset</button>
       </form>
     </div>
   );
