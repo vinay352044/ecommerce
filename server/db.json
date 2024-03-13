@@ -535,13 +535,6 @@
       "name": "Shreya",
       "email": "shreya@example.com",
       "password": "shreyapass",
-      "favouriteProducts": []
-    },
-    {
-      "id": "11",
-      "name": "new product",
-      "email": "vp12@gmail.com",
-      "password": "Dhruv123@",
       "favouriteProducts": [
         {
           "id": "3",
@@ -560,85 +553,6 @@
             "https://cdn.dummyjson.com/product-images/6/2.jpg",
             "https://cdn.dummyjson.com/product-images/6/3.png",
             "https://cdn.dummyjson.com/product-images/6/4.jpg"
-          ]
-        },
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": "899",
-          "discountPercentage": "17.94",
-          "rating": "4.44",
-          "stock": "34",
-          "brand": "Apple",
-          "category": "smartphones",
-          "total_sell": "15",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/2/1.jpg",
-            "https://cdn.dummyjson.com/product-images/2/2.jpg",
-            "https://cdn.dummyjson.com/product-images/2/3.jpg",
-            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "5",
-          "title": "Fog Scent Xpressio Perfume",
-          "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
-          "price": "13",
-          "discountPercentage": "8.14",
-          "rating": "4.59",
-          "stock": "61",
-          "brand": "Fog Scent Xpressio",
-          "category": "fragrances",
-          "total_sell": "22",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/13/1.jpg",
-            "https://cdn.dummyjson.com/product-images/13/2.png",
-            "https://cdn.dummyjson.com/product-images/13/3.jpg",
-            "https://cdn.dummyjson.com/product-images/13/4.jpg",
-            "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
-          ]
-        },
-        {
-          "id": "13",
-          "title": "Flying Wooden Bird",
-          "description": "Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm",
-          "price": "51",
-          "discountPercentage": "15.58",
-          "rating": "4.41",
-          "stock": "17",
-          "brand": "Flying Wooden",
-          "category": "home-decoration",
-          "total_sell": "11",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/27/thumbnail.webp",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/27/1.jpg",
-            "https://cdn.dummyjson.com/product-images/27/2.jpg",
-            "https://cdn.dummyjson.com/product-images/27/3.jpg",
-            "https://cdn.dummyjson.com/product-images/27/4.jpg",
-            "https://cdn.dummyjson.com/product-images/27/thumbnail.webp"
-          ]
-        },
-        {
-          "id": "15",
-          "title": "Handcraft Chinese style",
-          "description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
-          "price": "60",
-          "discountPercentage": "15.34",
-          "rating": "4.44",
-          "stock": "7",
-          "brand": "luxury palace",
-          "category": "home-decoration",
-          "total_sell": "13",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/29/thumbnail.webp",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/29/1.jpg",
-            "https://cdn.dummyjson.com/product-images/29/2.jpg",
-            "https://cdn.dummyjson.com/product-images/29/3.webp",
-            "https://cdn.dummyjson.com/product-images/29/4.webp",
-            "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
           ]
         }
       ]

@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
   const data = useSelector((state) => state.role.user);
+  console.log(data.favouriteProducts)
+  const existing = data.favouriteProducts
+  console.log(existing[0].id)
   const [favouriteProducts, setFavouriteProducts] = useState([]);
 
   useEffect(() => {
@@ -38,6 +41,17 @@ const Wishlist = () => {
       }
     }
   };
+  const handleRemove= async(productId) => {
+    try{
+    const updatedProducts = favouriteProducts.filter(product => product.id != productId)
+    setFavouriteProducts(updatedProducts)
+    const updatedUser = {...data,favouriteProducts:updatedProducts}
+    await API.patch(`/users/${data.id}`,updatedUser)
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <div>
@@ -46,9 +60,7 @@ const Wishlist = () => {
         {favouriteProducts.length > 0 ? (
           favouriteProducts.map((product, index) => (
             <div key={index} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <button className="justify-items-end h-5 w-6">
-                <CiHeart onClick={() => heartHandle(product)} />
-              </button>
+              
               <Link to={`/products/${product.id}`}>
                 <img
                   className="p-8 rounded-t-lg"
@@ -64,6 +76,7 @@ const Wishlist = () => {
                 </Link>
                 <p className="text-gray-600">{product.description}</p>
                 <p className="text-blue-500 font-semibold">Price: ${product.price}</p>
+                <button onClick={()=> handleRemove(product.id)}>Remove</button>
               </div>
             </div>
           ))
