@@ -298,182 +298,21 @@
   "sellers": [
     {
       "id": "1",
-      "name": "Akash",
-      "businessName": "Akash Enterprises",
-      "gstin": "GSTIN123A",
-      "category": "Electronics",
-      "email": "akash@example.com",
-      "password": "akashpass",
-      "brand": "Apple",
-      "productsToSell": [
-        "1",
-        "2",
-        "3"
-      ]
+      "name": "Smartphone new",
+      "businessName": "dhruv electronics",
+      "gstin": "22AAAAA0000A1Z5",
+      "brand": "samsung",
+      "email": "vp@gmail.com",
+      "password": "Dhruv123@",
+      "productsToSell": []
     },
     {
       "id": "2",
-      "name": "Neha",
-      "businessName": "Neha Traders",
-      "gstin": "GSTIN456B",
-      "category": "Clothing",
-      "email": "neha@example.com",
-      "password": "nehapass",
-      "brand": "Samsung",
-      "productsToSell": [
-        "4"
-      ]
-    },
-    {
-      "id": "3",
-      "name": "Rahul",
-      "businessName": "Rahul Stores",
-      "gstin": "GSTIN789C",
-      "category": "Books",
-      "email": "rahul@example.com",
-      "password": "rahulpass",
-      "brand": "Fog Scent Xpressio",
-      "productsToSell": [
-        "5"
-      ]
-    },
-    {
-      "id": "4",
-      "name": "Priya",
-      "businessName": "Priya Creations",
-      "gstin": "GSTIN123D",
-      "category": "Jewelry",
-      "email": "priya@example.com",
-      "password": "priyapass",
-      "brand": "Samsung Galaxy Book",
-      "productsToSell": [
-        "6"
-      ]
-    },
-    {
-      "id": "5",
-      "name": "Amit",
-      "businessName": "Amit Exports",
-      "gstin": "GSTIN456E",
-      "category": "Furniture",
-      "email": "amit@example.com",
-      "password": "amitpass",
-      "brand": "Lord - Al-Rehab",
-      "productsToSell": [
-        "7"
-      ]
-    },
-    {
-      "id": "6",
-      "name": "Pooja",
-      "businessName": "Pooja Fashion House",
-      "gstin": "GSTIN789F",
-      "category": "Apparel",
-      "email": "pooja@example.com",
-      "password": "poojapass",
-      "brand": "L'Oreal Paris",
-      "productsToSell": [
-        "8"
-      ]
-    },
-    {
-      "id": "7",
-      "name": "Vikram",
-      "businessName": "Vikram Sports",
-      "gstin": "GSTIN123G",
-      "category": "Sports",
-      "email": "vikram@example.com",
-      "password": "vikrampass",
-      "brand": "Hemani Tea",
-      "productsToSell": [
-        "9"
-      ]
-    },
-    {
-      "id": "8",
-      "name": "Shalini",
-      "businessName": "Shalini Boutique",
-      "gstin": "GSTIN456H",
-      "category": "Fashion",
-      "email": "shalini@example.com",
-      "password": "shalinipass",
-      "brand": "Dermive",
-      "productsToSell": [
-        "10"
-      ]
-    },
-    {
-      "id": "9",
-      "name": "Rajesh",
-      "businessName": "Rajesh Mart",
-      "gstin": "GSTIN789I",
-      "category": "Grocery",
-      "email": "rajesh@example.com",
-      "password": "rajeshpass",
-      "brand": "Bake Parlor Big",
-      "productsToSell": [
-        "11"
-      ]
-    },
-    {
-      "id": "10",
-      "name": "Deepika",
-      "businessName": "Deepika Cosmetics",
-      "gstin": "GSTIN123J",
-      "category": "Beauty",
-      "email": "deepika@example.com",
-      "password": "deepikapass",
-      "brand": "Baking Food Items",
-      "productsToSell": [
-        "12"
-      ]
-    },
-    {
-      "id": "11",
-      "name": "Sandeep",
-      "businessName": "Sandeep Electronics",
-      "gstin": "GSTIN789K",
-      "category": "Electronics",
-      "email": "sandeep@example.com",
-      "password": "sandeepass",
-      "brand": "Samsung",
-      "productsToSell": [
-        "13"
-      ]
-    },
-    {
-      "id": "12",
-      "name": "Kavita",
-      "businessName": "Kavita Home Decor",
-      "gstin": "GSTIN123L",
-      "category": "Home Decor",
-      "email": "kavita@example.com",
-      "password": "kavitapass",
-      "brand": "Flying Wooden",
-      "productsToSell": [
-        "14"
-      ]
-    },
-    {
-      "id": "13",
-      "name": "Rohit",
-      "businessName": "Rohit Lighting",
-      "gstin": "GSTIN456M",
-      "category": "Home Decor",
-      "email": "rohit@example.com",
-      "password": "rohitpass",
-      "brand": "LED Lights",
-      "productsToSell": [
-        "15"
-      ]
-    },
-    {
-      "id": "14",
-      "name": "Dhruv",
-      "businessName": "Dhruv electronics",
+      "name": "Smartphone new",
+      "businessName": "dhruv electronics",
       "gstin": "22AAAAA0000A1Z5",
       "brand": "samsung",
-      "email": "abc@example.com",
+      "email": "u1@gmail.com",
       "password": "Dhruv123@",
       "productsToSell": []
     }
