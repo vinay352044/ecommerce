@@ -19,6 +19,7 @@ const RegisterSeller = React.lazy(() => import("../components/pages/Register/reg
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
 const AdminProducts = React.lazy(() => import("../components/pages/Register/register-product/index"));
+const AdminUpdateProducts = React.lazy(() => import("../components/pages/Register/register-product/update-product/updateProduct.jsx"));
 const Wishlist = React.lazy(()=> import("../components/pages/Wishlist/Wishlist.jsx"))
 
 
@@ -68,6 +69,10 @@ export const Router = () => {
 						{
 							path: 'admin/create-products',
 							element: <AdminProducts/>
+						},
+						{
+							path: 'admin/update-products/:productID',
+							element: <AdminUpdateProducts/>
 						}
 					]
 				},

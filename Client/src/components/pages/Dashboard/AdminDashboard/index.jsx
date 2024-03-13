@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getProducts } from '../../../../utils/axios-instance';
+import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance';
 
 const Index = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -11,16 +11,35 @@ const Index = () => {
     navigate('/admin/create-products');
   };
 
-  const handleProductUpdate = () => {
-    navigate('/admin/create-products');
+  const handleProductUpdate = (productID) => {
+    console.log(productID)
+    navigate(`/admin/update-products/${productID}`);
   }
+
+  const handleProductDelete = (productID) => {
+    console.log(productID);
+    const deleteProductItem = async () => {
+      try {
+        const response = await DeleteProductbyId(productID);
+        if (response.success) {
+          console.log("Product Deleted Successfully!");
+        } else {
+          console.error('Failed to delete the Products Data', response.error);
+        }
+      } catch (error) {
+        console.error('Failed to delete the Products Data', error);
+      }
+    };
+    deleteProductItem();
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getProducts();
-        if (response.sucess) {
+        if (response.success) {
           setProducts(response.data);
+          console.log(response)
         } else {
           console.error('Failed to fetch the Products Data', response.error);
         }
@@ -104,13 +123,13 @@ const Index = () => {
               <td className="p-2">{product.category}</td>
               <td className="p-2">
                 <div className="flex space-x-2">
-                  <button onClick={handleProductUpdate} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                  <button onClick={() => handleProductUpdate(product.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
                     Update
                   </button>
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                     View
                   </button>
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                  <button onClick={() => handleProductDelete(product.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
                     Delete
                   </button>
                 </div>
