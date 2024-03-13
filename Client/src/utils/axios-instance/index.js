@@ -9,7 +9,7 @@ export const getProducts = async () => {
   try {
     const res = await API.get("products");
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };

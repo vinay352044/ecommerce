@@ -554,7 +554,7 @@
       "name": "Shreya",
       "email": "shreya@example.com",
       "password": "shreyapass",
-      "favouriteProducts": [],
+      "favouriteProducts": []
     }
   ],
   "orders": [

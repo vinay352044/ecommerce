@@ -1,14 +1,32 @@
-import React from "react"
-import "./home.css"
-import ProductCard from "./FetchData"
+import React, { useState,useEffect } from "react";
+import "./home.css";
+
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductData } from "../../../redux/actions/productActions";
+
+import Products from "./Products.jsx";
 
 const Home = () => {
-	return (
-		<div className="home">
-			<h1 className="text-3xl">Home</h1>
-			<ProductCard/>
-		</div>
-	)
-}
+  const [productData, setProductData] = useState([]);
+  const dispatch = useDispatch();
 
-export default Home
+  useEffect(() => {
+    dispatch(fetchProductData());
+  }, []);
+
+  const products = useSelector((state) => state.productReducer.products);
+  
+  useEffect(() => {
+    setProductData(products);
+  }, [products]);
+
+  return (
+    <div className="home">
+      <h1 className="text-3xl">Home</h1>
+      <Products productData={productData} isAddToCart={true}/>
+    </div>
+  );
+};
+
+export default Home;

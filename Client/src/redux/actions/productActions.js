@@ -1,6 +1,6 @@
 import axios from "axios"
 import { setLoader } from "./appActions"
-import { API } from "../../utils/axios-instance"
+import { API, getProducts } from "../../utils/axios-instance"
 
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
 export const ADD_TO_CART = 'ADD_TO_CART'
@@ -18,7 +18,7 @@ export const fetchProductData = () =>{
   return async (dispatch) =>{
      try{
       dispatch(setLoader(true))
-      const response = await API.get("/products");
+      const response = await getProducts();
       dispatch(fetchProductsSuccess(response.data))
       dispatch(setLoader(false))
      }catch(error){
