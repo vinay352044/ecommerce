@@ -14,7 +14,7 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
 
   const [admin, setAdmin] = useState(false);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   const [seller, setSeller] = useState(false);
 
   return (
