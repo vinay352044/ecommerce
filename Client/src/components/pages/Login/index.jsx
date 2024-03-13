@@ -6,14 +6,15 @@ import { getSellers, getUsers } from "../../../utils/axios-instance";
 import { setRole } from "../../../redux/actions/roleAction";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const loginSchema = yup.object({
   role: yup
     .string()
-    .required("required")
-    .oneOf(["user", "admin", "seller"], "Please select a valid role"),
-  email: yup.string().required("Required").trim(),
-  password: yup.string().required("Required").trim(),
+    .required("*required")
+    .oneOf(["user", "admin", "seller"], "*Please select a valid role"),
+  email: yup.string().required("*required").trim(),
+  password: yup.string().required("*required").trim(),
 });
 
 const Login = () => {
@@ -45,34 +46,34 @@ const Login = () => {
     const { role, email, password } = values;
 
     if (role === "user") {
-      let user = users.find(user => user.email === email);
-      if(user && user.password === password){
+      let user = users.find((user) => user.email === email);
+      if (user && user.password === password) {
         dispatch(setRole(role, user));
         toast.success(`User: ${user.name} logged in sucessfully`);
         navigate("/");
-      }else{
-        toast.error("Invalid credential !!");
-      }
-    }
-    
-    if(role === "seller"){
-      let seller = sellers.find(seller => seller.email === email);
-      if(seller && seller.password === password){
-        dispatch(setRole(role, seller));
-        toast.success(`Seller: ${seller.name}logged in sucessfully`);
-        navigate("/");
-      }else{
+      } else {
         toast.error("Invalid credential !!");
       }
     }
 
-    if(role === "admin"){
-      const admin = {email, password};
-      if(email === "admin@gmail.com" && password === "Admin@123"){
+    if (role === "seller") {
+      let seller = sellers.find((seller) => seller.email === email);
+      if (seller && seller.password === password) {
+        dispatch(setRole(role, seller));
+        toast.success(`Seller: ${seller.name}logged in sucessfully`);
+        navigate("/");
+      } else {
+        toast.error("Invalid credential !!");
+      }
+    }
+
+    if (role === "admin") {
+      const admin = { email, password };
+      if (email === "admin@gmail.com" && password === "Admin@123") {
         dispatch(setRole(role, admin));
         toast.success("Admin logged in sucessfully!");
         navigate("/");
-      }else{
+      } else {
         toast.error("Invalid credential !!");
       }
     }
@@ -108,49 +109,111 @@ const Login = () => {
   }, []);
 
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit}
-        onReset={handleReset}
-        className="flex flex-col"
-      >
-        <label htmlFor="role">Role</label>
-        <select
-          name="role"
-          id="role"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          defaultValue="user"
-        >
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-          <option value="seller">Seller</option>
-        </select>
+    <div className="flex bg-white justify-center items-center py-10">
+      <div className="flex flex-col gap-5 py-8 px-20 shadow-2xl rounded-md">
+        <h3 className="text-center text-3xl font-bold ">Login</h3>
 
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-        />
-        {touched.email && errors.email ? <p>{errors.email}</p> : null}
+        <div className="flex justify-center items-center gap-10">
+          <form
+            onSubmit={handleSubmit}
+            onReset={handleReset}
+            className="flex flex-col gap-2 w-[400px]"
+          >
+            <div className="flex flex-col">
+              <label htmlFor="role" className="font-semibold">
+                Role
+              </label>
+              <select
+                name="role"
+                id="role"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                defaultValue="user"
+                className="border-2 rounded-md border-gray-500 focus:ring-0"
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="seller">Seller</option>
+              </select>
+              {touched.role && errors.role ? <p className="text-[14px] text-red-700">{errors.role}</p> : <p className="text-[14px] opacity-0">null</p>}
+            </div>
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-        />
-        {touched.password && errors.password ? <p>{errors.password}</p> : null}
+            <div className="flex flex-col">
+              <label htmlFor="email" className="font-semibold">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="dhruv@example.com"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.email && errors.email ? (
+                <p className="text-[14px] text-red-700">{errors.email}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <button type="submit">Submit</button>
-      </form>
+            <div className="flex flex-col">
+              <label htmlFor="password" className="font-semibold">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                placeholder="ranDom1$"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.password && errors.password ? (
+                <p className="text-[14px] text-red-700">{errors.password}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
+
+            <div className="flex justify-between gap-2">
+              <button
+                type="submit"
+                className="w-full border-[2px] rounded-md border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+              >
+                Submit
+              </button>
+
+              <button
+                type="reset"
+                className="w-full border-[1px] border-red-800 rounded-md text-red-900 py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-red-700 hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+              >
+                Reset
+              </button>
+            </div>
+
+            <div className="pt-5">
+              <p>
+                Don't have an account?{" "}
+                <NavLink
+                  to="/register"
+                  className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
+                >
+                  Register here
+                </NavLink>
+              </p>
+            </div>
+          </form>
+
+          <div>
+            <img src="/images/Mobile-login.gif" alt="Login Demo"/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
