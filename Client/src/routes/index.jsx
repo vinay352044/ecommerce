@@ -1,11 +1,13 @@
 import React from "react"
-import PrivateRoutesCheck from "../utils/PrivateRoutesCheck"
+import PrivateRoutesUser from "../utils/PrivateRoutes/PrivateRoutesUser/index.jsx"
 import {createBrowserRouter} from "react-router-dom"
 import UsersCart from "../components/pages/Home/UsersCart.jsx"
 import Profile from "../components/pages/Profile/index.jsx"
+import PrivateRoutesAdmin from "../utils/PrivateRoutes/PrivateRoutesAdmin/index.jsx"
+import PrivateRoutesSeller from "../utils/PrivateRoutes/PrivateRoutesSeller/index.jsx"
 
 
-const About = React.lazy(() => import("../components/pages/About"))
+// const About = React.lazy(() => import("../components/pages/About"))
 const Layout = React.lazy(() => import("../components/layout/Layout"))
 const Login = React.lazy(() => import("../components/pages/Login"))
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"))
@@ -16,10 +18,10 @@ const RegisterSeller = React.lazy(() => import("../components/pages/Register/reg
 const Admin = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/index"));
 const AdminUsers = React.lazy(() => import("../components/pages/Dashboard/AdminDashboard/AdminUsers/index"));
 const AdminProducts = React.lazy(() => import("../components/pages/Register/register-product/index"));
-const Whishlist = React.lazy(()=> import("../components/pages/Whishlist/Whishlist.jsx"))
+const Wishlist = React.lazy(()=> import("../components/pages/Wishlist/Wishlist.jsx"))
 
 
-export const Router = (isAuthenticated = false) => {
+export const Router = () => {
 	return createBrowserRouter([
 		{
 			element: <Layout />,
@@ -33,20 +35,12 @@ export const Router = (isAuthenticated = false) => {
 					element: <Contact />
 				},
 				{
-					element: <PrivateRoutesCheck isAuthenticated={isAuthenticated} />,
+					element: <PrivateRoutesUser/>,
 					children: [
-						// protected routes should be declared here
+						// protected routes for user should be declared here
 						{
-							path: 'admin',
-							element: <Admin />
-						},
-						{
-							path: 'admin/users',
-							element: <AdminUsers />
-						},
-						{
-							path: 'admin/create-products',
-							element: <AdminProducts/>
+							path: 'wishlist',
+							element: <Wishlist />
 						},
 						{
 							path:'cart',
@@ -59,16 +53,44 @@ export const Router = (isAuthenticated = false) => {
 					]
 				},
 				{
-					path: 'about',
-					element: <About />
+					element: <PrivateRoutesAdmin/>,
+					children: [
+						// protected routes for admin should be declared here
+						{
+							path: 'admin',
+							element: <Admin />
+						},
+						{
+							path: 'admin/users',
+							element: <AdminUsers />
+						},
+						{
+							path: 'admin/create-products',
+							element: <AdminProducts/>
+						}
+					]
+				},
+				{
+					element: <PrivateRoutesSeller/>,
+					children: [
+						// protected routes for seller should be declared here
+						{
+							path: 'admin',
+							element: <Admin />
+						},
+						{
+							path: 'admin/users',
+							element: <AdminUsers />
+						},
+						{
+							path: 'admin/create-products',
+							element: <AdminProducts/>
+						}
+					]
 				},
 				{
 					path: 'login',
 					element: <Login />
-				},
-				{
-					path: 'whishlist',
-					element: <Whishlist />
 				},
 				{
 					path: 'register',
