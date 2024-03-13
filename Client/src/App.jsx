@@ -7,9 +7,7 @@ import "react-toastify/dist/ReactToastify.css"
 import Loader from "./components/common/Loader"
 
 const App = () => {
-	const [isAuthenticated, setIsAuthenticated] = useState(true)
-	const router = Router(isAuthenticated)
-
+	const router = Router()
 	return (
 		<>
 			<Suspense fallback={<Loader />}>

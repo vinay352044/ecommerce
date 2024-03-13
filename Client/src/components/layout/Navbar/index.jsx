@@ -3,22 +3,23 @@ import Button from "../../common/Button";
 import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
+import { FaHeadphonesAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import AdminLinks from "./Links/AdminLinks";
 import UserLinks from "./Links/UserLinks";
 import SellerLinks from "./Links/SellerLinks";
-import logo from '../../../../public/images/png/logo-no-background.png'
+import logo from '/images/png/logo-no-background.png'
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
 
   const [admin, setAdmin] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [seller, setSeller] = useState(false);
 
   return (
-    <nav className="bg-[#0295db]">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-10">
+    <nav className="bg-[#0295db] sticky top-0 left-0">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-8">
         <NavLink
           to={admin ? "/admin" : seller ? "/seller" : "/"}
           className="flex items-center space-x-3"
@@ -35,7 +36,7 @@ const Navbar = () => {
           handleClick={() => setShow(!show)}
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-black focus:outline-none focus:ring-1 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-black"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -95,6 +96,19 @@ const Navbar = () => {
                 </li>
               </>
             )}
+              <li>
+              <NavLink
+                to='/contact'
+                className={({ isActive }) =>
+                  `${
+                    isActive ? '' : "text-white"
+                  } flex items-center gap-2 text-lg py-1 hover:text-black`
+                }
+              >
+                <FaHeadphonesAlt/>
+                Contact Us
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/register"
