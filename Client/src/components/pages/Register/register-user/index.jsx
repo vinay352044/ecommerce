@@ -17,22 +17,22 @@ const passwordRules =
 const userSchema = yup.object({
   name: yup
     .string()
-    .required("required")
-    .min(2, "Name must contain atleast 2 characters")
-    .max(15, "Name must not contain more than 15 characters")
+    .required("*required")
+    .min(2, "*Name must contain atleast 2 characters")
+    .max(15, "*Name must not contain more than 15 characters")
     .trim(),
-  email: yup.string().required("required").email("Email is not valid").trim(),
+  email: yup.string().required("*required").email("*Email is not valid").trim(),
   password: yup
     .string()
-    .required("required")
+    .required("*required")
     .matches(
       passwordRules,
-      "Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number"
+      "*Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number"
     ),
   cpassword: yup
     .string()
-    .required("required")
-    .oneOf([yup.ref("password")], "Passwords must match"),
+    .required("*required")
+    .oneOf([yup.ref("password")], "*Passwords must match"),
 });
 
 const RegisterUser = () => {
@@ -128,7 +128,7 @@ const RegisterUser = () => {
     <div className="flex bg-white justify-center items-center py-10">
       <div className="flex flex-col gap-5 py-8 px-20 shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Register User</h3>
-        <div className="flex ">
+        <div className="flex justify-center items-center gap-10">
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
@@ -146,7 +146,7 @@ const RegisterUser = () => {
                 onBlur={handleBlur}
                 value={values.name}
                 placeholder="Dhruv Prajapati"
-                className="border-2 rounded-md border-black"
+                className="border-2 rounded-md border-black focus:ring-0"
               />
               {touched.name && errors.name ? (
                 <p className="text-[14px] text-red-700">{errors.name}</p>
@@ -167,7 +167,7 @@ const RegisterUser = () => {
                 onBlur={handleBlur}
                 value={values.email}
                 placeholder="dhruv@example.com"
-                className="border-2 rounded-md border-black"
+                className="border-2 rounded-md border-black focus:ring-0"
               />
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
@@ -188,7 +188,7 @@ const RegisterUser = () => {
                 onBlur={handleBlur}
                 value={values.password}
                 placeholder="ranDom1$"
-                className="border-2 rounded-md border-black"
+                className="border-2 rounded-md border-black focus:ring-0"
               />
               {touched.password && errors.password ? (
                 <p className="text-[14px] text-red-700">{errors.password}</p>
@@ -209,7 +209,7 @@ const RegisterUser = () => {
                 onBlur={handleBlur}
                 value={values.cpassword}
                 placeholder="ranDom1$"
-                className="border-2 rounded-md border-black"
+                className="border-2 rounded-md border-black focus:ring-0"
               />
               {touched.cpassword && errors.cpassword ? (
                 <p className="text-[14px] text-red-700">{errors.cpassword}</p>
@@ -248,7 +248,7 @@ const RegisterUser = () => {
           </form>
 
           <div>
-            <img src="images/Mobile-login.gif" alt="Login Demo" srcset="" />
+            <img src="/images/Mobile-login.gif" alt="Login Demo" srcset="" />
           </div>
         </div>
       </div>
