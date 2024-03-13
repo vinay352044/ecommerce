@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { getSellers, getUsers, registerSeller } from "../../../../utils/axios-instance";
 import { setRole } from "../../../../redux/actions/roleAction";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { toast } from 'react-toastify';
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const gstinRules = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
@@ -40,6 +42,8 @@ const sellerSchema = yup.object({
 
 const RegisterSeller = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
 
@@ -70,7 +74,7 @@ const RegisterSeller = () => {
 
     if (emailExistsInUsers === -1 && emailExistsInSellers === -1) {
       let sellerObj = {
-        id: (parseInt(sellers[sellers.length - 1].id) + 1).toString(),
+        id: sellers.length !== 0 ? (parseInt(sellers[sellers.length - 1].id) + 1).toString() : "1",
         name,
         businessName,
         gstin,
@@ -84,9 +88,12 @@ const RegisterSeller = () => {
       if (sucess) {
         dispatch(setRole("seller", sellerObj));
         handleReset();
+        toast.success("Registered sucessfully");
+        navigate("/");
       } else {
         // user exists already
         // Toastify
+        toast.error("something went wrong")
         console.log("User Exists already");
       }
     } else {
