@@ -554,59 +554,13 @@
       "name": "Shreya",
       "email": "shreya@example.com",
       "password": "shreyapass",
-<<<<<<< Updated upstream
-=======
-      "favouriteProducts": [],
-      "id": "6b65"
-    },
-    {
-      "id": "7",
-      "name": "jay",
-      "email": "jay@123123",
-      "password": "Jay@123123",
-      "favouriteProducts": []
-    },
-    {
-      "id": "8",
-      "name": "jay",
-      "email": "jay@123123123",
-      "password": "Jay@123123",
-      "favouriteProducts": []
-    },
-    {
-      "id": "9",
-      "name": "jay",
-      "email": "jay@456",
-      "password": "Jay@456456",
-      "favouriteProducts": []
-    },
-    {
-      "id": "10",
-      "name": "jay",
-      "email": "jay@456456",
-      "password": "Jay@234234",
       "favouriteProducts": []
     },
     {
       "id": "11",
-      "name": "Smartphone",
-      "email": "jay@123321",
-      "password": "Jay@123456",
-      "favouriteProducts": []
-    },
-    {
-      "id": "12",
-      "name": "Smartphone2",
-      "email": "smart@123",
-      "password": "Sm@123123",
-      "favouriteProducts": []
-    },
-    {
-      "id": "13",
-      "name": "abcd",
-      "email": "abcd@123",
-      "password": "Ab@123456",
->>>>>>> Stashed changes
+      "name": "new product",
+      "email": "vp12@gmail.com",
+      "password": "Dhruv123@",
       "favouriteProducts": []
     }
   ],
@@ -618,8 +572,7 @@
       "ordered_at": "3/12/2024, 10:26:51 AM",
       "expected_delivery": "3/15/2024",
       "order_accepted": true,
-      "accepted_by": "1",
-      "id": "ca91",
+      "accepted_by": "1"
     },
     {
       "id": "2",
