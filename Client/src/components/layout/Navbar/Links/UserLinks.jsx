@@ -8,7 +8,7 @@ const UserLinks = () => {
     <>
       <li>
         <NavLink
-          to="/buisness/register"
+          to="/wishlist"
           className={({ isActive }) =>
           `${
             isActive ? '' : "text-white"
