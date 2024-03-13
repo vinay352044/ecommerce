@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import AdminLinks from "./Links/AdminLinks";
 import UserLinks from "./Links/UserLinks";
 import SellerLinks from "./Links/SellerLinks";
-import logo from '/images/png/logo-no-background.png'
+import logo from "/images/png/logo-no-background.png";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -25,11 +25,7 @@ const Navbar = () => {
           className="flex items-center space-x-3"
         >
           <div className="w-[110px]">
-            <img
-              src={logo}
-              alt="logo"
-              className="w-full"
-            />
+            <img src={logo} alt="logo" className="w-full" />
           </div>
         </NavLink>
         <Button
@@ -66,7 +62,7 @@ const Navbar = () => {
                 to={admin ? "/admin" : seller ? "/seller" : "/"}
                 className={({ isActive }) =>
                   `${
-                    isActive ? '' : "text-white"
+                    isActive ? "" : "text-white"
                   } text-lg block py-1 hover:text-black`
                 }
               >
@@ -85,10 +81,10 @@ const Navbar = () => {
                   <NavLink
                     to="/buisness/register"
                     className={({ isActive }) =>
-                    `${
-                      isActive ? '' : "text-white"
-                    } flex items-center gap-2 text-lg py-1 hover:text-black`
-                  }
+                      `${
+                        isActive ? "" : "text-white"
+                      } flex items-center gap-2 text-lg py-1 hover:text-black`
+                    }
                   >
                     <HiHomeModern />
                     Become Seller
@@ -96,29 +92,23 @@ const Navbar = () => {
                 </li>
               </>
             )}
-              <li>
+            <li>
               <NavLink
-                to='/contact'
+                to="/contact"
                 className={({ isActive }) =>
                   `${
-                    isActive ? '' : "text-white"
+                    isActive ? "" : "text-white"
                   } flex items-center gap-2 text-lg py-1 hover:text-black`
                 }
               >
-                <FaHeadphonesAlt/>
+                <FaHeadphonesAlt />
                 Contact Us
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/register"
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "border-black text-black bg-transparent"
-                      : "border-transparent bg-white "
-                  } px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white`
-                }
+                to="/login"
+                className="border-transparent bg-white px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
               >
                 <FaRegCircleUser />
                 Log In

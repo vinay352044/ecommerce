@@ -9,6 +9,7 @@ import {
 } from "../../../../utils/axios-instance";
 import {useDispatch} from 'react-redux';
 import { setRole } from "../../../../redux/actions/roleAction";
+import { useNavigate } from "react-router-dom";
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const userSchema = yup.object({
@@ -34,6 +35,7 @@ const RegisterUser = () => {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
+  const navigate = useNavigate()
 
   const { values, errors, touched, handleChange, handleSubmit, handleBlur, handleReset } =
     useFormik({
@@ -72,7 +74,9 @@ const RegisterUser = () => {
       if(sucess){
         dispatch(setRole("user", userObj));
         handleReset();
+        navigate('/')
       }
+
     } else {
       // user exists already
       // Toastify
