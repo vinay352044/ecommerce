@@ -1,43 +1,52 @@
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
-import { getSellers, getUsers, registerSeller } from "../../../../utils/axios-instance";
+import {
+  getSellers,
+  getUsers,
+  registerSeller,
+} from "../../../../utils/axios-instance";
 import { setRole } from "../../../../redux/actions/roleAction";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
-const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRules =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
 const gstinRules = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
 const sellerSchema = yup.object({
   name: yup
     .string()
-    .required("required")
-    .min(2, "Name must be of atleast 2 charactor")
-    .max(15, "Name must be of atmost 15 charactors")
+    .required("*required")
+    .min(2, "*Name must contain atleast 2 characters")
+    .max(15, "*Name must not contain more than 15 characters")
     .trim(),
   businessName: yup
     .string()
-    .required("required")
-    .min(5, "Business name must be of atleast 5 charactors")
+    .required("*required")
+    .min(5, "*Business name must contain atleast 5 characters")
     .trim(),
   gstin: yup
     .string()
-    .required("GSTIN required for selling products on Bac-Mart")
-    .matches(gstinRules, "gstin must contain numbers and charactors"),
-  brand: yup.string()
-    .required("required")
-    .min(2, "brand name must be of atleast 2 charactors"),
-  email: yup.string().required("required").email("Email is not valid").trim(),
+    .required("*GSTIN required for selling products on Bac-Mart")
+    .matches(gstinRules, "*GSTIN must be in the format of 22AAAAA0000A1Z5"),
+  brand: yup
+    .string()
+    .required("*required")
+    .min(2, "*Brand name must contain atleast 2 characters"),
+  email: yup.string().required("*required").email("*Email is not valid").trim(),
   password: yup
     .string()
-    .required("required")
-    .matches(passwordRules, "Please create a stronger password"),
+    .required("*required")
+    .matches(
+      passwordRules,
+      "*Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number"
+    ),
   cpassword: yup
     .string()
-    .required("required")
-    .matches(passwordRules, "Please create a stronger password")
-    .oneOf([yup.ref("password")], "Passwords must match"),
+    .required("*required")
+    .oneOf([yup.ref("password")], "*Passwords must match"),
 });
 
 const RegisterSeller = () => {
@@ -47,20 +56,27 @@ const RegisterSeller = () => {
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
 
-  const { values, errors, touched, handleChange, handleSubmit, handleBlur, handleReset } =
-    useFormik({
-      initialValues: {
-        name: "",
-        businessName: "",
-        gstin: "22AAAAA0000A1Z5",
-        brand: "",
-        email: "",
-        password: "",
-        cpassword: "",
-      },
-      validationSchema: sellerSchema,
-      onSubmit,
-    });
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    handleReset,
+  } = useFormik({
+    initialValues: {
+      name: "",
+      businessName: "",
+      gstin: "",
+      brand: "",
+      email: "",
+      password: "",
+      cpassword: "",
+    },
+    validationSchema: sellerSchema,
+    onSubmit,
+  });
 
   async function onSubmit(values) {
     const { name, businessName, gstin, brand, email, password } = values;
@@ -74,7 +90,10 @@ const RegisterSeller = () => {
 
     if (emailExistsInUsers === -1 && emailExistsInSellers === -1) {
       let sellerObj = {
-        id: sellers.length !== 0 ? (parseInt(sellers[sellers.length - 1].id) + 1).toString() : "1",
+        id:
+          sellers.length !== 0
+            ? (parseInt(sellers[sellers.length - 1].id) + 1).toString()
+            : "1",
         name,
         businessName,
         gstin,
@@ -88,15 +107,13 @@ const RegisterSeller = () => {
       if (sucess) {
         dispatch(setRole("seller", sellerObj));
         handleReset();
-        toast.success("Registered sucessfully");
+        toast.success("Seller registered sucessfully");
         navigate("/");
-      } else {
-        // user exists already
-        // Toastify
-        toast.error("something went wrong")
-        console.log("User Exists already");
       }
     } else {
+      // user exists already
+      toast.error("User already exists!!");
+      handleReset();
     }
   }
 
@@ -128,91 +145,199 @@ const RegisterSeller = () => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} onReset={handleReset} className="flex flex-col">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.name}
-        />
-        {touched.name && errors.name ? <p>{errors.name}</p> : null}
+    <div className="flex bg-white justify-center items-center py-10">
+      <div className="flex flex-col gap-5 py-8 px-20 shadow-2xl rounded-md">
+        <h3 className="text-center text-3xl font-bold ">Register Seller</h3>
 
-        <label htmlFor="businessName">Business Name</label>
-        <input
-          type="text"
-          name="businessName"
-          id="businessName"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.businessName}
-        />
-        {touched.businessName && errors.businessName ? (
-          <p>{errors.businessName}</p>
-        ) : null}
+        <div className="flex justify-center items-center gap-10">
+          <form
+            onSubmit={handleSubmit}
+            onReset={handleReset}
+            className="flex flex-col gap-2 w-[400px]"
+          >
+            <div className="flex flex-col">
+              <label htmlFor="name" className="font-semibold">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                placeholder="Dhruv Prajapati"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.name && errors.name ? (
+                <p className="text-[14px] text-red-700">{errors.name}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <label htmlFor="gstin">GST NO</label>
-        <input
-          type="text"
-          name="gstin"
-          id="gstin"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.gstin}
-        />
-        {touched.gstin && errors.gstin ? <p>{errors.gstin}</p> : null}
+            <div className="flex flex-col">
+              <label htmlFor="businessName" className="font-semibold">
+                Business Name
+              </label>
+              <input
+                type="text"
+                name="businessName"
+                id="businessName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.businessName}
+                placeholder="Dhruv Mobile World"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.businessName && errors.businessName ? (
+                <p className="text-[14px] text-red-700">
+                  {errors.businessName}
+                </p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <label htmlFor="brand">brand</label>
-        <input
-          type="text"
-          name="brand"
-          id="brand"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.brand}
-        />
-        {touched.brand && errors.brand ? <p>{errors.brand}</p> : null}
+            <div className="flex flex-col">
+              <label htmlFor="gstin" className="font-semibold">
+                GST NO
+              </label>
+              <input
+                type="text"
+                name="gstin"
+                id="gstin"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.gstin}
+                placeholder="22AAAAA0000A1Z5"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.gstin && errors.gstin ? (
+                <p className="text-[14px] text-red-700">{errors.gstin}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-        />
-        {touched.email && errors.email ? <p>{errors.email}</p> : null}
+            <div className="flex flex-col">
+              <label htmlFor="brand" className="font-semibold">
+                brand
+              </label>
+              <input
+                type="text"
+                name="brand"
+                id="brand"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.brand}
+                placeholder="Samsung"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.brand && errors.brand ? (
+                <p className="text-[14px] text-red-700">{errors.brand}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-        />
-        {touched.password && errors.password ? <p>{errors.password}</p> : null}
+            <div className="flex flex-col">
+              <label htmlFor="email" className="font-semibold">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="dhruv@example.com"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.email && errors.email ? (
+                <p className="text-[14px] text-red-700">{errors.email}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <label htmlFor="cpassword">Confirm Password</label>
-        <input
-          type="password"
-          name="cpassword"
-          id="cpassword"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.cpassword}
-        />
-        {touched.cpassword && errors.cpassword ? (
-          <p>{errors.cpassword}</p>
-        ) : null}
+            <div className="flex flex-col">
+              <label htmlFor="password" className="font-semibold">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                placeholder="ranDom1$"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.password && errors.password ? (
+                <p className="text-[14px] text-red-700">{errors.password}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
 
-        <button type="submit">submit</button>
-      </form>
+            <div className="flex flex-col">
+              <label htmlFor="cpassword" className="font-semibold">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                name="cpassword"
+                id="cpassword"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.cpassword}
+                placeholder="ranDom1$"
+                className="border-2 rounded-md border-black focus:ring-0"
+              />
+              {touched.cpassword && errors.cpassword ? (
+                <p className="text-[14px] text-red-700">{errors.cpassword}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
+            </div>
+
+            <div className="flex justify-between gap-2">
+              <button
+                type="submit"
+                className="w-full border-[2px] rounded-md border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+              >
+                Submit
+              </button>
+
+              <button
+                type="reset"
+                className="w-full border-[1px] border-red-800 rounded-md text-red-900 py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-red-700 hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+              >
+                Reset
+              </button>
+            </div>
+
+            <div className="pt-5">
+              <p>
+                Already have an account?{" "}
+                <NavLink
+                  to="/login"
+                  className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
+                >
+                  Login here
+                </NavLink>
+              </p>
+            </div>
+          </form>
+
+          <div>
+            <img src="/images/Mobile-login.gif" alt="Login Demo" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

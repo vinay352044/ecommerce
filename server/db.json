@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": 1,
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
       "price": 549,
@@ -259,7 +259,7 @@
     {
       "id": "1",
       "name": "jay",
-      "businessName": "dhruv's tiffin new",
+      "businessName": "dhruvdemiedmiemdi",
       "gstin": "22AAAAA0000A1Z5",
       "brand": "samsung",
       "email": "jay@gmail.com",
@@ -430,6 +430,16 @@
       "brand": "samsung",
       "email": "abc@example.com",
       "password": "Dhruv123@",
+      "productsToSell": []
+    },
+    {
+      "id": "15",
+      "name": "new product",
+      "businessName": "dhruv electronics",
+      "gstin": "22BAAAA0000A1Z5",
+      "brand": "samsung",
+      "email": "nu@gmail.comm",
+      "password": "Dh1@",
       "productsToSell": []
     }
   ],
