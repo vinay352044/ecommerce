@@ -16,22 +16,29 @@ const Index = () => {
     navigate(`/admin/update-products/${productID}`);
   }
 
-  const handleProductDelete = (productID) => {
+  const handleProductDelete = async (productID) => {
     console.log(productID);
-    const deleteProductItem = async () => {
-      try {
-        const response = await DeleteProductbyId(productID);
-        if (response.success) {
-          console.log("Product Deleted Successfully!");
-        } else {
-          console.error('Failed to delete the Products Data', response.error);
-        }
-      } catch (error) {
-        console.error('Failed to delete the Products Data', error);
+
+    const shouldDelete = window.confirm("Are you sure you want to delete this product?");
+
+    if (!shouldDelete) {
+      return;
+    }
+
+    try {
+      const response = await DeleteProductbyId(productID);
+      if (response.success) {
+        console.log("Product Deleted Successfully!");
+
+        setProducts((prevProducts) => prevProducts.filter(product => product.id !== productID));
+      } else {
+        console.error('Failed to delete the Products Data', response.error);
       }
-    };
-    deleteProductItem();
+    } catch (error) {
+      console.error('Failed to delete the Products Data', error);
+    }
   };
+
 
   useEffect(() => {
     const fetchData = async () => {
