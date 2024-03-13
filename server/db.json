@@ -258,11 +258,11 @@
   "sellers": [
     {
       "id": "1",
-      "name": "Smartphone new",
+      "name": "jay",
       "businessName": "dhruv electronics",
       "gstin": "22AAAAA0000A1Z5",
       "brand": "samsung",
-      "email": "vp@gmail.com",
+      "email": "jay@gmail.com",
       "password": "Dhruv123@",
       "productsToSell": []
     },
@@ -436,10 +436,49 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha",
+      "name": "Aisha-updated",
       "email": "aisha@example.com",
       "password": "aishapass",
-      "favouriteProducts": []
+      "favouriteProducts": [
+        {
+          "id": "2",
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": "899",
+          "discountPercentage": "17.94",
+          "rating": "4.44",
+          "stock": "34",
+          "brand": "Apple",
+          "category": "smartphones",
+          "total_sell": "15",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/2/1.jpg",
+            "https://cdn.dummyjson.com/product-images/2/2.jpg",
+            "https://cdn.dummyjson.com/product-images/2/3.jpg",
+            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+          ]
+        },
+        {
+          "id": "3",
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": "1749",
+          "discountPercentage": "11.02",
+          "rating": "4.57",
+          "stock": "83",
+          "brand": "Apple",
+          "category": "laptops",
+          "total_sell": "10",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/6/1.png",
+            "https://cdn.dummyjson.com/product-images/6/2.jpg",
+            "https://cdn.dummyjson.com/product-images/6/3.png",
+            "https://cdn.dummyjson.com/product-images/6/4.jpg"
+          ]
+        }
+      ]
     },
     {
       "id": "3",

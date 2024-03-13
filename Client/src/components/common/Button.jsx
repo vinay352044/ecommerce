@@ -1,6 +1,6 @@
 const Button = ({className , handleClick, children}) => {
   return (
-    <button className={`${className} py-2 px-4 border-[2px] border-black`} onClick={handleClick}>
+    <button className={className} onClick={handleClick}>
       {children}
     </button>
   )

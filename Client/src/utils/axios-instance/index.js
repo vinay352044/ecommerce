@@ -159,3 +159,36 @@ export const registerSeller = async (sellerObj) => {
     };
   }
 };
+
+export const updateUser = async (updatedUser) => {
+  try {
+    const res = await API.patch(`users/${updatedUser.id}`, updatedUser);
+    return {
+      sucess: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      sucess: false,
+      data: [],
+      error: error.message,
+    };
+  }
+};
+export const updateSeller = async (updatedSeller) => {
+  try {
+    const res = await API.patch(`sellers/${updatedSeller.id}`, updatedSeller);
+    return {
+      sucess: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      sucess: false,
+      data: [],
+      error: error.message,
+    };
+  }
+};
