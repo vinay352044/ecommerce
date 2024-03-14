@@ -1,8 +1,11 @@
-export const ADD_TO_CART = 'ADD_TO_CART'
-export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-export const QUANTITY = 'QUANTITY'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+export const QUANTITY = 'QUANTITY';
+export const CLEAR_CART = 'CLEAR_CART'
+
 
 
 ////  Add to cart action creator
@@ -61,4 +64,10 @@ export const removeFromCart = (id) =>{
     type:REMOVE_FROM_CART,
     payload:id
   })
+}
+
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART
+  }
 }

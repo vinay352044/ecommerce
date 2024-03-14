@@ -192,3 +192,39 @@ export const updateSeller = async (updatedSeller) => {
     };
   }
 };
+
+export const getOrders = async () => {
+  try {
+    const res = await API.get("orders");
+
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: [],
+      error: error.message,
+    };
+  }
+}
+
+export const registerOrder = async(ordersObj) => {
+  try {
+    const res = await API.post("orders", ordersObj);
+
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: [],
+      error: error.message,
+    };
+  }
+}
