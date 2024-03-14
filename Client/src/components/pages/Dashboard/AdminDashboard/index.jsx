@@ -156,11 +156,14 @@ const Index = () => {
 
       <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
       {(shouldRenderPagination &&
+      <div className='flex justify-center w-screen items-center'>
         <Pagination
           nPages={nPages}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          
         />
+        </div>
       )}
       {/* <table className="table-auto w-full mt-8 border">
         <thead>

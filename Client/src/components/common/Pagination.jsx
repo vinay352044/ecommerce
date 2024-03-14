@@ -13,7 +13,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
 
   return (
     nPages > 0 && (
-      <div className="mt-6 flex justify-center">
+      <div className="mt-6">
         <ul className="pagination">
           {currentPage !== 1 && (
             <li className="page-item">

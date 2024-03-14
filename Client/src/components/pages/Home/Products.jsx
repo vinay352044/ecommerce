@@ -88,19 +88,21 @@ const Products = ({ productData, isAddToCart }) => {
           <Sorting handleSortingChange={handleSortingChange} />
         </div>
             <br/>
-            <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
+            <div className="grid gap-4 grid-cols-3 grid-rows-2 auto-rows-auto">
                 {currentProducts.map(product => (
                      <Product product={product} key={product.id} handleClick={handleClick} isAddToCart={isAddToCart}/>
                 ))}
  
+            </div>
                 {shouldRenderPagination && (
-                    <Pagination
+                    <div className="flex justify-center items-center w-auto h-10 my-6"> 
+                        <Pagination
                         nPages={nPages}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}  
                     />
+                    </div>
                 )}
-            </div>
         </>
     );
 };
