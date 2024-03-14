@@ -96,18 +96,6 @@ export const Router = () => {
 							path:'seller/profile',
 							element: <Profile/>
 						},
-						{
-							path: 'admin',
-							element: <Admin />
-						},
-						{
-							path: 'admin/users',
-							element: <AdminUsers />
-						},
-						{
-							path: 'admin/create-products',
-							element: <AdminProducts/>
-						}
 					]
 				},
 				{
