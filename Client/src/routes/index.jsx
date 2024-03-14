@@ -12,8 +12,13 @@ import { useSelector } from "react-redux";
 import AdminCreateCategories from "../components/pages/Register/register-categories/index.jsx";
 import OrdersDashboard from "../components/pages/Dashboard/ProducerDashboard/OrdersDashboard.jsx";
 import YourProducts from "../components/pages/Dashboard/ProducerDashboard/YourProducts.jsx";
+
 import AdminCategories from "../components/pages/Dashboard/AdminDashboard/AdminCategories/index.jsx";
 import UpdateCategories from "../components/pages/Register/register-categories/update-categories/index.jsx";
+
+import MyOrders from "../components/pages/MyOrders/index.jsx";
+
+
 // const About = React.lazy(() => import("../components/pages/About"))
 const Layout = React.lazy(() => import("../components/layout/Layout"));
 const Login = React.lazy(() => import("../components/pages/Login"));
@@ -80,6 +85,10 @@ export const Router = () => {
               path: "profile",
               element: <Profile />,
             },
+            {
+              path: "orders",
+              element: <MyOrders />,
+            },
           ],
         },
         {
@@ -116,8 +125,9 @@ export const Router = () => {
             },
             {
               path: "admin-createCategories",
-              element: <AdminCreateCategories />, 
+              element: <AdminCreateCategories />,
             },
+
             {
               path: "admin-categories",
               element: <AdminCategories />, 
@@ -141,6 +151,7 @@ export const Router = () => {
               path: "seller/profile",
               element: <Profile />,
             },
+
 			{
 				path: "seller-dashboard",
 				element: <OrdersDashboard />,
@@ -157,6 +168,24 @@ export const Router = () => {
           path: "/seller-update-products/:productID",
           element: <UpdateCategories />,
         },
+
+            {
+              path: "seller-dashboard",
+              element: <OrdersDashboard />,
+            },
+            {
+              path: "/seller-products",
+              element: <YourProducts />,
+            },
+            {
+              path: "/seller-create-products",
+              element: <AdminProducts />,
+            },
+            {
+              path: "/seller-update-products/:productID",
+              element: <AdminUpdateProducts />,
+            },
+
           ],
         },
         {
