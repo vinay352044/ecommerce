@@ -59,7 +59,7 @@ const YourProducts = () => {
 			<Table
 				data={products}
 				type={"product"}
-				handleProductUpdate={handleProductUpdate}
+				handleUpdate={handleProductUpdate}
 				handleProductDelete={handleProductDelete}
 			/>
 		</div>
