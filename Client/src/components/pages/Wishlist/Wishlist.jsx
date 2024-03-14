@@ -1,48 +1,51 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { API } from '../../../utils/axios-instance';
 
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { setRole } from '../../../redux/actions/roleAction';
 
 const Wishlist = () => {
-  const data = useSelector((state) => state.role.user);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.role.user);
 
-  const [favouriteProducts, setFavouriteProducts] = useState([]);
+  // const [favouriteProducts, setFavouriteProducts] = useState([]);
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const fetchFavouriteProducts = async () => {
-      try {
-        const response = await API.get(`/users/${data.id}`);
-        const output = response.data;
-        setFavouriteProducts(output.favouriteProducts);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchFavouriteProducts();
-  }, [data]);
 
 
   const handleRemove= async(productId) => {
     try{
-    const updatedProducts = favouriteProducts.filter(product => product.id != productId)
-    setFavouriteProducts(updatedProducts)
-    const updatedUser = {...data,favouriteProducts:updatedProducts}
-    await API.patch(`/users/${data.id}`,updatedUser)
+    const updatedProducts = user.favouriteProducts.filter(product => product.id != productId)
+    // setFavouriteProducts(updatedProducts)
+    const updatedUser = {...user,favouriteProducts:updatedProducts}
+    await API.patch(`/users/${user.id}`,updatedUser)
+    dispatch(setRole("user", updatedUser));
     }
     catch(err){
       console.log(err)
     }
   }
 
+  // useEffect(() => {
+  //   const fetchFavouriteProducts = async () => {
+  //     try {
+  //       const response = await API.get(`/users/${data.id}`);
+  //       const output = response.data;
+  //       setFavouriteProducts(output.favouriteProducts);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchFavouriteProducts();
+  // }, []);
+
   return (
     <div>
       <div className='grid grid-cols-3 gap-4'>
-        {favouriteProducts.length > 0 ? (
-          favouriteProducts.map((product, index) => (
+        {user.favouriteProducts.length > 0 ? (
+          user.favouriteProducts.map((product, index) => (
             <div key={index} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               
               <Link to={`/products/${product.id}`}>

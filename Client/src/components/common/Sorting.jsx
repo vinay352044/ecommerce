@@ -9,7 +9,7 @@ const Sorting = ({ handleSortingChange }) => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative w-[10vw]">
             <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)} 

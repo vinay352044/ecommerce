@@ -6,6 +6,7 @@ import { quantityOfProducts, removeFromCart } from "../../redux/actions/cartActi
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from "../../utils/axios-instance";
+import { setRole } from "../../redux/actions/roleAction";
 
 
 const Product = ({product,handleClick,isAddToCart}) => {
@@ -22,6 +23,7 @@ const Product = ({product,handleClick,isAddToCart}) => {
         user.favouriteProducts.push(item);
         try {
           const data = await API.patch(`/users/${user.id}`, user);
+          dispatch(setRole("user", user));
         } catch (error) {
           console.log(error);
         }

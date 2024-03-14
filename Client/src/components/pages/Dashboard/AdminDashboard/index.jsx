@@ -147,7 +147,7 @@ const handleSortingChange = order => {
       <input
                 type="text"
                 placeholder="Search..."
-                className="search"
+                className='px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
                 value={searchQuery}
                 onChange={handleSearchChange}
             />

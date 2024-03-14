@@ -77,16 +77,16 @@ const Products = ({ productData, isAddToCart }) => {
 
     return (
         <>
+        <div className="display flex justify-center space-x-10">
             <input
                 type="text"
                 placeholder="Search..."
-                className="search"
+                className="px-4 py-2 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 value={searchQuery}
                 onChange={handleSearchChange}
             />
-            <br/>
-
-            <Sorting handleSortingChange={handleSortingChange} />
+          <Sorting handleSortingChange={handleSortingChange} />
+        </div>
             <br/>
             <div className="grid gap-4 grid-cols-3 grid-rows-3 auto-rows-auto">
                 {currentProducts.map(product => (
