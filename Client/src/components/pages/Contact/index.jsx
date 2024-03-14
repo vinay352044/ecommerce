@@ -2,6 +2,9 @@ import axios from "axios"
 import React, { useState } from "react"
 import { toast } from "react-toastify"
 import Loader from "../../common/Loader"
+import {FaPhoneAlt, FaUser} from "react-icons/fa"
+import {IoIosMail} from "react-icons/io"
+import { MdMessage } from "react-icons/md";
 
 const Contact = () => {
 	const [formData, setFormData] = useState({
@@ -67,7 +70,7 @@ const Contact = () => {
 	}
 
 	const inputGroupClass = "flex flex-col mt-2"
-	const inputLabelClass = "text text-gray-600"
+	const inputLabelClass = "text text-gray-600 flex items-center gap-2 mb-1 text-[#0295db!important]"
 	const inputClass =
 		"px-2 py-1 border rounded-md focus:outline-none bg-[#fff!important] border-[#fff!important] focus:border-[#0295db]"
 
@@ -82,7 +85,7 @@ const Contact = () => {
 					<form onSubmit={handleSubmit}>
 						<div className={inputGroupClass}>
 							<label htmlFor="name" className={inputLabelClass}>
-								Name
+								<FaUser /> Name
 							</label>
 							<input
 								className={inputClass}
@@ -97,7 +100,7 @@ const Contact = () => {
 						</div>
 						<div className={inputGroupClass}>
 							<label htmlFor="email" className={inputLabelClass}>
-								Email
+							<IoIosMail /> Email
 							</label>
 							<input
 								className={inputClass}
@@ -112,7 +115,7 @@ const Contact = () => {
 						</div>
 						<div className={inputGroupClass}>
 							<label htmlFor="phone" className={inputLabelClass}>
-								Contact No <small>(optional)</small>
+								<FaPhoneAlt /> Contact No <small>(optional)</small>
 							</label>
 							<input
 								className={inputClass}
@@ -126,7 +129,7 @@ const Contact = () => {
 						</div>
 						<div className={inputGroupClass}>
 							<label htmlFor="message" className={inputLabelClass}>
-								Message
+							 <MdMessage />	Message
 							</label>
 							<textarea
 								className={inputClass}
@@ -143,7 +146,7 @@ const Contact = () => {
 						<div className="form-btn">
 							<button
 								type="submit"
-								className="bg-[#0295db!important] outline-none hover:bg-[white!important] mt-4 px-3 py-2 rounded-md text-white hover:text-[#0295db] border-2 border-[#0295db!important] transition">
+								className="bg-[#0295db!important] outline-none hover:bg-[white!important] mt-4 px-3 py-1 rounded-md text-white hover:text-[#0295db] border-2 border-[#0295db!important] transition">
 								Send Message
 							</button>
 						</div>

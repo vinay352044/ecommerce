@@ -18,7 +18,7 @@
         "https://cdn.dummyjson.com/product-images/1/4.jpg",
         "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
       ],
-      "Total_sell": 0
+      "total_sell": "10"
     },
     {
       "id": "2",
@@ -30,7 +30,7 @@
       "stock": "34",
       "brand": "Apple",
       "category": "smartphones",
-      "total_sell": "15",
+      "total_sell": "13",
       "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
       "images": [
         "https://cdn.dummyjson.com/product-images/2/1.jpg",
@@ -268,12 +268,12 @@
     },
     {
       "id": "2",
-      "name": "Neha",
+      "name": "Meet",
       "businessName": "Neha Traders",
       "gstin": "GSTIN456B",
       "category": "Clothing",
-      "email": "neha@example.com",
-      "password": "nehapass",
+      "email": "meet@gmail.com",
+      "password": "Meet@123",
       "brand": "Samsung",
       "productsToSell": [
         "4"
