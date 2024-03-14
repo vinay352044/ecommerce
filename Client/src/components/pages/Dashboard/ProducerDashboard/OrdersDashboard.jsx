@@ -3,25 +3,31 @@ import axios from "axios";
 import Card from "./Card.component";
 import { useDispatch, useSelector } from "react-redux";
 import { worker, current_orders } from "../../../../redux/actions/orderActions";
-function OrdersDashboard() {
-  const sellerId = 3;
+function OrdersDashboard({whichcomponent}) {
+  // let sellerId ;
+// const [sellerId,setsellerId]= useState();
+const roleData = JSON.parse(localStorage.getItem("role"))
+let sellerId = parseInt(roleData.seller.id);
+let productidArray = roleData.seller.productsToSell || [];
+// const Id = parseInt(roleData.seller.id);
+
+// console.log(sellerData);
   const [totalorders, settotalorders] = useState([]);
   const [acceptedorders,setacceptedorders]= useState([]);
   const [inventory, setinventory] = useState([]);
   const [availabeleorders, setavailabeleorders] = useState([]);
   const [cardData, setcardData] = useState([]);
-  const [flag,setflag] = useState(false);
-
+  const [flag,setflag]= useState(false);
   const sellersState = useSelector((state) => state.orderReducer);
   const dispatch = useDispatch();
  
-  let productidArray = sellersState.sellers_details.productsToSell || [];
-function handleflag(){
-  setflag(!flag);
-}
-  
+  function handleflag(){
+    setflag(!flag);
+  }
 
   useEffect(() => {
+   
+// setsellerId(dummysellerid);
     dispatch(
       worker(
         "FETCH",
@@ -34,7 +40,7 @@ function handleflag(){
     dispatch(
       worker("FETCH", "FETCH_TOTAL_ORDERS", "http://localhost:3000/orders")
     );
-  }, [dispatch]);
+  }, [dispatch,flag]);
 
   useEffect(() => {
     console.log("s state");
@@ -53,7 +59,7 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  settotalorders(sellersState.total_orders);
+ 
   // console.log(sellersState.acceptedorders);
 },[sellersState.accptedorders] )
 
@@ -113,79 +119,60 @@ useEffect(()=>{
 
   return (
     <>
-      <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
-        <ul
-          className="flex flex-wrap -mb-px text-sm font-medium text-center"
-          id="default-tab"
-          data-tabs-toggle="#default-tab-content"
-          role="tablist"
-        >
-          <li className="me-2" role="presentation">
-            <button
-              className="inline-block p-4 border-b-2 rounded-t-lg"
-              id="profile-tab"
-              data-tabs-target="#profile"
-              type="button"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-            >
-              Pending Requests
-            </button>
-          </li>
-          <li className="me-2" role="presentation">
-            <button
-            onClick={()=>settotalorders(sellersState.total_orders)}
-              className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              id="dashboard-tab"
-              data-tabs-target="#dashboard"
-              type="button"
-              role="tab"
-              aria-controls="dashboard"
-              aria-selected="false"
-            >
-              Accepted Requests
-            </button>
-          </li>
-          {/* <li className="me-2" role="presentation">
-            <button
-              className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              id="settings-tab"
-              data-tabs-target="#settings"
-              type="button"
-              role="tab"
-              aria-controls="settings"
-              aria-selected="false"
-            >
-              Rejected Requests
-            </button>
-          </li>
-          <li role="presentation">
-            <button
-              className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              id="contacts-tab"
-              data-tabs-target="#contacts"
-              type="button"
-              role="tab"
-              aria-controls="contacts"
-              aria-selected="false"
-            >
-              Feedbacks
-            </button>
-          </li> */}
-        </ul>
-      </div>
-      <div id="default-tab-content">
-        <div
-          className="  p-4 rounded-lg grid grid-cols-4 gap-y-3  bg-gray-50 dark:bg-gray-800"
-          id="profile"
-          role="tabpanel"
-          aria-labelledby="profile-tab"
-        >
-        
-          {/* //==============================     the pending orders tab  */}
+      <div className="grid grid-cols-4">
 
-          {availabeleorders &&
+      {whichcomponent === "pendingorders" ? (
+    availabeleorders && availabeleorders.length && cardData && cardData.length !== 0 ? (
+      availabeleorders.map((order, index) => (
+        <Card
+          key={order.order_id}
+          card_data={{
+            cardData: cardData[index],
+            order: order,
+            sellerid: sellerId,
+            handleflag:handleflag,
+          }}
+        />
+      ))
+    ) : (
+      <h1>No Pending Orders</h1>
+    )
+  ) : whichcomponent === "acceptedorders" ? (
+    totalorders && totalorders.length ? (
+      totalorders.map((order, index) => {
+        if (order.order_accepted && productidArray.includes(order.product_id)) {
+          return (
+            <Card
+              key={order.order_id}
+              card_data={{
+                order: order,
+                cardData: inventory.find((product) => product.id === order.product_id),
+                sellerid: sellerId,
+                handleflag:handleflag,
+                
+              }}
+              hideButtons={true}
+            />
+          );
+        } else {
+          return null; // Return null if the condition is not met
+        }
+      })
+    ) : (
+      <h1>No Accepted Orders</h1>
+    )
+  ) : (
+    <h1>No Orders</h1>
+  )}
+
+      </div>
+    </>
+    
+  );
+}
+
+export default OrdersDashboard;
+ {/* {availabeleorders &&
           availabeleorders.length &&
           cardData &&
           cardData.length != 0 ? (
@@ -196,22 +183,17 @@ useEffect(()=>{
                   cardData: cardData[index],
                   order: order,
                   sellerid: sellerId,
-                  handleflag : handleflag,
+                
                 }}
               />
               
             ))
           ) : (
             <h1>No Orders</h1>
-          )}
-        </div>
-        <div
-          className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-          id="dashboard"
-          role="tabpanel"
-          aria-labelledby="dashboard-tab"
-        >
-          {totalorders && totalorders.length ? (
+          )} */}
+
+
+           {/* {totalorders && totalorders.length ? (
   totalorders.map((order, index) => {
     if (order.order_accepted && productidArray.includes(order.product_id)) {
       return (
@@ -220,8 +202,7 @@ useEffect(()=>{
           card_data={{
             order: order,
             cardData: inventory.find((product) => product.id === order.product_id),
-            sellerid: sellerId,
-            handleflag : handleflag,
+            sellerid: sellerId
           }}
           hideButtons = {true}
         />
@@ -230,28 +211,4 @@ useEffect(()=>{
   })
 ) : (
   <h1>No Orders</h1>
-)}
-
-        </div>
-        {/* <div
-          className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-          id="settings"
-          role="tabpanel"
-          aria-labelledby="settings-tab"
-        >
-          <h1>this is for rejected requests</h1>
-        </div>
-        <div
-          className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-          id="contacts"
-          role="tabpanel"
-          aria-labelledby="contacts-tab"
-        >
-          <h1>this is for feedbacks</h1>
-        </div> */}
-      </div>
-    </>
-  );
-}
-
-export default OrdersDashboard;
+)} */}
