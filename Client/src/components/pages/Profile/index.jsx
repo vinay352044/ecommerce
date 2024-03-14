@@ -75,7 +75,7 @@ const Profile = () => {
   const inputClass =
     `px-3 py-2 w-[65%] text-xl font-medium border-none bg-transparent focus:outline-none`;
   const infoWrapperClass =
-    `flex items-center w-[85%] ${readOnly ? '' : 'border-b-[1px] border-[#2590db]'}`;
+    `flex items-center w-[85%] ${readOnly ? 'border-b-[1px] border-transparent' : 'border-b-[1px] border-[#2590db]'}`;
 
 
   return (
@@ -84,7 +84,7 @@ const Profile = () => {
         <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
           <img src={placeholder} alt="placeholder" className="w-full h-full" />
         </div>
-        <div className="w-full h-full p-4 flex justify-between flex-col">
+        <div className="w-full h-full p-4 py-8 flex justify-between flex-col">
           <div className="mb-8">
             <h1 className="text-3xl font-semibold text-slate-700 text-center">
               Welcome {user ? user.name : seller.name} !
@@ -92,7 +92,7 @@ const Profile = () => {
           </div>
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto flex flex-col gap-2"
+            className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col gap-2"
           >
             <div className={infoWrapperClass}>
               <label htmlFor="name" className={labelClass}>
@@ -158,10 +158,10 @@ const Profile = () => {
                 infoWrapperClass={infoWrapperClass}
               />
             ) : null}
-            <div className="mt-4">
+            <div className="mt-4 mr-auto">
               <Button
                 handleClick={handleClick}
-                className="px-4 py-2 border-none font-medium flex items-center gap-2 bg-[#0295db] text-white focus:outline-none hover:bg-blue-500"
+                className="px-4 py-2 border-none font-medium flex gap-2 bg-[#0295db] text-white focus:outline-none hover:bg-blue-500"
               >
                 {readOnly ? (
                   <>
@@ -189,8 +189,8 @@ const Profile = () => {
                 </>
               ) : (
                 <>
-                 <NavLink to={role.seller ? '/seller-products':'/cart'} className={linkClass}>
-                    {role.seller ? 'Your Products': 'Your Orders'}
+                 <NavLink to='/seller-products' className={linkClass}>
+                    Your Products
                   </NavLink>
                 </>
               )}
