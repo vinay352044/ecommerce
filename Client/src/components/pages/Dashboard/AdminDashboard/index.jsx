@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance';
+import Table from '../../../common/Table';
 
 const Index = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -108,7 +109,9 @@ const Index = () => {
         )}
       </div>
 
-      <table className="table-auto w-full mt-8 border">
+      <Table products={products} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
+
+      {/* <table className="table-auto w-full mt-8 border">
         <thead>
           <tr className="border-b">
             <th className="w-1/6 p-2">Product ID</th>
@@ -144,7 +147,7 @@ const Index = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </>
   );
 };
