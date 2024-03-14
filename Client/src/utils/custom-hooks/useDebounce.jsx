@@ -1,19 +1,19 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react';
 
-const useDebounce = (value,delay) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+const useDebounceHook = (value,delay) => {  // query , 500
+    const [debouncedValue, setDebouncedValue] = useState(value); // query
 
-  useEffect(()=>{
-    const interval = setTimeout(() => {
-      setDebouncedValue(value)
-    }, delay);
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(value);  // query
+        },delay);// 500 msec
 
-    return () => {
-      clearTimeout(interval);
-    }
-  },[value,delay])
+        return () => {
+            clearTimeout(handler); // for clearing timeouts
+        };
+    }, [value,delay]);  // whenever value as well as delay changes
 
-  return debouncedValue
-}
+    return debouncedValue;  // query returned 
+};
 
-export default useDebounce
+export default useDebounceHook;

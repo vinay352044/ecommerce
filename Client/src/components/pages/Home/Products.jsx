@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CiHeart } from "react-icons/ci";
 import { useDispatch, useSelector} from "react-redux";
 import Pagination from "../../common/Pagination";
-import useDebounceHook from "../../common/useDebounceHook";
+import useDebounceHook from "../../../utils/custom-hooks/useDebounce";
 import { addProductInCart, addToCart, removeFromCart } from "../../../redux/actions/productActions";
 import Sorting from "../../common/Sorting"; 
 import Product from "../../common/Product";
