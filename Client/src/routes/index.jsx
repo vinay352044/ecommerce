@@ -151,24 +151,6 @@ export const Router = () => {
               path: "seller/profile",
               element: <Profile />,
             },
-
-			{
-				path: "seller-dashboard",
-				element: <OrdersDashboard />,
-			  },
-        {
-          path: "/seller-products",
-          element: <YourProducts />,
-        },
-        {
-          path: "/seller-create-products",
-          element: <AdminProducts />,
-        },
-        {
-          path: "/seller-update-products/:productID",
-          element: <UpdateCategories />,
-        },
-
             {
               path: "seller-dashboard",
               element: <OrdersDashboard />,

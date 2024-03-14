@@ -166,6 +166,39 @@ export const getCategoryById = async (id) => {
   }
 };
 
+export const UpdateCategory = async (category) => {
+  try {
+    const res = await API.put(`categories/${category.id}`, category);
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
+export const DeleteCategoryById = async (id) => {
+  try {
+    const res = await API.delete(`categories/${id}`);
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
 export const getUsers = async () => {
   try {
     const res = await API.get("users");

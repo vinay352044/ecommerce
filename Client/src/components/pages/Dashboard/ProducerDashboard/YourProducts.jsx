@@ -3,6 +3,7 @@ import { DeleteProductbyId, getProducts } from "../../../../utils/axios-instance
 import { useNavigate } from "react-router-dom"
 import Table from "../../../common/Table"
 import { useSelector } from "react-redux"
+import Pagination from "../../../common/Pagination"
 
 const YourProducts = () => {
 	const [products, setProducts] = useState([])
@@ -10,6 +11,11 @@ const YourProducts = () => {
 	const {
 		seller: { productsToSell: sellerProducts },
 	} = useSelector((state) => state.role)
+	const [currentPage, setCurrentPage] = useState(1)
+	const nPages = Math.ceil(products.length / 5)
+	const indexOfLastRecord = currentPage * 5
+	const indexOfFirstRecord = indexOfLastRecord - 5
+	const slicedData = products.slice(indexOfFirstRecord, indexOfLastRecord)
 
 	const handleProductUpdate = (productID) => {
 		navigate(`/seller-update-products/${productID}`)
@@ -57,11 +63,12 @@ const YourProducts = () => {
 	return (
 		<div>
 			<Table
-				data={products}
+				data={slicedData}
 				type={"product"}
-				handleProductUpdate={handleProductUpdate}
+				handleUpdate={handleProductUpdate}
 				handleProductDelete={handleProductDelete}
 			/>
+			<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 		</div>
 	)
 }

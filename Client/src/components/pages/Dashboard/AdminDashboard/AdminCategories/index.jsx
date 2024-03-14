@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Table from '../../../../common/Table'
-import { getCategories } from '../../../../../utils/axios-instance'
+import { DeleteCategoryById, getCategories } from '../../../../../utils/axios-instance'
 
 const AdminCategories = () => {
     const navigate = useNavigate()
@@ -12,8 +12,30 @@ const AdminCategories = () => {
 
     const handleUpdate = (categoryID) => {
         console.log(categoryID)
-        navigate(`/admin-update-category/${categoryID}`)  
+        navigate(`/admin-update-category/${categoryID}`)
     }
+    const handleProductDelete = async (categoryID) => {
+        console.log(categoryID);
+
+        const shouldDelete = window.confirm("Are you sure you want to delete this product?");
+
+        if (!shouldDelete) {
+            return;
+        }
+
+        try {
+            const response = await DeleteCategoryById(categoryID);
+            if (response.success) {
+                console.log("Product Deleted Successfully!");
+
+                setCategories((prevCategory) => prevCategory.filter(category => category.id !== categoryID));
+            } else {
+                console.error('Failed to delete the Products Data', response.error);
+            }
+        } catch (error) {
+            console.error('Failed to delete the Products Data', error);
+        }
+    };
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -39,10 +61,10 @@ const AdminCategories = () => {
 
             </div>
             <button onClick={handleCreateCategories}>Create Categories</button>
-            <Table data={categories} handleUpdate={handleUpdate} type="category" />
+            <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" />
         </>
     )
-
+        
 }
 
 export default AdminCategories

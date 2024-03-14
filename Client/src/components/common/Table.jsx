@@ -21,7 +21,6 @@ const Table = ({ data, type, handleUpdate, handleProductDelete }) => {
               <th className="w-1/6 p-2">Actions</th>
             </>
           )}
-          <th className="w-1/6 p-2">Actions</th>
         </tr>
       </thead>
 
@@ -48,9 +47,6 @@ const Table = ({ data, type, handleUpdate, handleProductDelete }) => {
                 <>
                   <button onClick={() => handleUpdate(item.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
                     Update
-                  </button>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                    View
                   </button>
                   <button onClick={() => handleProductDelete(item.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
                     Delete
