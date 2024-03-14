@@ -29,8 +29,8 @@ function AdminCreateUser() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(errors.name || errors.password){
-            return;
-        }else{
+            return;}
+            else{
             try {
                 await createUser( {id: data.length !== 0 ? (parseInt(data[data.length - 1].id) + 1).toString() : "1",
                 ...values, favouriteProducts: []});
@@ -78,10 +78,10 @@ function AdminCreateUser() {
                                 errors.password = "Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number ";
                                 // console.log(errors);
                             }else{
-                                errors.password = "cbbchb";
+                                errors.password = "";
                             }
                         }} />
-                        {errors.password !== "" ? <p>{errors.password}</p> : "null"}
+                        {errors.password !== "" ? <p>{errors.password}</p> : ""}
                 </div>
                 <button type="submit"
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
