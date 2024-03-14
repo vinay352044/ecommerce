@@ -1,9 +1,9 @@
 import { FaShop } from "react-icons/fa6";
 
-const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass }) => {
+const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass , infoWrapperClass }) => {
   return (
     <>
-      <div className="flex items-center">
+      <div className={infoWrapperClass}>
         <label htmlFor="email" className={labelClass}>
           <FaShop /> :
         </label>
@@ -17,7 +17,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           required
         />
       </div>
-      <div className="flex items-center">
+      <div className={`${infoWrapperClass} border-none`}>
         <label htmlFor="email" className={`${labelClass} text-xl`}>
           GST No. :
         </label>

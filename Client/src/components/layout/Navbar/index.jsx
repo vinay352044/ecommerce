@@ -4,7 +4,7 @@ import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeadphonesAlt } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AdminLinks from "./Links/AdminLinks";
 import UserLinks from "./Links/UserLinks";
 import SellerLinks from "./Links/SellerLinks";
@@ -15,22 +15,23 @@ import { toast } from "react-toastify";
 import CommonLinks from "./Links/CommonLinks";
 
 const Navbar = () => {
-  const { isAuth, user, seller, admin } = useSelector((state) => state.role);
+  const { user, seller, admin } = useSelector((state) => state.role);
   const [show, setShow] = useState(false);
-  // const [render , setRender] = useState(false)
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleLogOut = (e) => {
     e.preventDefault();
     dispatch(removeRole());
     toast.success("Logout Successful !!");
+    navigate('/')
   };
 
   return (
     <nav className="bg-[#0295db] sticky top-0 left-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-8">
         <NavLink
-          to={admin ? "/admin" : seller ? "/" : "/"}
+          to={admin ? "/admin" : seller ? "/seller-dashboard" : "/"}
           className="flex items-center space-x-3"
         >
           <div className="w-[110px]">
