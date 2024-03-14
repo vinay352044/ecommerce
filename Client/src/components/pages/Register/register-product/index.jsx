@@ -14,7 +14,7 @@ const InitialValues = {
 	category: "",
 	brand: "",
 	total_sell: "",
-	images: "",
+	thumbnail: "",
 }
 
 const Index = () => {
@@ -153,10 +153,10 @@ const Index = () => {
 							</div>
 
 							<div className="w-full md:w-1/3 px-3">
-								<label htmlFor="images" className={inputStyle}>
-									Images
+								<label htmlFor="thumbnail" className={inputStyle}>
+									Add Image URL
 								</label>
-								<Field type="text" id="images" name="images" placeholder="Image URLs" className={inputStyle1} />
+								<Field type="text" id="thumbnail" name="thumbnail" placeholder="Image URLs" className={inputStyle1} />
 							</div>
 						</div>
 
