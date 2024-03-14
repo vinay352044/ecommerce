@@ -3,9 +3,10 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../../../../common/Pagination';
 import { toast } from 'react-toastify';
-
+import useDebounceHook from '../../../../../utils/custom-hooks/useDebounce';
 function Index() {
     const [data, setData] = useState([]);
+    const [searchQuery,setSearchQuery]  = useState("")
     const navigate = useNavigate();
     // const [orders, setOrders]= useState([]);    //delete order
     useEffect(() => {
@@ -20,14 +21,16 @@ function Index() {
     //   .then(res => setOrders(res.data))
     //   .catch(err => console.log(err));
     // }, []);
-    
+    const debouncedQuery = useDebounceHook(searchQuery,500)
+    console.log(data)
+    const filteredData = data.filter(user => user.name && user.name.toLowerCase().includes(debouncedQuery.toLowerCase()))
     const [currentPage , setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5); 
-    const nPages= Math.ceil((data.length) / recordsPerPage );
+    const nPages= Math.ceil((filteredData.length) / recordsPerPage );
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const slicedData= data.slice(indexOfFirstRecord , indexOfLastRecord);
+    const slicedData= filteredData.slice(indexOfFirstRecord , indexOfLastRecord);
 
     const handleDelete = (id) => {
         const confirm = window.confirm('Are you sure you want to delete?');
@@ -49,6 +52,10 @@ function Index() {
             // .catch(err => console.log(err));
         }
     };
+    const handleSearchChange = e =>{
+        setSearchQuery(e.target.value)
+        setCurrentPage(1)
+    }
 
     return (
         <>
@@ -60,7 +67,12 @@ function Index() {
                     <div className="flex justify-end mb-4">
                         <Link to="/admin-createUser" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD</Link>
                     </div>
-                    
+                    <input 
+                    type='text'
+                    placeholder='...search'
+                    onChange={handleSearchChange}
+                    value={searchQuery}
+                    />
                     <table className="w-full border-collapse">
                         <thead>
                             <tr>
