@@ -1,3 +1,4 @@
+import { CLEAR_CART } from "../actions/cartActions";
 import {
   ADD_TO_CART,
   QUANTITY,
@@ -46,6 +47,13 @@ export const CartReducer = (state = initialState, action) => {
         return { ...state, cartItems: updatedItems };
       }
       return state;
+
+    case CLEAR_CART: {
+      localStorage.setItem('cartItems',JSON.stringify([]));
+      return {
+        ...state, cartItems: []
+      }
+    }
     default:
       return state;
   }

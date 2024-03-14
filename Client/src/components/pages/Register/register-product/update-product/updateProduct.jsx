@@ -3,12 +3,14 @@ import { Formik, Form, Field } from 'formik';
 import { getProductById, updateProduct } from '../../../../../utils/axios-instance';
 import { useNavigate } from "react-router-dom"
 import { useParams } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 
 const UpdateProduct = () => {
     const { productID } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
+    const { seller } = useSelector((state)=>state.role)
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -37,8 +39,8 @@ const UpdateProduct = () => {
             const { success, error } = await updateProduct(updatedProduct);
 
             if (success) {
-                console.log('Product updated successfully!');
-                navigate("/admin");
+                // console.log('Product updated successfully!');
+                seller ? navigate("/seller-products") : navigate("/admin");
             } else {
                 console.error('Error updating product:', error);
             }
