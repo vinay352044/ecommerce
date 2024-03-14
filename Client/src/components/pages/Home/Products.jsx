@@ -8,7 +8,6 @@ import Sorting from "../../common/Sorting";
 import Product from "../../common/Product";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link, Navigate } from "react-router-dom";
 
 const Products = ({ productData, isAddToCart }) => {
     const user = useSelector((state)=> state.role.user)
@@ -35,7 +34,6 @@ const Products = ({ productData, isAddToCart }) => {
     } else if (sortOrder === 'desc') {
         sortedProducts.sort((a, b) => b.price - a.price);
     }
-
     const currentProducts = sortedProducts.slice(indexOfFirstRecord, indexOfLastRecord);
     const nPages = Math.ceil(sortedProducts.length / recordsPerPage);
 
@@ -48,28 +46,17 @@ const Products = ({ productData, isAddToCart }) => {
     const handleSortingChange = order => {
         setSortOrder(order);
     };
-
-    const auth = JSON.parse(localStorage.getItem('role')) || false;
-    const isAuth = auth.isAuth;
     
-
     const handleClick = product => {
-        if (isAuth){
-            if (isAddToCart) {
+        if (isAddToCart) {
             
-                dispatch(addProductInCart(product))
-              
-            } else {
-                dispatch(removeFromCart(product.id))
-                toast.success("Removed from the cart!", {
-                    position: 'top-right',
-                  });
-            }
-        }else{
-            
-            toast.warning('Please Login!!')
-        }
-       
+            dispatch(addProductInCart(product))
+          
+        } else {
+            dispatch(removeFromCart(product.id))
+            toast.success("Removed from the cart!", {
+                position: 'top-right',
+              });     }
     };
 
 

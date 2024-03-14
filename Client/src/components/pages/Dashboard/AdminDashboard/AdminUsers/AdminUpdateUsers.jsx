@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { updateUserFromAdmin } from '../../../../../utils/axios-instance';
 
 const errors = {};
 function AdminUpdateUsers() {
@@ -25,14 +26,11 @@ function AdminUpdateUsers() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:3000/users/${id}`, values);
-            // alert('User updated successfully!');
-            toast.success('user updated successfully!');
+            await updateUserFromAdmin(id, values);
+            toast.success('User updated successfully!');
             navigate('/admin-users');
         } catch (error) {
-            // console.log(error);
-            //alert('error in updating the user')
-            toast.error('error in updating the user')
+            toast.error('Error in updating the user');
         }
     };
 
@@ -74,7 +72,7 @@ function AdminUpdateUsers() {
                         className="mt-1 p-2 block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" />
                 </div>
                 <button type="submit"
-                    className="inline-block px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    className="inline-block px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Update
                 </button>
                 <Link to="/admin-users" className="inline-block px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ml-2">
