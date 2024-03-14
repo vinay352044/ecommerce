@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Products from "./Products";
 import { getOrders, registerOrder } from "../../../utils/axios-instance";
 import { toast } from "react-toastify";
-import { clearCart } from './../../../redux/actions/cartActions';
+import { clearCart } from "./../../../redux/actions/cartActions";
 import { useNavigate } from "react-router-dom";
 
 const UsersCart = () => {
@@ -67,9 +67,16 @@ const UsersCart = () => {
 
   return (
     <div>
-      <Products productData={cartItems} isAddToCart={false} />
-
-      <button onClick={handleCheckout}>checkout</button>
+      {cartItems.length > 0 ? (
+        <>
+          <Products productData={cartItems} isAddToCart={false} />
+          <button onClick={handleCheckout}>checkout</button>
+        </>
+      ) : (
+        <div>
+          <h1 className="text-center text-3xl font-bold">No Product Available!</h1>
+        </div>
+      )}
     </div>
   );
 };

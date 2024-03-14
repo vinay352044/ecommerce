@@ -31,14 +31,16 @@ export const addProductInCart = (product) => {
       const state = getState();
       const cartItems = state.CartReducer.cartItems;
 
-      const productExistIndex = cartItems.findIndex(item => item.id === product.id);
+      const productExistIndex = cartItems?.findIndex(item => item.id === product.id);
 
       if (productExistIndex !== -1) {
         
          const updatedCartItems = [...cartItems];
          const prod= updatedCartItems[productExistIndex]
         updatedCartItems[productExistIndex].quantity += 1; 
-        updatedCartItems[productExistIndex].stock -= 1; 
+        if(updatedCartItems[productExistIndex].stock > 0){
+          updatedCartItems[productExistIndex].stock -= 1; 
+        }
         dispatch(addToCart(prod)); 
         toast.success("Added to the cart!", {
           position: 'top-right',
