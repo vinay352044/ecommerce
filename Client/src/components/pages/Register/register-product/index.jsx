@@ -129,14 +129,7 @@ const Index = () => {
 							<label htmlFor="category" className={inputStyle}>
 								Category
 							</label>
-							<Field as="select" id="category" name="category" className={inputStyle1}>
-								<option value="" disabled selected>
-									Select Category
-								</option>
-								<option>New Mexico</option>
-								<option>Missouri</option>
-								<option>Texas</option>
-							</Field>
+							<Field type="text" id="category" name="category" placeholder="Product category" className={inputStyle1} />
 						</div>
 
 						<div className="w-full md:w-1/3 px-3">
