@@ -8,12 +8,12 @@ const Index = () => {
   const [products, setProducts] = useState([]);
 
   const handleCreateProduct = () => {
-    navigate('/admin/create-products');
+    navigate('/admin-create-products');
   };
 
   const handleProductUpdate = (productID) => {
     console.log(productID)
-    navigate(`/admin/update-products/${productID}`);
+    navigate(`/admin-update-products/${productID}`);
   }
 
   const handleProductDelete = async (productID) => {

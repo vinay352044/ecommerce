@@ -446,7 +446,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha xyz",
+      "name": "Aisha xyzascascaz",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [
@@ -501,7 +501,7 @@
       "id": "4",
       "name": "Ananya",
       "email": "ananya@example.com",
-      "password": "ananyapass",
+      "password": "ananyapasss",
       "favouriteProducts": []
     },
     {
@@ -509,13 +509,6 @@
       "name": "Arjun",
       "email": "arjun@example.com",
       "password": "arjunpass",
-      "favouriteProducts": []
-    },
-    {
-      "id": "6",
-      "name": "Kavya",
-      "email": "kavya@example.com",
-      "password": "kavyapass",
       "favouriteProducts": []
     },
     {
@@ -626,6 +619,12 @@
       "email": "nu@gmail.com",
       "password": "Dh!1",
       "favouriteProducts": []
+    },
+    {
+      "id": "14",
+      "name": "jay prajapati",
+      "email": "jay@gmail.com",
+      "password": "1234567890"
     }
   ],
   "orders": [

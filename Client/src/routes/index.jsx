@@ -9,6 +9,7 @@ import PrivateRoutesSeller from "../utils/PrivateRoutes/PrivateRoutesSeller/inde
 import AdminCreateUser from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminCreateUser.jsx";
 import AdminUpdateUsers from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminUpdateUsers.jsx";
 import { useSelector } from "react-redux";
+import AdminCreateCategories from "../components/pages/Register/register-categories/index.jsx";
 
 // const About = React.lazy(() => import("../components/pages/About"))
 const Layout = React.lazy(() => import("../components/layout/Layout"));
@@ -87,24 +88,28 @@ export const Router = () => {
               element: <Admin />,
             },
             {
-              path: "admin/users", //mansi admin homepage
+              path: "admin-users", //mansi admin homepage
               element: <AdminUsers />,
             },
             {
-              path: "admin/createUser", // mansi admin createuserpage
+              path: "admin-createUser", // mansi admin createuserpage
               element: <AdminCreateUser />,
             },
             {
-              path: "admin/update/:id", // mansi admin updateuserpage
+              path: "admin-update/:id", // mansi admin updateuserpage
               element: <AdminUpdateUsers />,
             },
             {
-              path: "admin/create-products",
+              path: "admin-create-products",
               element: <AdminProducts />,
             },
             {
-              path: "admin/update-products/:productID",
+              path: "admin-update-products/:productID",
               element: <AdminUpdateProducts />,
+            },
+            {
+              path: "admin-createCategories",
+              element: <AdminCreateCategories />, 
             },
           ],
         },
