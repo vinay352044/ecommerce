@@ -11,6 +11,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
+import { FaUser } from "react-icons/fa6";
+import { FaBusinessTime } from "react-icons/fa";
+import { MdConfirmationNumber, MdEmail } from "react-icons/md";
+import { TbBrandAirtable } from "react-icons/tb";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -103,11 +108,11 @@ const RegisterSeller = () => {
         productsToSell: [],
       };
 
-      const { sucess, data, error } = await registerSeller(sellerObj);
-      if (sucess) {
+      const { success, data, error } = await registerSeller(sellerObj);
+      if (success) {
         dispatch(setRole("seller", sellerObj));
         handleReset();
-        toast.success("Seller registered sucessfully");
+        toast.success("Seller registered successfully");
         navigate("/");
       }
     } else {
@@ -132,11 +137,11 @@ const RegisterSeller = () => {
 
       if (userError) {
         // dispatch error
-        console.log(userError);
+        toast.error("Something went wronge. Try again later!");
       }
       if (sellerError) {
         // dispatch error
-        console.log(sellerError);
+        toast.error("Something went wronge. Try again later!");
       }
 
       setUsers(usersData);
@@ -146,19 +151,22 @@ const RegisterSeller = () => {
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-20 shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Register Seller</h3>
 
         <div className="flex justify-center items-center gap-10">
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
-            className="flex flex-col gap-2 w-[400px]"
+            className="flex flex-col gap-2 w-[min(400px,90vw)]"
           >
             <div className="flex flex-col">
-              <label htmlFor="name" className="font-semibold">
-                Name
-              </label>
+              <div className="flex items-center gap-1">
+                <FaUser />
+                <label htmlFor="name" className="font-semibold">
+                  Name
+                </label>
+              </div>
               <input
                 type="text"
                 name="name"
@@ -177,9 +185,12 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="businessName" className="font-semibold">
-                Business Name
-              </label>
+              <div className="flex items-center gap-1">
+                <FaBusinessTime />
+                <label htmlFor="businessName" className="font-semibold">
+                  Business Name
+                </label>
+              </div>
               <input
                 type="text"
                 name="businessName"
@@ -200,9 +211,12 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="gstin" className="font-semibold">
-                GST NO
-              </label>
+              <div className="flex items-center gap-1">
+                <MdConfirmationNumber />
+                <label htmlFor="gstin" className="font-semibold">
+                  GST NO
+                </label>
+              </div>
               <input
                 type="text"
                 name="gstin"
@@ -221,9 +235,12 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="brand" className="font-semibold">
-                brand
-              </label>
+              <div className="flex items-center gap-1">
+                <TbBrandAirtable />
+                <label htmlFor="brand" className="font-semibold">
+                  Brand
+                </label>
+              </div>
               <input
                 type="text"
                 name="brand"
@@ -242,9 +259,12 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="email" className="font-semibold">
-                Email
-              </label>
+              <div className="flex items-center gap-1">
+                <MdEmail />
+                <label htmlFor="email" className="font-semibold">
+                  Email
+                </label>
+              </div>
               <input
                 type="email"
                 name="email"
@@ -263,9 +283,12 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="password" className="font-semibold">
-                Password
-              </label>
+              <div className="flex items-center gap-1">
+                <RiLockPasswordFill />
+                <label htmlFor="password" className="font-semibold">
+                  Password
+                </label>
+              </div>
               <input
                 type="password"
                 name="password"
@@ -284,9 +307,12 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="cpassword" className="font-semibold">
-                Confirm Password
-              </label>
+              <div className="flex items-center gap-1">
+                <RiLockPasswordFill />
+                <label htmlFor="cpassword" className="font-semibold">
+                  Confirm Password
+                </label>
+              </div>
               <input
                 type="password"
                 name="cpassword"
@@ -333,7 +359,7 @@ const RegisterSeller = () => {
             </div>
           </form>
 
-          <div>
+          <div className="hidden lg:block">
             <img src="/images/Mobile-login.gif" alt="Login Demo" />
           </div>
         </div>

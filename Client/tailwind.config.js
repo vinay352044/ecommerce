@@ -5,6 +5,7 @@ export default {
     extend: {},
     screens : {
       'md': '960px',
+      'lg': '1440px',
     }
   },
   plugins: [import("flowbite/plugin")],
