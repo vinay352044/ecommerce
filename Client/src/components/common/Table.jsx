@@ -21,7 +21,6 @@ const Table = ({ data, type, handleUpdate, handleProductDelete }) => {
               <th className="w-1/6 p-2">Actions</th>
             </>
           )}
-          <th className="w-1/6 p-2">Actions</th>
         </tr>
       </thead>
 
