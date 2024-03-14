@@ -7,47 +7,47 @@ import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
 
 const Index = () => {
-  const [currentPage,setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(6)
-  const [searchQuery,setSearchQuery] = useState('')
-  const [sortOrder,setSortOrder] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [sortOrder, setSortOrder] = useState(null)
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
-  const indexOfLastRecord=currentPage* recordsPerPage
-  const indexOfFirstRecord=indexOfLastRecord-recordsPerPage
+  const indexOfLastRecord = currentPage * recordsPerPage
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 
-console.log(products)
-const debouncedQuery = useDebounceHook(searchQuery,500)
-const handleSearchChange = e => {
-  setSearchQuery(e.target.value)
-  setCurrentPage(1)
-}
-const filteredData = products.filter(product => product.title && product.title.toLowerCase().includes(debouncedQuery.toLowerCase()))
-const sortedData = [...filteredData]
-if(sortOrder==='asc'){
-  sortedData.sort((a,b)=> a.price-b.price)
-}
-if(sortOrder==='desc'){
-  sortedData.sort((a,b)=> b.price-a.price)
-}
-const handleSortingChange = order => {
-  setSortOrder(order)
-}
-  const paginateRecords = sortedData.slice(indexOfFirstRecord,indexOfLastRecord)
+  console.log(products)
+  const debouncedQuery = useDebounceHook(searchQuery, 500)
+  const handleSearchChange = e => {
+    setSearchQuery(e.target.value)
+    setCurrentPage(1)
+  }
+  const filteredData = products.filter(product => product.title && product.title.toLowerCase().includes(debouncedQuery.toLowerCase()))
+  const sortedData = [...filteredData]
+  if (sortOrder === 'asc') {
+    sortedData.sort((a, b) => a.price - b.price)
+  }
+  if (sortOrder === 'desc') {
+    sortedData.sort((a, b) => b.price - a.price)
+  }
+  const handleSortingChange = order => {
+    setSortOrder(order)
+  }
+  const paginateRecords = sortedData.slice(indexOfFirstRecord, indexOfLastRecord)
   console.log(paginateRecords)
-  const nPages = Math.ceil(sortedData.length /recordsPerPage)
+  const nPages = Math.ceil(sortedData.length / recordsPerPage)
   console.log(nPages)
   const shouldRenderPagination = products.length > recordsPerPage
 
- 
+
   const handleCreateProduct = () => {
     navigate('/admin-create-products');
   };
 
-  const handleProductUpdate = (productID) => {
+  const handleUpdate = (productID) => {
     console.log(productID)
     navigate(`/admin-update-products/${productID}`);
   }
@@ -144,23 +144,24 @@ const handleSortingChange = order => {
         )}
       </div>
       <div className='display flex space-x-10'>
-      <input
-                type="text"
-                placeholder="Search..."
-                className='px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
-                value={searchQuery}
-                onChange={handleSearchChange}
-            />
-            <Sorting handleSortingChange={handleSortingChange}/>
-</div>
-      <Table products={paginateRecords} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
-      { ( shouldRenderPagination &&
-                    <Pagination
-                        nPages={nPages}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}  
-                    />
-                )}
+        <input
+          type="text"
+          placeholder="Search..."
+          className="search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <Sorting handleSortingChange={handleSortingChange} />
+      </div>
+
+      <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
+      {(shouldRenderPagination &&
+        <Pagination
+          nPages={nPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
       {/* <table className="table-auto w-full mt-8 border">
         <thead>
           <tr className="border-b">
@@ -203,3 +204,13 @@ const handleSortingChange = order => {
 };
 
 export default Index;
+
+
+
+
+
+
+
+
+
+
