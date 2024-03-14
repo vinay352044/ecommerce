@@ -10,6 +10,7 @@ import AdminCreateUser from "../components/pages/Dashboard/AdminDashboard/AdminU
 import AdminUpdateUsers from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminUpdateUsers.jsx";
 import { useSelector } from "react-redux";
 import AdminCreateCategories from "../components/pages/Register/register-categories/index.jsx";
+import OrdersDashboard from "../components/pages/Dashboard/ProducerDashboard/OrdersDashboard.jsx";
 
 // const About = React.lazy(() => import("../components/pages/About"))
 const Layout = React.lazy(() => import("../components/layout/Layout"));
@@ -111,6 +112,7 @@ export const Router = () => {
               path: "admin-createCategories",
               element: <AdminCreateCategories />, 
             },
+			
           ],
         },
         {
@@ -125,6 +127,10 @@ export const Router = () => {
               path: "seller/profile",
               element: <Profile />,
             },
+			{
+				path: "seller-dashboard",
+				element: <OrdersDashboard />,
+			  },
           ],
         },
         {
