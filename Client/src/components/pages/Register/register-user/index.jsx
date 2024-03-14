@@ -10,7 +10,10 @@ import {
 import { useDispatch } from "react-redux";
 import { setRole } from "../../../../redux/actions/roleAction";
 import { NavLink, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { FaUser } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -83,8 +86,8 @@ const RegisterUser = () => {
         favouriteProducts: [],
       };
 
-      const { sucess, data, error } = await registerUser(userObj);
-      if (sucess) {
+      const { success, data, error } = await registerUser(userObj);
+      if (success) {
         dispatch(setRole("user", userObj));
         handleReset();
         toast.success("User registered successfully");
@@ -100,23 +103,23 @@ const RegisterUser = () => {
   useEffect(() => {
     (async () => {
       const {
-        sucess: usersSucess,
+        success: usersSuccess,
         data: usersData,
         error: userError,
       } = await getUsers();
       const {
-        sucess: sellerSucess,
+        success: sellerSuccess,
         data: sellersData,
         error: sellerError,
       } = await getSellers();
 
       if (userError) {
         // dispatch error
-        console.log(userError);
+        toast.error("Something went wronge. Try again later!");
       }
       if (sellerError) {
         // dispatch error
-        console.log(sellerError);
+        toast.error("Something went wronge. Try again later!");
       }
 
       setUsers(usersData);
@@ -126,7 +129,7 @@ const RegisterUser = () => {
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-20 shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Register User</h3>
         <div className="flex justify-center items-center gap-10">
           <form
@@ -135,9 +138,12 @@ const RegisterUser = () => {
             className="flex flex-col gap-2 w-[400px]"
           >
             <div className="flex flex-col">
-              <label htmlFor="name" className="font-semibold">
-                Name
-              </label>
+              <div className="flex items-center gap-1">
+                <FaUser />
+                <label htmlFor="role" className="font-semibold">
+                  Name
+                </label>
+              </div>
               <input
                 type="text"
                 name="name"
@@ -156,9 +162,12 @@ const RegisterUser = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="email" className="font-semibold">
-                Email
-              </label>
+              <div className="flex items-center gap-1">
+                <MdEmail />
+                <label htmlFor="email" className="font-semibold">
+                  Email
+                </label>
+              </div>
               <input
                 type="email"
                 name="email"
@@ -177,9 +186,12 @@ const RegisterUser = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="password" className="font-semibold">
-                Password
-              </label>
+              <div className="flex items-center gap-1">
+                <RiLockPasswordFill />
+                <label htmlFor="password" className="font-semibold">
+                  Password
+                </label>
+              </div>
               <input
                 type="password"
                 name="password"
@@ -198,9 +210,12 @@ const RegisterUser = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="cpassword" className="font-semibold">
-                Confirm Password
-              </label>
+              <div className="flex items-center gap-1">
+                <RiLockPasswordFill />
+                <label htmlFor="cpassword" className="font-semibold">
+                  Confirm Password
+                </label>
+              </div>
               <input
                 type="password"
                 name="cpassword"
@@ -247,8 +262,8 @@ const RegisterUser = () => {
             </div>
           </form>
 
-          <div>
-            <img src="/images/Mobile-login.gif" alt="Login Demo" srcset="" />
+          <div className="hidden lg:block">
+            <img src="/images/Mobile-login.gif" alt="Login Demo" />
           </div>
         </div>
       </div>

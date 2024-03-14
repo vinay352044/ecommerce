@@ -94,13 +94,13 @@ export const getUsers = async () => {
   try {
     const res = await API.get("users");
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };
@@ -111,13 +111,13 @@ export const getSellers = async () => {
   try {
     const res = await API.get("sellers");
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };
@@ -129,13 +129,13 @@ export const registerUser = async (userObj) => {
     const res = await API.post("users", userObj);
 
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };
@@ -147,13 +147,13 @@ export const registerSeller = async (sellerObj) => {
     const res = await API.post("sellers", sellerObj);
 
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };

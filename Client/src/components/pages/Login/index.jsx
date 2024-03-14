@@ -7,6 +7,9 @@ import { setRole } from "../../../redux/actions/roleAction";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 const loginSchema = yup.object({
   role: yup
@@ -20,7 +23,7 @@ const loginSchema = yup.object({
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {isAuth} = useSelector(state => state.role)
+  const { isAuth } = useSelector((state) => state.role);
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
 
@@ -49,7 +52,7 @@ const Login = () => {
       let user = users.find((user) => user.email === email);
       if (user && user.password === password) {
         dispatch(setRole(role, user));
-        toast.success(`User: ${user.name} logged in sucessfully`);
+        toast.success(`User: ${user.name} logged in successfully`);
         navigate("/");
       } else {
         toast.error("Invalid credential !!");
@@ -60,7 +63,7 @@ const Login = () => {
       let seller = sellers.find((seller) => seller.email === email);
       if (seller && seller.password === password) {
         dispatch(setRole(role, seller));
-        toast.success(`Seller: ${seller.name}logged in sucessfully`);
+        toast.success(`Seller: ${seller.name} logged in successfully`);
         navigate("/");
       } else {
         toast.error("Invalid credential !!");
@@ -71,9 +74,9 @@ const Login = () => {
       const admin = { email, password };
       if (email === "admin@gmail.com" && password === "Admin@123") {
         dispatch(setRole(role, admin));
-        toast.success("Admin logged in sucessfully!");
-        navigate("/");
-      }else{
+        toast.success("Admin logged in successfully!");
+        navigate("/admin");
+      } else {
         toast.error("Invalid credential !!");
       }
     }
@@ -84,35 +87,36 @@ const Login = () => {
   useEffect(() => {
     (async () => {
       const {
-        sucess: usersSucess,
+        success: usersSuccess,
         data: usersData,
         error: userError,
       } = await getUsers();
       const {
-        sucess: sellerSucess,
+        success: sellerSuccess,
         data: sellersData,
         error: sellerError,
       } = await getSellers();
 
       if (userError) {
         // dispatch error
-        console.log(userError);
+        toast.error("Something went wronge. Try again later!");
       }
       if (sellerError) {
         // dispatch error
-        console.log(sellerError);
+        toast.error("Something went wronge. Try again later!");
       }
 
       setUsers(usersData);
       setSellers(sellersData);
     })();
+    
     // if looged in then don't give access to this page
-    isAuth ? navigate('/') : null
+    isAuth ? navigate("/") : null;
   }, []);
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-20 shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Login</h3>
 
         <div className="flex justify-center items-center gap-10">
@@ -122,9 +126,12 @@ const Login = () => {
             className="flex flex-col gap-2 w-[400px]"
           >
             <div className="flex flex-col">
-              <label htmlFor="role" className="font-semibold">
-                Role
-              </label>
+              <div className="flex items-center gap-1">
+                <FaUser />
+                <label htmlFor="role" className="font-semibold">
+                  Role
+                </label>
+              </div>
               <select
                 name="role"
                 id="role"
@@ -137,13 +144,20 @@ const Login = () => {
                 <option value="admin">Admin</option>
                 <option value="seller">Seller</option>
               </select>
-              {touched.role && errors.role ? <p className="text-[14px] text-red-700">{errors.role}</p> : <p className="text-[14px] opacity-0">null</p>}
+              {touched.role && errors.role ? (
+                <p className="text-[14px] text-red-700">{errors.role}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+              )}
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="email" className="font-semibold">
-                Email
-              </label>
+              <div className="flex items-center gap-1">
+                <MdEmail />
+                <label htmlFor="email" className="font-semibold">
+                  Email
+                </label>
+              </div>
               <input
                 type="email"
                 name="email"
@@ -162,9 +176,12 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="password" className="font-semibold">
-                Password
-              </label>
+              <div className="flex items-center gap-1">
+                <RiLockPasswordFill />
+                <label htmlFor="password" className="font-semibold">
+                  Password
+                </label>
+              </div>
               <input
                 type="password"
                 name="password"
@@ -211,8 +228,8 @@ const Login = () => {
             </div>
           </form>
 
-          <div>
-            <img src="/images/Mobile-login.gif" alt="Login Demo"/>
+          <div className="hidden lg:block">
+            <img src="/images/Mobile-login.gif" alt="Login Demo" />
           </div>
         </div>
       </div>
