@@ -23,7 +23,7 @@ function AdminCreateCategories() {
     const handleSubmit = (values) => {
         try {
             const newCategoryId = categories.length === 0 ? 1 : parseInt(categories[categories.length-1].id)+1;
-            addCategory({ id: newCategoryId, name: values.name }) // Add id field to the category object
+            addCategory({ id: newCategoryId.toString(), name: values.name }) // Add id field to the category object
                 .then(res => {
                     console.log(res);
                     navigate('/admin-categories');

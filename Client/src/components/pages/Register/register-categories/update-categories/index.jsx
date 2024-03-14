@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getCategoryById } from '../../../../../utils/axios-instance';
+import { UpdateCategory, getCategoryById } from '../../../../../utils/axios-instance';
 
 
 function UpdateCategories() {
@@ -27,10 +27,19 @@ function UpdateCategories() {
     fetchCategory();
   }, [categoryID]);
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    try {
+      const response = await UpdateCategory(values);
+      if (response.success) {
+        navigate("/admin-categories")
+        console.log("Category updated successfully:", response.data);
+      } else {
+        console.error("Failed to update category:", response.error);
+      }
+    } catch (error) {
+      console.error("Error updating category:", error);
+    }
   };
-
   return (
     <div className="container mx-auto mt-5">
       <h1 className="text-3xl mb-5">Update Category</h1>
