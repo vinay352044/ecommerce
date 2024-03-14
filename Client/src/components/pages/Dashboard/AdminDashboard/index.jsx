@@ -43,9 +43,9 @@ const Index = () => {
   const shouldRenderPagination = products.length > recordsPerPage
 
 
-  const handleCreateProduct = () => {
-    navigate('/admin-create-products');
-  };
+  // const handleCreateProduct = () => {
+  //   navigate('/admin-create-products');
+  // };
 
   const handleUpdate = (productID) => {
     console.log(productID)
@@ -96,10 +96,10 @@ const Index = () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-      <button className="text-2xl font-bold mb-4" onClick={handleCreateProduct}>
-        Add Product
-      </button>
+      <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
+      <div className="flex justify-end mb-4">
+        <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD PRODUCT</Link>
+      </div>
 
       <div className="relative inline-block text-left absolute left-1/2 transform -translate-x-1/2 top-1/2 z-10">
         {isDropdownOpen && (
@@ -131,13 +131,13 @@ const Index = () => {
 
       <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
       {(shouldRenderPagination &&
-      <div className='flex justify-center w-screen items-center'>
-        <Pagination
-          nPages={nPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          
-        />
+        <div className='flex justify-center w-screen items-center'>
+          <Pagination
+            nPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+
+          />
         </div>
       )}
       {/* <table className="table-auto w-full mt-8 border">
