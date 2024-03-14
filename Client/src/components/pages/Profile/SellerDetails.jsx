@@ -13,7 +13,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.businessName}
           readOnly={readOnly}
           onChange={handleChange}
-          className={`${inputClass} font-medium text-xl border-none`}
+          className={`${inputClass} font-medium text-xl border-none bg-transparent`}
           required
         />
       </div>
@@ -27,7 +27,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.gstin}
           readOnly={true}
           onChange={handleChange}
-          className={`${inputClass} font-medium text-lg border-none`}
+          className={`${inputClass} font-medium text-lg border-none bg-transparent`}
         />
       </div>
     </>

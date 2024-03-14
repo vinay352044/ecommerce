@@ -9,7 +9,7 @@ import { useState } from "react";
 import Button from "../../common/Button";
 import { AiFillEdit } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
-import placeholder from "/images/profileImg.jpg";
+import placeholder from "/images/profileImg.gif";
 import { NavLink } from "react-router-dom";
 import { updateSeller, updateUser } from "../../../utils/axios-instance";
 import { setRole } from "../../../redux/actions/roleAction";
