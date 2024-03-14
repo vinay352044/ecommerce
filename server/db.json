@@ -78,139 +78,6 @@
       ]
     },
     {
-      "id": "54",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "55",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "56",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "57",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "58",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "59",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "60",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
       "id": "5",
       "title": "Fog Scent Xpressio Perfume",
       "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
@@ -447,18 +314,6 @@
       "discountPercentage": "9,000",
       "stock": "50",
       "category": "New Mexico",
-      "brand": "Apple",
-      "total_sell": "50+",
-      "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s"
-    },
-    {
-      "id": "18",
-      "title": "Mansi Demo",
-      "description": "Tshirt",
-      "price": "1000",
-      "discountPercentage": "32",
-      "stock": "50",
-      "category": "Demo",
       "brand": "Apple",
       "total_sell": "50+",
       "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s"
@@ -1269,30 +1124,17 @@
       "product_id": "6",
       "ordered_at": "3/14/2024, 5:05:27 PM",
       "expected_delivery": "",
-      "order_accepted": "pending",
-      "accepted_by": "",
-      "quantity": 1,
-      "product": {
-        "id": "6",
-        "title": "Eau De Perfume Spray",
-        "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
-        "price": "30",
-        "discountPercentage": "10.99",
-        "rating": "4.7",
-        "stock": 104,
-        "brand": "Lord - Al-Rehab",
-        "category": "fragrances",
-        "total_sell": "11",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg",
-        "images": [
-          "https://cdn.dummyjson.com/product-images/15/1.jpg",
-          "https://cdn.dummyjson.com/product-images/15/2.jpg",
-          "https://cdn.dummyjson.com/product-images/15/3.jpg",
-          "https://cdn.dummyjson.com/product-images/15/4.jpg",
-          "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg"
-        ],
-        "quantity": 1
-      }
+      "order_accepted": false,
+      "accepted_by": ""
+    },
+    {
+      "id": "16",
+      "user_id": "2",
+      "product_id": "1",
+      "ordered_at": "3/14/2024, 12:32:41 PM",
+      "expected_delivery": "",
+      "order_accepted": false,
+      "accepted_by": ""
     }
   ],
   "categories": [

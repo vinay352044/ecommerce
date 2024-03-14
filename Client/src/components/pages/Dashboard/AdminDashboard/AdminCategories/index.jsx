@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Table from '../../../../common/Table'
 import { DeleteCategoryById, getCategories } from '../../../../../utils/axios-instance'
 
@@ -56,15 +56,16 @@ const AdminCategories = () => {
     }, []);
     return (
         <>
-            <div>
-                AdminCategories Home Page
+            <div className="text-center text-2xl font-bold mb-8">Manage Category</div>
 
+
+            <div className="flex justify-end mb-4">
+                <Link to="/admin-createCategories" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD CATEGORY</Link>
             </div>
-            <button onClick={handleCreateCategories}>Create Categories</button>
             <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" />
         </>
     )
-        
+
 }
 
 export default AdminCategories
