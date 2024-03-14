@@ -426,6 +426,42 @@
         "https://cdn.dummyjson.com/product-images/29/4.webp",
         "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
       ]
+    },
+    {
+      "id": "16",
+      "title": "Demo",
+      "description": "Demo",
+      "price": "Demo",
+      "discountPercentage": "Demo",
+      "stock": "Demo",
+      "category": "New Mexico",
+      "brand": "Apple",
+      "total_sell": "50+",
+      "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s"
+    },
+    {
+      "id": "17",
+      "title": "Demo",
+      "description": "Demo Description",
+      "price": "10,000",
+      "discountPercentage": "9,000",
+      "stock": "50",
+      "category": "New Mexico",
+      "brand": "Apple",
+      "total_sell": "50+",
+      "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s"
+    },
+    {
+      "id": "18",
+      "title": "Mansi Demo",
+      "description": "Tshirt",
+      "price": "1000",
+      "discountPercentage": "32",
+      "stock": "50",
+      "category": "Demo",
+      "brand": "Apple",
+      "total_sell": "50+",
+      "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s"
     }
   ],
   "sellers": [
@@ -774,13 +810,6 @@
       "favouriteProducts": []
     },
     {
-      "id": "7",
-      "name": "Aditi",
-      "email": "aditi@example.com",
-      "password": "aditipass",
-      "favouriteProducts": []
-    },
-    {
       "id": "8",
       "name": "Rohan",
       "email": "rohan@example.com",
@@ -915,6 +944,12 @@
           ]
         }
       ]
+    },
+    {
+      "id": "16",
+      "name": "VaideekTest",
+      "email": "VaideekTest@mail.com",
+      "password": "Mail@12345"
     }
   ],
   "orders": [
@@ -1129,7 +1164,7 @@
       "id": "7"
     },
     {
-      "name": "Tops",
+      "name": "Top",
       "id": "8"
     },
     {
@@ -1157,7 +1192,7 @@
       "id": "14"
     },
     {
-      "name": "Women's Bags",
+      "name": "Women's Duffle Bags",
       "id": "15"
     },
     {
@@ -1167,30 +1202,6 @@
     {
       "name": "Sunglasses",
       "id": "17"
-    },
-    {
-      "name": "Automotive",
-      "id": "18"
-    },
-    {
-      "name": "Motorcycle",
-      "id": "19"
-    },
-    {
-      "name": "Lighting",
-      "id": "20"
-    },
-    {
-      "id": 21,
-      "name": "Demo123"
-    },
-    {
-      "id": 22,
-      "name": "VinayNew123"
-    },
-    {
-      "id": 23,
-      "name": "VinayNew123"
     }
   ]
 }
