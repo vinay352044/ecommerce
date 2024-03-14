@@ -1,70 +1,79 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Table from '../../../../common/Table'
-import { DeleteCategoryById, getCategories } from '../../../../../utils/axios-instance'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Table from "../../../../common/Table";
+import {
+  DeleteCategoryById,
+  getCategories,
+} from "../../../../../utils/axios-instance";
 
 const AdminCategories = () => {
-    const navigate = useNavigate()
-    const [categories, setCategories] = useState([]);
-    const handleCreateCategories = () => {
-        navigate("/admin-createCategories")
+  const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+  const handleCreateCategories = () => {
+    navigate("/admin-createCategories");
+  };
+
+  const handleUpdate = (categoryID) => {
+    console.log(categoryID);
+    navigate(`/admin-update-category/${categoryID}`);
+  };
+  const handleProductDelete = async (categoryID) => {
+    console.log(categoryID);
+
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this product?"
+    );
+
+    if (!shouldDelete) {
+      return;
     }
 
-    const handleUpdate = (categoryID) => {
-        console.log(categoryID)
-        navigate(`/admin-update-category/${categoryID}`)
+    try {
+      const response = await DeleteCategoryById(categoryID);
+      if (response.success) {
+        console.log("Product Deleted Successfully!");
+
+        setCategories((prevCategory) =>
+          prevCategory.filter((category) => category.id !== categoryID)
+        );
+      } else {
+        console.error("Failed to delete the Products Data", response.error);
+      }
+    } catch (error) {
+      console.error("Failed to delete the Products Data", error);
     }
-    const handleProductDelete = async (categoryID) => {
-        console.log(categoryID);
+  };
 
-        const shouldDelete = window.confirm("Are you sure you want to delete this product?");
-
-        if (!shouldDelete) {
-            return;
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await getCategories();
+        if (response.success) {
+          setCategories(response.data);
+          console.log(response);
+        } else {
+          console.error("Failed to fetch the Products Data", response.error);
         }
-
-        try {
-            const response = await DeleteCategoryById(categoryID);
-            if (response.success) {
-                console.log("Product Deleted Successfully!");
-
-                setCategories((prevCategory) => prevCategory.filter(category => category.id !== categoryID));
-            } else {
-                console.error('Failed to delete the Products Data', response.error);
-            }
-        } catch (error) {
-            console.error('Failed to delete the Products Data', error);
-        }
+      } catch (error) {
+        console.error("Error while Fetching products", error);
+      }
     };
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await getCategories();
-                if (response.success) {
-                    setCategories(response.data);
-                    console.log(response)
-                } else {
-                    console.error('Failed to fetch the Products Data', response.error);
-                }
-            } catch (error) {
-                console.error('Error while Fetching products', error);
-            }
-        };
+    fetchCategories();
+  }, []);
+  
+  return(
+    <>
+      <div>AdminCategories Home Page</div>
+      <button onClick={handleCreateCategories}>Create Categories</button>
+      <Table
+        data={categories}
+        handleUpdate={handleUpdate}
+        handleProductDelete={handleProductDelete}
+        type="category"
+      />
+    </>
+  );
+};
 
-        fetchCategories();
-    }, []);
-    return (
-        <>
-            <div>
-                AdminCategories Home Page
-
-            </div>
-            <button onClick={handleCreateCategories}>Create Categories</button>
-            <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" />
-        </>
-    )
-
-}
-
-export default AdminCategories
+export default AdminCategories;
