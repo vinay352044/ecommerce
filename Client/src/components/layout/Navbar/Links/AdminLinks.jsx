@@ -5,7 +5,7 @@ const AdminLinks = () => {
       <>
         <li>
           <NavLink
-            to="/admin-createCategories"
+            to="/admin-categories"
             className={({ isActive }) =>
             `${
               isActive ? '' : "text-white"

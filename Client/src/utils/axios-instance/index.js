@@ -1,5 +1,5 @@
 import axios from "axios";
-import {setRole} from "../../redux/actions/roleAction";
+import { setRole } from "../../redux/actions/roleAction";
 
 export const API = axios.create({
   baseURL: "http://localhost:3000",
@@ -40,15 +40,16 @@ export const addProduct = async (product) => {
   }
 };
 
-export const updateSellerProducts = async (seller,newProductId) => {
+export const updateSellerProducts = async (seller, newProductId) => {
   try {
-    const sellerProducts = seller.productsToSell
-    const updatedSellersProducts = [...sellerProducts, newProductId]
+    const sellerProducts = seller.productsToSell;
+    const updatedSellersProducts = [...sellerProducts, newProductId];
     const newSellerObj = {
-      ...seller, productsToSell: updatedSellersProducts
-    }
-    const res = await API.put( `sellers/${seller.id}`, newSellerObj);
-    
+      ...seller,
+      productsToSell: updatedSellersProducts,
+    };
+    const res = await API.put(`sellers/${seller.id}`, newSellerObj);
+
     return {
       success: true,
       data: newSellerObj,
@@ -61,7 +62,7 @@ export const updateSellerProducts = async (seller,newProductId) => {
       error: error.message,
     };
   }
-}
+};
 
 export const getProductById = async (id) => {
   try {
@@ -103,10 +104,61 @@ export const DeleteProductbyId = async (id) => {
     return {
       success: true,
       data: res.data,
-      error: null,      
+      error: null,
     };
   } catch (error) {
-    return {  
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
+export const addCategory = async (category) => {
+  try {
+    const res = await API.post("categories", category);
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const res = await API.get("categories");
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+};
+
+export const getCategoryById = async (id) => {
+  try {
+    const res = await API.get(`categories/${id}`);
+    return {
+      success: true,
+      data: res.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
       success: false,
       data: null,
       error: error.message,
@@ -233,9 +285,9 @@ export const getOrders = async () => {
       error: error.message,
     };
   }
-}
+};
 
-export const registerOrder = async(ordersObj) => {
+export const registerOrder = async (ordersObj) => {
   try {
     const res = await API.post("orders", ordersObj);
 
@@ -251,4 +303,4 @@ export const registerOrder = async(ordersObj) => {
       error: error.message,
     };
   }
-}
+};
