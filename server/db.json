@@ -447,7 +447,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha xyzascascaz",
+      "name": "Aisha ",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [
@@ -609,17 +609,9 @@
     },
     {
       "id": "12",
-      "name": "dhruv",
-      "email": "u1@gmail.com",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "13",
-      "name": "Smartphone new",
-      "email": "nu@gmail.com",
-      "password": "Dh!1",
-      "favouriteProducts": []
+      "name": "mansi",
+      "email": "mansijayswal@gmail.com",
+      "password": "mansij222"
     }
   ],
   "orders": [
