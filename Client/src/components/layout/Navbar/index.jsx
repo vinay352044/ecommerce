@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../../common/Button";
-import "./navbar.css";
+// import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeadphonesAlt } from "react-icons/fa";
@@ -148,6 +148,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    
   );
 };
 

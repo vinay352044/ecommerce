@@ -473,7 +473,9 @@
       "brand": "samsung",
       "email": "jay@gmail.com",
       "password": "Dhruv123@",
-      "productsToSell": []
+      "productsToSell": [
+        "5"
+      ]
     },
     {
       "id": "2",
@@ -485,7 +487,14 @@
       "password": "Meet@123",
       "brand": "Samsung",
       "productsToSell": [
-        "4","54","55","56","57","58","59","60"
+        "4",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60"
       ]
     },
     {

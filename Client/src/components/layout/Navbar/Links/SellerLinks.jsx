@@ -4,6 +4,15 @@ import { NavLink } from "react-router-dom"
 const SellerLinks = () => {
 	return (
 		<>
+      <li>
+				<NavLink
+					to="/seller-dashboard/acceptedorders"
+					className={({ isActive }) =>
+						`${isActive ? "" : "text-white"} flex items-center gap-2 text-lg py-1 hover:text-black`
+					}>
+					Accepted Orders
+				</NavLink>
+			</li>
     <li>
 				<NavLink
 					to="/seller-products"

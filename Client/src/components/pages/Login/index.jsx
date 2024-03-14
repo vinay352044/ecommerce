@@ -64,7 +64,7 @@ const Login = () => {
       if (seller && seller.password === password) {
         dispatch(setRole(role, seller));
         toast.success(`Seller: ${seller.name} logged in successfully`);
-        navigate("/seller-dashboard");
+        navigate("/seller-dashboard/pendingorders");
       } else {
         toast.error("Invalid credential !!");
       }
