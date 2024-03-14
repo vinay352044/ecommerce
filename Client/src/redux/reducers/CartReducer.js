@@ -11,7 +11,7 @@ const userId = user.user.id ||user.seller.id ;
 const localStoreData = JSON.parse(localStorage.getItem("AllcartItems")) || {};
 
 const initialState = {
-  cartItems: localStoreData[userId]?.cartItems || []
+  cartItems: localStoreData[0]?.cartItems || []
 };
 
 export const CartReducer = (state = initialState, action) => {
