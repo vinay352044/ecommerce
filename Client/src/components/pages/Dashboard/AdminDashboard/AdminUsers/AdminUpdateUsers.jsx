@@ -25,7 +25,7 @@ function AdminUpdateUsers() {
         try {
             await axios.put(`http://localhost:3000/users/${id}`, values);
             alert('User updated successfully!');
-            navigate('/admin/users');
+            navigate('/admin-users');
         } catch (error) {
             console.log(error);
             alert('Error updating user.');

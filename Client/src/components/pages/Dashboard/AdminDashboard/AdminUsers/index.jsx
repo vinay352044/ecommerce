@@ -55,7 +55,7 @@ function Index() {
                 <h1 className="text-2xl font-bold mb-4 text-center">List of Users</h1>
                 <div>
                     <div className="flex justify-end mb-4">
-                        <Link to="/admin/createUser" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD</Link>
+                        <Link to="/admin-createUser" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD</Link>
                     </div>
                     <table className="w-full border-collapse">
                         <thead>
@@ -76,7 +76,7 @@ function Index() {
                                     <td className="border px-4 py-2"SSWAS2W23>{d.password}</td>
                                     <td className="border px-4 py-2">
                                         {/* <Link to={`/read/${d.userId}`} className="inline-block px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Read</Link> */}
-                                        <Link to={`/admin/update/${d.id}`} className="inline-block px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 ml-2">Edit</Link>
+                                        <Link to={`/admin-update/${d.id}`} className="inline-block px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 ml-2">Edit</Link>
                                         <button className="inline-block px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 ml-2" onClick={() => handleDelete(d.id)}>Delete</button>
                                     </td>
                                 </tr>
