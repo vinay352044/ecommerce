@@ -4,12 +4,13 @@
       "id": "1",
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
+      "price": "549",
+      "discountPercentage": "12.96",
+      "rating": "4.69",
+      "stock": "94",
       "brand": "Apple",
       "category": "smartphones",
+      "total_sell": "20",
       "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
       "images": [
         "https://cdn.dummyjson.com/product-images/1/1.jpg",
@@ -18,7 +19,7 @@
         "https://cdn.dummyjson.com/product-images/1/4.jpg",
         "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
       ],
-      "total_sell": "10"
+      "Total_sell": 0
     },
     {
       "id": "2",
@@ -253,49 +254,6 @@
         "https://cdn.dummyjson.com/product-images/27/4.jpg",
         "https://cdn.dummyjson.com/product-images/27/thumbnail.webp"
       ]
-    },
-    {
-      "id": "14",
-      "title": "3D Embellishment Art Lamp",
-      "description": "3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)",
-      "price": "20",
-      "discountPercentage": "16.49",
-      "rating": "4.82",
-      "stock": "54",
-      "brand": "LED Lights",
-      "category": "home-decoration",
-      "total_sell": "20",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/28/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/28/1.jpg",
-        "https://cdn.dummyjson.com/product-images/28/2.jpg",
-        "https://cdn.dummyjson.com/product-images/28/3.png",
-        "https://cdn.dummyjson.com/product-images/28/4.jpg",
-        "https://cdn.dummyjson.com/product-images/28/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "15",
-      "title": "Handcraft Chinese style",
-      "description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
-      "price": "60",
-      "discountPercentage": "15.34",
-      "rating": "4.44",
-      "stock": "7",
-      "brand": "luxury palace",
-      "category": "home-decoration",
-      "total_sell": "13",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/29/thumbnail.webp",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/29/1.jpg",
-        "https://cdn.dummyjson.com/product-images/29/2.jpg",
-        "https://cdn.dummyjson.com/product-images/29/3.webp",
-        "https://cdn.dummyjson.com/product-images/29/4.webp",
-        "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
-      ]
-    },
-    {
-      "id": "ac40"
     }
   ],
   "sellers": [
@@ -465,7 +423,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha xyzascascaz",
+      "name": "Aisha ",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": []
@@ -588,23 +546,9 @@
     },
     {
       "id": "12",
-      "name": "dhruv",
-      "email": "u1@gmail.com",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "13",
-      "name": "Smartphone new",
-      "email": "nu@gmail.com",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "14",
-      "name": "jay prajapati",
-      "email": "jay@gmail.com",
-      "password": "1234567890"
+      "name": "mansi",
+      "email": "mansijayswal@gmail.com",
+      "password": "mansij222"
     }
   ],
   "orders": [

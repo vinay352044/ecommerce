@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../../../../common/Pagination';
+import { toast } from 'react-toastify';
 
 function Index() {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
     // const [orders, setOrders]= useState([]);    //delete order
-     
     useEffect(() => {
       axios.get('http://localhost:3000/users')
       .then(res => setData(res.data))
@@ -36,16 +36,17 @@ function Index() {
                 .then(res => {
                     console.log(res);
                     setData(data.filter(user => user.id !== id));
-                    navigate('/admin/users');
+                    toast.success('User deleted Successfully!');
+                    navigate('/admin-users');
                 })
                 .catch(err => console.log(err));
             //delete order
-            axios.delete(`http://localhost:3000/orders?user_id=${id}`)
-            .then(res => {
-                console.log(res);
-                // navigate('/admin/users');
-            })
-            .catch(err => console.log(err));
+            // axios.delete(`http://localhost:3000/orders?user_id=${id}`)
+            // .then(res => {
+            //     console.log(res);
+            //     // navigate('/admin/users');
+            // })
+            // .catch(err => console.log(err));
         }
     };
 
@@ -53,10 +54,13 @@ function Index() {
         <>
             <div>
                 <h1 className="text-2xl font-bold mb-4 text-center">List of Users</h1>
+                {
+                    data.length===0 ? (<h4>No users Found.</h4>) : (
                 <div>
                     <div className="flex justify-end mb-4">
                         <Link to="/admin-createUser" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD</Link>
                     </div>
+                    
                     <table className="w-full border-collapse">
                         <thead>
                             <tr>
@@ -85,11 +89,11 @@ function Index() {
                     </table>
                     <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
+                    )}
             </div>
         </>
     );
 }
-
 export default Index;
 
 
