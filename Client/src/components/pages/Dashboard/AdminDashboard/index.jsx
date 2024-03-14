@@ -2,12 +2,25 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance';
 import Table from '../../../common/Table';
+import useDebounceHook from '../../../../utils/custom-hooks/useDebounce';
+import Pagination from '../../../common/Pagination';
 
 const Index = () => {
+  const [currentPage,setCurrentPage] = useState(1)
+  const [recordsPerPage] = useState(6)
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
+  const indexOfLastRecord=currentPage* recordsPerPage
+  const indexOfFirstRecord=indexOfLastRecord-recordsPerPage
+console.log(products)
+  const paginateRecords = products.slice(indexOfFirstRecord,indexOfLastRecord)
+  console.log(paginateRecords)
+  const nPages = Math.ceil(products.length /recordsPerPage)
+  console.log(nPages)
+  const shouldRenderPagination = products.length > recordsPerPage
   const handleCreateProduct = () => {
     navigate('/admin-create-products');
   };
@@ -108,9 +121,16 @@ const Index = () => {
           </div>
         )}
       </div>
+      
 
-      <Table products={products} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
-
+      <Table products={paginateRecords} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
+      { ( shouldRenderPagination &&
+                    <Pagination
+                        nPages={nPages}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}  
+                    />
+                )}
       {/* <table className="table-auto w-full mt-8 border">
         <thead>
           <tr className="border-b">

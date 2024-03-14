@@ -18,24 +18,9 @@ const CommonLinks = ({ children, handleLogOut }) => {
               } text-lg block py-1 hover:text-black`
             }
           >
-            Home
+            {seller ? 'Dashboard': 'Home'}
           </NavLink>
         </li>
-        {admin ? null : (
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `${
-                  isActive ? "" : "text-white"
-                } flex items-center gap-2 text-lg py-1 hover:text-black`
-              }
-            >
-              <FaHeadphonesAlt />
-              Contact Us
-            </NavLink>
-          </li>
-        )}
         {isAuth ? (
           children
         ) : (
@@ -54,6 +39,21 @@ const CommonLinks = ({ children, handleLogOut }) => {
               </NavLink>
             </li>
           </>
+        )}
+        {admin ? null : (
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "" : "text-white"
+                } flex items-center gap-2 text-lg py-1 hover:text-black`
+              }
+            >
+              <FaHeadphonesAlt />
+              Contact Us
+            </NavLink>
+          </li>
         )}
         <li>
           {isAuth ? (
