@@ -8,6 +8,7 @@ import Pagination from '../../../common/Pagination';
 const Index = () => {
   const [currentPage,setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(6)
+  const [searchQuery,setSearchQuery] = useState('')
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -15,12 +16,21 @@ const Index = () => {
 
   const indexOfLastRecord=currentPage* recordsPerPage
   const indexOfFirstRecord=indexOfLastRecord-recordsPerPage
+
 console.log(products)
-  const paginateRecords = products.slice(indexOfFirstRecord,indexOfLastRecord)
+const debouncedQuery = useDebounceHook(searchQuery,500)
+const handleSearchChange = e => {
+  setSearchQuery(e.target.value)
+  setCurrentPage(1)
+}
+const filteredData = products.filter(product => product.title && product.title.toLowerCase().includes(debouncedQuery.toLowerCase()))
+  const paginateRecords = filteredData.slice(indexOfFirstRecord,indexOfLastRecord)
   console.log(paginateRecords)
-  const nPages = Math.ceil(products.length /recordsPerPage)
+  const nPages = Math.ceil(filteredData.length /recordsPerPage)
   console.log(nPages)
   const shouldRenderPagination = products.length > recordsPerPage
+
+ 
   const handleCreateProduct = () => {
     navigate('/admin-create-products');
   };
@@ -121,7 +131,13 @@ console.log(products)
           </div>
         )}
       </div>
-      
+      <input
+                type="text"
+                placeholder="Search..."
+                className="search"
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
 
       <Table products={paginateRecords} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
       { ( shouldRenderPagination &&
