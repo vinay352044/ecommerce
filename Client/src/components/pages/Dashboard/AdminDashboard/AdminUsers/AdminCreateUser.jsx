@@ -26,7 +26,7 @@ function AdminCreateUser() {
         ...values})
             .then(res => {
                 console.log(res);
-                navigate('/admin/users');
+                navigate('/admin-users');
             })
             .catch(err => console.log(err));
     };

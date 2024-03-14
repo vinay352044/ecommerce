@@ -7,7 +7,7 @@ const UsersCart = () => {
     
 
     const cartItems = useSelector((state)=>state.CartReducer.cartItems)
-    console.log(cartItems);
+    console.log(cartItems)
 
   return (
     <div>

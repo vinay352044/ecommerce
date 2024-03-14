@@ -5,40 +5,28 @@ const AdminLinks = () => {
       <>
         <li>
           <NavLink
-            to="/admin/create-products"
+            to="/admin-createCategories"
             className={({ isActive }) =>
             `${
               isActive ? '' : "text-white"
             } text-lg block py-1  md:hover:text-black`
           }
           >
-            Add Products
+            Categories
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/admin/createUser"
+            to="/admin-users"
             className={({ isActive }) =>
             `${
               isActive ? '' : "text-white"
             } text-lg block py-1 md:hover:text-black`
           }
           >
-            Add Users
+          Users
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink
-            to="/buisness/register"
-            className={({ isActive }) =>
-            `${
-              isActive ? '' : "text-white"
-            } text-lg block py-1 hover:text-black`
-          }
-          >
-            Add Categories
-          </NavLink>
-        </li> */}
       </>
     );
   };
