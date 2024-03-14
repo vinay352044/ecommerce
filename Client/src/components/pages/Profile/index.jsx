@@ -5,6 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { FaBoxOpen } from "react-icons/fa";
 import { useState } from "react";
 import Button from "../../common/Button";
 import { AiFillEdit } from "react-icons/ai";
@@ -84,7 +85,7 @@ const Profile = () => {
         <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
           <img src={placeholder} alt="placeholder" className="w-full h-full" />
         </div>
-        <div className="w-full h-full p-4 py-8 flex justify-between flex-col">
+        <div className="w-full h-full p-6 py-8 flex justify-between flex-col">
           <div className="mb-8">
             <h1 className="text-3xl font-semibold text-slate-700 text-center">
               Welcome {user ? user.name : seller.name} !
@@ -135,7 +136,7 @@ const Profile = () => {
                   className={`${inputClass} text-red-600`}
                   required
                 />
-                {showPass ? (
+                {!showPass ? (
                   <GoEye
                     className="text-2xl cursor-pointer"
                     onClick={() => setShowPass(!showPass)}
@@ -185,6 +186,10 @@ const Profile = () => {
                   <NavLink to="/wishlist" className={linkClass}>
                     <FaHeart />
                     Wishlist
+                  </NavLink>
+                  <NavLink to="/orders" className={linkClass}>
+                    <FaBoxOpen/>
+                    Orders
                   </NavLink>
                 </>
               ) : (
