@@ -10,7 +10,8 @@ import UserLinks from "./Links/UserLinks";
 import SellerLinks from "./Links/SellerLinks";
 import logo from "/images/png/logo-no-background.png";
 import { useDispatch, useSelector } from "react-redux";
-import { REMOVE_ROLE, removeRole } from "../../../redux/actions/roleAction";
+import { removeRole } from "../../../redux/actions/roleAction";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const {isAuth , user , seller , admin} = useSelector((state) => state.role);
@@ -21,6 +22,7 @@ const Navbar = () => {
   const handleLogOut = (e) => {
     e.preventDefault()
     dispatch(removeRole())
+    toast.success('Logout Successful !!')
   }
 
   return (
@@ -85,7 +87,7 @@ const Navbar = () => {
               <>
                 <li>
                   <NavLink
-                    to="/buisness/register"
+                    to="/business/register"
                     className={({ isActive }) =>
                       `${
                         isActive ? "" : "text-white"
@@ -98,7 +100,9 @@ const Navbar = () => {
                 </li>
               </>
             )}
-            <li>
+           {
+            admin ? null : (
+              <li>
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
@@ -111,6 +115,8 @@ const Navbar = () => {
                 Contact Us
               </NavLink>
             </li>
+            )
+           }
             <li>
               { !isAuth ? (
                 <NavLink
