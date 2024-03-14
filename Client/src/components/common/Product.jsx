@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CiHeart } from "react-icons/ci";
 import { Link } from 'react-router-dom';
-import { quantityOfProducts, removeFromCart } from "../../redux/actions/productActions";
+import { quantityOfProducts, removeFromCart } from "../../redux/actions/cartActions";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from "../../utils/axios-instance";
+
 
 const Product = ({product,handleClick,isAddToCart}) => {
   const user = useSelector((state) => state.role.user);
@@ -31,14 +32,18 @@ const Product = ({product,handleClick,isAddToCart}) => {
     };
    
     
+   
+    
     function handleChangedQuantity(product,change){
       if(change=='dec'){
         setquantity(quantity-1)
+        product.stock += 1
          dispatch(quantityOfProducts({id:product.id,quantity:quantity-1}))
          toast.info(" Product Quantity Decreased!", {
           position: 'top-right',
         });
          if(quantity<=1){
+          product.stock = product.stock + product.quantity
           dispatch(removeFromCart(product.id))
           toast.success("Removed from the cart!", {
             position: 'top-right',
@@ -46,7 +51,8 @@ const Product = ({product,handleClick,isAddToCart}) => {
          }
       }else{
         setquantity(quantity+1)
-        dispatch(quantityOfProducts({id:product.id,quantity:quantity+1}))
+        product.stock -= 1
+        product.stock && dispatch(quantityOfProducts({id:product.id,quantity:quantity+1}))
         toast.info(" Product Quantity Increased!", {
           position: 'top-right',
         });
@@ -101,6 +107,7 @@ const Product = ({product,handleClick,isAddToCart}) => {
                 min="0"
                 max="5"
                 value={quantity}
+                readOnly
                 className="text-center m-2"
               />
               <button onClick={() => handleChangedQuantity(product,'inc')}>+</button>

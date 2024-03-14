@@ -185,8 +185,8 @@ const Profile = () => {
                 </>
               ) : (
                 <>
-                 <NavLink to="/cart" className={linkClass}>
-                    Your Products
+                 <NavLink to={role.seller ? '/seller-products':'/cart'} className={linkClass}>
+                    {role.seller ? 'Your Products': 'Your Orders'}
                   </NavLink>
                 </>
               )}
