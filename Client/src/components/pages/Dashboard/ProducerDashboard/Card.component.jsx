@@ -1,175 +1,196 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { worker, reject_order } from "../../../../redux/actions/orderActions";
+import { worker } from "../../../../redux/actions/orderActions";
+import { toast } from "react-toastify";
 
 function Card({ card_data, hideButtons }) {
   const sellerState = useSelector((state) => state.orderReducer);
   const dispatch = useDispatch();
-  console.log("card called");
-  console.log(card_data);
 
   const { cardData, order, sellerid, handleflag } = card_data;
   const [productdetails, setProductdetails] = useState(cardData);
   const [orderData, setorderData] = useState(order);
   const [selectedDate, setSelectedDate] = useState("");
   const [editable, seteditable] = useState(false);
+  const [deliveryDateFilled, setDeliveryDateFilled] = useState(false);
 
   useEffect(() => {
     setProductdetails(cardData);
     setorderData(order);
   }, [cardData, order]);
 
-  console.log(productdetails);
-  console.log(order);
-  console.log(sellerid);
-
-  useEffect(() => {
-    console.log("order changed");
-    console.log(orderData);
-    // handleflag();
-  }, [orderData]);
-
-  useEffect(() => {
-    if (editable) {
-      // Focus on the input field when it becomes editable
-    }
-  }, [editable]);
-
   function handleAccept(string) {
-    console.log("accepted clicked");
-    if ((orderData && !orderData.order_accepted)||(string === "handlesubmit")) {
-      
-      
+    if (
+      (orderData &&
+        orderData.order_accepted === "pending" &&
+        deliveryDateFilled) ||
+      string === "handlesubmit"
+    ) {
       const temporder = {
         ...orderData,
-        order_accepted: true,
+        order_accepted: "accepted",
         accepted_by: `${sellerid}`,
         expected_delivery: `${selectedDate}`,
       };
-      console.log(temporder);
+
       setorderData(temporder);
 
       dispatch(
         worker(
-          "ACCEPT_ORDER",
+          "UPDATE_ORDER",
           "UPDATE_ACCEPT_ORDER",
           `http://localhost:3000/orders/${temporder.id}`,
           temporder
         )
       );
+      toast.success("order accepted");
+    } else {
+      toast.error("add delivery date");
     }
 
-   handleflag();
+    handleflag();
   }
 
   function handleDelay() {
     seteditable(true);
   }
 
-function handleSubmit(){
-  handleAccept("handlesubmit")
-  seteditable(false);
-}
-
+  function handleSubmit() {
+    if (deliveryDateFilled) {
+      handleAccept("handlesubmit");
+      seteditable(false);
+    } else {
+      toast.error("add delivery date");
+    }
+  }
 
   function handleReject() {
-    const temporder = {
-      ...orderData,
-      order_accepted: false,
-      accepted_by: "",
-    };
-    setorderData(temporder);
+    if (orderData && orderData.order_accepted === "pending") {
+      const temporder = {
+        ...orderData,
+        order_accepted: "rejected",
+        accepted_by: "",
+      };
+      setorderData(temporder);
+      dispatch(
+        worker(
+          "UPDATE_ORDER",
+          "UPDATE_REJECT_ORDER",
+          `http://localhost:3000/orders/${temporder.id}`,
+          temporder
+        )
+      );
+      toast.error("order rejected");
+    }
 
-    dispatch(reject_order(temporder.id));
     handleflag();
   }
 
-  console.log("product details in card");
-  console.log(productdetails);
-  // console.log()
   return (
     <>
       {productdetails ? (
         <div>
           <div className="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow-lg ">
-            <a href="#">
+            <div>
               <img
                 className="p-8 rounded-t-lg"
                 src={productdetails.thumbnail}
                 alt="product image"
               />
-            </a>
+            </div>
             <div className="px-5 pb-5">
               <div>
-                <h5 className="text-base  font-semibold tracking-tight text-gray-900  mb-4">
+                <h4 className="text-lg  font-semibold tracking-tight text-gray-900  mb-4">
+                  {productdetails.title}
+                </h4>
+              </div>
+              <div>
+                <h5 className="text-sm  font-normal tracking-tight text-gray-900  mb-4">
                   {productdetails.description}
                 </h5>
               </div>
-
-
+              <div className="flex items-center justify-between mb-4 ">
+                <span className="text-sm font-normal text-gray-900">
+                  <strong>Discount :</strong>{" "}
+                  {productdetails.discountPercentage}%
+                </span>
+                <span className="text-sm font-normal text-gray-900">
+                  <strong>Rating :</strong> {productdetails.rating}
+                </span>
+                <span className="text-sm font-normal text-gray-900">
+                  <strong>Quantity :</strong> {orderData.quantity}
+                </span>
+              </div>
 
               {hideButtons ? (
-                    editable ? (
-                      <div className="flex items-center justify-between text-white mb-4">
-                        <label
-                          className="text-black "
-                          htmlFor="delivery_calender"
-                        >
-                          Delivery Date:
-                        </label>
-                        <input
-                          name="delivery_calender"
-                          id="delivery_calender"
-                          type="date" // Change type to text
-                          placeholder="select date to deliver"
-                          // value={orderData.expected_delivery} // Set value to fixed date
-                          // readOnly={!editable} // Set readOnly attribute to prevent editing
-                          autoFocus={editable}
-                          onChange={(e) => {const formattedDate = e.target.value;formattedDate.split("-").reverse().join("-");setSelectedDate(formattedDate)}}
-                          className={`bg-gray-200 px-3 py-1 w-1/2 rounded-md ${
-                            editable ? "cursor-text" : "cursor-not-allowed"
-                          }`}
-                        />
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-between text-white mb-4">
-                        <label
-                          className="text-black "
-                          htmlFor="delivery_calender"
-                        >
-                          Delivery Date:
-                        </label>
-                        <input
-                          name="delivery_calender"
-                          id="delivery_calender"
-                          type="text" // Change type to text
-                          placeholder="select date to deliver"
-                          value={orderData.expected_delivery.split("-").reverse().join("-")} // Set value to fixed date
-                          readOnly={!editable} // Set readOnly attribute to prevent editing
-                          autoFocus={editable}
-                          className={`bg-gray-200 px-3 py-1 w-1/2 rounded-md ${
-                            editable ? "cursor-text" : "cursor-not-allowed"
-                          }`}
-                        />
-                      </div>
-                    )
-                  ) : (
-                    <div className="flex items-center justify-between text-white mb-4 ">
-                      <label
-                        className="text-black "
-                        htmlFor="delivery_calender"
-                      >
-                        delivery date
-                      </label>
-                      <input
-                        name="delivery_calender"
-                        type="date"
-                        placeholder="select date to deliver"
-                        onChange={(e) => {const formattedDate = e.target.value;formattedDate.split("-").reverse().join("-");setSelectedDate(formattedDate)}}
-                      />
-                    </div>
-                  )}
+                editable ? (
+                  <div className="flex items-center justify-between text-black mb-4">
+                    <label className="text-black " htmlFor="delivery_calender">
+                      Delivery Date :
+                    </label>
+                    <input
+                      name="delivery_calender"
+                      id="delivery_calender"
+                      type="date" // Change type to text
+                      placeholder="select date to deliver"
+                      // value={orderData.expected_delivery} // Set value to fixed date
+                      // readOnly={!editable} // Set readOnly attribute to prevent editing
+                      autoFocus={editable}
+                      onChange={(e) => {
+                        const formattedDate = e.target.value;
+                        formattedDate.split("-").reverse().join("-");
+                        setSelectedDate(formattedDate);
+                        setDeliveryDateFilled(true);
+                      }}
+                      className={`bg-gray-200 px-3 py-1 w-1/2 rounded-md text-center ${
+                        editable ? "cursor-text" : "cursor-not-allowed"
+                      }`}
+                      required
+                    />
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-between text-black mb-4">
+                    <label className="text-black " htmlFor="delivery_calender">
+                      Delivery Date :
+                    </label>
+                    <input
+                      name="delivery_calender"
+                      id="delivery_calender"
+                      type="text" // Change type to text
+                      placeholder="select date to deliver"
+                      value={orderData.expected_delivery
+                        .split("-")
+                        .reverse()
+                        .join("-")} // Set value to fixed date
+                      readOnly={!editable} // Set readOnly attribute to prevent editing
+                      autoFocus={editable}
+                      className={`bg-gray-200 px-3 py-1 w-1/2 rounded-md text-center ${
+                        editable ? "cursor-text" : "cursor-not-allowed"
+                      }`}
+                    />
+                  </div>
+                )
+              ) : (
+                <div className="flex items-center justify-between text-black mb-4 ">
+                  <label className="text-black " htmlFor="delivery_calender">
+                    delivery date :
+                  </label>
+                  <input
+                    name="delivery_calender"
+                    type="date"
+                    placeholder="select date to deliver"
+                    className="border-2 border-gray-200 rounded-md"
+                    onChange={(e) => {
+                      const formattedDate = e.target.value;
+                      formattedDate.split("-").reverse().join("-");
+                      setSelectedDate(formattedDate);
+                      setDeliveryDateFilled(true);
+                    }}
+                    required
+                  />
+                </div>
+              )}
 
               {/* {editable && hide ? (
                 <>
@@ -223,24 +244,26 @@ function handleSubmit(){
                 </span>
 
                 <div>
-                  {hideButtons  ? (editable?(
-                     <>
-                     <button
-                       onClick={handleSubmit}
-                       className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mx-1 text-center "
-                     >
-                       submit
-                     </button>
-                   </>
-                  ):
-                    <>
-                      <button
-                        onClick={handleDelay}
-                        className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mx-1 text-center "
-                      >
-                        Delay
-                      </button>
-                    </>
+                  {hideButtons ? (
+                    editable ? (
+                      <>
+                        <button
+                          onClick={handleSubmit}
+                          className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mx-1 text-center "
+                        >
+                          submit
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          onClick={handleDelay}
+                          className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mx-1 text-center "
+                        >
+                          Delay
+                        </button>
+                      </>
+                    )
                   ) : (
                     <>
                       <button
