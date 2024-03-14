@@ -4,7 +4,7 @@ import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeadphonesAlt } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AdminLinks from "./Links/AdminLinks";
 import UserLinks from "./Links/UserLinks";
 import SellerLinks from "./Links/SellerLinks";
@@ -15,15 +15,16 @@ import { toast } from "react-toastify";
 import CommonLinks from "./Links/CommonLinks";
 
 const Navbar = () => {
-  const { isAuth, user, seller, admin } = useSelector((state) => state.role);
+  const { user, seller, admin } = useSelector((state) => state.role);
   const [show, setShow] = useState(false);
-  // const [render , setRender] = useState(false)
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleLogOut = (e) => {
     e.preventDefault();
     dispatch(removeRole());
     toast.success("Logout Successful !!");
+    navigate('/')
   };
 
   return (
