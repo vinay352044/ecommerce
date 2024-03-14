@@ -165,7 +165,7 @@ export const getCategoryById = async (id) => {
     };
   }
 };
-
+//fetch all users
 export const UpdateCategory = async (category) => {
   try {
     const res = await API.put(`categories/${category.id}`, category);
@@ -335,5 +335,58 @@ export const registerOrder = async (ordersObj) => {
       data: [],
       error: error.message,
     };
+  }
+};
+//delete user from admin
+export const deleteUser = async (id) => {
+  try {
+      const res = await API.delete(`/users/${id}`);
+      return {
+          success: true,
+          data: res.data,
+          error: null,
+      };
+  } catch (error) {
+      return {
+          success: false,
+          data: [],
+          error: error.message,
+      };
+  }
+};
+
+//update user from admin
+export const updateUserFromAdmin = async (id, userData) => {
+  try {
+      const res = await API.put(`/users/${id}`, userData);
+      return {
+          success: true,
+          data: res.data,
+          error: null,
+      };
+  } catch (error) {
+      return {
+          success: false,
+          data: [],
+          error: error.message,
+      };
+  }
+};
+
+//create user from admin
+export const createUser = async (userData) => {
+  try {
+      const res = await API.post(`/users`, userData);
+      return {
+          success: true,
+          data: res.data,
+          error: null,
+      };
+  } catch (error) {
+      return {
+          success: false,
+          data: [],
+          error: error.message,
+      };
   }
 };

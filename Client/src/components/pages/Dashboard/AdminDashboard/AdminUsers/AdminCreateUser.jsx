@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { createUser } from '../../../../../utils/axios-instance';
 
-const errors = {
-};
+const errors = {};
+const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
 function AdminCreateUser() {
     const [data , setData] = useState([]);
     const [values, setValues] = useState({
@@ -25,17 +26,20 @@ function AdminCreateUser() {
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        axios.post('http://localhost:3000/users', {id: data.length !== 0 ? (parseInt(data[data.length - 1].id) + 1).toString() : "1",
-        ...values})
-            .then(res => {
-                console.log(res);
+        if(errors.name || errors.password){
+            return;
+        }else{
+            try {
+                await createUser( {id: data.length !== 0 ? (parseInt(data[data.length - 1].id) + 1).toString() : "1",
+                ...values, favouriteProducts: []});
+                toast.success('User created successfully!');
                 navigate('/admin-users');
-            })
-            .catch(err => console.log(err));
-        toast.success('user created successfully!');
+            } catch (error) {
+                toast.error('Error in creating the user');
+            }
+        }
     };
 
     return (
@@ -68,10 +72,19 @@ function AdminCreateUser() {
                     <label htmlFor="password" className="block text-sm font-medium text-gray-700">password</label>
                     <input type="password" id="password" name="password" autoComplete="tel" required
                         className="mt-1 p-2 block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm"
-                        onChange={e => setValues({ ...values, password: e.target.value })} />
+                        onChange={e => {
+                            setValues({ ...values, password: e.target.value })
+                            if(!passwordRules.test(values.password)){
+                                errors.password = "Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number ";
+                                // console.log(errors);
+                            }else{
+                                errors.password = "cbbchb";
+                            }
+                        }} />
+                        {errors.password !== "" ? <p>{errors.password}</p> : "null"}
                 </div>
                 <button type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Submit
                 </button>
                 <button type="button"
