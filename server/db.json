@@ -322,8 +322,8 @@
   "sellers": [
     {
       "id": "1",
-      "name": "jay-updated",
-      "businessName": "BacMart",
+      "name": "jay",
+      "businessName": "BacMart-Shop",
       "gstin": "22AAAAA0000A1Z5",
       "brand": "samsung",
       "email": "jay@gmail.com",
@@ -529,7 +529,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Aishaaa",
+      "name": "Aisha",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [

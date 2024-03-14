@@ -100,23 +100,23 @@ export const Router = () => {
             // protected routes for admin should be declared here
             {
               path: "admin",
-              element: <Admin />,
+              element: <Admin />
             },
             {
               path: "admin-users", //mansi admin homepage
-              element: <AdminUsers />,
+              element: <AdminUsers />
             },
             {
               path: "admin-createUser", // mansi admin createuserpage
-              element: <AdminCreateUser />,
+              element: <AdminCreateUser />
             },
             {
               path: "admin-update/:id", // mansi admin updateuserpage
-              element: <AdminUpdateUsers />,
+              element: <AdminUpdateUsers />
             },
             {
               path: "admin-create-products",
-              element: <AdminProducts />,
+              element: <AdminProducts />
             },
             {
               path: "admin-update-products/:productID",
@@ -126,7 +126,6 @@ export const Router = () => {
               path: "admin-createCategories",
               element: <AdminCreateCategories />,
             },
-
             {
               path: "admin-categories",
               element: <AdminCategories />,

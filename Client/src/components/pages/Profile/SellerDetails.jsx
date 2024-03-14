@@ -3,7 +3,7 @@ import { FaShop } from "react-icons/fa6";
 const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass , infoWrapperClass }) => {
   return (
     <>
-      <div className={infoWrapperClass}>
+      <div className={`${infoWrapperClass}  w-full`}>
         <label htmlFor="email" className={labelClass}>
           <FaShop /> :
         </label>
@@ -13,13 +13,13 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.businessName}
           readOnly={readOnly}
           onChange={handleChange}
-          className={`${inputClass} font-medium text-xl border-none bg-transparent`}
+          className={`${inputClass} font-medium text-xl border-none bg-transparent w-full`}
           required
         />
       </div>
       <div className={`${infoWrapperClass} border-none`}>
-        <label htmlFor="email" className={`${labelClass} text-xl`}>
-          GST No. :
+        <label htmlFor="email" className={`${labelClass} text-lg`}>
+          GST :
         </label>
         <input
           type="text"
@@ -27,7 +27,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.gstin}
           readOnly={true}
           onChange={handleChange}
-          className={`${inputClass} font-medium text-lg border-none bg-transparent`}
+          className={`${inputClass} font-medium text-lg border-none bg-transparent w-[60%]`}
         />
       </div>
     </>

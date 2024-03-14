@@ -8,7 +8,7 @@ const CommonLinks = ({ children, handleLogOut }) => {
   const { isAuth, user, seller, admin } = useSelector((state) => state.role);
   return (
     <>
-      <ul className="font-medium text-lg flex flex-col items-center md:p-0 md:flex-row md:space-x-8">
+      <ul className="font-medium text-base flex flex-col items-center gap-4 md:p-0 md:flex-row">
         <li>
           <NavLink
             to={admin ? "/admin" : seller ? "/seller-dashboard/pendingorders" : "/"} // seller to change
