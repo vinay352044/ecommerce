@@ -1,4 +1,5 @@
 import axios from "axios";
+import {setRole} from "../../redux/actions/roleAction";
 
 export const API = axios.create({
   baseURL: "http://localhost:3000",
@@ -38,6 +39,29 @@ export const addProduct = async (product) => {
     };
   }
 };
+
+export const updateSellerProducts = async (seller,newProductId) => {
+  try {
+    const sellerProducts = seller.productsToSell
+    const updatedSellersProducts = [...sellerProducts, newProductId]
+    const newSellerObj = {
+      ...seller, productsToSell: updatedSellersProducts
+    }
+    const res = await API.put( `sellers/${seller.id}`, newSellerObj);
+    
+    return {
+      success: true,
+      data: newSellerObj,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: error.message,
+    };
+  }
+}
 
 export const getProductById = async (id) => {
   try {
