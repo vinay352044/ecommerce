@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Wishlist = () => {
   const data = useSelector((state) => state.role.user);
-  // const existing = data.favouriteProducts
+
   const [favouriteProducts, setFavouriteProducts] = useState([]);
   const navigate = useNavigate()
 
@@ -25,22 +25,7 @@ const Wishlist = () => {
     fetchFavouriteProducts();
   }, [data]);
 
-  // const heartHandle = async (item) => {
-  //   const alreadyLiked = data.favouriteProducts.find(
-  //     (product) => product.id === item.id
-  //   );
 
-  //   if (!alreadyLiked) {
-  //     data.favouriteProducts.push(item);
-
-  //     try {
-  //       const updatedUser = await API.patch(`/users/${data.id}`, data);
-  //       console.log(updatedUser);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
   const handleRemove= async(productId) => {
     try{
     const updatedProducts = favouriteProducts.filter(product => product.id != productId)

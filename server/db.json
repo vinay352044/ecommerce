@@ -101,7 +101,7 @@
       "id": "6",
       "title": "Eau De Perfume Spray",
       "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
-      "price": "30",
+      "price": "300000",
       "discountPercentage": "10.99",
       "rating": "4.7",
       "stock": "105",
@@ -256,15 +256,46 @@
     },
     {
       "id": "14",
-      "title": "",
-      "description": "",
-      "price": "15151515151515151515151515151515151515151515151515",
-      "discountPercentage": "",
-      "stock": "",
-      "category": "",
-      "brand": "",
-      "total_sell": "",
-      "images": ""
+      "title": "3D Embellishment Art Lamp",
+      "description": "3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)",
+      "price": "20",
+      "discountPercentage": "16.49",
+      "rating": "4.82",
+      "stock": "54",
+      "brand": "LED Lights",
+      "category": "home-decoration",
+      "total_sell": "20",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/28/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/28/1.jpg",
+        "https://cdn.dummyjson.com/product-images/28/2.jpg",
+        "https://cdn.dummyjson.com/product-images/28/3.png",
+        "https://cdn.dummyjson.com/product-images/28/4.jpg",
+        "https://cdn.dummyjson.com/product-images/28/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Handcraft Chinese style",
+      "description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
+      "price": "60",
+      "discountPercentage": "15.34",
+      "rating": "4.44",
+      "stock": "7",
+      "brand": "luxury palace",
+      "category": "home-decoration",
+      "total_sell": "13",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/29/thumbnail.webp",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/29/1.jpg",
+        "https://cdn.dummyjson.com/product-images/29/2.jpg",
+        "https://cdn.dummyjson.com/product-images/29/3.webp",
+        "https://cdn.dummyjson.com/product-images/29/4.webp",
+        "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
+      ]
+    },
+    {
+      "id": "ac40"
     }
   ],
   "sellers": [
@@ -287,9 +318,7 @@
       "email": "meet@gmail.com",
       "password": "Meet@123",
       "brand": "Samsung",
-      "productsToSell": [
-        "4"
-      ]
+      "productsToSell": ["4"]
     },
     {
       "id": "3",
@@ -300,9 +329,7 @@
       "email": "rahul@example.com",
       "password": "rahulpass",
       "brand": "Fog Scent Xpressio",
-      "productsToSell": [
-        "5"
-      ]
+      "productsToSell": ["5"]
     },
     {
       "id": "4",
@@ -313,9 +340,7 @@
       "email": "priya@example.com",
       "password": "priyapass",
       "brand": "Samsung Galaxy Book",
-      "productsToSell": [
-        "6"
-      ]
+      "productsToSell": ["6"]
     },
     {
       "id": "5",
@@ -326,9 +351,7 @@
       "email": "amit@example.com",
       "password": "amitpass",
       "brand": "Lord - Al-Rehab",
-      "productsToSell": [
-        "7"
-      ]
+      "productsToSell": ["7"]
     },
     {
       "id": "6",
@@ -339,9 +362,7 @@
       "email": "pooja@example.com",
       "password": "poojapass",
       "brand": "L'Oreal Paris",
-      "productsToSell": [
-        "8"
-      ]
+      "productsToSell": ["8"]
     },
     {
       "id": "7",
@@ -352,9 +373,7 @@
       "email": "vikram@example.com",
       "password": "vikrampass",
       "brand": "Hemani Tea",
-      "productsToSell": [
-        "9"
-      ]
+      "productsToSell": ["9"]
     },
     {
       "id": "8",
@@ -365,9 +384,7 @@
       "email": "shalini@example.com",
       "password": "shalinipass",
       "brand": "Dermive",
-      "productsToSell": [
-        "10"
-      ]
+      "productsToSell": ["10"]
     },
     {
       "id": "9",
@@ -378,9 +395,7 @@
       "email": "rajesh@example.com",
       "password": "rajeshpass",
       "brand": "Bake Parlor Big",
-      "productsToSell": [
-        "11"
-      ]
+      "productsToSell": ["11"]
     },
     {
       "id": "10",
@@ -391,9 +406,7 @@
       "email": "deepika@example.com",
       "password": "deepikapass",
       "brand": "Baking Food Items",
-      "productsToSell": [
-        "12"
-      ]
+      "productsToSell": ["12"]
     },
     {
       "id": "11",
@@ -404,9 +417,7 @@
       "email": "sandeep@example.com",
       "password": "sandeepass",
       "brand": "Samsung",
-      "productsToSell": [
-        "13"
-      ]
+      "productsToSell": ["13"]
     },
     {
       "id": "12",
@@ -417,9 +428,7 @@
       "email": "kavita@example.com",
       "password": "kavitapass",
       "brand": "Flying Wooden",
-      "productsToSell": [
-        "14"
-      ]
+      "productsToSell": ["14"]
     },
     {
       "id": "13",
@@ -430,9 +439,7 @@
       "email": "rohit@example.com",
       "password": "rohitpass",
       "brand": "LED Lights",
-      "productsToSell": [
-        "15"
-      ]
+      "productsToSell": ["15"]
     },
     {
       "id": "14",
@@ -453,16 +460,6 @@
       "email": "nu@gmail.comm",
       "password": "Dh1@",
       "productsToSell": []
-    },
-    {
-      "id": "16",
-      "name": "Smartphone new",
-      "businessName": "Dhruv electronics",
-      "gstin": "22BAAAA0000A1Z5",
-      "brand": "samsung",
-      "email": "abc@gmail.com",
-      "password": "Dh1@",
-      "productsToSell": []
     }
   ],
   "users": [
@@ -471,46 +468,7 @@
       "name": "Aisha xyzascascaz",
       "email": "aisha@gmail.com",
       "password": "aishapass",
-      "favouriteProducts": [
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": "899",
-          "discountPercentage": "17.94",
-          "rating": "4.44",
-          "stock": "34",
-          "brand": "Apple",
-          "category": "smartphones",
-          "total_sell": "15",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/2/1.jpg",
-            "https://cdn.dummyjson.com/product-images/2/2.jpg",
-            "https://cdn.dummyjson.com/product-images/2/3.jpg",
-            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "3",
-          "title": "MacBook Pro",
-          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-          "price": "1749",
-          "discountPercentage": "11.02",
-          "rating": "4.57",
-          "stock": "83",
-          "brand": "Apple",
-          "category": "laptops",
-          "total_sell": "10",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/6/1.png",
-            "https://cdn.dummyjson.com/product-images/6/2.jpg",
-            "https://cdn.dummyjson.com/product-images/6/3.png",
-            "https://cdn.dummyjson.com/product-images/6/4.jpg"
-          ]
-        }
-      ]
+      "favouriteProducts": []
     },
     {
       "id": "3",
@@ -647,62 +605,6 @@
       "name": "jay prajapati",
       "email": "jay@gmail.com",
       "password": "1234567890"
-    },
-    {
-      "id": "15",
-      "name": "new product",
-      "email": "dp@gmail.com",
-      "password": "Dh1!",
-      "favouriteProducts": []
-    },
-    {
-      "id": "15",
-      "name": "new product",
-      "email": "dp@gmail.com",
-      "password": "Dh1!",
-      "favouriteProducts": []
-    },
-    {
-      "id": "15",
-      "name": "new product",
-      "email": "dp@gmail.com",
-      "password": "Dh1!",
-      "favouriteProducts": []
-    },
-    {
-      "id": "16",
-      "name": "new product",
-      "email": "u1@gmail.comm",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "16",
-      "name": "new product",
-      "email": "u1@gmail.comm",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "16",
-      "name": "new product",
-      "email": "u1@gmail.comm",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "16",
-      "name": "new product",
-      "email": "u1@gmail.comm",
-      "password": "Dh!1",
-      "favouriteProducts": []
-    },
-    {
-      "id": "17",
-      "name": "new product",
-      "email": "xyz@gmail.com",
-      "password": "Dh1@",
-      "favouriteProducts": []
     }
   ],
   "orders": [
@@ -721,7 +623,7 @@
       "product_id": "5",
       "ordered_at": "3/11/2024, 10:00:00 PM",
       "expected_delivery": "",
-      "order_accepted": true,
+      "order_accepted": false,
       "accepted_by": "3"
     },
     {

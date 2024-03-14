@@ -5,11 +5,30 @@ import { Link } from 'react-router-dom';
 import { quantityOfProducts, removeFromCart } from "../../redux/actions/productActions";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API } from "../../utils/axios-instance";
 
 const Product = ({product,handleClick,isAddToCart}) => {
-
+  const user = useSelector((state) => state.role.user);
     const[ quantity,setquantity] = useState(product.quantity);
     const dispatch = useDispatch();
+
+    const heartHandle = async (item) => {
+      const alreaydLiked = user.favouriteProducts.filter(
+        (product) => product.id === item.id
+      );
+  
+      if (alreaydLiked.length === 0) {
+        user.favouriteProducts.push(item);
+        try {
+          const data = await API.patch(`/users/${user.id}`, user);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      toast.success("Added to whishlist!", {
+        position: 'top-right',
+      });
+    };
    
     
     function handleChangedQuantity(product,change){
@@ -42,7 +61,7 @@ const Product = ({product,handleClick,isAddToCart}) => {
         className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
       >
         <button className="justify-items-end h-5 w-6">
-          <CiHeart />
+        <CiHeart onClick={() => heartHandle(product)} />
         </button>
         <Link to={`/products/${product.id}`}>
           <img
@@ -65,7 +84,7 @@ const Product = ({product,handleClick,isAddToCart}) => {
               ${product.price}
             </span>
             <button
-              className={`text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 ${
+              className={`text-white bg-[#0295db] hover:bg-[#9d9da1]  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 ${
                 isAddToCart ? `addCartBtn` : `removeCartBtn`
               }`}
               onClick={() => handleClick(product)}
