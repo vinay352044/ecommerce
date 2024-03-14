@@ -721,7 +721,7 @@
       "product_id": "5",
       "ordered_at": "3/11/2024, 10:00:00 PM",
       "expected_delivery": "",
-      "order_accepted": false,
+      "order_accepted": true,
       "accepted_by": "3"
     },
     {

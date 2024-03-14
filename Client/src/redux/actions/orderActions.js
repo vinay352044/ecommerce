@@ -20,7 +20,15 @@ export function current_orders(currentordersdata) {
   return { type: "CURRENT_ORDERS", payload: currentordersdata };
 }
 
-export function worker(task_name, action_name, api) {
+export function update_accept_order(orderid) {
+  return { type: "UPDATE_ACCEPT_ORDER", payload: orderid };
+}
+
+export function reject_order(orderid) {
+  return { type: "REJECT_ORDER", payload: orderid };
+}
+
+export function worker(task_name, action_name, api, data) {
   let task;
   if (task_name === "FETCH") {
     task = () =>
@@ -33,39 +41,57 @@ export function worker(task_name, action_name, api) {
         .catch((err) => {
           console.log(err.message);
         });
-  }
-  else if (task_name === "FETCH_MULTI") {
+  } else if (task_name === "FETCH_MULTI") {
     task = () =>
-      Promise.all(api.map(link => axios.get(link)))
-        .then(responses => {
-          const data = responses.map(response => response.data);
+      Promise.all(api.map((link) => axios.get(link)))
+        .then((responses) => {
+          const data = responses.map((response) => response.data);
           console.log(data);
           return data;
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error.message);
           throw error; // Re-throw the error to propagate it further
         });
-  }
-  
+  } else if (task_name === "ACCEPT_ORDER") {
+// const orderid =4;
+//     task = () =>{return orderid}
 
+
+    task = () => {
+     return axios
+        .patch(api, data)
+        .then((res) => {
+          console.log("Order updated successfully:", res.data);
+          console.log(res.data.id);
+          const orderid = parseInt(res.data.id,10);
+          console.log(orderid);
+          return orderid;
+        })
+        .catch((err) => console.error("Error updating order:", err.message));
+    };
+  }
 
   return async function action_maker(dispatch) {
     try {
-      const data = await task();
-
+      const result = await task();
+console.log(result);
       switch (action_name) {
         case "FETCH_NEEDED_PRODUCTS":
-          dispatch(fetch_needed_products(data));
+          dispatch(fetch_needed_products(result));
           break;
 
-
         case "FETCH_TOTAL_ORDERS":
-          dispatch(fetch_total_orders(data));
+          dispatch(fetch_total_orders(result));
           break;
 
         case "FETCH_SELLERS_DETAILS":
-          dispatch(fetch_sellers_details(data));
+          dispatch(fetch_sellers_details(result));
+          break;
+
+        case "UPDATE_ACCEPT_ORDER":
+          console.log(result);
+          dispatch(update_accept_order(result));
           break;
 
         // case "FETCH_SELLERS_INVENTORY":

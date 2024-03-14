@@ -4,17 +4,23 @@ import Card from "./Card.component";
 import { useDispatch, useSelector } from "react-redux";
 import { worker, current_orders } from "../../../../redux/actions/orderActions";
 function OrdersDashboard() {
-  const sellerId = 5132;
-
+  const sellerId = 3;
   const [totalorders, settotalorders] = useState([]);
-  // const [totalproducts,settotalproducts] = useState([])
+  const [acceptedorders,setacceptedorders]= useState([]);
   const [inventory, setinventory] = useState([]);
   const [availabeleorders, setavailabeleorders] = useState([]);
   const [cardData, setcardData] = useState([]);
+  const [flag,setflag] = useState(false);
 
   const sellersState = useSelector((state) => state.orderReducer);
   const dispatch = useDispatch();
-  const productidArray = sellersState.sellers_details.productsToSell || [];
+ 
+  let productidArray = sellersState.sellers_details.productsToSell || [];
+function handleflag(){
+  setflag(!flag);
+}
+  
+
   useEffect(() => {
     dispatch(
       worker(
@@ -23,9 +29,7 @@ function OrdersDashboard() {
         `http://localhost:3000/sellers/${sellerId}`
       )
     );
-    // dispatch(
-    //   worker("FETCH", "FETCH_TOTAL_PRODUCTS", "http://localhost:3000/products")
-    // );
+   
 
     dispatch(
       worker("FETCH", "FETCH_TOTAL_ORDERS", "http://localhost:3000/orders")
@@ -37,18 +41,32 @@ function OrdersDashboard() {
     console.log(sellersState);
     settotalorders(sellersState.total_orders);
     setavailabeleorders(sellersState.current_orders);
-    // setinventory(sellersState.needed_products);
+    
+    setacceptedorders(sellersState.accptedorders);
+    
   }, [sellersState]);
 
+
+useEffect(()=>{
+  console.log(acceptedorders);
+},[acceptedorders])
+
+
+useEffect(()=>{
+  settotalorders(sellersState.total_orders);
+  // console.log(sellersState.acceptedorders);
+},[sellersState.accptedorders] )
+
+
   useEffect(() => {
-    console.log(productidArray);
+
 
     if (
       sellersState.sellers_details.productsToSell !== undefined &&
       sellersState.needed_products.length <
         sellersState.sellers_details.productsToSell.length
     ) {
-      // if (sellersState.needed_products.length < sellersState.sellers_details.productsToSell.length) {
+      
       console.log("if worked");
 
       const apitosend = productidArray.map(
@@ -70,52 +88,28 @@ function OrdersDashboard() {
   ]);
 
   useEffect(() => {
+    
     const dummyavailableorders = totalorders.filter((order) => {
-      return productidArray.includes(order.product_id);
+      if (order.order_accepted !== true)
+        return productidArray.includes(order.product_id);
     });
-
+   
     dispatch(current_orders(dummyavailableorders));
   }, [totalorders]);
 
   useEffect(() => {
-    console.log(inventory);
+   
     console.log(availabeleorders);
     let dummycardData = [];
     if (availabeleorders.length > 0) {
-        dummycardData = availabeleorders.map((order) => {
-            return inventory.find(product => product.id === order.product_id);
-        });
+      dummycardData = availabeleorders.map((order) => {
+        return inventory.find((product) => product.id === order.product_id);
+      });
     }
-    setcardData(dummycardData);
     console.log(dummycardData);
-}, [availabeleorders, inventory]);
-
-  // console.log(cardData[0])
-
-  const postdata = [
-    {
-      id: "90",
-      title: "practice post",
-      description:
-        "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      price: "899",
-      discountPercentage: "17.94",
-      rating: "4.44",
-      stock: "34",
-      brand: "Apple",
-      category: "smartphones",
-      total_sell: "15",
-      thumbnail: "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-      images: [
-        "https://cdn.dummyjson.com/product-images/2/1.jpg",
-        "https://cdn.dummyjson.com/product-images/2/2.jpg",
-        "https://cdn.dummyjson.com/product-images/2/3.jpg",
-        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-      ],
-    },
-  ];
-
-  // const productReqs =
+    setcardData(dummycardData);
+    
+  }, [availabeleorders, inventory]);
 
   return (
     <>
@@ -141,6 +135,7 @@ function OrdersDashboard() {
           </li>
           <li className="me-2" role="presentation">
             <button
+            onClick={()=>settotalorders(sellersState.total_orders)}
               className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
               id="dashboard-tab"
               data-tabs-target="#dashboard"
@@ -152,7 +147,7 @@ function OrdersDashboard() {
               Accepted Requests
             </button>
           </li>
-          <li className="me-2" role="presentation">
+          {/* <li className="me-2" role="presentation">
             <button
               className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
               id="settings-tab"
@@ -177,7 +172,7 @@ function OrdersDashboard() {
             >
               Feedbacks
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div id="default-tab-content">
@@ -187,7 +182,7 @@ function OrdersDashboard() {
           role="tabpanel"
           aria-labelledby="profile-tab"
         >
-          {/* <h1></h1> */}
+        
           {/* //==============================     the pending orders tab  */}
 
           {availabeleorders &&
@@ -195,17 +190,20 @@ function OrdersDashboard() {
           cardData &&
           cardData.length != 0 ? (
             availabeleorders.map((order, index) => (
-              <Card key={order.order_id} order_data={cardData[index]} />
+              <Card
+                key={order.order_id}
+                card_data={{
+                  cardData: cardData[index],
+                  order: order,
+                  sellerid: sellerId,
+                  handleflag : handleflag,
+                }}
+              />
+              
             ))
           ) : (
             <h1>No Orders</h1>
           )}
-
-          {/* <Card/>
-          <Card/>
-          
-          <Card/>
-          <Card/> */}
         </div>
         <div
           className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
@@ -213,9 +211,29 @@ function OrdersDashboard() {
           role="tabpanel"
           aria-labelledby="dashboard-tab"
         >
-          <h1>this is for accepted requests</h1>
+          {totalorders && totalorders.length ? (
+  totalorders.map((order, index) => {
+    if (order.order_accepted && productidArray.includes(order.product_id)) {
+      return (
+        <Card
+          key={order.order_id}
+          card_data={{
+            order: order,
+            cardData: inventory.find((product) => product.id === order.product_id),
+            sellerid: sellerId,
+            handleflag : handleflag,
+          }}
+          hideButtons = {true}
+        />
+      );
+    } 
+  })
+) : (
+  <h1>No Orders</h1>
+)}
+
         </div>
-        <div
+        {/* <div
           className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
           id="settings"
           role="tabpanel"
@@ -230,7 +248,7 @@ function OrdersDashboard() {
           aria-labelledby="contacts-tab"
         >
           <h1>this is for feedbacks</h1>
-        </div>
+        </div> */}
       </div>
     </>
   );
