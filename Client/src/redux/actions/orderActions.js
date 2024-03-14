@@ -24,8 +24,8 @@ export function update_accept_order(orderid) {
   return { type: "UPDATE_ACCEPT_ORDER", payload: orderid };
 }
 
-export function reject_order(orderid) {
-  return { type: "REJECT_ORDER", payload: orderid };
+export function update_reject_order(orderid) {
+  return { type: "UPDATE_REJECT_ORDER", payload: orderid };
 }
 
 export function worker(task_name, action_name, api, data) {
@@ -35,37 +35,30 @@ export function worker(task_name, action_name, api, data) {
       axios
         .get(api)
         .then((res) => {
-          console.log(res.data);
           return res.data;
         })
-        .catch((err) => {
-          console.log(err.message);
-        });
+        .catch((err) => {});
   } else if (task_name === "FETCH_MULTI") {
     task = () =>
       Promise.all(api.map((link) => axios.get(link)))
         .then((responses) => {
           const data = responses.map((response) => response.data);
-          console.log(data);
+
           return data;
         })
         .catch((error) => {
-          console.error(error.message);
           throw error; // Re-throw the error to propagate it further
         });
-  } else if (task_name === "ACCEPT_ORDER") {
-// const orderid =4;
-//     task = () =>{return orderid}
-
+  } else if (task_name === "UPDATE_ORDER") {
+    // const orderid =4;
+    //     task = () =>{return orderid}
 
     task = () => {
-     return axios
+      return axios
         .patch(api, data)
         .then((res) => {
-          console.log("Order updated successfully:", res.data);
-          console.log(res.data.id);
-          const orderid = parseInt(res.data.id,10);
-          console.log(orderid);
+          const orderid = parseInt(res.data.id, 10);
+
           return orderid;
         })
         .catch((err) => console.error("Error updating order:", err.message));
@@ -75,7 +68,7 @@ export function worker(task_name, action_name, api, data) {
   return async function action_maker(dispatch) {
     try {
       const result = await task();
-console.log(result);
+
       switch (action_name) {
         case "FETCH_NEEDED_PRODUCTS":
           dispatch(fetch_needed_products(result));
@@ -90,18 +83,13 @@ console.log(result);
           break;
 
         case "UPDATE_ACCEPT_ORDER":
-          console.log(result);
           dispatch(update_accept_order(result));
           break;
-
-        // case "FETCH_SELLERS_INVENTORY":
-        //   dispatch(fetch_sellers_inventory(data));
-        //   break;
+        case "UPDATE_REJECT_ORDER":
+          dispatch();
 
         default:
           return;
-        // case "FETCH_TOTAL_ORDERS " :
-        // dispatch(fetch_total_orders(data))
       }
     } catch (err) {
       console.log(err.message);

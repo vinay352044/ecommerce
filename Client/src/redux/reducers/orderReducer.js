@@ -36,7 +36,7 @@ export function orderReducer(state = intitalstate, action) {
     // currentorderArray.splice(index,1);
     // return {...state,current_orders:currentorderArray};
 
-    case "REJECT_ORDER":
+    case "UPDATE_REJECT_ORDER":
       const order_id = parseInt(action.payload, 10);
       const currentorder_Array = [...state.current_orders];
       const Index = currentorder_Array.findIndex((order) => {
@@ -49,7 +49,7 @@ export function orderReducer(state = intitalstate, action) {
         ...state,
         current_orders: currentorder_Array,
       };
-      console.log(new_State);
+     
       return new_State;
 
     case "UPDATE_ACCEPT_ORDER":
