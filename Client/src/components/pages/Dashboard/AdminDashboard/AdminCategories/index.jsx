@@ -64,7 +64,7 @@ const AdminCategories = () => {
             <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" />
         </>
     )
-
+        
 }
 
 export default AdminCategories
