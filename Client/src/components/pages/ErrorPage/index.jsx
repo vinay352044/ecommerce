@@ -6,7 +6,7 @@ const ErrorPage = () => {
   const navigate = useNavigate();
   const {isAuth , user,seller,admin} = useSelector(state => state.role)
   const handleNavigate = () => {
-    user ? navigate('/') : seller ? navigate('/seller-dashboard') : admin ? navigate('/admin') : navigate('/');
+    user ? navigate('/') : seller ? navigate('/seller-dashboard/pendingorders') : admin ? navigate('/admin') : navigate('/');
   }
 
   return (
