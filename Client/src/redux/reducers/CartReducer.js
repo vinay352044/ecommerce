@@ -4,10 +4,14 @@ import {
   QUANTITY,
   REMOVE_FROM_CART,
 } from "../actions/productActions";
-const localStore = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+const user = JSON.parse(localStorage.getItem('role')) || {};
+const userId = user.user.id;
+
+const localStoreData = JSON.parse(localStorage.getItem("AllcartItems")) || {};
 
 const initialState = {
-  cartItems: localStore,
+  cartItems: localStoreData[userId]?.cartItems || []
 };
 
 export const CartReducer = (state = initialState, action) => {
@@ -15,41 +19,40 @@ export const CartReducer = (state = initialState, action) => {
     case ADD_TO_CART:
       const updatedCartItems = [...state.cartItems, action.payload];
       const uniqueArray = [...new Set(updatedCartItems)];
-      const localArr =  uniqueArray ;
-      localStorage.setItem("cartItems", JSON.stringify(localArr));
+      const localArr = { ...localStoreData };
+      localArr[userId] = { cartItems: uniqueArray };
+      localStorage.setItem("AllcartItems", JSON.stringify(localArr));
       return { ...state, cartItems: uniqueArray };
 
     case REMOVE_FROM_CART:
-      const filteredArr = state.cartItems.filter(
-        (item) => item.id !== action.payload
-      );
-      const newLocalArr = filteredArr
-      localStorage.setItem("cartItems", JSON.stringify(newLocalArr));
+      const filteredArr = state.cartItems.filter(item => item.id !== action.payload);
+      const newLocalArr = { ...localStoreData };
+      newLocalArr[userId] = { cartItems: filteredArr };
+      localStorage.setItem("AllcartItems", JSON.stringify(newLocalArr));
       return {
         ...state,
         cartItems: filteredArr,
       };
 
     case QUANTITY:
-
-      
-      const index = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
-      );
+      const index = state.cartItems.findIndex(item => item.id === action.payload.id);
       if (index !== -1) {
         const updatedItems = [...state.cartItems];
         updatedItems[index] = {
           ...updatedItems[index],
           quantity: action.payload.quantity,
         };
-        const updatedArr = updatedItems ;
-        localStorage.setItem('cartItems',JSON.stringify(updatedArr))
+        const updatedArr = { ...localStoreData };
+        updatedArr[userId] = { cartItems: updatedItems };
+        localStorage.setItem('AllcartItems', JSON.stringify(updatedArr))
         return { ...state, cartItems: updatedItems };
       }
       return state;
 
     case CLEAR_CART: {
-      localStorage.setItem('cartItems',JSON.stringify([]));
+      const newLocalArr = { ...localStoreData };
+      delete newLocalArr[userId];
+      localStorage.setItem('AllcartItems', JSON.stringify(newLocalArr));
       return {
         ...state, cartItems: []
       }

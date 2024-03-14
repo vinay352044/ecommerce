@@ -1,24 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Carousel } from "flowbite-react";
 import { Rating, RatingStar } from "flowbite-react";
 import { addProductInCart } from "../../../redux/actions/cartActions";
+import { API } from "../../../utils/axios-instance";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductViewDetais = () => {
+ 
+  const [data, setData] = useState(() => {
+    try {
+      const savedData = localStorage.getItem('productDetails');
+      return savedData ? JSON.parse(savedData) : {};
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      return {};
+    }
+  });
+  
   const params = useParams();
   const productId = params.productId;
+  
 
-  const products = useSelector((state) => state.productReducer.products);
-
-  const oneProductDetails = products.filter(
-    (item) => item.id == productId.toString()
-  );
-
-  const requiredProd = oneProductDetails[0];
-  const dispatch = useDispatch();
+  useEffect(()=>{
+    
+      const getProductDetails = async () =>{
+        const response = await API.get(`/products/${productId}`);
+        console.log(response.data);
+        setData(response.data)
+      }
+    getProductDetails();
+    localStorage.setItem("productDetails", JSON.stringify(data))
+  },[])
+  
+  const requiredProd = data;
+  
+  const dispatch = useDispatch(); 
+  const auth = JSON.parse(localStorage.getItem('role')) || false;
+  const isAuth = auth.isAuth;
   function handleClick(product) {
-    dispatch(addProductInCart(product));
+    if(isAuth){
+      dispatch(addProductInCart(product));
+    }else{
+      toast.warning('Please Login!!')
+    }
+    
   }
 
   return (
@@ -27,7 +55,7 @@ const ProductViewDetais = () => {
         <div className=" w-full md:w-[50%] h-full border-[1px] border-[#2590db] rounded-md shadow-2xl md:flex-col overflow-hidden">
           <div className="h-60 w-[100%]">
             <Carousel slideInterval={5000}>
-              {requiredProd.images.map((image, index) => {
+              {requiredProd?.images?.map((image, index) => {
                 return (
                   <img
                     key={index}

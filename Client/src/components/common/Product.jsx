@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { API } from "../../utils/axios-instance";
 import { setRole } from "../../redux/actions/roleAction";
 
+
 const Product = ({ product, handleClick, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
   const [quantity, setquantity] = useState(product.quantity);
@@ -51,25 +52,30 @@ const Product = ({ product, handleClick, isAddToCart }) => {
         });
       }
     } else {
-      setquantity(quantity + 1);
-      product.stock -= 1;
-      product.stock &&
-        dispatch(
-          quantityOfProducts({ id: product.id, quantity: quantity + 1 })
-        );
-      toast.info(" Product Quantity Increased!", {
-        position: "top-right",
-      });
+      
+      if (product.stock > 0) {
+        setquantity(quantity + 1);
+        product.stock -= 1;
+          dispatch(
+            quantityOfProducts({ id: product.id, quantity: quantity + 1 })
+          );
+        toast.info(" Product Quantity Increased!", {
+          position: "top-right",
+        });
+      } else {
+        toast.error("No Stocks Available!");
+      }
     }
   }
 
   return (
-    <div>
+    <div className="grid-cols-3">
       <div
         key={product.id}
         className="w-full max-h-[25rem] max-w-sm bg-white border border-gray-200 rounded-lg shadow"
       >
         <button className="justify-items-end h-5 w-6">
+          
           <CiHeart onClick={() => heartHandle(product)} />
         </button>
         <div className="h-[50%!important] overflow-hidden">
@@ -86,6 +92,9 @@ const Product = ({ product, handleClick, isAddToCart }) => {
             <h5 className="text-xl font-semibold tracking-tight text-gray-900">
               {product.title}
             </h5>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {product.description}
+            </p>
           </Link>
           <span className="text-sm font-bold text-gray-900 dark:text-white">
             Rating: {product.rating}
@@ -105,6 +114,8 @@ const Product = ({ product, handleClick, isAddToCart }) => {
           </div>
           {!isAddToCart ? (
             <>
+              
+              
               <div className="flex justify-center text-3xl">
                 <button onClick={() => handleChangedQuantity(product, "dec")}>
                   -
@@ -135,3 +146,4 @@ const Product = ({ product, handleClick, isAddToCart }) => {
 };
 
 export default Product;
+

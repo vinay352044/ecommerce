@@ -835,9 +835,70 @@
     },
     {
       "id": "14",
-      "name": "jay prajapati",
-      "email": "jay@gmail.com",
-      "password": "1234567890"
+      "name": "dipak",
+      "email": "dipakkarmur45@gmail.com",
+      "password": "Ahir123@",
+      "favouriteProducts": [
+        {
+          "id": "2",
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": "899",
+          "discountPercentage": "17.94",
+          "rating": "4.44",
+          "stock": "34",
+          "brand": "Apple",
+          "category": "smartphones",
+          "total_sell": "13",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/2/1.jpg",
+            "https://cdn.dummyjson.com/product-images/2/2.jpg",
+            "https://cdn.dummyjson.com/product-images/2/3.jpg",
+            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+          ]
+        },
+        {
+          "id": "5",
+          "title": "Fog Scent Xpressio Perfume",
+          "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+          "price": "13",
+          "discountPercentage": "8.14",
+          "rating": "4.59",
+          "stock": "61",
+          "brand": "Fog Scent Xpressio",
+          "category": "fragrances",
+          "total_sell": "22",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/13/1.jpg",
+            "https://cdn.dummyjson.com/product-images/13/2.png",
+            "https://cdn.dummyjson.com/product-images/13/3.jpg",
+            "https://cdn.dummyjson.com/product-images/13/4.jpg",
+            "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
+          ]
+        },
+        {
+          "id": "6",
+          "title": "Eau De Perfume Spray",
+          "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+          "price": "30",
+          "discountPercentage": "10.99",
+          "rating": "4.7",
+          "stock": "105",
+          "brand": "Lord - Al-Rehab",
+          "category": "fragrances",
+          "total_sell": "11",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/15/1.jpg",
+            "https://cdn.dummyjson.com/product-images/15/2.jpg",
+            "https://cdn.dummyjson.com/product-images/15/3.jpg",
+            "https://cdn.dummyjson.com/product-images/15/4.jpg",
+            "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg"
+          ]
+        }
+      ]
     },
     {
       "id": "16",
@@ -896,6 +957,13 @@
           ]
         }
       ]
+    },
+    {
+      "id": "16",
+      "name": "dipak",
+      "email": "shdbw@gmail.com",
+      "password": "Asdfg123@",
+      "favouriteProducts": []
     }
   ],
   "orders": [
