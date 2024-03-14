@@ -26,8 +26,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1 className="text-3xl">Home</h1>
-
       <Products productData={productData} isAddToCart={true} />
     </div>
   );
