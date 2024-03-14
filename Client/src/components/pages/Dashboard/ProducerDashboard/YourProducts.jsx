@@ -56,7 +56,12 @@ const YourProducts = () => {
 
 	return (
 		<div>
-			<Table products={products} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
+			<Table
+				data={products}
+				type={"product"}
+				handleProductUpdate={handleProductUpdate}
+				handleProductDelete={handleProductDelete}
+			/>
 		</div>
 	)
 }
