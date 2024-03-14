@@ -643,9 +643,10 @@
     },
     {
       "id": "14",
-      "name": "jay prajapati",
-      "email": "jay@gmail.com",
-      "password": "1234567890"
+      "name": "dipak",
+      "email": "dipakkarmur45@gmail.com",
+      "password": "Ahir123@",
+      "favouriteProducts": []
     }
   ],
   "orders": [

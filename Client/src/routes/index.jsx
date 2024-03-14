@@ -5,7 +5,7 @@ import UsersCart from "../components/pages/Home/UsersCart.jsx";
 import Profile from "../components/pages/Profile/index.jsx";
 import PrivateRoutesAdmin from "../utils/PrivateRoutes/PrivateRoutesAdmin/index.jsx";
 import PrivateRoutesSeller from "../utils/PrivateRoutes/PrivateRoutesSeller/index.jsx";
-// import ProductViewDetais from "../components/pages/Home/ProductViewDetais.jsx"
+ import ProductViewDetais from "../components/pages/Home/ProductViewDetais.jsx"
 import AdminCreateUser from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminCreateUser.jsx";
 import AdminUpdateUsers from "../components/pages/Dashboard/AdminDashboard/AdminUsers/AdminUpdateUsers.jsx";
 import { useSelector } from "react-redux";
@@ -56,6 +56,10 @@ export const Router = () => {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path:"/products/:productId",
+          element: <ProductViewDetais/>,
         },
         {
           element: (
