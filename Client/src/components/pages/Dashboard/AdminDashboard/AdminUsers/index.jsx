@@ -74,7 +74,7 @@ function Index() {
                         </div>
                         
                         <table className="w-full border-collapse">
-                            <thead>``
+                            <thead>
                                 <tr>
                                     <th className="border px-4 py-2">ID</th>
                                     <th className="border px-4 py-2">Name</th>
@@ -91,7 +91,7 @@ function Index() {
                                         <td className="border px-4 py-2">{d.email}</td>
                                         <td className="border px-4 py-2">{d.password}</td>
                                         <td className="border px-4 py-2 flex justify-center items-center space-x-2">
-                                            <Link to={`/admin-update/${d.id}`} className="inline-block px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-400 ml-2">Edit</Link>
+                                            <Link to={`/admin-update/${d.id}`} className="inline-block px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 ml-2">Edit</Link>
                                             <button className="inline-block px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 ml-2" onClick={() => handleDelete(d.id)}>Delete</button>
                                         </td>
                                     </tr>
