@@ -29,7 +29,7 @@ const AdminLinks = () => {
         </li>
         {/* <li>
           <NavLink
-            to="/buisness/register"
+            to="/business/register"
             className={({ isActive }) =>
             `${
               isActive ? '' : "text-white"

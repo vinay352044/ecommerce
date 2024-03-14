@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { getSellers, getUsers } from "../../../utils/axios-instance";
 import { setRole } from "../../../redux/actions/roleAction";
@@ -20,7 +20,7 @@ const loginSchema = yup.object({
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const {isAuth} = useSelector(state => state.role)
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
 
@@ -73,7 +73,7 @@ const Login = () => {
         dispatch(setRole(role, admin));
         toast.success("Admin logged in sucessfully!");
         navigate("/");
-      } else {
+      }else{
         toast.error("Invalid credential !!");
       }
     }
@@ -106,6 +106,8 @@ const Login = () => {
       setUsers(usersData);
       setSellers(sellersData);
     })();
+    // if looged in then don't give access to this page
+    isAuth ? navigate('/') : null
   }, []);
 
   return (

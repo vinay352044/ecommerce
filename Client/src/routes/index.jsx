@@ -119,7 +119,7 @@ export const Router = () => {
 					element: <RegisterUser />
 				},
 				{
-					path: 'buisness/register',
+					path: 'business/register',
 					element: <RegisterSeller />
 				}
 			]

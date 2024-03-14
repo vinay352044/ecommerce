@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom";
 import { updateSeller, updateUser } from "../../../utils/axios-instance";
 import { setRole } from "../../../redux/actions/roleAction";
 import SellerDetails from "./SellerDetails";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const role = useSelector((state) => state.role);
@@ -50,6 +51,7 @@ const Profile = () => {
         await updateUser(user);
         dispatch(setRole("user", user));
         setReadOnly(!readOnly);
+        toast.success('Profile Updated !!')
       } catch (error) {
         console.log(error);
       }
@@ -59,6 +61,7 @@ const Profile = () => {
         await updateSeller(seller);
         dispatch(setRole("seller", seller));
         setReadOnly(!readOnly);
+        toast.success('Profile Updated !!')
       } catch (error) {
         console.log(error);
       }

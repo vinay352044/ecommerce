@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "iPhone 9",
       "description": "An apple mobile which is nothing like apple",
       "price": 549,
@@ -259,7 +259,7 @@
     {
       "id": "1",
       "name": "jay",
-      "businessName": "dhruvdemiedmiemdi",
+      "businessName": "BacMart",
       "gstin": "22AAAAA0000A1Z5",
       "brand": "samsung",
       "email": "jay@gmail.com",
@@ -446,8 +446,8 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha-updated",
-      "email": "aisha@example.com",
+      "name": "Aisha xyz",
+      "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [
         {
