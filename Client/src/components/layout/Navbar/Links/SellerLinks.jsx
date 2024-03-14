@@ -24,7 +24,7 @@ const SellerLinks = () => {
 			</li>
 			<li>
 				<NavLink
-					to="/seller/profile"
+					to="/seller-profile"
 					className={({ isActive }) =>
 						`${isActive ? "" : "text-white"} flex items-center gap-2 text-lg py-1 hover:text-black`
 					}>
