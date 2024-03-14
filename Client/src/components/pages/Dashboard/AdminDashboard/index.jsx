@@ -4,11 +4,13 @@ import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance
 import Table from '../../../common/Table';
 import useDebounceHook from '../../../../utils/custom-hooks/useDebounce';
 import Pagination from '../../../common/Pagination';
+import Sorting from '../../../common/Sorting';
 
 const Index = () => {
   const [currentPage,setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(6)
   const [searchQuery,setSearchQuery] = useState('')
+  const [sortOrder,setSortOrder] = useState(null)
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,9 +26,19 @@ const handleSearchChange = e => {
   setCurrentPage(1)
 }
 const filteredData = products.filter(product => product.title && product.title.toLowerCase().includes(debouncedQuery.toLowerCase()))
-  const paginateRecords = filteredData.slice(indexOfFirstRecord,indexOfLastRecord)
+const sortedData = [...filteredData]
+if(sortOrder==='asc'){
+  sortedData.sort((a,b)=> a.price-b.price)
+}
+if(sortOrder==='desc'){
+  sortedData.sort((a,b)=> b.price-a.price)
+}
+const handleSortingChange = order => {
+  setSortOrder(order)
+}
+  const paginateRecords = sortedData.slice(indexOfFirstRecord,indexOfLastRecord)
   console.log(paginateRecords)
-  const nPages = Math.ceil(filteredData.length /recordsPerPage)
+  const nPages = Math.ceil(sortedData.length /recordsPerPage)
   console.log(nPages)
   const shouldRenderPagination = products.length > recordsPerPage
 
@@ -131,6 +143,7 @@ const filteredData = products.filter(product => product.title && product.title.t
           </div>
         )}
       </div>
+      <div className='display flex space-x-10'>
       <input
                 type="text"
                 placeholder="Search..."
@@ -138,7 +151,8 @@ const filteredData = products.filter(product => product.title && product.title.t
                 value={searchQuery}
                 onChange={handleSearchChange}
             />
-
+            <Sorting handleSortingChange={handleSortingChange}/>
+</div>
       <Table products={paginateRecords} handleProductUpdate={handleProductUpdate} handleProductDelete={handleProductDelete} />
       { ( shouldRenderPagination &&
                     <Pagination
