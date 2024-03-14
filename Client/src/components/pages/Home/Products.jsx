@@ -89,9 +89,10 @@ const Products = ({ productData, isAddToCart }) => {
         </div>
             <br/>
             <div className="grid gap-4 grid-cols-3 grid-rows-2 auto-rows-auto">
-                {currentProducts.map(product => (
+                {currentProducts.length>0 ? (currentProducts.map(product => (
                      <Product product={product} key={product.id} handleClick={handleClick} isAddToCart={isAddToCart}/>
-                ))}
+                ))) : (<div className="justify-center">Oops not found</div>) }
+                
  
             </div>
                 {shouldRenderPagination && (
