@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik"
 import { addProduct, getProducts, updateSellerProducts } from "../../../../utils/axios-instance"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import {setRole} from "../../../../redux/actions/roleAction"
+import { setRole } from "../../../../redux/actions/roleAction"
 
 const InitialValues = {
 	title: "",
@@ -24,14 +24,13 @@ const Index = () => {
 	const navigate = useNavigate()
 	const [products, setProducts] = useState([])
 	const { seller } = useSelector((state) => state.role)
-  const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await getProducts()
 				if (response.success) {
-					// console.log(response.data)
 					setProducts(response.data)
 				} else {
 					console.error("Failed to fetch the Products Data", response.error)
@@ -56,12 +55,11 @@ const Index = () => {
 			const { success, error } = await addProduct(newProduct)
 
 			if (success) {
-				// console.log('Product added successfully!');
 				const { success, error, data } = await updateSellerProducts(seller, newProduct.id.toString())
-        dispatch(setRole('seller',data))
-        if(success){
-          seller ? navigate("/seller-products") : navigate("/admin")
-        }
+				dispatch(setRole('seller', data))
+				if (success) {
+					seller ? navigate("/seller-products") : navigate("/admin")
+				}
 			} else {
 				console.error("Error adding product:", error)
 			}
