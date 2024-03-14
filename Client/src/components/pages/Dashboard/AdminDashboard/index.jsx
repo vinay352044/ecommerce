@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance';
-import Table from '../../../common/Table';
 import useDebounceHook from '../../../../utils/custom-hooks/useDebounce';
 import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
+import { AiOutlineSearch } from 'react-icons/ai'; 
+import Table from '../../../common/Table';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -97,98 +98,37 @@ const Index = () => {
   return (
     <>
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
-      <div className="flex justify-end mb-4">
-        <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5">+ ADD PRODUCT</Link>
-      </div>
-
-      <div className="relative inline-block text-left absolute left-1/2 transform -translate-x-1/2 top-1/2 z-10">
-        {isDropdownOpen && (
-          <div className="mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
-            <div className="py-1" role="none">
-              <Link to="/admin/users" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
-                Users
-              </Link>
-              <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">
-                Products
-              </a>
-              <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">
-                Categories
-              </a>
+      <div className="flex justify-between mb-4">
+        <div className='flex px-20'>
+          <div className="relative mr-4">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="pl-8 pr-4 py-2 rounded border"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <AiOutlineSearch />
             </div>
           </div>
-        )}
-      </div>
-      <div className='display flex space-x-10'>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="search"
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-        <Sorting handleSortingChange={handleSortingChange} />
+          <Sorting handleSortingChange={handleSortingChange} />
+        </div>
+        <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD PRODUCT</Link>
       </div>
 
       <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
-      {(shouldRenderPagination &&
-        <div className='flex justify-center w-screen items-center'>
+      {shouldRenderPagination && (
+        <div className="flex justify-center w-screen items-center">
           <Pagination
             nPages={nPages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-
           />
         </div>
       )}
-      {/* <table className="table-auto w-full mt-8 border">
-        <thead>
-          <tr className="border-b">
-            <th className="w-1/6 p-2">Product ID</th>
-            <th className="w-1/3 p-2">Title</th>
-            <th className="w-1/6 p-2">Price</th>
-            <th className="w-1/6 p-2">Brand</th>
-            <th className="w-1/6 p-2">Category</th>
-            <th className="w-1/6 p-2">Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id} className="border-b">
-              <td className="p-2">{product.id}</td>
-              <td className="p-2">{product.title}</td>
-              <td className="p-2">{product.price}</td>
-              <td className="p-2">{product.brand}</td>
-              <td className="p-2">{product.category}</td>
-              <td className="p-2">
-                <div className="flex space-x-2">
-                  <button onClick={() => handleProductUpdate(product.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
-                    Update
-                  </button>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                    View
-                  </button>
-                  <button onClick={() => handleProductDelete(product.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                    Delete
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
     </>
   );
 };
 
 export default Index;
-
-
-
-
-
-
-
-
-
-
