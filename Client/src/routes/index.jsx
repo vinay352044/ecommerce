@@ -124,7 +124,7 @@ export const Router = () => {
           children: [
             // protected routes for seller should be declared here
             {
-              path: "seller/profile",
+              path: "seller-profile",
               element: <Profile />,
             },
 			{

@@ -6,7 +6,7 @@ const SellerLinks = () => {
     <>
       <li>
         <NavLink
-          to='/seller/profile'
+          to='/seller-profile'
           className={({ isActive }) =>
           `${
             isActive ? '' : "text-white"

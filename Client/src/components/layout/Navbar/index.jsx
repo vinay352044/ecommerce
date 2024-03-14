@@ -30,7 +30,7 @@ const Navbar = () => {
     <nav className="bg-[#0295db] sticky top-0 left-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-8">
         <NavLink
-          to={admin ? "/admin" : seller ? "/" : "/"}
+          to={admin ? "/admin" : seller ? "/seller-dashboard" : "/"}
           className="flex items-center space-x-3"
         >
           <div className="w-[110px]">
