@@ -55,10 +55,14 @@ const Index = () => {
 			const { success, error } = await addProduct(newProduct)
 
 			if (success) {
-				const { success, error, data } = await updateSellerProducts(seller, newProduct.id.toString())
-				dispatch(setRole('seller', data))
-				if (success) {
-					seller ? navigate("/seller-products") : navigate("/admin")
+				if(seller){
+					const { success, error, data } = await updateSellerProducts(seller, newProduct.id.toString())
+					dispatch(setRole('seller', data))
+					if (success) {
+						navigate("/seller-products")
+					}
+				}else{
+					navigate("/admin")
 				}
 			} else {
 				console.error("Error adding product:", error)
