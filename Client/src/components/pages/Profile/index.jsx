@@ -73,7 +73,10 @@ const Profile = () => {
   const labelClass =
     "mr-2 font-bold text-3xl text-[#2590db] flex items-center gap-2";
   const inputClass =
-    "px-3 py-2 w-[65%] text-xl font-medium border-none bg-transparent focus:outline-none";
+    `px-3 py-2 w-[65%] text-xl font-medium border-none bg-transparent focus:outline-none`;
+  const infoWrapperClass =
+    `flex items-center w-[85%] ${readOnly ? '' : 'border-b-[1px] border-[#2590db]'}`;
+
 
   return (
     <div className="py-4 px-8 w-full h-[100%]">
@@ -91,7 +94,7 @@ const Profile = () => {
             onSubmit={(e) => e.preventDefault()}
             className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto flex flex-col gap-2"
           >
-            <div className="flex items-center">
+            <div className={infoWrapperClass}>
               <label htmlFor="name" className={labelClass}>
                 <FaUser />:
               </label>
@@ -105,7 +108,7 @@ const Profile = () => {
                 required
               />
             </div>
-            <div className="flex items-center">
+            <div className={infoWrapperClass}>
               <label htmlFor="email" className={labelClass}>
                 <IoIosMail /> :
               </label>
@@ -119,7 +122,7 @@ const Profile = () => {
                 required
               />
             </div>
-            <div className="flex items-center">
+            <div className={`${infoWrapperClass} border-none`}>
               <label htmlFor="password" className={labelClass}>
                 <RiLockPasswordFill /> :
               </label>
@@ -152,6 +155,7 @@ const Profile = () => {
                 handleChange={handleChange}
                 readOnly={readOnly}
                 className={inputClass}
+                infoWrapperClass={infoWrapperClass}
               />
             ) : null}
             <div className="mt-4">

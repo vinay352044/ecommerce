@@ -115,9 +115,8 @@ export const Router = () => {
             },
             {
               path: "admin-createCategories",
-              element: <AdminCreateCategories />, 
+              element: <AdminCreateCategories />,
             },
-			
           ],
         },
         {
@@ -129,25 +128,25 @@ export const Router = () => {
           children: [
             // protected routes for seller should be declared here
             {
-              path: "seller-profile",
+              path: "seller/profile",
               element: <Profile />,
             },
-			{
-				path: "seller-dashboard",
-				element: <OrdersDashboard />,
-			  },
-        {
-          path: "/seller-products",
-          element: <YourProducts />,
-        },
-        {
-          path: "/seller-create-products",
-          element: <AdminProducts />,
-        },
-        {
-          path: "/seller-update-products/:productID",
-          element: <AdminUpdateProducts />,
-        },
+            {
+              path: "seller-dashboard",
+              element: <OrdersDashboard />,
+            },
+            {
+              path: "/seller-products",
+              element: <YourProducts />,
+            },
+            {
+              path: "/seller-create-products",
+              element: <AdminProducts />,
+            },
+            {
+              path: "/seller-update-products/:productID",
+              element: <AdminUpdateProducts />,
+            },
           ],
         },
         {
