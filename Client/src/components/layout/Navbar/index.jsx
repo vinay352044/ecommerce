@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../../common/Button";
-import "./navbar.css";
+// import "./navbar.css";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeadphonesAlt } from "react-icons/fa";
@@ -31,7 +31,7 @@ const Navbar = () => {
     <nav className="bg-[#0295db] sticky top-0 left-0 z-50 ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4 md:px-8">
         <NavLink
-          to={admin ? "/admin" : seller ? "/seller-dashboard" : "/"}
+          to={admin ? "/admin" : seller ? "/seller-dashboard/pendingorders" : "/"}
           className="flex items-center space-x-3"
         >
           <div className="w-[110px]">
@@ -78,6 +78,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    
   );
 };
 

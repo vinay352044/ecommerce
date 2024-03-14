@@ -80,8 +80,8 @@ const Profile = () => {
 
 
   return (
-    <div className="py-4 px-8 w-full">
-      <div className="w-full flex items-center gap-4 shadow-2xl">
+    <div className="py-4 px-8 w-full flex items-center">
+      <div className="w-full h-full flex items-center gap-4 shadow-2xl">
         <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
           <img src={placeholder} alt="placeholder" className="w-full h-full" />
         </div>
@@ -133,7 +133,7 @@ const Profile = () => {
                   name="password"
                   value={user ? user?.password : seller?.password}
                   readOnly={true}
-                  className={`${inputClass} text-red-600`}
+                  className={`${inputClass} text-red-600 w-[70%!important]`}
                   required
                 />
                 {!showPass ? (
@@ -159,7 +159,7 @@ const Profile = () => {
                 infoWrapperClass={infoWrapperClass}
               />
             ) : null}
-            <div className="mt-4 mr-auto">
+            <div className="mt-4 w-full mr-auto">
               <Button
                 handleClick={handleClick}
                 className="px-4 py-2 border-none font-medium flex gap-2 bg-[#0295db] text-white focus:outline-none hover:bg-blue-500"

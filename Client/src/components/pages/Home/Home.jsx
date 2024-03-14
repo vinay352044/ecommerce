@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchProductData());
-    seller ? navigate('/seller-dashboard') : admin ? navigate('/admin') : null; 
+    seller ? navigate('/seller-dashboard/pendingorders') : admin ? navigate('/admin') : null; 
   }, []);
 
   const products = useSelector((state) => state.productReducer.products);
@@ -25,7 +25,7 @@ const Home = () => {
   }, [products]);
 
   return (
-    <div className="home">
+    <div className="p-6">
       <Products productData={productData} isAddToCart={true} />
     </div>
   );

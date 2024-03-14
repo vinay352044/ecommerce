@@ -1,110 +1,109 @@
 import React, { useState, useEffect } from "react";
 import { CiHeart } from "react-icons/ci";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../common/Pagination";
 import useDebounceHook from "../../../utils/custom-hooks/useDebounce";
-import { addProductInCart, addToCart, removeFromCart } from "../../../redux/actions/cartActions";
-import Sorting from "../../common/Sorting"; 
+import {
+  addProductInCart,
+  addToCart,
+  removeFromCart,
+} from "../../../redux/actions/cartActions";
+import Sorting from "../../common/Sorting";
 import Product from "../../common/Product";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link, Navigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Products = ({ productData, isAddToCart }) => {
-    const user = useSelector((state)=> state.role.user)
-    
-    const [currentPage, setCurrentPage] = useState(1);
-    const [recordsPerPage] = useState(6); 
-    const [searchQuery, setSearchQuery] = useState("");
-    const [sortOrder, setSortOrder] = useState(null); 
-    const dispatch = useDispatch();
-    const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
+  const user = useSelector((state) => state.role.user);
 
-    const indexOfLastRecord = currentPage * recordsPerPage;
-    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(6);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState(null);
+  const dispatch = useDispatch();
+  const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
 
-    const filteredProducts = productData.filter(product =>
-        product.title && product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
-    );
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
+  const filteredProducts = productData.filter(
+    (product) =>
+      product.title &&
+      product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+  );
 
-    const sortedProducts = [...filteredProducts];
-    if (sortOrder === 'asc') {
-        sortedProducts.sort((a, b) => a.price - b.price);
-    } else if (sortOrder === 'desc') {
-        sortedProducts.sort((a, b) => b.price - a.price);
+  const sortedProducts = [...filteredProducts];
+  if (sortOrder === "asc") {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    sortedProducts.sort((a, b) => b.price - a.price);
+  }
+  const currentProducts = sortedProducts.slice(
+    indexOfFirstRecord,
+    indexOfLastRecord
+  );
+  const nPages = Math.ceil(sortedProducts.length / recordsPerPage);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleSortingChange = (order) => {
+    setSortOrder(order);
+  };
+
+  const handleClick = (product) => {
+    if (isAddToCart) {
+      dispatch(addProductInCart(product));
+    } else {
+      dispatch(removeFromCart(product.id));
+      toast.success("Removed from the cart!", {
+        position: "top-right",
+      });
     }
+  };
 
-    const currentProducts = sortedProducts.slice(indexOfFirstRecord, indexOfLastRecord);
-    const nPages = Math.ceil(sortedProducts.length / recordsPerPage);
+  const shouldRenderPagination = sortedProducts.length > recordsPerPage;
 
-    const handleSearchChange = event => {
-        setSearchQuery(event.target.value);
-        setCurrentPage(1); 
-    };
-
-
-    const handleSortingChange = order => {
-        setSortOrder(order);
-    };
-
-    const auth = JSON.parse(localStorage.getItem('role')) || false;
-    const isAuth = auth.isAuth;
-    
-
-    const handleClick = product => {
-        if (isAuth){
-            if (isAddToCart) {
-            
-                dispatch(addProductInCart(product))
-              
-            } else {
-                dispatch(removeFromCart(product.id))
-                toast.success("Removed from the cart!", {
-                    position: 'top-right',
-                  });
-            }
-        }else{
-            
-            toast.warning('Please Login!!')
-        }
-       
-    };
-
-
-    const shouldRenderPagination = sortedProducts.length > recordsPerPage;
-
-    return (
-        <>
-        <div className="display flex justify-center space-x-10">
-            <input
-                type="text"
-                placeholder="Search..."
-                className="px-4 py-2 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                value={searchQuery}
-                onChange={handleSearchChange}
+  return (
+    <>
+      <div className="display flex justify-center space-x-10">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="px-4 py-2 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <Sorting handleSortingChange={handleSortingChange} />
+      </div>
+      <br />
+      <div className="grid gap-4 grid-cols-3 grid-rows-2 auto-rows-auto">
+        {currentProducts.length > 0 ? (
+          currentProducts.map((product) => (
+            <Product
+              product={product}
+              key={product.id}
+              handleClick={handleClick}
+              isAddToCart={isAddToCart}
             />
-          <Sorting handleSortingChange={handleSortingChange} />
+          ))
+        ) : (
+          <div className="justify-center">Oops not found</div>
+        )}
+      </div>
+      {shouldRenderPagination && (
+        <div className="flex justify-center items-center w-auto h-10 my-6">
+          <Pagination
+            nPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
-            <br/>
-            <div className="grid gap-4 grid-cols-3 grid-rows-2 auto-rows-auto">
-                {currentProducts.map(product => (
-                     <Product product={product} key={product.id} handleClick={handleClick} isAddToCart={isAddToCart}/>
-                ))}
- 
-            </div>
-                {shouldRenderPagination && (
-                    <div className="flex justify-center items-center w-auto h-10 my-6"> 
-                        <Pagination
-                        nPages={nPages}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}  
-                    />
-                    </div>
-                )}
-        </>
-    );
+      )}
+    </>
+  );
 };
 
 export default Products;
