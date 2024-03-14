@@ -128,23 +128,6 @@ const UpdateProduct = () => {
                         </div>
 
                         <div className="w-full md:w-1/3 px-3">
-                            <label htmlFor="category" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Category
-                            </label>
-                            <Field
-                                as="select"
-                                id="category"
-                                name="category"
-                                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            >
-                                <option value="" disabled selected>Select Category</option>
-                                <option>New Mexico</option>
-                                <option>Missouri</option>
-                                <option>Texas</option>
-                            </Field>
-                        </div>
-
-                        <div className="w-full md:w-1/3 px-3">
                             <label htmlFor="brand" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Brand
                             </label>
