@@ -114,8 +114,6 @@ const Product = ({ product, handleClick, isAddToCart }) => {
           </div>
           {!isAddToCart ? (
             <>
-              
-              
               <div className="flex justify-center text-3xl">
                 <button onClick={() => handleChangedQuantity(product, "dec")}>
                   -
