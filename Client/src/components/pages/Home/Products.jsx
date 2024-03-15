@@ -52,10 +52,16 @@ const Products = ({ productData, isAddToCart }) => {
   const handleSortingChange = (order) => {
     setSortOrder(order);
   };
-
+ const role = JSON.parse(localStorage.getItem('role')) || ''
+ const isLoggedIn = role.isAuth
   const handleClick = (product) => {
     if (isAddToCart) {
-      dispatch(addProductInCart(product));
+        if(isLoggedIn){
+            dispatch(addProductInCart(product));
+        }else{
+            toast.warning('Please Login!!')
+        }
+      
     } else {
       dispatch(removeFromCart(product.id));
       toast.success("Removed from the cart!", {
@@ -79,7 +85,7 @@ const Products = ({ productData, isAddToCart }) => {
         <Sorting handleSortingChange={handleSortingChange} />
       </div>
       <br />
-      <div className="grid gap-4 grid-cols-3 grid-rows-2 auto-rows-auto">
+      <div className="grid gap-4 grid-cols-3 sm:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 h-2/3">
         {currentProducts.length > 0 ? (
           currentProducts.map((product) => (
             <Product

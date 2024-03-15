@@ -69,25 +69,25 @@ const Product = ({ product, handleClick, isAddToCart }) => {
   }
 
   return (
-    <div className="grid-cols-3">
+    <>
       <div
         key={product.id}
-        className="w-full max-h-[25rem] max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+        className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
       >
         <button className="justify-items-end h-5 w-6">
           
           <CiHeart onClick={() => heartHandle(product)} />
         </button>
-        <div className="h-[50%!important] overflow-hidden">
+        <div className="overflow-hidden">
           <Link to={`/products/${product.id}`}>
             <img
-              className="w-full h-full object-fit"
+              className="p-8 rounded-t-lg"
               src={product.thumbnail}
               alt="product image"
             />
           </Link>
         </div>
-        <div className="px-5 pb-5 h-[50%!important]">
+        <div className="px-5 pb-5 ">
           <Link to={`/products/${product.id}`}>
             <h5 className="text-xl font-semibold tracking-tight text-gray-900">
               {product.title}
@@ -141,7 +141,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

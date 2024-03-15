@@ -294,10 +294,13 @@
       "id": "1",
       "name": "jay-updated",
       "businessName": "BacMart",
+      "name": "jay-updated",
+      "businessName": "BacMart",
       "gstin": "22AAAAA0000A1Z5",
       "brand": "samsung",
       "email": "jay@gmail.com",
       "password": "Dhruv123@",
+      "productsToSell": []
       "productsToSell": []
     },
     {
@@ -310,6 +313,7 @@
       "password": "Meet@123",
       "brand": "Samsung",
       "productsToSell": [
+        "4"
         "4"
       ]
     },
@@ -662,6 +666,13 @@
       "favouriteProducts": []
     },
     {
+      "id": "7",
+      "name": "Aditi",
+      "email": "aditi@example.com",
+      "password": "aditipass",
+      "favouriteProducts": []
+    },
+    {
       "id": "8",
       "name": "Rohan",
       "email": "rohan@example.com",
@@ -765,29 +776,16 @@
     },
     {
       "id": "14",
-      "name": "dipak",
-      "email": "dipakkarmur45@gmail.com",
-      "password": "Ahir123@",
+      "name": "jay prajapati",
+      "email": "jay@gmail.com",
+      "password": "1234567890"
+    },
+    {
+      "id": "15",
+      "name": "Vinay Sharma",
+      "email": "vinay@gmail.com",
+      "password": "Vinay@25",
       "favouriteProducts": [
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": "899",
-          "discountPercentage": "17.94",
-          "rating": "4.44",
-          "stock": "34",
-          "brand": "Apple",
-          "category": "smartphones",
-          "total_sell": "13",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/2/1.jpg",
-            "https://cdn.dummyjson.com/product-images/2/2.jpg",
-            "https://cdn.dummyjson.com/product-images/2/3.jpg",
-            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-          ]
-        },
         {
           "id": "5",
           "title": "Fog Scent Xpressio Perfume",
@@ -807,46 +805,14 @@
             "https://cdn.dummyjson.com/product-images/13/4.jpg",
             "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
           ]
-        },
-        {
-          "id": "6",
-          "title": "Eau De Perfume Spray",
-          "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
-          "price": "30",
-          "discountPercentage": "10.99",
-          "rating": "4.7",
-          "stock": "105",
-          "brand": "Lord - Al-Rehab",
-          "category": "fragrances",
-          "total_sell": "11",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/15/1.jpg",
-            "https://cdn.dummyjson.com/product-images/15/2.jpg",
-            "https://cdn.dummyjson.com/product-images/15/3.jpg",
-            "https://cdn.dummyjson.com/product-images/15/4.jpg",
-            "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg"
-          ]
         }
       ]
     },
     {
       "id": "16",
-      "name": "Mansi jayswal",
-      "email": "jayswalmansi20@gmail.com",
-      "password": "mansiiii"
-    },
-    {
-      "id": "17",
-      "name": "dhruv",
-      "email": "dhruv@gmail.com",
-      "password": "dhruv"
-    },
-    {
-      "id": "18",
-      "name": "newusers",
-      "email": "newusers@gmail.com",
-      "password": "newuserss",
+      "name": "dipak",
+      "email": "shdbw@gmail.com",
+      "password": "Asdfg123@",
       "favouriteProducts": [
         {
           "id": "2",
@@ -961,6 +927,8 @@
       "expected_delivery": "",
       "order_accepted": false,
       "accepted_by": ""
+      "order_accepted": false,
+      "accepted_by": ""
     },
     {
       "id": "8",
@@ -970,6 +938,8 @@
       "expected_delivery": "",
       "order_accepted": false,
       "accepted_by": ""
+      "order_accepted": false,
+      "accepted_by": ""
     },
     {
       "id": "9",
@@ -977,6 +947,8 @@
       "product_id": "3",
       "ordered_at": "3/14/2024, 12:08:57 PM",
       "expected_delivery": "",
+      "order_accepted": false,
+      "accepted_by": ""
       "order_accepted": false,
       "accepted_by": ""
     },
@@ -1049,6 +1021,8 @@
       "product_id": "5",
       "ordered_at": "3/14/2024, 12:11:07 PM",
       "expected_delivery": "",
+      "order_accepted": false,
+      "accepted_by": ""
       "order_accepted": false,
       "accepted_by": ""
     },
@@ -1133,6 +1107,7 @@
     },
     {
       "name": "Tops",
+      "name": "Tops",
       "id": "8"
     },
     {
@@ -1161,6 +1136,7 @@
     },
     {
       "name": "Women's Bags",
+      "name": "Women's Bags",
       "id": "15"
     },
     {
@@ -1170,6 +1146,30 @@
     {
       "name": "Sunglasses",
       "id": "17"
+    },
+    {
+      "name": "Automotive",
+      "id": "18"
+    },
+    {
+      "name": "Motorcycle",
+      "id": "19"
+    },
+    {
+      "name": "Lighting",
+      "id": "20"
+    },
+    {
+      "id": 21,
+      "name": "Demo123"
+    },
+    {
+      "id": 22,
+      "name": "VinayNew123"
+    },
+    {
+      "id": 23,
+      "name": "VinayNew123"
     },
     {
       "name": "Automotive",
