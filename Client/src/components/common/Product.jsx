@@ -30,10 +30,15 @@ const Product = ({ product, handleClick, isAddToCart }) => {
       } catch (error) {
         console.log(error);
       }
+      toast.success("Added to whishlist!", {
+        position: "top-right",
+      });
     }
-    toast.success("Added to whishlist!", {
-      position: "top-right",
-    });
+    else {
+      toast.success("Already in whishlist!", {
+        position: "top-right",
+      });
+    }
   };
 
   function handleChangedQuantity(product, change) {
