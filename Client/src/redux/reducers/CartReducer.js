@@ -26,7 +26,9 @@ export const CartReducer = (state = initialState, action) => {
       return { ...state, cartItems: uniqueArray };
 
     case REMOVE_FROM_CART:
-      const filteredArr = state.cartItems.filter(item => item.id !== action.payload);
+      const filteredArr = state.cartItems.filter(
+        (item) => item.id !== action.payload
+      );
       const newLocalArr = { ...localStoreData };
       newLocalArr[userId] = { cartItems: filteredArr };
       localStorage.setItem("AllcartItems", JSON.stringify(newLocalArr));
@@ -36,7 +38,9 @@ export const CartReducer = (state = initialState, action) => {
       };
 
     case QUANTITY:
-      const index = state.cartItems.findIndex(item => item.id === action.payload.id);
+      const index = state.cartItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
       if (index !== -1) {
         const updatedItems = [...state.cartItems];
         updatedItems[index] = {
@@ -45,7 +49,7 @@ export const CartReducer = (state = initialState, action) => {
         };
         const updatedArr = { ...localStoreData };
         updatedArr[userId] = { cartItems: updatedItems };
-        localStorage.setItem('AllcartItems', JSON.stringify(updatedArr))
+        localStorage.setItem("AllcartItems", JSON.stringify(updatedArr));
         return { ...state, cartItems: updatedItems };
       }
       return state;
@@ -53,10 +57,11 @@ export const CartReducer = (state = initialState, action) => {
     case CLEAR_CART: {
       const newLocalArr = { ...localStoreData };
       delete newLocalArr[userId];
-      localStorage.setItem('AllcartItems', JSON.stringify(newLocalArr));
+      localStorage.setItem("AllcartItems", JSON.stringify(newLocalArr));
       return {
-        ...state, cartItems: []
-      }
+        ...state,
+        cartItems: [],
+      };
     }
     default:
       return state;
