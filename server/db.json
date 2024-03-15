@@ -465,15 +465,15 @@
     },
     {
       "id": "19",
-      "title": "Demo",
-      "description": "demo",
-      "price": 1000,
-      "discountPercentage": "",
-      "stock": 12,
+      "title": "new product",
+      "description": "tudjncjd",
+      "price": 4500,
+      "discountPercentage": 9,
+      "stock": 450,
       "category": "mobile",
-      "brand": "iphone",
-      "total_sell": 2,
-      "thumbnail": "data:image/jpeg;base64,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"
+      "brand": "samsung",
+      "total_sell": 5,
+      "thumbnail": "random"
     }
   ],
   "sellers": [
@@ -691,22 +691,22 @@
       "password": "aishapass",
       "favouriteProducts": [
         {
-          "id": "3",
-          "title": "MacBook Pro",
-          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-          "price": "1749",
-          "discountPercentage": "11.02",
-          "rating": "4.57",
-          "stock": "83",
+          "id": "2",
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": "899",
+          "discountPercentage": "17.94",
+          "rating": "4.44",
+          "stock": "34",
           "brand": "Apple",
-          "category": "laptops",
-          "total_sell": "10",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+          "category": "smartphones",
+          "total_sell": "13",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
           "images": [
-            "https://cdn.dummyjson.com/product-images/6/1.png",
-            "https://cdn.dummyjson.com/product-images/6/2.jpg",
-            "https://cdn.dummyjson.com/product-images/6/3.png",
-            "https://cdn.dummyjson.com/product-images/6/4.jpg"
+            "https://cdn.dummyjson.com/product-images/2/1.jpg",
+            "https://cdn.dummyjson.com/product-images/2/2.jpg",
+            "https://cdn.dummyjson.com/product-images/2/3.jpg",
+            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
           ]
         },
         {
@@ -1013,188 +1013,7 @@
       "password": "Mail@12345"
     }
   ],
-  "orders": [
-    {
-      "id": "1",
-      "user_id": "1",
-      "product_id": "3",
-      "ordered_at": "3/12/2024, 10:26:51 AM",
-      "expected_delivery": "3/15/2024",
-      "order_accepted": true,
-      "accepted_by": "1"
-    },
-    {
-      "id": "2",
-      "user_id": "3",
-      "product_id": "5",
-      "ordered_at": "3/11/2024, 10:00:00 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": "3"
-    },
-    {
-      "id": "3",
-      "user_id": "5",
-      "product_id": "10",
-      "ordered_at": "2/10/2024, 12:23:00 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "4",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024  11:47:42 AM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "4",
-      "user_id": "2",
-      "product_id": "3",
-      "ordered_at": "3/14/2024  11:47:42 AM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "5",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024  12:04:32 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "6",
-      "user_id": "2",
-      "product_id": "3",
-      "ordered_at": "3/14/2024  12:04:32 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "7",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024, 12:08:57 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "8",
-      "user_id": "2",
-      "product_id": "2",
-      "ordered_at": "3/14/2024, 12:08:57 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "9",
-      "user_id": "2",
-      "product_id": "3",
-      "ordered_at": "3/14/2024, 12:08:57 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "10",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024, 12:09:11 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "11",
-      "user_id": "2",
-      "product_id": "2",
-      "ordered_at": "3/14/2024, 12:09:11 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "12",
-      "user_id": "2",
-      "product_id": "3",
-      "ordered_at": "3/14/2024, 12:09:11 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "10",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024, 12:09:50 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "11",
-      "user_id": "2",
-      "product_id": "2",
-      "ordered_at": "3/14/2024, 12:09:50 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "12",
-      "user_id": "2",
-      "product_id": "3",
-      "ordered_at": "3/14/2024, 12:09:50 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "13",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024, 12:11:07 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "14",
-      "user_id": "2",
-      "product_id": "5",
-      "ordered_at": "3/14/2024, 12:11:07 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "15",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024, 12:27:31 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    },
-    {
-      "id": "16",
-      "user_id": "2",
-      "product_id": "1",
-      "ordered_at": "3/14/2024, 12:32:41 PM",
-      "expected_delivery": "",
-      "order_accepted": false,
-      "accepted_by": ""
-    }
-  ],
+  "orders": [],
   "categories": [
     {
       "name": "Smartphones",
