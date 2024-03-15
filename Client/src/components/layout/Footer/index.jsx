@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -7,14 +6,11 @@ const Footer = () => {
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-3">
         <div className="flex sm:items-center sm:justify-between">
           <Link to="/" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
-            <img src="/images/svg/logo-black.svg" className="w-[10rem] h-[10rem]" alt="Bac Mart Logo" />
+            <img src="/images/svg/logo-black.svg" className="w-[10rem] h-[10rem] rounded-md" alt="Bac Mart Logo" />
           </Link>
           <ul className="w-full mx-auto flex flex-wrap items-center justify-end mb-2 text-sm font-medium text-white sm:mb-0  gap-4">
             <li>
               <Link to='/' className="hover:underline font-bold">Home</Link>
-            </li>
-            <li>
-              <Link to='/about' className="hover:underline font-bold">About Us</Link>
             </li>
             <li>
               <Link to='/contact' className="hover:underline font-bold">Contact Us</Link>
