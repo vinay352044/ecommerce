@@ -52,7 +52,7 @@ const ProductViewDetais = () => {
   return (
     <>
       <div className="container my-auto  p-4 mx-auto w-full h-full flex justify-center items-center sm:p-16 md:p-16">
-        <div className=" w-full md:w-[50%] h-full border-[1px] border-[#2590db] rounded-md shadow-2xl md:flex-col overflow-hidden">
+        <div className=" my-4 w-[90%] md:w-[60%!important] h-full border-[1px] border-[#2590db] rounded-md shadow-2xl md:flex-col overflow-hidden">
           <div className="h-60 w-[100%]">
             <Carousel slideInterval={5000}>
               {requiredProd?.images?.map((image, index) => {
