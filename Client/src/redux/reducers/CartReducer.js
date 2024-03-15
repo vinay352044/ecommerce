@@ -7,12 +7,12 @@ import {
 
 const user = JSON.parse(localStorage.getItem('role')) || {};
  
-const userId = user.user?.id || user.seller?.id || 0 ;
+const userId = user.user?.id || user.seller?.id ||0;
  
 const localStoreData = JSON.parse(localStorage.getItem("AllcartItems")) || {};
 
 const initialState = {
-  cartItems: localStoreData[0]?.cartItems || []
+  cartItems: localStoreData[userId]?.cartItems || []
 };
 
 export const CartReducer = (state = initialState, action) => {
