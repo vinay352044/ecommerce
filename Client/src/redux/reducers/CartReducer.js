@@ -6,8 +6,9 @@ import {
 } from "../actions/productActions";
 
 const user = JSON.parse(localStorage.getItem('role')) || {};
-// const userId = user.user.id ||user.seller.id ;
-
+ 
+const userId = user.user?.id || user.seller?.id || 0 ;
+ 
 const localStoreData = JSON.parse(localStorage.getItem("AllcartItems")) || {};
 
 const initialState = {
