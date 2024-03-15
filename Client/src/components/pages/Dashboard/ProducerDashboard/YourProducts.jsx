@@ -61,7 +61,8 @@ const YourProducts = () => {
 	}, [sellerProducts])
 
 	return (
-		<div>
+		<div className="text-center py-10 min-h-[90vh]">
+			<h1 className="text-3xl mb-8 font-bold">Your Products</h1>
 			<Table
 				data={slicedData}
 				type={"product"}

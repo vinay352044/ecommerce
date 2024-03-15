@@ -8,17 +8,17 @@ const Footer = () => {
           <Link to="/" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
             <img src="/images/svg/logo-black.svg" className="w-[10rem] h-[10rem] rounded-md" alt="Bac Mart Logo" />
           </Link>
-          <ul className="mx-auto flex flex-wrap items-center mb-2 text-sm font-medium text-white sm:mb-0  gap-4">
+          <ul className="w-full mx-auto flex flex-wrap items-center justify-end mb-2 text-sm font-medium text-white sm:mb-0  gap-4">
             <li>
-              <Link to='/' className="hover:underline">Home</Link>
+              <Link to='/' className="hover:underline font-bold">Home</Link>
             </li>
             <li>
-              <Link to='/contact' className="hover:underline">Contact Us</Link>
+              <Link to='/contact' className="hover:underline font-bold">Contact Us</Link>
             </li>
           </ul>
         </div>
         <hr className="my-1 border-gray-200 sm:mx-auto  lg:my-1"  />
-        <span className="block  mx-auto text-sm text-gray-500 sm:text-center -mb-2 ">&copy; {new Date().getFullYear()} <a href="https://flowbite.com/" className="hover:underline">Bac Mart</a> | All Rights Reserved.</span>
+        <span className="block  mx-auto text-sm text-white sm:text-center -mb-2 py-2">&copy; {new Date().getFullYear()} <a href="https://flowbite.com/" className="hover:underline">Bac Mart</a> | All Rights Reserved.</span>
       </div>
     </footer>
   );

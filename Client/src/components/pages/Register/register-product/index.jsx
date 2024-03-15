@@ -18,7 +18,7 @@ const InitialValues = {
 }
 
 const Index = () => {
-	const inputStyle = "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+	const inputStyle = "block uppercase tracking-wide text-gray-700 text-xs font-bold mt-2"
 	const inputStyle1 =
 		"appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 	const navigate = useNavigate()
@@ -73,10 +73,10 @@ const Index = () => {
 	}
 	return (
 		<>
-			<h1 className="text-center text-2xl font-bold mt-8 mb-8">Register Product</h1>
+			<h1 className="text-center text-2xl font-bold mt-8 mb-2 w-1/2 mx-auto">Register Product</h1>
 
 			<Formik initialValues={InitialValues} onSubmit={handleSubmit}>
-				<div className="container mx-auto p-4">
+				<div className="mx-auto p-4 mb-10 w-1/2 grid place-items-center">
 					<Form className="w-full max-w-lg">
 						<div className="flex flex-wrap -mx-3 mb-6">
 							<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

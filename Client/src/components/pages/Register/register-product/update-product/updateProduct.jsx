@@ -55,7 +55,7 @@ const UpdateProduct = () => {
 
     return (
         <Formik initialValues={product} onSubmit={handleSubmit}>
-            <div className="container mx-auto p-4">
+            <div className="container mb-10 w-1/2 mx-auto grid place-items-center p-4">
                 <Form className="w-full max-w-lg">
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -71,7 +71,7 @@ const UpdateProduct = () => {
                             />
                         </div>
                         <div className="w-full md:w-1/2 px-3">
-                            <label htmlFor="description" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                            <label htmlFor="description" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mt-2 mb-1">
                                 Description
                             </label>
                             <Field
@@ -96,11 +96,10 @@ const UpdateProduct = () => {
                                 placeholder="Product Price"
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             />
-                            <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
                         </div>
 
                         <div className="w-full md:w-1/2 px-3">
-                            <label htmlFor="discountPercentage" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                            <label htmlFor="discountPercentage" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-2">
                                 Discount Percentage
                             </label>
                             <Field
@@ -128,7 +127,7 @@ const UpdateProduct = () => {
                         </div>
 
                         <div className="w-full md:w-1/3 px-3">
-                            <label htmlFor="brand" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                            <label htmlFor="brand" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-2">
                                 Brand
                             </label>
                             <Field
@@ -156,7 +155,7 @@ const UpdateProduct = () => {
                         </div>
 
                         <div className="w-full md:w-1/3 px-3">
-                            <label htmlFor="images" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                            <label htmlFor="images" className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-2">
                                 Images
                             </label>
                             <Field
