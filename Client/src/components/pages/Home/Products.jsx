@@ -12,6 +12,7 @@ import Sorting from "../../common/Sorting";
 import Product from "../../common/Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Searching from "../../common/Searching";
 
 const Products = ({ productData, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
@@ -20,17 +21,12 @@ const Products = ({ productData, isAddToCart }) => {
   const [recordsPerPage] = useState(6);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const dispatch = useDispatch();
-  const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
+  // const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-
-  const filteredProducts = productData.filter(
-    (product) =>
-      product.title &&
-      product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
-  );
 
   const sortedProducts = [...filteredProducts];
   if (sortOrder === "asc") {
@@ -52,16 +48,16 @@ const Products = ({ productData, isAddToCart }) => {
   const handleSortingChange = (order) => {
     setSortOrder(order);
   };
- const role = JSON.parse(localStorage.getItem('role')) || ''
- const isLoggedIn = role.isAuth
+
+  const role = JSON.parse(localStorage.getItem("role")) || "";
+  const isLoggedIn = role.isAuth;
   const handleClick = (product) => {
     if (isAddToCart) {
-        if(isLoggedIn){
-            dispatch(addProductInCart(product));
-        }else{
-            toast.warning('Please Login!!')
-        }
-      
+      if (isLoggedIn) {
+        dispatch(addProductInCart(product));
+      } else {
+        toast.warning("Please Login!!");
+      }
     } else {
       dispatch(removeFromCart(product.id));
       toast.success("Removed from the cart!", {
@@ -75,12 +71,11 @@ const Products = ({ productData, isAddToCart }) => {
   return (
     <>
       <div className="display flex justify-center space-x-10">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="px-4 py-2 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          value={searchQuery}
-          onChange={handleSearchChange}
+        <Searching
+          searchQuery={searchQuery}
+          handleSearchChange={handleSearchChange}
+          productData={productData}
+          setFilteredProducts={setFilteredProducts}
         />
         <Sorting handleSortingChange={handleSortingChange} />
       </div>
