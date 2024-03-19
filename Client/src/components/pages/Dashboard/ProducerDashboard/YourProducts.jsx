@@ -65,7 +65,13 @@ const YourProducts = () => {
 			<h1 className="text-3xl mb-8 font-bold">Your Products</h1>
 			<Table
 				data={slicedData}
-				type={"product"}
+				headers={[
+					{key:'id', label:'ID'},
+					{key:'title', label:'title'},
+					{key:'price', label:'price'},
+					{key:'brand', label:'brand'},
+					{key:'category', label:'category'},
+				]}
 				handleUpdate={handleProductUpdate}
 				handleProductDelete={handleProductDelete}
 			/>

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import useDebounceHook from '../../../../../utils/custom-hooks/useDebounce';
 import { deleteUser, getUsers } from '../../../../../utils/axios-instance';
 import { AiOutlineSearch } from 'react-icons/ai'; // Importing search icon from react-icons
+import Table from '../../../../common/Table';
 
 function Index() {
     const [data, setData] = useState([]);
@@ -17,6 +18,10 @@ function Index() {
             .then(res => setData(res.data))
             .catch(err => console.log(err));
     }, []);
+
+    const handleUpdate=()=>{
+            navigate('/admin-update/${d.id}');
+    }   
 
     const debouncedQuery = useDebounceHook(searchQuery, 500);
     const filteredData = data.filter(user => user.name && user.name.toLowerCase().includes(debouncedQuery.toLowerCase()));
@@ -73,31 +78,14 @@ function Index() {
                             <Link to="/admin-createUser" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5 ml-5">+ ADD</Link>
                         </div>
                         
-                        <table className="w-full border-collapse">
-                            <thead>
-                                <tr>
-                                    <th className="border px-4 py-2">ID</th>
-                                    <th className="border px-4 py-2">Name</th>
-                                    <th className="border px-4 py-2">Email</th>
-                                    <th className="border px-4 py-2">Password</th>
-                                    <th className="border px-4 py-2">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {slicedData.map((d, i) => (
-                                    <tr key={i}>
-                                        <td className="border px-4 py-2">{d.id}</td>
-                                        <td className="border px-4 py-2">{d.name}</td>
-                                        <td className="border px-4 py-2">{d.email}</td>
-                                        <td className="border px-4 py-2">{d.password}</td>
-                                        <td className="border px-4 py-2 flex justify-center items-center space-x-2">
-                                            <Link to={`/admin-update/${d.id}`} className="inline-block px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 ml-2">Edit</Link>
-                                            <button className="inline-block px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 ml-2" onClick={() => handleDelete(d.id)}>Delete</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                       <Table data={slicedData} headers={[
+                        {key:'id', label:'ID'},
+                        {key:'name', label:'name'},
+                        {key:'email', label:'email'},
+                        {key:'password', label:'password'},
+                       ]}
+                        handleUpdate={handleUpdate}
+                        handleProductDelete={handleDelete}/>
                         <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     </div>
                 )}
