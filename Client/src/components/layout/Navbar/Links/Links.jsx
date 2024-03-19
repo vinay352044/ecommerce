@@ -1,16 +1,9 @@
-
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const CommonLinks = ({children , linksToRender}) => {
-  const { seller, admin } = useSelector((state) => state.role);
-
- 
-
+const CommonLinks = ({ children, linksToRender }) => {
   return (
     <>
       <ul className="font-medium text-base flex flex-col items-center gap-4 md:p-0 md:flex-row">
-
         {linksToRender.map((element, idx) => {
           return (
             <li key={idx}>

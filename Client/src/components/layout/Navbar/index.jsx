@@ -1,12 +1,7 @@
 import { useState } from "react";
 import Button from "../../common/Button";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { HiHomeModern } from "react-icons/hi2";
-import { FaHeadphonesAlt } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import AdminLinks from "./Links/AdminLinks";
-import UserLinks from "./Links/UserLinks";
-import SellerLinks from "./Links/SellerLinks";
 import logo from "/images/png/logo-no-background.png";
 import { useDispatch, useSelector } from "react-redux";
 import { removeRole } from "../../../redux/actions/roleAction";
