@@ -8,7 +8,6 @@ const Searching = ({ searchQuery, handleSearchChange, productData, setFilteredPr
         product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    console.log("Filtered Products:", filteredProducts);
     setFilteredProducts(filteredProducts);
   }, [searchQuery, productData, setFilteredProducts]);
 

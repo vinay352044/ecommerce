@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { CiHeart } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../common/Pagination";
-import useDebounceHook from "../../../utils/custom-hooks/useDebounce";
 import {
   addProductInCart,
-  addToCart,
   removeFromCart,
 } from "../../../redux/actions/cartActions";
 import Sorting from "../../common/Sorting";
@@ -22,23 +19,11 @@ const Products = ({ productData, isAddToCart }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [priceSorting, setPriceSorting] = useState([]);
   const dispatch = useDispatch();
-  // const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-
-  const sortedProducts = [...filteredProducts];
-  if (sortOrder === "asc") {
-    sortedProducts.sort((a, b) => a.price - b.price);
-  } else if (sortOrder === "desc") {
-    sortedProducts.sort((a, b) => b.price - a.price);
-  }
-  const currentProducts = sortedProducts.slice(
-    indexOfFirstRecord,
-    indexOfLastRecord
-  );
-  const nPages = Math.ceil(sortedProducts.length / recordsPerPage);
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -66,7 +51,7 @@ const Products = ({ productData, isAddToCart }) => {
     }
   };
 
-  const shouldRenderPagination = sortedProducts.length > recordsPerPage;
+  const shouldRenderPagination = priceSorting.length > recordsPerPage;
 
   return (
     <>
@@ -77,19 +62,26 @@ const Products = ({ productData, isAddToCart }) => {
           productData={productData}
           setFilteredProducts={setFilteredProducts}
         />
-        <Sorting handleSortingChange={handleSortingChange} />
+        <Sorting
+          handleSortingChange={handleSortingChange}
+          sortOrder={sortOrder}
+          setPriceSorting={setPriceSorting}
+          filteredProducts={filteredProducts}
+        />
       </div>
       <br />
       <div className="grid gap-4 grid-cols-3 sm:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 h-2/3">
-        {currentProducts.length > 0 ? (
-          currentProducts.map((product) => (
-            <Product
-              product={product}
-              key={product.id}
-              handleClick={handleClick}
-              isAddToCart={isAddToCart}
-            />
-          ))
+        {priceSorting.length > 0 ? (
+          priceSorting
+            .slice(indexOfFirstRecord, indexOfLastRecord)
+            .map((product) => (
+              <Product
+                product={product}
+                key={product.id}
+                handleClick={handleClick}
+                isAddToCart={isAddToCart}
+              />
+            ))
         ) : (
           <div className="justify-center">Oops not found</div>
         )}
@@ -97,7 +89,7 @@ const Products = ({ productData, isAddToCart }) => {
       {shouldRenderPagination && (
         <div className="flex justify-center items-center w-auto h-10 my-6">
           <Pagination
-            nPages={nPages}
+            nPages={Math.ceil(priceSorting.length / recordsPerPage)}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
