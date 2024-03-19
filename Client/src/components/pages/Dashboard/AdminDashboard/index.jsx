@@ -6,6 +6,7 @@ import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
 import { AiOutlineSearch } from 'react-icons/ai'; 
 import Table from '../../../common/Table';
+import Input from '../../../common/Input';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -101,13 +102,14 @@ const Index = () => {
       <div className="flex justify-between mb-4">
         <div className='flex px-20'>
           <div className="relative mr-4">
-            <input
+            {/* <input
               type="text"
               placeholder="Search..."
               className="pl-8 pr-4 py-2 rounded border"
               value={searchQuery}
               onChange={handleSearchChange}
-            />
+            /> */}
+            <Input placeholder='Search...'  className='pl-8 pr-4 py-2 rounded border' value={searchQuery} onChange={handleSearchChange}/>
             <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
               <AiOutlineSearch />
             </div>

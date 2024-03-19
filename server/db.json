@@ -438,7 +438,6 @@
       "brand": "Apple",
       "total_sell": 123,
       "thumbnail": "https://images.news18.com/ibnlive/uploads/2023/08/apple-iphone-15-pro-max-sale.jpg"
-
     }
   ],
   "sellers": [
@@ -645,6 +644,26 @@
       "brand": "samsung",
       "email": "abc@gmail.com",
       "password": "Dh1@",
+      "productsToSell": []
+    },
+    {
+      "id": "17",
+      "name": "Dhruv ",
+      "businessName": "dhruv electronics",
+      "gstin": "22BAAAA0000A1Z5",
+      "brand": "samsung",
+      "email": "pdhruv@gmail.com",
+      "password": "ranDom1$",
+      "productsToSell": []
+    },
+    {
+      "id": "18",
+      "name": "dppp        dc",
+      "businessName": "dhruv electronics",
+      "gstin": "22BAAAA0000A1Z5",
+      "brand": "samsung",
+      "email": "pqwer@gmail.com",
+      "password": "Dhruv123@",
       "productsToSell": []
     }
   ],
@@ -976,6 +995,34 @@
       "name": "VaideekTest",
       "email": "VaideekTest@mail.com",
       "password": "Mail@12345"
+    },
+    {
+      "id": "17",
+      "name": "dhruv1",
+      "email": "dhruv1@gmail.com",
+      "password": "ranDom1$",
+      "favouriteProducts": []
+    },
+    {
+      "id": "18",
+      "name": "           kedkmkdm        ",
+      "email": "asf@gmail.com",
+      "password": "Dhruv123@",
+      "favouriteProducts": []
+    },
+    {
+      "id": "19",
+      "name": "cmdkcmdkkcmkd",
+      "email": "dp@gmail.com",
+      "password": "sxxl,lxsx",
+      "favouriteProducts": []
+    },
+    {
+      "id": "20",
+      "name": "xmskmsk",
+      "email": "abc@gmail.com",
+      "password": "Dhruv123@",
+      "favouriteProducts": []
     }
   ],
   "orders": [
@@ -1273,15 +1320,11 @@
       "id": "20"
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "Demo123"
     },
     {
-      "id": 22,
-      "name": "VinayNew123"
-    },
-    {
-      "id": 23,
+      "id": "22",
       "name": "VinayNew123"
     }
   ]

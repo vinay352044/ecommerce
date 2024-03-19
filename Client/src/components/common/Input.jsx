@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-
 const Input = ({
   id,
   name,
-  type,
+  type = "text",
   value,
   placeholder,
-  className,
+  className = "",
   onChange,
   onBlur,
   autocomplete,
   readOnly,
   autoFocus,
-  ...props
+  ...props //like for required
 }) => {
+  const defaultStyle =
+    "border-2 border-black rounded-md focus:ring-0 w-[min(24rem,85vw)] " + className;
+
   return (
     <input
       type={type}
@@ -21,9 +22,7 @@ const Input = ({
       name={name}
       value={value}
       placeholder={placeholder}
-      className={`${
-        className ? className : "border-2 border-black rounded-md focus:ring-0"
-      }`}
+      className={defaultStyle}
       onChange={onChange}
       onBlur={onBlur}
       autoComplete={autocomplete}
