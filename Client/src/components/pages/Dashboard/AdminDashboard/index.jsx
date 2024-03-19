@@ -53,7 +53,7 @@ const Index = () => {
     navigate(`/admin-update-products/${productID}`);
   }
 
-  const handleProductDelete = async (productID) => {
+  const handleDelete = async (productID) => {
     console.log(productID);
 
     const shouldDelete = window.confirm("Are you sure you want to delete this product?");
@@ -128,7 +128,7 @@ const Index = () => {
           { key: 'category', label: 'Category' }
         ]}
         handleUpdate={handleUpdate}
-        handleProductDelete={handleProductDelete}
+        handleDelete={handleDelete}
       />
       {shouldRenderPagination && (
         <div className="flex justify-center w-screen items-center">

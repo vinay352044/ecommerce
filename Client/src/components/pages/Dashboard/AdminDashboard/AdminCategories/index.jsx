@@ -14,7 +14,7 @@ const AdminCategories = () => {
         console.log(categoryID)
         navigate(`/admin-update-category/${categoryID}`)
     }
-    const handleProductDelete = async (categoryID) => {
+    const handleDelete = async (categoryID) => {
         console.log(categoryID);
 
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
@@ -65,7 +65,7 @@ const AdminCategories = () => {
             {/* <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" /> */}
             <Table data={categories}
                 handleUpdate={handleUpdate}
-                handleProductDelete={handleProductDelete}
+                handleDelete={handleDelete}
                 headers={[
                     { key: 'id', label: ' ID' },
                     { key: 'name', label: ' Name' },

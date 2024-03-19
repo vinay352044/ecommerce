@@ -21,7 +21,7 @@ const YourProducts = () => {
 		navigate(`/seller-update-products/${productID}`)
 	}
 
-	const handleProductDelete = async (productID) => {
+	const handleDelete = async (productID) => {
 		const shouldDelete = window.confirm("Are you sure you want to delete this product?")
 
 		if (!shouldDelete) {
@@ -72,8 +72,8 @@ const YourProducts = () => {
 					{key:'brand', label:'brand'},
 					{key:'category', label:'category'},
 				]}
-				handleUpdate={handleProductUpdate}
-				handleProductDelete={handleProductDelete}
+				handleUpdate={handleDelete}
+				handleDelete={handleDelete}
 			/>
 			<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 		</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Table = ({ data, headers, handleUpdate, handleProductDelete }) => {
+const Table = ({ data, headers, handleUpdate, handleDelete }) => {
   return (
     <div className="px-20">
       <table className="w-full border-collapse">
@@ -23,7 +23,7 @@ const Table = ({ data, headers, handleUpdate, handleProductDelete }) => {
                 <button onClick={() => handleUpdate(item.id)} className="px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600">
                   Update
                 </button>
-                <button onClick={() => handleProductDelete(item.id)} className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                <button onClick={() => handleDelete(item.id)} className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">
                   Delete
                 </button>
               </td>
