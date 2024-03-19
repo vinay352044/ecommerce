@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Input from "../../common/Input";
 
 const loginSchema = yup.object({
   role: yup
@@ -156,7 +157,7 @@ const Login = () => {
                   Email
                 </label>
               </div>
-              <input
+              {/* <input
                 type="email"
                 name="email"
                 id="email"
@@ -165,7 +166,8 @@ const Login = () => {
                 value={values.email}
                 placeholder="dhruv@example.com"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="email" name="email" id="email" onChange={handleChange} onBlur={handleBlur} value={values.email} placeholder="dhruv@example.com"/>
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
               ) : (
