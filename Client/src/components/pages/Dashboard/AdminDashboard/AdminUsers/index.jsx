@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import useDebounceHook from '../../../../../utils/custom-hooks/useDebounce';
 import { deleteUser, getUsers } from '../../../../../utils/axios-instance';
 import { AiOutlineSearch } from 'react-icons/ai'; // Importing search icon from react-icons
+import Input from '../../../../common/Input';
 
 function Index() {
     const [data, setData] = useState([]);
@@ -59,13 +60,14 @@ function Index() {
                     <div>
                         <div className="flex justify-end mb-4">
                             <div className="relative">
-                                <input
+                                {/* <input
                                     type='text'
                                     placeholder='Search..'
                                     onChange={handleSearchChange}
                                     value={searchQuery}
                                     className="pl-8 pr-4 py-2 rounded border w-48"
-                                />
+                                /> */}
+                                <Input placeholder='Search...' onChange={handleSearchChange} value={searchQuery} className="pl-8 pr-4 py-2 rounded border w-48"/>
                                 <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <AiOutlineSearch />
                                 </div>
