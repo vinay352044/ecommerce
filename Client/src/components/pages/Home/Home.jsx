@@ -4,7 +4,7 @@ import "./home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductData } from "../../../redux/actions/productActions";
 
-import Products from "./ProductsList.jsx";
+import Products from "./Products.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {

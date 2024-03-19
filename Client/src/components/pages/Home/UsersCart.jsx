@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Products from "./ProductsList";
+import Products from "./Products";
 import { getOrders, registerOrder } from "../../../utils/axios-instance";
 import { toast } from "react-toastify";
 import { clearCart } from "./../../../redux/actions/cartActions";
