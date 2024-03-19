@@ -51,16 +51,15 @@ const Products = ({ productData, isAddToCart }) => {
   const handleSortingChange = (order) => {
     setSortOrder(order);
   };
- const role = JSON.parse(localStorage.getItem('role')) || ''
- const isLoggedIn = role.isAuth
+  const role = JSON.parse(localStorage.getItem("role")) || "";
+  const isLoggedIn = role.isAuth;
   const handleClick = (product) => {
     if (isAddToCart) {
-        if(isLoggedIn){
-            dispatch(addProductInCart(product));
-        }else{
-            toast.warning('Please Login!!')
-        }
-      
+      if (isLoggedIn) {
+        dispatch(addProductInCart(product));
+      } else {
+        toast.warning("Please Login!!");
+      }
     } else {
       dispatch(removeFromCart(product.id));
       toast.success("Removed from the cart!", {

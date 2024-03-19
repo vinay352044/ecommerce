@@ -4,18 +4,22 @@ import "./home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductData } from "../../../redux/actions/productActions";
 
-import Products from "./Products.jsx";
+import Products from "./ProductsList.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [productData, setProductData] = useState([]);
   const dispatch = useDispatch();
   const { seller, admin } = useSelector((state) => state.role);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchProductData());
-    seller ? navigate('/seller-dashboard/pendingorders') : admin ? navigate('/admin') : null; 
+    seller
+      ? navigate("/seller-dashboard/pendingorders")
+      : admin
+      ? navigate("/admin")
+      : null;
   }, []);
 
   const products = useSelector((state) => state.productReducer.products);

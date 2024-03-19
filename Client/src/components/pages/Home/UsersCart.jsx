@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Products from "./Products";
+import Products from "./ProductsList";
 import { getOrders, registerOrder } from "../../../utils/axios-instance";
 import { toast } from "react-toastify";
 import { clearCart } from "./../../../redux/actions/cartActions";
@@ -33,7 +33,7 @@ const UsersCart = () => {
         order_accepted: "pending",
         accepted_by: "",
         quantity: cartItems[i].quantity,
-        product: cartItems[i]
+        product: cartItems[i],
       };
       const { success, data, error } = await registerOrder(newOrderObj);
       gloableSuccess = success;
@@ -68,13 +68,20 @@ const UsersCart = () => {
   return (
     <div>
       {cartItems.length > 0 ? (
-        < div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
           <Products productData={cartItems} isAddToCart={false} />
-          <button className="text-white bg-[#0295db] hover:bg-[#9d9da1]  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 mt-4" onClick={handleCheckout}>checkout</button>
+          <button
+            className="text-white bg-[#0295db] hover:bg-[#9d9da1]  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 mt-4"
+            onClick={handleCheckout}
+          >
+            checkout
+          </button>
         </div>
       ) : (
         <div>
-          <h1 className="text-center text-3xl font-bold">No Product Available!</h1>
+          <h1 className="text-center text-3xl font-bold">
+            No Product Available!
+          </h1>
         </div>
       )}
     </div>

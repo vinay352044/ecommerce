@@ -3,8 +3,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { worker } from "../../../../redux/actions/orderActions";
 import { toast } from "react-toastify";
+import Card from "../../../common/Card";
 
-function Card({ card_data, hideButtons }) {
+function SellerOrderCard({ card_data, hideButtons }) {
   const sellerState = useSelector((state) => state.orderReducer);
   const dispatch = useDispatch();
 
@@ -87,41 +88,17 @@ function Card({ card_data, hideButtons }) {
     handleflag();
   }
 
+  // console.log(orderData.product);
   return (
+    // <>
+
+    // </>
+
+    //og one
     <>
       {productdetails ? (
-        <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md bg-white border border-gray-200 rounded-lg shadow-lg ">
-          <div>
-            <img
-              className="p-8 rounded-t-lg"
-              src={productdetails.thumbnail}
-              alt="product image"
-            />
-          </div>
-          <div className=" px-2 pb-2 md:px-5 md:pb-5">
-            <div>
-              <h4 className="text-sm text-center font-semibold md:text-lg tracking-tight text-gray-900 mb-4">
-                {productdetails.title}
-              </h4>
-            </div>
-            <div className="md:text-left text-center">
-              <h5 className=" text-xs md:text-sm font-normal tracking-tight text-gray-900 mb-4">
-                {productdetails.description}
-              </h5>
-            </div>
-
-            <div className="flex flex-col md:flex-row  items-center justify-between mb-4 ">
-              <span className="text-xs md:text-sm font-normal text-gray-900">
-                <strong>Discount :</strong> {productdetails.discountPercentage}%
-              </span>
-              <span className="text-xs md:text-sm font-normal text-gray-900">
-                <strong>Rating :</strong> {productdetails.rating}
-              </span>
-              <span className="text-xs md:text-sm font-normal text-gray-900">
-                <strong>Quantity :</strong> {orderData.quantity}
-              </span>
-            </div>
-
+        <>
+          <Card product={orderData.product} identifier={"ordersCard"}>
             {hideButtons ? (
               editable ? (
                 <div className="flex flex-col items-center justify-between text-black mb-4">
@@ -240,8 +217,8 @@ function Card({ card_data, hideButtons }) {
                 )}
               </div>
             </div>
-          </div>
-        </div>
+          </Card>
+        </>
       ) : (
         <h1>No data available</h1>
       )}
@@ -249,4 +226,4 @@ function Card({ card_data, hideButtons }) {
   );
 }
 
-export default Card;
+export default SellerOrderCard;
