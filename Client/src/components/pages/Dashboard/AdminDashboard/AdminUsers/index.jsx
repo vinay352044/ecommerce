@@ -19,10 +19,9 @@ function Index() {
             .catch(err => console.log(err));
     }, []);
 
-    const handleUpdate=(id)=>{
-            // navigate('/admin-update/${d.id}');
-            navigate(`/admin-update/${id}`);
-    }   
+    const handleUpdate = (id) => {
+        navigate(`/admin-update/${id}`);
+    }
 
     const debouncedQuery = useDebounceHook(searchQuery, 500);
     const filteredData = data.filter(user => user.name && user.name.toLowerCase().includes(debouncedQuery.toLowerCase()));
@@ -85,7 +84,7 @@ function Index() {
                         {key:'email', label:'email'},
                         {key:'password', label:'password'},
                        ]}
-                        handleUpdate={(e)=>handleUpdate(e.id)}
+                        handleUpdate={handleUpdate}
                         handleDelete={handleDelete}/>
                         <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     </div>
