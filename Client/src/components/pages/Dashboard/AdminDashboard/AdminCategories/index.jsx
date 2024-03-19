@@ -62,7 +62,15 @@ const AdminCategories = () => {
             <div className="flex justify-end mb-4">
                 <Link to="/admin-createCategories" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD CATEGORY</Link>
             </div>
-            <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" />
+            {/* <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" /> */}
+            <Table data={categories}
+                handleUpdate={handleUpdate}
+                handleProductDelete={handleProductDelete}
+                headers={[
+                    { key: 'id', label: ' ID' },
+                    { key: 'name', label: ' Name' },
+                ]} />
+
         </>
     )
 

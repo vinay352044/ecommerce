@@ -4,7 +4,7 @@ import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance
 import useDebounceHook from '../../../../utils/custom-hooks/useDebounce';
 import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
-import { AiOutlineSearch } from 'react-icons/ai'; 
+import { AiOutlineSearch } from 'react-icons/ai';
 import Table from '../../../common/Table';
 
 const Index = () => {
@@ -117,7 +117,19 @@ const Index = () => {
         <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD PRODUCT</Link>
       </div>
 
-      <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
+      {/* <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} /> */}
+      <Table
+        data={paginateRecords}
+        headers={[
+          { key: 'id', label: 'Product ID' },
+          { key: 'title', label: 'Title' },
+          { key: 'price', label: 'Price' },
+          { key: 'brand', label: 'Brand' },
+          { key: 'category', label: 'Category' }
+        ]}
+        handleUpdate={handleUpdate}
+        handleProductDelete={handleProductDelete}
+      />
       {shouldRenderPagination && (
         <div className="flex justify-center w-screen items-center">
           <Pagination
