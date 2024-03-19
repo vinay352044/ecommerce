@@ -2,23 +2,24 @@ import React, { useEffect, useState } from 'react';
 
 const Sorting = ({ handleSortingChange, filteredProducts, sortOrder, setPriceSorting }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [sortedProducts, setSortedProducts] = useState([]);
 
     useEffect(() => {
         let tempProducts = [...filteredProducts];
-        if (sortOrder === "asc") {
+        if (sortOrder === "ascPrice") {
             tempProducts.sort((a, b) => a.price - b.price);
-        } else if (sortOrder === "desc") {
+        } else if (sortOrder === "descPrice") {
             tempProducts.sort((a, b) => b.price - a.price);
+        } else if (sortOrder === "ascRating") {
+            tempProducts.sort((a, b) => a.rating - b.rating);
+        } else if (sortOrder === "descRating") {
+            tempProducts.sort((a, b) => b.rating - a.rating);
         }
         setPriceSorting(tempProducts)
     }, [filteredProducts, sortOrder]);
 
-  
-
     const handleChange = (order) => {
         handleSortingChange(order);
-        setIsOpen(false); 
+        setIsOpen(false);
     };
 
     return (
@@ -39,18 +40,32 @@ const Sorting = ({ handleSortingChange, filteredProducts, sortOrder, setPriceSor
                         aria-labelledby="options-menu"
                     >
                         <button
-                            onClick={() => handleChange('asc')}
-                            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'asc' && 'font-semibold'}`}
+                            onClick={() => handleChange('ascPrice')}
+                            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'ascPrice' && 'font-semibold'}`}
                             role="menuitem"
                         >
                             Price: Low to High
                         </button>
                         <button
-                            onClick={() => handleChange('desc')}
-                            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'desc' && 'font-semibold'}`}
+                            onClick={() => handleChange('descPrice')}
+                            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'descPrice' && 'font-semibold'}`}
                             role="menuitem"
                         >
                             Price: High to Low
+                        </button>
+                        <button
+                            onClick={() => handleChange('ascRating')}
+                            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'ascRating' && 'font-semibold'}`}
+                            role="menuitem"
+                        >
+                            Rating: Low to High
+                        </button>
+                        <button
+                            onClick={() => handleChange('descRating')}
+                            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'descRating' && 'font-semibold'}`}
+                            role="menuitem"
+                        >
+                            Rating: High to Low
                         </button>
                     </div>
                 </div>
