@@ -19,7 +19,7 @@ const Products = ({ productData, isAddToCart }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [priceSorting, setPriceSorting] = useState([]);
+const [sortingResult,setSortingResult] = useState([])
   const dispatch = useDispatch();
 
   const indexOfLastRecord = currentPage * recordsPerPage;
@@ -51,7 +51,7 @@ const Products = ({ productData, isAddToCart }) => {
     }
   };
 
-  const shouldRenderPagination = priceSorting.length > recordsPerPage;
+  const shouldRenderPagination = sortingResult.length > recordsPerPage;
 
   return (
     <>
@@ -65,14 +65,14 @@ const Products = ({ productData, isAddToCart }) => {
         <Sorting
           handleSortingChange={handleSortingChange}
           sortOrder={sortOrder}
-          setPriceSorting={setPriceSorting}
+          setSortingResult={setSortingResult}
           filteredProducts={filteredProducts}
         />
       </div>
       <br />
       <div className="grid gap-4 grid-cols-3 sm:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 h-2/3">
-        {priceSorting.length > 0 ? (
-          priceSorting
+        {sortingResult.length > 0 ? (
+          sortingResult
             .slice(indexOfFirstRecord, indexOfLastRecord)
             .map((product) => (
               <Product
@@ -89,7 +89,7 @@ const Products = ({ productData, isAddToCart }) => {
       {shouldRenderPagination && (
         <div className="flex justify-center items-center w-auto h-10 my-6">
           <Pagination
-            nPages={Math.ceil(priceSorting.length / recordsPerPage)}
+            nPages={Math.ceil(sortingResult.length / recordsPerPage)}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />

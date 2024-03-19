@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance';
-import useDebounceHook from '../../../../utils/custom-hooks/useDebounce';
+import Searching from '../../../common/Searching';
 import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
 import { AiOutlineSearch } from 'react-icons/ai'; 
@@ -12,6 +12,8 @@ const Index = () => {
   const [recordsPerPage] = useState(6)
   const [searchQuery, setSearchQuery] = useState('')
   const [sortOrder, setSortOrder] = useState(null)
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortingResult,setSortingResult] = useState([])
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -20,33 +22,19 @@ const Index = () => {
   const indexOfLastRecord = currentPage * recordsPerPage
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 
-  console.log(products)
-  const debouncedQuery = useDebounceHook(searchQuery, 500)
+ 
   const handleSearchChange = e => {
     setSearchQuery(e.target.value)
     setCurrentPage(1)
   }
-  const filteredData = products.filter(product => product.title && product.title.toLowerCase().includes(debouncedQuery.toLowerCase()))
-  const sortedData = [...filteredData]
-  if (sortOrder === 'asc') {
-    sortedData.sort((a, b) => a.price - b.price)
-  }
-  if (sortOrder === 'desc') {
-    sortedData.sort((a, b) => b.price - a.price)
-  }
+
   const handleSortingChange = order => {
     setSortOrder(order)
   }
-  const paginateRecords = sortedData.slice(indexOfFirstRecord, indexOfLastRecord)
-  console.log(paginateRecords)
-  const nPages = Math.ceil(sortedData.length / recordsPerPage)
-  console.log(nPages)
-  const shouldRenderPagination = products.length > recordsPerPage
+
+  const shouldRenderPagination = sortingResult.length > recordsPerPage
 
 
-  // const handleCreateProduct = () => {
-  //   navigate('/admin-create-products');
-  // };
 
   const handleUpdate = (productID) => {
     console.log(productID)
@@ -101,27 +89,31 @@ const Index = () => {
       <div className="flex justify-between mb-4">
         <div className='flex px-20'>
           <div className="relative mr-4">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="pl-8 pr-4 py-2 rounded border"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
+          <Searching
+          searchQuery={searchQuery}
+          handleSearchChange={handleSearchChange}
+          productData={products}
+          setFilteredProducts={setFilteredProducts}
+        />
             <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
               <AiOutlineSearch />
             </div>
           </div>
-          <Sorting handleSortingChange={handleSortingChange} />
+          <Sorting
+          handleSortingChange={handleSortingChange}
+          sortOrder={sortOrder}
+          setSortingResult={setSortingResult}
+          filteredProducts={filteredProducts}
+        />
         </div>
         <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD PRODUCT</Link>
       </div>
 
-      <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
+      <Table data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
       {shouldRenderPagination && (
         <div className="flex justify-center w-screen items-center">
           <Pagination
-            nPages={nPages}
+            nPages={Math.ceil(sortingResult.length / recordsPerPage)}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
