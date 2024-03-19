@@ -6,10 +6,13 @@ import { toast } from 'react-toastify';
 import useDebounceHook from '../../../../../utils/custom-hooks/useDebounce';
 import { deleteUser, getUsers } from '../../../../../utils/axios-instance';
 import { AiOutlineSearch } from 'react-icons/ai'; // Importing search icon from react-icons
+import ConfirmDeleteModal from '../../../../common/ConfirmDeleteModal';
 
 function Index() {
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [userIdToBeDeleted, setUserIdToBeDeleted] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,19 +31,25 @@ function Index() {
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const slicedData = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    const handleDelete = (id) => {
-        const confirmDelete = window.confirm('Are you sure you want to delete?');
-        if (confirmDelete) {
-                deleteUser(id)
-                .then(res => {
-                    console.log(res);
-                    setData(data.filter(user => user.id !== id));
-                    toast.success('User deleted Successfully!');
-                    navigate('/admin-users');
-                })
-                .catch(err => console.log(err));
-        }
+    const handleDelete = (userId) => {
+        setUserIdToBeDeleted(userId)
+        setShowConfirmationModal(true)
     };
+
+    const deleteUserById = (userId) => {
+        deleteUser(userId)
+        .then(res => {
+            // console.log(res);
+            setData(data.filter(user => user.id !== userId));
+            toast.success('User deleted Successfully!');
+            navigate('/admin-users');
+        })
+        .catch(err => console.log(err))
+        .finally(()=>{
+            setShowConfirmationModal(false)
+            setUserIdToBeDeleted(null)
+        })
+    }
 
     const handleSearchChange = e => {
         setSearchQuery(e.target.value);
@@ -49,6 +58,7 @@ function Index() {
 
     return (
         <>
+        { showConfirmationModal && <ConfirmDeleteModal Id={userIdToBeDeleted} handleDelete={deleteUserById} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setUserIdToBeDeleted}/>}
             <div className='p-10'>
                 <h1 className="text-2xl font-bold mb-4 text-center">List of Users</h1>
                 {data.length === 0 ? (
