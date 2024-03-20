@@ -32,7 +32,7 @@ const Index = () => {
     { key: 'brand', label: 'Brand' },
     { key: 'category', label: 'Category' }
   ]
-  
+
   const shouldRenderPagination = sortingResult.length > recordsPerPage
 
   const handleUpdate = (productID) => {
@@ -85,46 +85,42 @@ const Index = () => {
     <>
       {showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted} />}
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
-      <div className="flex justify-between mb-4">
-        <div className="flex px-20">
-          <div className="relative mr-4">
-            <Searching
-              dataToSearch={products}
-              setSearchResults={setSearchResults}
-              setCurrentPage={setCurrentPage}
-            />
-            
-            <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
-              <AiOutlineSearch />
-            </div>
-          </div>
-          <Sorting
-            setSortingResult={setSortingResult}
-            searchResults={searchResults}
-          />
-        </div>
-        <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
-        <Link to="/admin-create-products">+ ADD PRODUCT</Link>
-        </ButtonComponent>
-      </div>
-      {sortingResult.length>0 ? (
-      <Table
-       data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
-        headers={productsArray}
-        handleUpdate={handleUpdate}
-        handleDelete={handleDelete}
-      />
-      ) : 
-      (<div className="justify-center">Oops not found</div>)
-      }   
-      {shouldRenderPagination && (
-        <div className="flex justify-center w-screen items-center">
-          <Pagination
-            nPages={Math.ceil(sortingResult.length / recordsPerPage)}
-            currentPage={currentPage}
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
+        <div className="relative mb-3 sm:mb-0 mr-0 sm:mr-4">
+          <Searching
+            dataToSearch={products}
+            setSearchResults={setSearchResults}
             setCurrentPage={setCurrentPage}
           />
+          <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <AiOutlineSearch />
+          </div>
         </div>
+        <Sorting
+          setSortingResult={setSortingResult}
+          searchResults={searchResults}
+        />
+        <ButtonComponent buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer">
+          <Link to="/admin-create-products">+ ADD PRODUCT</Link>
+        </ButtonComponent>
+      </div>
+
+      {sortingResult.length > 0 ? (
+        <Table
+          data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
+          headers={productsArray}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+        />
+      ) :
+        (<div className="justify-center">Oops not found</div>)
+      }
+      {shouldRenderPagination && (
+        <Pagination
+          nPages={Math.ceil(sortingResult.length / recordsPerPage)}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       )}
     </>
   );
