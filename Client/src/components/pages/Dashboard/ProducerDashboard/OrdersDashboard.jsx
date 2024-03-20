@@ -88,7 +88,7 @@ function OrdersDashboard({ whichcomponent }) {
 
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className="mt-5 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6">
         {whichcomponent === "pendingorders" ? (
           availabeleorders &&
           availabeleorders.length &&
