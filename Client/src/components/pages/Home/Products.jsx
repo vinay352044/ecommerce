@@ -16,23 +16,13 @@ const Products = ({ productData, isAddToCart }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(6);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState(null);
-  const [searchResults,setSearchResults] = useState([])
-const [sortingResult,setSortingResult] = useState([])
+
+  const [searchResults, setSearchResults] = useState([]);
+  const [sortingResult, setSortingResult] = useState([]);
   const dispatch = useDispatch();
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-    setCurrentPage(1);
-  };
-
-  const handleSortingChange = (order) => {
-    setSortOrder(order);
-  };
 
   const role = JSON.parse(localStorage.getItem("role")) || "";
   const isLoggedIn = role.isAuth;
@@ -57,14 +47,10 @@ const [sortingResult,setSortingResult] = useState([])
     <>
       <div className="display flex justify-center space-x-10">
         <Searching
-          searchQuery={searchQuery}
-          handleSearchChange={handleSearchChange}
-          productData={productData}
+          dataToSearch={productData}
           setSearchResults={setSearchResults}
         />
         <Sorting
-          handleSortingChange={handleSortingChange}
-          sortOrder={sortOrder}
           setSortingResult={setSortingResult}
           searchResults={searchResults}
         />

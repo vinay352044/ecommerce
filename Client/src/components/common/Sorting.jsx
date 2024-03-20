@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const Sorting = ({
-  handleSortingChange,
-  searchResults,
-  sortOrder,
-  setSortingResult,
-}) => {
+const Sorting = ({ searchResults, setSortingResult }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState(null);
 
   useEffect(() => {
     if (Array.isArray(searchResults)) {
@@ -24,6 +20,9 @@ const Sorting = ({
       setSortingResult(tempProducts);
     }
   }, [searchResults, sortOrder]);
+  const handleSortingChange = (order) => {
+    setSortOrder(order);
+  };
 
   const handleChange = (order) => {
     handleSortingChange(order);
