@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import Pagination from "../../../../common/Pagination"
 import { toast } from "react-toastify"
@@ -8,12 +7,12 @@ import { deleteUser, getUsers } from "../../../../../utils/axios-instance"
 import { AiOutlineSearch } from "react-icons/ai" // Importing search icon from react-icons
 import Table from "../../../../common/Table"
 import ConfirmDeleteModal from "../../../../common/ConfirmDeleteModal"
-import Input from "../../../../common/Input"
+import Searching from "../../../../common/Searching"
 import ButtonComponent from "../../../../common/ButtonComponent"
 
 function Index() {
 	const [data, setData] = useState([])
-	const [searchQuery, setSearchQuery] = useState("")
+	const [searchResults, setSearchResults] = useState("")
 	const [showConfirmationModal, setShowConfirmationModal] = useState(false)
 	const [userIdToBeDeleted, setUserIdToBeDeleted] = useState(null)
 	const navigate = useNavigate()
@@ -28,17 +27,13 @@ function Index() {
 		navigate(`/admin-update/${id}`)
 	}
 
-	const debouncedQuery = useDebounceHook(searchQuery, 500)
-	const filteredData = data.filter(
-		(user) => user.name && user.name.toLowerCase().includes(debouncedQuery.toLowerCase())
-	)
 	const [currentPage, setCurrentPage] = useState(1)
 	const [recordsPerPage] = useState(5)
-	const nPages = Math.ceil(filteredData.length / recordsPerPage)
+	const nPages = Math.ceil(searchResults.length / recordsPerPage)
 
 	const indexOfLastRecord = currentPage * recordsPerPage
 	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
-	const slicedData = filteredData.slice(indexOfFirstRecord, indexOfLastRecord)
+	const slicedData = searchResults.slice(indexOfFirstRecord, indexOfLastRecord) || []
 
 	const handleDelete = (userId) => {
 		setUserIdToBeDeleted(userId)
@@ -51,6 +46,7 @@ function Index() {
 		{ key: "email", label: "email" },
 		{ key: "password", label: "password" },
 	]
+
 	const deleteUserById = (userId) => {
 		deleteUser(userId)
 			.then((res) => {
@@ -64,11 +60,6 @@ function Index() {
 				setShowConfirmationModal(false)
 				setUserIdToBeDeleted(null)
 			})
-	}
-
-	const handleSearchChange = (e) => {
-		setSearchQuery(e.target.value)
-		setCurrentPage(1)
 	}
 
 	return (
@@ -91,26 +82,15 @@ function Index() {
 					<div>
 						<div className="flex justify-end mb-4">
 							<div className="relative">
-								{/* <input
-                                    type='text'
-                                    placeholder='Search..'
-                                    onChange={handleSearchChange}
-                                    value={searchQuery}
-                                    className="pl-8 pr-4 py-2 rounded border w-48"
-                                /> */}
-								<Input
-									placeholder="Search..."
-									onChange={handleSearchChange}
-									value={searchQuery}
-									className="pl-8 pr-4 py-2 rounded border w-48"
-								/>
+								<Searching dataToSearch={data} setSearchResults={setSearchResults} setCurrentPage={setCurrentPage} />
+
 								<div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
 									<AiOutlineSearch />
 								</div>
 							</div>
 							<ButtonComponent buttonStyle="ml-5 bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
 								<Link to="/admin-createUser">+ ADD</Link>
-							</ButtonComponent>
+							</ButtonComponent>{" "}
 						</div>
 
 						<Table data={slicedData} headers={userArray} handleUpdate={handleUpdate} handleDelete={handleDelete} />
