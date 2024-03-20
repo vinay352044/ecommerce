@@ -943,36 +943,8 @@
       "password": "1234567890"
     },
     {
-      "id": "15",
-      "name": "Vinay Sharma",
-      "email": "vinay@gmail.com",
-      "password": "Vinay@25",
-      "favouriteProducts": [
-        {
-          "id": "5",
-          "title": "Fog Scent Xpressio Perfume",
-          "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
-          "price": "13",
-          "discountPercentage": "8.14",
-          "rating": "4.59",
-          "stock": "61",
-          "brand": "Fog Scent Xpressio",
-          "category": "fragrances",
-          "total_sell": "22",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/13/1.jpg",
-            "https://cdn.dummyjson.com/product-images/13/2.png",
-            "https://cdn.dummyjson.com/product-images/13/3.jpg",
-            "https://cdn.dummyjson.com/product-images/13/4.jpg",
-            "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
-          ]
-        }
-      ]
-    },
-    {
       "id": "16",
-      "name": "VaideekTest",
+      "name": "VaideekBhai",
       "email": "VaideekTest@mail.com",
       "password": "Mail@12345"
     }
