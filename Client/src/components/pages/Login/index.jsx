@@ -11,6 +11,7 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import ButtonComponent from "../../common/ButtonComponent";
+import Input from "../../common/Input";
 
 const loginSchema = yup.object({
   role: yup
@@ -108,7 +109,7 @@ const Login = () => {
       setUsers(usersData);
       setSellers(sellersData);
     })();
-    
+
     // if looged in then don't give access to this page
     isAuth ? navigate("/") : null;
   }, []);
@@ -122,7 +123,7 @@ const Login = () => {
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
-            className="flex flex-col gap-2 w-[400px]"
+            className="flex flex-col gap-2"
           >
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
@@ -137,7 +138,7 @@ const Login = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 defaultValue="user"
-                className="border-2 rounded-md border-gray-500 focus:ring-0"
+                className="border-2 rounded-md border-gray-500 focus:ring-0 w-[min(24rem,85vw)]"
               >
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
@@ -157,7 +158,7 @@ const Login = () => {
                   Email
                 </label>
               </div>
-              <input
+              {/* <input
                 type="email"
                 name="email"
                 id="email"
@@ -166,6 +167,15 @@ const Login = () => {
                 value={values.email}
                 placeholder="dhruv@example.com"
                 className="border-2 rounded-md border-black focus:ring-0"
+              /> */}
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="dhruv@example.com"
               />
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
@@ -181,7 +191,7 @@ const Login = () => {
                   Password
                 </label>
               </div>
-              <input
+              {/* <input
                 type="password"
                 name="password"
                 id="password"
@@ -190,7 +200,17 @@ const Login = () => {
                 value={values.password}
                 placeholder="ranDom1$"
                 className="border-2 rounded-md border-black focus:ring-0"
+              /> */}
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                placeholder="ranDom1$"
               />
+
               {touched.password && errors.password ? (
                 <p className="text-[14px] text-red-700">{errors.password}</p>
               ) : (

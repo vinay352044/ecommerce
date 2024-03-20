@@ -50,7 +50,7 @@ export const sellerLinks = [
   {
     label: "Contact Us",
     slug: "/contact",
-    icon: <FaRegCircleUser />,
+    icon: <FaHeadphonesAlt />,
   },
 ];
 

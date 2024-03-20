@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
 
 const passwordRules =
@@ -80,8 +81,8 @@ const RegisterUser = () => {
           users.length !== 0
             ? (parseInt(users[users.length - 1].id) + 1).toString()
             : "1",
-        name,
-        email,
+        name: name.trim(),
+        email: email.trim(),
         password,
         favouriteProducts: [],
       };
@@ -135,7 +136,7 @@ const RegisterUser = () => {
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
-            className="flex flex-col gap-2 w-[400px]"
+            className="flex flex-col gap-2"
           >
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
@@ -144,7 +145,7 @@ const RegisterUser = () => {
                   Name
                 </label>
               </div>
-              <input
+              {/* <input
                 type="text"
                 name="name"
                 id="name"
@@ -153,6 +154,15 @@ const RegisterUser = () => {
                 value={values.name}
                 placeholder="Dhruv Prajapati"
                 className="border-2 rounded-md border-black focus:ring-0"
+              /> */}
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Dhruv Prajapati"
               />
               {touched.name && errors.name ? (
                 <p className="text-[14px] text-red-700">{errors.name}</p>
@@ -168,7 +178,7 @@ const RegisterUser = () => {
                   Email
                 </label>
               </div>
-              <input
+              {/* <input
                 type="email"
                 name="email"
                 id="email"
@@ -177,6 +187,15 @@ const RegisterUser = () => {
                 value={values.email}
                 placeholder="dhruv@example.com"
                 className="border-2 rounded-md border-black focus:ring-0"
+              /> */}
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="dhruv@example.com"
               />
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
@@ -192,7 +211,7 @@ const RegisterUser = () => {
                   Password
                 </label>
               </div>
-              <input
+              {/* <input
                 type="password"
                 name="password"
                 id="password"
@@ -201,6 +220,15 @@ const RegisterUser = () => {
                 value={values.password}
                 placeholder="ranDom1$"
                 className="border-2 rounded-md border-black focus:ring-0"
+              /> */}
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="randDom1$"
               />
               {touched.password && errors.password ? (
                 <p className="text-[14px] text-red-700">{errors.password}</p>
@@ -216,7 +244,7 @@ const RegisterUser = () => {
                   Confirm Password
                 </label>
               </div>
-              <input
+              {/* <input
                 type="password"
                 name="cpassword"
                 id="cpassword"
@@ -225,6 +253,15 @@ const RegisterUser = () => {
                 value={values.cpassword}
                 placeholder="ranDom1$"
                 className="border-2 rounded-md border-black focus:ring-0"
+              /> */}
+              <Input
+                type="password"
+                name="cpassword"
+                id="cpassword"
+                value={values.cpassword}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="ranDom1$"
               />
               {touched.cpassword && errors.cpassword ? (
                 <p className="text-[14px] text-red-700">{errors.cpassword}</p>

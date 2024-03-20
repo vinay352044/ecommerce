@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const CommonLinks = ({ children, linksToRender }) => {
+const Links = ({ children, linksToRender }) => {
   return (
     <>
       <ul className="font-medium text-base flex flex-col items-center gap-4 md:p-0 md:flex-row">
@@ -27,4 +27,4 @@ const CommonLinks = ({ children, linksToRender }) => {
   );
 };
 
-export default CommonLinks;
+export default Links;
