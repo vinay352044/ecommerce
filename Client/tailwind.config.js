@@ -2,11 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}","node_modules/flowbite-react/lib/esm/**/*.js"],
   theme: {
-    extend: {},
-    screens : {
-      'md': '760px',
-      'lg': '1440px',
-    }
+    extend: {
+      screens : {
+        'md': '760px',
+      }
+    },
   },
   plugins: [import("flowbite/plugin")],
 };
