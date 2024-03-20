@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setRole } from "../../../../redux/actions/roleAction";
 import Input from "../../../common/Input";
+import ButtonComponent from "../../../common/ButtonComponent";
 
 const InitialValues = {
   title: "",
@@ -209,12 +210,12 @@ const Index = () => {
 
             <div className="mb-6">
               <div className="w-full px-3">
-                <button
+                <ButtonComponent
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  buttonStyle="mt-[0.6rem]"
                 >
                   Create Product
-                </button>
+                </ButtonComponent>
               </div>
             </div>
           </Form>
