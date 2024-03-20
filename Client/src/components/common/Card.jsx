@@ -7,14 +7,11 @@ function Card({ product, heartHandle, identifier, children }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
   let flag;
 
-  identifier === "usersCard" || identifier === "wishlist"
-    ? (flag = true)
-    : (flag = false);
+  (identifier === "usersCard" || identifier === "wishlist") ? (flag = true) : (flag = false);
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
   };
-
   return (
     <div>
       <div
