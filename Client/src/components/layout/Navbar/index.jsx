@@ -24,8 +24,12 @@ const Navbar = () => {
     e.preventDefault();
     dispatch(removeRole());
     toast.success("Logout Successful !!");
+    show === true ? setShow(!show) : null
     navigate("/");
   };
+  const toggleNavbar = () =>{
+    show === true ? setShow(!show) : null
+  }
 
   return (
     <nav className="bg-[#0295db] sticky top-0 left-0 z-50 ">
@@ -34,9 +38,9 @@ const Navbar = () => {
           to={
             admin ? "/admin" : seller ? "/seller-dashboard/pendingorders" : "/"
           }
-          className="flex items-center space-x-3"
+          className="flex items-center"
         >
-          <div className="w-[110px]">
+          <div className="w-[100px]">
             <img src={logo} alt="logo" className="w-full" />
           </div>
         </NavLink>
@@ -78,19 +82,21 @@ const Navbar = () => {
                 ? adminLinks
                 : publicLinks
             }
+            toggleNavbar={toggleNavbar}
           >
             <li>
               {isAuth ? (
                 <NavLink
                   onClick={(e) => handleLogOut(e)}
-                  className="border-transparent bg-white px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
+                  className="border-transparent bg-white px-4 py-1 my-1 flex items-center gap-2 text-[1rem]  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
                 >
                   Logout
                 </NavLink>
               ) : (
                 <NavLink
                   to="/login"
-                  className="border-transparent bg-white px-6 py-1 my-1 flex items-center gap-2 text-lg  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
+                  onClick={() =>toggleNavbar()}
+                  className="border-transparent bg-white px-4 py-1 my-1 flex items-center gap-2 text-[1rem]  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
                 >
                   <FaRegCircleUser />
                   Log In
