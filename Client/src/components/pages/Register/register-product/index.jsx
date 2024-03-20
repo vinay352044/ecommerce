@@ -212,7 +212,7 @@ const Index = () => {
               <div className="w-full px-3">
                 <ButtonComponent
                   type="submit"
-                  buttonStyle="mt-[0.6rem]"
+                  buttonStyle="mt-[0.6rem] text-sm"
                 >
                   Create Product
                 </ButtonComponent>
