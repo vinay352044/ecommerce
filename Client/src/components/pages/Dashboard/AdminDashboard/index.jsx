@@ -86,17 +86,18 @@ const Index = () => {
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
       <div className="flex justify-between mb-4">
         <div className="flex px-20">
-          <div className="relative mr-4">
+          <div className="display gap-5 flex flex-start flex-col md:flex-row justify-center items-start">
             <Searching
               dataToSearch={products}
               setSearchResults={setSearchResults}
               setCurrentPage={setCurrentPage}
             />
-          </div>
+          
           <Sorting
             setSortingResult={setSortingResult}
             searchResults={searchResults}
           />
+          </div>
           {/* <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
             <AiOutlineSearch />
           </div> */}
