@@ -117,7 +117,7 @@ function OrdersDashboard({ whichcomponent }) {
               ) {
                 return (
                   <SellerOrderCard
-                    key={order.order_id}
+                    key={order.id}
                     card_data={{
                       order: order,
                       cardData: inventory.find(
@@ -152,7 +152,7 @@ export default OrdersDashboard;
           cardData.length != 0 ? (
             availabeleorders.map((order, index) => (
               <Card
-                key={order.order_id}
+                key={order.id}
                 card_data={{
                   cardData: cardData[index],
                   order: order,
@@ -173,7 +173,7 @@ export default OrdersDashboard;
     if (order.order_accepted === "accepted" && productidArray.includes(order.product_id)) {
       return (
         <Card
-          key={order.order_id}
+          key={order.id}
           card_data={{
             order: order,
             cardData: inventory.find((product) => product.id === order.product_id),

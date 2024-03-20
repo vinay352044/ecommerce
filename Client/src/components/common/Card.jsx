@@ -58,7 +58,7 @@ function Card({ product, heartHandle, identifier, children }) {
             </Rating>
             {!flag ? (
               <span className="text-xs md:text-sm font-normal text-gray-900">
-                <strong>Quantity :</strong> {orderData.quantity}
+                <strong>Quantity :</strong> {product.quantity}
               </span>
             ) : null}
           </div>
