@@ -7,7 +7,9 @@ function Card({ product, heartHandle, identifier, children }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
   let flag;
 
-  (identifier === "usersCard" || identifier === "wishlist") ? (flag = true) : (flag = false);
+  identifier === "usersCard" || identifier === "wishlist"
+    ? (flag = true)
+    : (flag = false);
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
@@ -53,6 +55,13 @@ function Card({ product, heartHandle, identifier, children }) {
           >
             {product.description}
           </p>
+          <p
+            className={` font-normal text-gray-800  ${
+              showFullDescription ? "" : "truncate"
+            }`}
+          >
+            {product.description}
+          </p>
           {!showFullDescription ? (
             <button className="text-blue-600" onClick={toggleDescription}>
               Read more
@@ -66,13 +75,16 @@ function Card({ product, heartHandle, identifier, children }) {
             <span className="text-sm font-normal text-gray-900 mt-2 md:mt-0">
               <strong>Discount :</strong> {product.discountPercentage}%
             </span>
+            
             <Rating className="mt-2 md:mt-0">
               <RatingStar />
+              
               <p className="ml-2 text-sm font-bold text-gray-900">
                 {product.rating}
               </p>
             </Rating>
             {!flag ? (
+             
               <span className="text-sm font-normal text-gray-900 mt-2 md:mt-0">
                 <strong>Quantity :</strong> {product.quantity}
               </span>

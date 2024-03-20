@@ -30,16 +30,21 @@ const Wishlist = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center p-6">
         {user.favouriteProducts.length > 0 ? (
           user.favouriteProducts.map((product, index) => (
+            <div className=" items-center lg:mx-auto mr-3  md:mr-0 mt-5 ">
             <Card key= {product.id} product={product} identifier='wishlist'>
-              <ButtonComponent
-                onClick={() => handleRemove(product.id)}
+              <div className="place-content-center">
+              <ButtonComponent 
+                onClick={() => handleRemove(product.id)} 
               >
                 Remove
               </ButtonComponent>
+              </div>
+              
             </Card>
+            </div>
           ))
         ) : (
           <div className="flex items-center justify-center h-screen ml-8">
