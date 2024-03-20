@@ -5,6 +5,7 @@ import Loader from "../../common/Loader"
 import {FaPhoneAlt, FaUser} from "react-icons/fa"
 import {IoIosMail} from "react-icons/io"
 import { MdMessage } from "react-icons/md";
+import Input from "../../common/Input"
 
 const Contact = () => {
 	const [formData, setFormData] = useState({
@@ -71,24 +72,22 @@ const Contact = () => {
 
 	const inputGroupClass = "flex flex-col mt-2"
 	const inputLabelClass = "text text-gray-600 flex items-center gap-2 mb-1 text-[#0295db!important]"
-	const inputClass =
-		"px-2 py-1 border rounded-md focus:outline-none bg-[#fff!important] border-[#fff!important] focus:border-[#0295db]"
 
 	return (
 		<>
 			{isLoading && <Loader />}
-			<div className="w-screen mt-10 text-center text-3xl">
+			<div className="mt-10 text-center text-3xl">
 				<h1>Contact Us</h1>
 			</div>
-			<div className="w-[min(600px,85vw)] mx-auto mt-3 p-6 rounded shadow bg-slate-100">
-				<div className="contact-form">
+			<div className="flex justify-center items-center">
+				<div className="contact-form mt-3 p-2 md:p-[1.5rem!important] rounded shadow bg-slate-100">
 					<form onSubmit={handleSubmit}>
 						<div className={inputGroupClass}>
 							<label htmlFor="name" className={inputLabelClass}>
 								<FaUser /> Name
 							</label>
-							<input
-								className={inputClass}
+							<Input
+								className="border-gray-200"
 								type="text"
 								name="name"
 								id="name"
@@ -102,8 +101,8 @@ const Contact = () => {
 							<label htmlFor="email" className={inputLabelClass}>
 							<IoIosMail /> Email
 							</label>
-							<input
-								className={inputClass}
+							<Input
+								className="border-gray-200"
 								type="email"
 								name="email"
 								id="email"
@@ -117,8 +116,8 @@ const Contact = () => {
 							<label htmlFor="phone" className={inputLabelClass}>
 								<FaPhoneAlt /> Contact No <small>(optional)</small>
 							</label>
-							<input
-								className={inputClass}
+							<Input
+								className="border-gray-200"
 								type="number"
 								name="phone"
 								id="phone"
@@ -132,7 +131,7 @@ const Contact = () => {
 							 <MdMessage />	Message
 							</label>
 							<textarea
-								className={inputClass}
+								className="px-2 py-1 border-2 rounded-md focus:outline-none border-gray-200 focus:ring-0 w-[min(24rem,85vw)]"
 								name="message"
 								id="message"
 								cols="30"
