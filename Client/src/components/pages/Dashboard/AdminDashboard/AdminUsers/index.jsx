@@ -4,7 +4,6 @@ import Pagination from "../../../../common/Pagination"
 import { toast } from "react-toastify"
 import useDebounceHook from "../../../../../utils/custom-hooks/useDebounce"
 import { deleteUser, getUsers } from "../../../../../utils/axios-instance"
-import { AiOutlineSearch } from "react-icons/ai" // Importing search icon from react-icons
 import Table from "../../../../common/Table"
 import ConfirmDeleteModal from "../../../../common/ConfirmDeleteModal"
 import Searching from "../../../../common/Searching"
@@ -83,10 +82,6 @@ function Index() {
 						<div className="flex justify-end mb-4">
 							<div className="relative">
 								<Searching dataToSearch={data} setSearchResults={setSearchResults} setCurrentPage={setCurrentPage} />
-
-								<div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
-									<AiOutlineSearch />
-								</div>
 							</div>
 							<ButtonComponent buttonStyle="ml-5 bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
 								<Link to="/admin-createUser">+ ADD</Link>
