@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "./Card.component";
+import SellerOrderCard from "./SellerOrderCard";
 import { useDispatch, useSelector } from "react-redux";
 import { worker, current_orders } from "../../../../redux/actions/orderActions";
 function OrdersDashboard({ whichcomponent }) {
   const roleData = JSON.parse(localStorage.getItem("role"));
   let sellerId = parseInt(roleData.seller.id);
   let productidArray = roleData.seller.productsToSell || [];
-
+ 
   const [totalorders, settotalorders] = useState([]);
   const [acceptedorders, setacceptedorders] = useState([]);
   const [inventory, setinventory] = useState([]);
@@ -37,6 +37,7 @@ function OrdersDashboard({ whichcomponent }) {
 
   useEffect(() => {
     settotalorders(sellersState.total_orders);
+    // console.log(sellersState)
     setavailabeleorders(sellersState.current_orders);
 
     setacceptedorders(sellersState.accptedorders);
@@ -47,7 +48,7 @@ function OrdersDashboard({ whichcomponent }) {
       productidArray !== undefined &&
       sellersState.needed_products.length < productidArray.length
     ) {
-      console.log("if worked");
+      // console.log("if worked");
 
       const apitosend = productidArray.map(
         (id) => `http://localhost:3000/products/${id}`
@@ -57,9 +58,10 @@ function OrdersDashboard({ whichcomponent }) {
       // "http://localhost:3000/products/2",
       // "http://localhost:3000/products/3"]
       dispatch(worker("FETCH_MULTI", "FETCH_NEEDED_PRODUCTS", apitosend));
-    } else {
-      console.log("else worked");
-    }
+    } 
+    // else {
+    //   // console.log("else worked");
+    // }
 
     setinventory(sellersState.needed_products);
   }, [productidArray, sellersState.needed_products]);
@@ -69,7 +71,7 @@ function OrdersDashboard({ whichcomponent }) {
       if (order.order_accepted === "pending")
         return productidArray.includes(order.product_id);
     });
-
+// console.log(dummyavailableorders);
     dispatch(current_orders(dummyavailableorders));
   }, [totalorders]);
 
@@ -93,8 +95,8 @@ function OrdersDashboard({ whichcomponent }) {
           cardData &&
           cardData.length !== 0 ? (
             availabeleorders.map((order, index) => (
-              <Card
-                key={order.order_id}
+              <SellerOrderCard
+                key={order.id}
                 card_data={{
                   cardData: cardData[index],
                   order: order,
@@ -114,8 +116,8 @@ function OrdersDashboard({ whichcomponent }) {
                 productidArray.includes(order.product_id)
               ) {
                 return (
-                  <Card
-                    key={order.order_id}
+                  <SellerOrderCard
+                    key={order.id}
                     card_data={{
                       order: order,
                       cardData: inventory.find(
@@ -150,7 +152,7 @@ export default OrdersDashboard;
           cardData.length != 0 ? (
             availabeleorders.map((order, index) => (
               <Card
-                key={order.order_id}
+                key={order.id}
                 card_data={{
                   cardData: cardData[index],
                   order: order,
@@ -171,7 +173,7 @@ export default OrdersDashboard;
     if (order.order_accepted === "accepted" && productidArray.includes(order.product_id)) {
       return (
         <Card
-          key={order.order_id}
+          key={order.id}
           card_data={{
             order: order,
             cardData: inventory.find((product) => product.id === order.product_id),

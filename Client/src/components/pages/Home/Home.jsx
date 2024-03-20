@@ -6,7 +6,7 @@ import Products from "./Products.jsx";
 const Home = () => {
   const [productData, setProductData] = useState([]);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
     dispatch(fetchProductData());
   }, []);

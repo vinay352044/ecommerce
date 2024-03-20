@@ -1,3 +1,5 @@
+import ButtonComponent from './ButtonComponent';
+
 const Table = ({ data, headers, handleUpdate, handleDelete }) => {
   return (
     <div className="px-20">
@@ -22,18 +24,12 @@ const Table = ({ data, headers, handleUpdate, handleDelete }) => {
                 </td>
               ))}
               <td className="border px-4 py-2 flex justify-center items-center space-x-2">
-                <button
-                  onClick={() => handleUpdate(item.id)}
-                  className="px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600"
-                >
+                <ButtonComponent onClick={() => handleUpdate(item.id)} buttonStyle="px-[8px] py-[4px] text-sm ">
                   Update
-                </button>
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                >
+                </ButtonComponent>
+                <ButtonComponent onClick={() => handleDelete(item.id)} buttonStyle="px-[8px] py-[4px] text-sm bg-[#c53030] border-[#c53030] hover:text-[#c53030]">
                   Delete
-                </button>
+                </ButtonComponent>
               </td>
             </tr>
           ))}
