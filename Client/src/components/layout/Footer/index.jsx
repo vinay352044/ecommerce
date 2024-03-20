@@ -13,22 +13,22 @@ const Footer = () => {
 			<div className="w-full mx-auto p-4 md:py-3">
 				<div className="text-center">
 					<ul className="w-3/4 md:w-[550px] mx-auto grid grid-cols-2 sm:grid-cols-4 place-items-center mb-4 text-sm md:text-base lg:text-lg font-medium text-white sm:mb-0 ">
-						<li>
+						<li className="justify-self-start sm:justify-self-auto">
 							<Link to="/" className={linkStyle} onClick={scrollToTop}>
 								<FaHome /> Home
 							</Link>
 						</li>
-						<li>
+						<li className="justify-self-start sm:justify-self-auto">
 							<Link to="/contact" className={linkStyle} onClick={scrollToTop}>
 								<FaHeadphonesAlt /> Contact Us
 							</Link>
 						</li>
-						<li>
+						<li className="justify-self-start sm:justify-self-auto">
 							<Link to="/login" className={linkStyle} onClick={scrollToTop}>
 							 <FaSignInAlt /> Login
 							</Link>
 						</li>
-						<li>
+						<li className="justify-self-start sm:justify-self-auto">
 							<Link to="/register" className={linkStyle} onClick={scrollToTop}>
 								<FaUserPlus /> Sign Up
 							</Link>
