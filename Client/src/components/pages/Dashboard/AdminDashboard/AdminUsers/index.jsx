@@ -95,7 +95,7 @@ function Index() {
                         {searchResults.length>0 ? (
 						<Table data={slicedData} headers={userArray} handleUpdate={handleUpdate} handleDelete={handleDelete} />
                         ):(
-                            <div className="justify-center">Oops not found</div>
+                            <div className="text-center py-4 text-xl text-grey-500">Oops not found</div>
                         )
                         }
 						{shouldRenderPagination && (<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />)}

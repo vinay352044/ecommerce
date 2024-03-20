@@ -40,10 +40,11 @@ const Products = ({ productData, isAddToCart }) => {
   };
 
   const shouldRenderPagination = sortingResult.length > recordsPerPage;
-
+  console.log(searchResults)
+console.log(sortingResult)
   return (
     <>
-      <div className="display flex justify-center space-x-10">
+      <div className="display gap-5 flex flex-start flex-col md:flex-row justify-center items-start">
         <Searching
           dataToSearch={productData}
           setSearchResults={setSearchResults}
@@ -68,7 +69,7 @@ const Products = ({ productData, isAddToCart }) => {
               />
             ))
         ) : (
-          <div className="justify-center">Oops not found</div>
+          <div className="text-center py-4 text-xl text-grey-500">Oops not found !!</div>
         )}
       </div>
       {shouldRenderPagination && (

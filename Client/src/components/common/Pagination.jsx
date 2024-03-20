@@ -16,7 +16,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
       <div className="mt-6">
         <ul className="flex justify-center space-x-4">
           {currentPage !== 1 && (
-            <li className="bg-blue-500 text-white px-4 py-2 rounded-l focus:outline-none">
+            <li className="bg-[#85c7f7] text-white px-4 py-2 rounded-l focus:outline-none">
               <button onClick={goToPrevPage}>Previous</button>
             </li>
           )}
@@ -24,14 +24,14 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             <li
               key={pgNumber}
               className={`${
-                currentPage === pgNumber ? "bg-blue-700" : "bg-blue-500"
+                currentPage === pgNumber ? "bg-[#2590db]" : "bg-[#85c7f7]"
               } text-white px-4 py-2 rounded focus:outline-none`}
             >
               <button onClick={() => setCurrentPage(pgNumber)}>{pgNumber}</button>
             </li>
           ))}
           {currentPage !== nPages && (
-            <li className="bg-blue-500 text-white px-4 py-2 rounded-r focus:outline-none">
+            <li className="bg-[#85c7f7] text-white px-4 py-2 rounded-r focus:outline-none">
               <button onClick={goToNextPage}>Next</button>
             </li>
           )}

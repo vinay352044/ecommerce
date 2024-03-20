@@ -115,7 +115,7 @@ const Index = () => {
         handleDelete={handleDelete}
       />
       ) : 
-      (<div className="justify-center">Oops not found</div>)
+      (<div className="text-center py-4 text-xl text-grey-500">Oops not found</div>)
       }   
       {shouldRenderPagination && (
         <div className="flex justify-center w-screen items-center">

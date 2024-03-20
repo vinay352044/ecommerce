@@ -4,7 +4,8 @@ const Sorting = ({ searchResults, setSortingResult }) => {
   const [sortOrder, setSortOrder] = useState(null);
 
   useEffect(() => {
-    if (searchResults.length>0) {
+    if (Array.isArray(searchResults)) {
+      
       let tempProducts = [...searchResults];
       if (sortOrder === "ascPrice") {
         tempProducts.sort((a, b) => a.price - b.price);
@@ -19,14 +20,16 @@ const Sorting = ({ searchResults, setSortingResult }) => {
     }
   }, [searchResults, sortOrder]);
 
-  const sortChange = (order) => {
+  const change = (order) => {
     setSortOrder(order);
   };
 
   return (
-    <div className="relative w-[10vw]">
+    <div className="flex items-center">
       <select
-        onChange={(e) => sortChange(e.target.value)}
+        value={sortOrder}
+        onChange={(e) => change(e.target.value)}
+        className="px-2 py-1 w-[30vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:w-1/2 "
       >
         <option value="">Sort</option>
         <option value="ascPrice">Price: Low to High</option>

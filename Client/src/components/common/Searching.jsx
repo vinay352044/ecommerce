@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useDebounceHook from "../../utils/custom-hooks/useDebounce";
 const Searching = ({ dataToSearch, setSearchResults, setCurrentPage }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
+  const debouncedSearchQuery = useDebounceHook(searchQuery, 300);
 
   useEffect(() => {
     if (dataToSearch.length > 0) {
@@ -33,7 +33,7 @@ const Searching = ({ dataToSearch, setSearchResults, setCurrentPage }) => {
     <input
       type="text"
       placeholder="Search..."
-      className="px-4 py-2 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+      className="px-2 py-1 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:w-1/2"
       value={searchQuery}
       onChange={handleSearchChange}
     />
