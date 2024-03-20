@@ -4,7 +4,7 @@ const Sorting = ({ searchResults, setSortingResult }) => {
   const [sortOrder, setSortOrder] = useState(null);
 
   useEffect(() => {
-    if (Array.isArray(searchResults)) {
+    if (searchResults.length>0) {
       let tempProducts = [...searchResults];
       if (sortOrder === "ascPrice") {
         tempProducts.sort((a, b) => a.price - b.price);
@@ -19,16 +19,14 @@ const Sorting = ({ searchResults, setSortingResult }) => {
     }
   }, [searchResults, sortOrder]);
 
-  const handleSortingChange = (order) => {
+  const sortChange = (order) => {
     setSortOrder(order);
-    setIsOpen(false);
   };
 
   return (
     <div className="relative w-[10vw]">
       <select
-        value={sortOrder}
-        onChange={(e) => handleSortingChange(e.target.value)}
+        onChange={(e) => sortChange(e.target.value)}
       >
         <option value="">Sort</option>
         <option value="ascPrice">Price: Low to High</option>
