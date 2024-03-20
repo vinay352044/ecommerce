@@ -54,23 +54,26 @@ const Products = ({ productData, isAddToCart }) => {
           searchResults={searchResults}
         />
       </div>
-      <br />
-      <div className="grid gap-4 grid-cols-3 sm:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 h-2/3">
-        {sortingResult.length > 0 ? (
-          sortingResult
-            .slice(indexOfFirstRecord, indexOfLastRecord)
-            .map((product) => (
-              <Product
-                product={product}
-                key={product.id}
-                handleClick={handleClick}
-                isAddToCart={isAddToCart}
-              />
-            ))
-        ) : (
-          <div className="justify-center">Oops not found</div>
-        )}
-      </div>
+      
+  <div className="mt-5 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+    {sortingResult.length > 0 ? (
+      sortingResult
+        .slice(indexOfFirstRecord, indexOfLastRecord)
+        .map((product) => (
+          <Product
+            product={product}
+            key={product.id}
+            handleClick={handleClick}
+            isAddToCart={isAddToCart}
+          />
+        ))
+    ) : (
+      <div className="justify-center">Oops not found</div>
+    )}
+  </div>
+
+
+      
       {shouldRenderPagination && (
         <div className="flex justify-center items-center w-auto h-10 my-6">
           <Pagination

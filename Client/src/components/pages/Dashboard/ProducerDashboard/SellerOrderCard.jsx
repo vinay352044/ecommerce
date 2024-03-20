@@ -101,7 +101,7 @@ function SellerOrderCard({ card_data, hideButtons }) {
 
   const DeliveryLabel = () => (
     <label
-      className="text-black text:xs md:text-base "
+      className="text-black text-sm  md:text-base lg:text-lg  "
       htmlFor="delivery_calender"
     >
       Delivery Date :
@@ -118,7 +118,7 @@ function SellerOrderCard({ card_data, hideButtons }) {
         autoFocus={editable}
         onChange={onChange}
         readOnly={readOnly}
-        className={`bg-gray-200 px-3 py-1 rounded-md w-full text-center tracking-tight text:xs md:text-base ${
+        className={`bg-gray-200 px-3 py-1 rounded-md w-full text-center tracking-tight text-sm  md:text-base lg:text-lg ${
           editable ? "cursor-not-allowed" : "cursor-text"
         }`}
         required
@@ -129,6 +129,8 @@ function SellerOrderCard({ card_data, hideButtons }) {
   const Button = ({ onClick, text }) => {
     return (
       <ButtonComponent
+        // buttonStyle="text-sm px-[8px!important] py-[5px!important] mt-[0!important]"
+        buttonStyle="mt-[0!important] mr-1   "
         onClick={onClick}
       >
         {text}
@@ -142,23 +144,24 @@ function SellerOrderCard({ card_data, hideButtons }) {
     <>
       {productdetails ? (
         <>
-          <Card product={orderData.product} identifier={"ordersCard"}>
-            {hideButtons ? (
-              editable ? (
-                <div className="flex flex-col items-center justify-between text-black mb-4">
-                  <DeliveryLabel />
-                  <DeliveryInput
-                    id="delivery_calender"
-                    onChange={(e) => {
-                      const formattedDate = e.target.value;
+          <div className=" items-center lg:mx-auto mr-3  md:mr-0 ">
+            <Card product={orderData.product} identifier={"ordersCard"}>
+              {hideButtons ? (
+                editable ? (
+                  <div className="flex flex-col items-center justify-between text-black mb-4">
+                    <DeliveryLabel />
+                    <DeliveryInput
+                      id="delivery_calender"
+                      onChange={(e) => {
+                        const formattedDate = e.target.value;
 
-                      formattedDate.split("-").reverse().join("-");
-                      setSelectedDate(formattedDate);
-                      setDeliveryDateFilled(true);
-                    }}
-                    readOnly={!editable}
-                  />
-                  {/* <input
+                        formattedDate.split("-").reverse().join("-");
+                        setSelectedDate(formattedDate);
+                        setDeliveryDateFilled(true);
+                      }}
+                      readOnly={!editable}
+                    />
+                    {/* <input
                     name="delivery_calender"
                     id="delivery_calender"
                     type="date"
@@ -175,17 +178,17 @@ function SellerOrderCard({ card_data, hideButtons }) {
                     }`}
                     required
                   /> */}
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-between text-black mb-4">
-                  <DeliveryLabel />
-                  <DeliveryInput
-                    id="delivery_calender"
-                    value={orderData.expected_delivery}
-                    readOnly={!editable}
-                  />
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-between text-black mb-4">
+                    <DeliveryLabel />
+                    <DeliveryInput
+                      id="delivery_calender"
+                      value={orderData.expected_delivery}
+                      readOnly={!editable}
+                    />
 
-                  {/* <input
+                    {/* <input
                     name="delivery_calender"
                     id="delivery_calender"
                     type="text"
@@ -200,22 +203,22 @@ function SellerOrderCard({ card_data, hideButtons }) {
                       editable ? "cursor-text" : "cursor-not-allowed"
                     }`}
                   /> */}
-                </div>
-              )
-            ) : (
-              //for pending orders
-              <div className="flex flex-col items-center justify-between text-black mb-4 ">
-                <DeliveryLabel />
-                <DeliveryInput
-                  onChange={(e) => {
-                    const formattedDate = e.target.value;
-                    formattedDate.split("-").reverse().join("-");
-                    setSelectedDate(formattedDate);
-                    setDeliveryDateFilled(true);
-                  }}
-                />
+                  </div>
+                )
+              ) : (
+                //for pending orders
+                <div className="flex flex-col items-center justify-between text-black mb-4 ">
+                  <DeliveryLabel />
+                  <DeliveryInput
+                    onChange={(e) => {
+                      const formattedDate = e.target.value;
+                      formattedDate.split("-").reverse().join("-");
+                      setSelectedDate(formattedDate);
+                      setDeliveryDateFilled(true);
+                    }}
+                  />
 
-                {/* <input
+                  {/* <input
                   name="delivery_calender"
                   type="date"
                   placeholder="select date to deliver"
@@ -228,54 +231,55 @@ function SellerOrderCard({ card_data, hideButtons }) {
                   }}
                   required
                 /> */}
-              </div>
-            )}
+                </div>
+              )}
 
-            <div className="flex flex-row items-center justify-between ">
-              <span className="text-sm md:text-xl font-bold text-gray-900 ">
-                ${productdetails.price}
-              </span>
+              <div className="flex flex-row items-center justify-between ">
+                <span className="text-2xl lg:text-2xl font-bold text-gray-900 ">
+                  ${productdetails.price}
+                </span>
 
-              <div>
-                {hideButtons ? (
-                  editable ? (
-                    <Button onClick={handleSubmit} text="submit" />
+                <div>
+                  {hideButtons ? (
+                    editable ? (
+                      <Button onClick={handleSubmit} text="submit" />
+                    ) : (
+                      // <button
+                      //   onClick={handleSubmit}
+                      //   className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
+                      // >
+                      //   submit
+                      // </button>
+                      <Button onClick={handleDelay} text="Delay" />
+                      // <button
+                      //   onClick={handleDelay}
+                      //   className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
+                      // >
+                      //   Delay
+                      // </button>
+                    )
                   ) : (
-                    // <button
-                    //   onClick={handleSubmit}
-                    //   className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
-                    // >
-                    //   submit
-                    // </button>
-                    <Button onClick={handleDelay} text="Delay" />
-                    // <button
-                    //   onClick={handleDelay}
-                    //   className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
-                    // >
-                    //   Delay
-                    // </button>
-                  )
-                ) : (
-                  <div className="flex flex-row md:flex-row">
-                    <Button onClick={handleAccept} text="Accept" />
-                    {/* <button
+                    <div className="flex flex-row md:flex-row">
+                      <Button onClick={handleAccept} text="Accept" />
+                      {/* <button
                       onClick={handleAccept}
                       className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
                     >
                       Accept
                     </button> */}
-                    <Button onClick={handleReject} text="Reject" />
-                    {/* <button
+                      <Button onClick={handleReject} text="Reject" />
+                      {/* <button
                       onClick={handleReject}
                       className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2 text-center "
                     >
                       Reject
                     </button> */}
-                  </div>
-                )}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </>
       ) : (
         <h1>No data available</h1>
