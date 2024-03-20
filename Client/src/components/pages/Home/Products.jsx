@@ -12,6 +12,7 @@ import Sorting from "../../common/Sorting";
 import Product from "./Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Input from "../../common/Input";
 
 const Products = ({ productData, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
@@ -73,13 +74,14 @@ const Products = ({ productData, isAddToCart }) => {
   return (
     <>
       <div className="display flex justify-center space-x-10">
-        <input
+        {/* <input
           type="text"
           placeholder="Search..."
           className="px-4 py-2 w-[60vw] border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           value={searchQuery}
           onChange={handleSearchChange}
-        />
+        /> */}
+        <Input placeholder="Search..." value={searchQuery} onChange={handleSearchChange} className="w-[60vw]"/>
         <Sorting handleSortingChange={handleSortingChange} />
       </div>
       <br />
