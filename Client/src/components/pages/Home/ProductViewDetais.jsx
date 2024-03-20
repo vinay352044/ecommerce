@@ -7,6 +7,7 @@ import { addProductInCart } from "../../../redux/actions/cartActions";
 import { API } from "../../../utils/axios-instance";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ButtonComponent from "../../common/ButtonComponent";
 
 const ProductViewDetais = () => {
  
@@ -28,7 +29,7 @@ const ProductViewDetais = () => {
     
       const getProductDetails = async () =>{
         const response = await API.get(`/products/${productId}`);
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data)
       }
     getProductDetails();
@@ -103,12 +104,11 @@ const ProductViewDetais = () => {
               </span>
             </div>
             <div className="">
-              <button
-                className="text-white bg-[#0295db] hover:bg-[#9d9da1]  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 mb-4"
+              <ButtonComponent
                 onClick={() => handleClick(requiredProd)}
               >
                 Add to Cart
-              </button>
+              </ButtonComponent>
             </div>
           </div>
         </div>
