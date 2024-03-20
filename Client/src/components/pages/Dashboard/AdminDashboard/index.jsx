@@ -4,7 +4,7 @@ import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance
 import useDebounceHook from '../../../../utils/custom-hooks/useDebounce';
 import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
-import { AiOutlineSearch } from 'react-icons/ai'; 
+import { AiOutlineSearch } from 'react-icons/ai';
 import Table from '../../../common/Table';
 import ConfirmDeleteModal from '../../../common/ConfirmDeleteModal';
 import Input from '../../../common/Input';
@@ -23,6 +23,14 @@ const Index = () => {
   const indexOfLastRecord = currentPage * recordsPerPage
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 
+
+  const productsArray = [
+    { key: 'id', label: 'Product ID' },
+    { key: 'title', label: 'Title' },
+    { key: 'price', label: 'Price' },
+    { key: 'brand', label: 'Brand' },
+    { key: 'category', label: 'Category' }
+  ]
   // console.log(products)
   const debouncedQuery = useDebounceHook(searchQuery, 500)
   const handleSearchChange = e => {
@@ -56,7 +64,7 @@ const Index = () => {
     navigate(`/admin-update-products/${productID}`);
   }
 
-  const handleProductDelete = async (productID) => {
+  const handleDelete = async (productID) => {
     // console.log(productID);
     setProductIdToBeDeleted(productID)
     setShowConfirmationModal(true)
@@ -99,7 +107,7 @@ const Index = () => {
 
   return (
     <>
-      { showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted}/>}
+      {showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted} />}
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
       <div className="flex justify-between mb-4">
         <div className='flex px-20'>
@@ -111,7 +119,7 @@ const Index = () => {
               value={searchQuery}
               onChange={handleSearchChange}
             /> */}
-            <Input placeholder='Search...'  className='pl-8 pr-4 py-2 rounded border' value={searchQuery} onChange={handleSearchChange}/>
+            <Input placeholder='Search...' className='pl-8 pr-4 py-2 rounded border' value={searchQuery} onChange={handleSearchChange} />
             <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
               <AiOutlineSearch />
             </div>
@@ -121,7 +129,13 @@ const Index = () => {
         <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD PRODUCT</Link>
       </div>
 
-      <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} />
+      {/* <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} /> */}
+      <Table
+        data={paginateRecords}
+        headers={productsArray}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+      />
       {shouldRenderPagination && (
         <div className="flex justify-center w-screen items-center">
           <Pagination

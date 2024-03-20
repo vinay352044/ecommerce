@@ -10,16 +10,17 @@ const AdminCategories = () => {
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [categoryIdToBeDeleted, setCategoryIdToBeDeleted] = useState(null);
 
-    const handleCreateCategories = () => {
-        navigate("/admin-createCategories")
-    }
+    const categoriesArray = [
+        { key: 'id', label: ' ID' },
+        { key: 'name', label: ' Name' },
+    ]
 
     const handleUpdate = (categoryID) => {
         // console.log(categoryID)
         navigate(`/admin-update-category/${categoryID}`)
     }
 
-    const handleProductDelete = (categoryID) => {
+    const handleDelete = (categoryID) => {
         setCategoryIdToBeDeleted(categoryID)
         setShowConfirmationModal(true)
     };
@@ -61,14 +62,19 @@ const AdminCategories = () => {
     }, []);
     return (
         <>
-        { showConfirmationModal && <ConfirmDeleteModal Id={categoryIdToBeDeleted} handleDelete={deleteCategory} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setCategoryIdToBeDeleted}/>}
+            {showConfirmationModal && <ConfirmDeleteModal Id={categoryIdToBeDeleted} handleDelete={deleteCategory} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setCategoryIdToBeDeleted} />}
             <div className="text-center text-2xl font-bold mt-8 mb-8">Manage Category</div>
 
 
             <div className="flex justify-end mb-4">
                 <Link to="/admin-createCategories" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD CATEGORY</Link>
             </div>
-            <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" />
+            {/* <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" /> */}
+            <Table data={categories}
+                handleUpdate={handleUpdate}
+                handleDelete={handleDelete}
+                headers={categoriesArray} />
+
         </>
     )
 

@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#0295db] sticky top-0 left-0 z-50 ">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4 md:px-8">
+      <div className="flex flex-wrap items-center justify-between mx-auto py-2 px-6 md:px-8">
         <NavLink
           to={
             admin ? "/admin" : seller ? "/seller-dashboard/pendingorders" : "/"
