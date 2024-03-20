@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { setRole } from "../../../redux/actions/roleAction";
 import Card from "../../common/Card";
+import ButtonComponent from "../../common/ButtonComponent";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
@@ -33,12 +34,11 @@ const Wishlist = () => {
         {user.favouriteProducts.length > 0 ? (
           user.favouriteProducts.map((product, index) => (
             <Card key= {product.id} product={product} identifier='wishlist'>
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              <ButtonComponent
                 onClick={() => handleRemove(product.id)}
               >
                 Remove
-              </button>
+              </ButtonComponent>
             </Card>
           ))
         ) : (
@@ -49,12 +49,11 @@ const Wishlist = () => {
                 Add items that you like to your wishlist. <br /> Review them
                 anytime and easily move them to the bag.
               </p>
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              <ButtonComponent                
                 onClick={() => navigate("/")}
               >
                 Continue Shopping
-              </button>
+              </ButtonComponent>
             </div>
           </div>
         )}

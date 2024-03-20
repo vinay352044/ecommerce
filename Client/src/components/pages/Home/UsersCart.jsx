@@ -5,6 +5,7 @@ import { getOrders, registerOrder } from "../../../utils/axios-instance";
 import { toast } from "react-toastify";
 import { clearCart } from "./../../../redux/actions/cartActions";
 import { useNavigate } from "react-router-dom";
+import ButtonComponent from "../../common/ButtonComponent";
 
 const UsersCart = () => {
   const dispatch = useDispatch();
@@ -70,12 +71,12 @@ const UsersCart = () => {
       {cartItems.length > 0 ? (
         <div className="flex flex-col justify-center items-center">
           <Products productData={cartItems} isAddToCart={false} />
-          <button
-            className="text-white bg-[#0295db] hover:bg-[#9d9da1]  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 mt-4"
+          <ButtonComponent
             onClick={handleCheckout}
+            buttonStyle="uppercase"
           >
-            checkout
-          </button>
+            Checkout
+          </ButtonComponent>
         </div>
       ) : (
         <div>
