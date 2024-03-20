@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "../../common/Button";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "/images/png/logo-no-background.png";
@@ -13,6 +12,7 @@ import {
   sellerLinks,
   userLinks,
 } from "./Links/LinkData";
+import ButtonComponent from "../../common/ButtonComponent";
 
 const Navbar = () => {
   const { isAuth, user, seller, admin } = useSelector((state) => state.role);
@@ -40,16 +40,16 @@ const Navbar = () => {
             <img src={logo} alt="logo" className="w-full" />
           </div>
         </NavLink>
-        <Button
+        <ButtonComponent
           handleClick={() => setShow(!show)}
-          data-collapse-toggle="navbar-default"
+          buttonStyle="inline-flex items-center w-10 h-10 justify-center rounded-sm md:hidden m-[0px!important] p-[8px!important] hover:bg-[rgba(0,0,0,0)!important]"
           type="button"
-          className="inline-flex items-center w-5 h-5 justify-center rounded-sm md:hidden"
+          data-collapse-toggle="navbar-default"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
           <svg
-            className="w-full h-full text-white hover:text-black"
+            className="w-full h-full text-white hover:text-black transition-all"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -63,7 +63,7 @@ const Navbar = () => {
               d="M1 1h15M1 7h15M1 13h15"
             />
           </svg>
-        </Button>
+        </ButtonComponent>
         <div
           className={`${show ? "" : "hidden"} w-full md:block md:w-auto`}
           id="navbar-default"
