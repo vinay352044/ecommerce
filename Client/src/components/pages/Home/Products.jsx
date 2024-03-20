@@ -9,14 +9,13 @@ import {
   removeFromCart,
 } from "../../../redux/actions/cartActions";
 import Sorting from "../../common/Sorting";
-import Product from "../../common/Product";
+import Product from "./Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Input from "../../common/Input";
 
 const Products = ({ productData, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(6);
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,16 +52,15 @@ const Products = ({ productData, isAddToCart }) => {
   const handleSortingChange = (order) => {
     setSortOrder(order);
   };
- const role = JSON.parse(localStorage.getItem('role')) || ''
- const isLoggedIn = role.isAuth
+  const role = JSON.parse(localStorage.getItem("role")) || "";
+  const isLoggedIn = role.isAuth;
   const handleClick = (product) => {
     if (isAddToCart) {
-        if(isLoggedIn){
-            dispatch(addProductInCart(product));
-        }else{
-            toast.warning('Please Login!!')
-        }
-      
+      if (isLoggedIn) {
+        dispatch(addProductInCart(product));
+      } else {
+        toast.warning("Please Login!!");
+      }
     } else {
       dispatch(removeFromCart(product.id));
       toast.success("Removed from the cart!", {
