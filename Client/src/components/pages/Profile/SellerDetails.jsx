@@ -18,7 +18,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
         />
       </div>
       <div className={`${infoWrapperClass} border-none`}>
-        <label htmlFor="email" className={`${labelClass} text-lg`}>
+        <label htmlFor="email" className={`${labelClass}`}>
           GST :
         </label>
         <input

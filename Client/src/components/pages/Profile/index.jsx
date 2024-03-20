@@ -70,18 +70,18 @@ const Profile = () => {
   };
 
   const linkClass =
-    "w-full border-[1px] border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
+    "w-full border-2 border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
   const labelClass =
-    "mr-2 font-bold text-2xl md:text-3xl text-[#2590db] flex items-center gap-2";
+    "mr-2 font-bold md:text-2xl text-[#2590db] flex items-center gap-2";
   const inputClass =
-    `px-3 py-2 w-full md:w-[65%] text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
+    `px-3 py-2 w-full md:w-[85%] text-xl md:text-2xl font-medium border-none bg-transparent focus:outline-none`;
   const infoWrapperClass =
     `flex items-center w-full md:w-[85%] ${readOnly ? 'border-b-[1px] border-transparent' : 'border-b-[1px] border-[#2590db]'}`;
 
 
   return (
-    <div className="py-4 px-8 w-full flex items-center">
-      <div className="w-full h-full flex items-center gap-4 shadow-2xl">
+    <div className="py-4 px-8 size-full flex items-center">
+      <div className="w-full h-fit flex items-center gap-4 shadow-2xl">
         <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
           <img src={placeholder} alt="placeholder" className="w-full h-full" />
         </div>
@@ -93,7 +93,7 @@ const Profile = () => {
           </div>
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col gap-2"
+            className="w-full flex flex-col gap-2"
           >
             <div className={infoWrapperClass}>
               <label htmlFor="name" className={labelClass}>
@@ -133,7 +133,7 @@ const Profile = () => {
                   name="password"
                   value={user ? user?.password : seller?.password}
                   readOnly={true}
-                  className={`${inputClass} text-red-600 w-[70%!important]`}
+                  className={`${inputClass} text-red-600 w-[70%]`}
                   required
                 />
                 {!showPass ? (
@@ -162,15 +162,15 @@ const Profile = () => {
             <div className="mt-4 w-full mr-auto">
               <ButtonComponent
                 handleClick={handleClick}
-                buttonStyle="flex gap-2 text-[white!important] focus:outline-none"
+                buttonStyle="flex gap-2 text-[white!important] hover:text-[#2590db!important] focus:outline-none"
               >
                 {readOnly ? (
                   <>
-                    Edit Profile
+                    Edit
                     <AiFillEdit className="text-xl" />
                   </>
                 ) : (
-                  "Update Profile"
+                  "Update"
                 )}
               </ButtonComponent>
             </div>
