@@ -7,7 +7,6 @@ import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaBoxOpen } from "react-icons/fa";
 import { useState } from "react";
-import Button from "../../common/Button";
 import { AiFillEdit } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import placeholder from "/images/profileImg.gif";
@@ -16,6 +15,7 @@ import { updateSeller, updateUser } from "../../../utils/axios-instance";
 import { setRole } from "../../../redux/actions/roleAction";
 import SellerDetails from "./SellerDetails";
 import { toast } from "react-toastify";
+import ButtonComponent from "../../common/ButtonComponent";
 
 const Profile = () => {
   const role = useSelector((state) => state.role);
@@ -70,7 +70,7 @@ const Profile = () => {
   };
 
   const linkClass =
-    "w-full border-[1px] border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%]";
+    "w-full border-[1px] border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
   const labelClass =
     "mr-2 font-bold text-2xl md:text-3xl text-[#2590db] flex items-center gap-2";
   const inputClass =
@@ -160,9 +160,9 @@ const Profile = () => {
               />
             ) : null}
             <div className="mt-4 w-full mr-auto">
-              <Button
+              <ButtonComponent
                 handleClick={handleClick}
-                className="px-4 py-2 border-none font-medium flex gap-2 bg-[#0295db] text-white focus:outline-none hover:bg-blue-500"
+                buttonStyle="flex gap-2 text-[white!important] focus:outline-none"
               >
                 {readOnly ? (
                   <>
@@ -172,7 +172,7 @@ const Profile = () => {
                 ) : (
                   "Update Profile"
                 )}
-              </Button>
+              </ButtonComponent>
             </div>
           </form>
           <div className="mt-6 w-full flex justify-center">

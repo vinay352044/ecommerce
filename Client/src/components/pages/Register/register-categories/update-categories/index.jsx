@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate, useParams } from 'react-router-dom';
-import { UpdateCategory, getCategoryById } from '../../../../../utils/axios-instance';
-
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field } from "formik";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  UpdateCategory,
+  getCategoryById,
+} from "../../../../../utils/axios-instance";
+import Input from "../../../../common/Input";
+import ButtonComponent from "../../../../common/ButtonComponent";
 
 function UpdateCategories() {
   const navigate = useNavigate();
@@ -31,7 +35,7 @@ function UpdateCategories() {
     try {
       const response = await UpdateCategory(values);
       if (response.success) {
-        navigate("/admin-categories")
+        navigate("/admin-categories");
         console.log("Category updated successfully:", response.data);
       } else {
         console.error("Failed to update category:", response.error);
@@ -41,24 +45,26 @@ function UpdateCategories() {
     }
   };
   return (
-    <div className="container mx-auto mt-5">
+    <div className="flex justify-center items-center flex-col h-60">
       <h1 className="text-3xl mb-5">Update Category</h1>
       {categoryData && (
-        <Formik
-          initialValues={categoryData}
-          onSubmit={handleSubmit}
-        >
+        <Formik initialValues={categoryData} onSubmit={handleSubmit}>
           <Form>
             <div className="mb-3">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Update Category Name</label>
-              <Field type="text" id="name" name="name"
-                className="mt-1 p-2 block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm"
-              />
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Update Category Name
+              </label>
+              <Input type="text" id="name" name="name" />
             </div>
-            <button type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Update
-            </button>
+            <ButtonComponent
+                  type="submit"
+                  buttonStyle="mt-[0.6rem] text-sm"
+                >
+                  Update
+                </ButtonComponent>
           </Form>
         </Formik>
       )}
@@ -67,4 +73,3 @@ function UpdateCategories() {
 }
 
 export default UpdateCategories;
-

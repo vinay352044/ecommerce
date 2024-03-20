@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Pagination from "../../common/Pagination";
+import Table from "../../common/Table";
 
 // {
 //   "id": "2",

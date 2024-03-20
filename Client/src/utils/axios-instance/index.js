@@ -358,7 +358,7 @@ export const deleteUser = async (id) => {
 //update user from admin
 export const updateUserFromAdmin = async (id, userData) => {
   try {
-      const res = await API.put(`/users/${id}`, userData);
+      const res = await API.patch(`/users/${id}`, userData);
       return {
           success: true,
           data: res.data,
