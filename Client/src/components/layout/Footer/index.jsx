@@ -5,9 +5,6 @@ const Footer = () => {
     <footer className="bg-[#0295db] shadow mt-10 py-5">
       <div className="w-full mx-auto p-4 md:py-3">
         <div className="text-center">
-          {/* <Link to="/" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
-            <img src="/images/svg/logo-black.svg" className="w-[10rem] h-[10rem] rounded-md" alt="Bac Mart Logo" />
-          </Link> */}
           <ul className="w-full mx-auto flex flex-wrap items-center justify-center mb-4 text-sm md:text-base lg:text-lg font-medium text-white sm:mb-0 gap-4">
             <li>
               <Link to='/' className="hover:underline font-bold transition-all">Home</Link>
