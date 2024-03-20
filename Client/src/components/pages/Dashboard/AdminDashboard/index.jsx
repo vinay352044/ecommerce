@@ -4,7 +4,6 @@ import { DeleteProductbyId, getProducts } from '../../../../utils/axios-instance
 import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
 import Searching from '../../../common/Searching';
-import { AiOutlineSearch } from 'react-icons/ai';
 import Table from '../../../common/Table';
 import ConfirmDeleteModal from '../../../common/ConfirmDeleteModal';
 import Input from '../../../common/Input';
@@ -85,12 +84,18 @@ const Index = () => {
     <>
       {showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted} />}
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
-      <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
-        <div className="relative mb-3 sm:mb-0 mr-0 sm:mr-4">
-          <Searching
-            dataToSearch={products}
-            setSearchResults={setSearchResults}
-            setCurrentPage={setCurrentPage}
+      <div className="flex justify-between mb-4">
+        <div className="flex px-20">
+          <div className="relative mr-4">
+            <Searching
+              dataToSearch={products}
+              setSearchResults={setSearchResults}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+          <Sorting
+            setSortingResult={setSortingResult}
+            searchResults={searchResults}
           />
           <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
             <AiOutlineSearch />
