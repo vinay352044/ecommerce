@@ -22,7 +22,7 @@ import MyOrders from "../components/pages/MyOrders/index.jsx";
 const Layout = React.lazy(() => import("../components/layout/Layout"));
 const Login = React.lazy(() => import("../components/pages/Login"));
 const ErrorPage = React.lazy(() => import("../components/pages/ErrorPage"));
-const Home = React.lazy(() => import("../components/pages/Home/Home"));
+const Home = React.lazy(() => import("../components/pages/Home/Home.jsx"));
 const Contact = React.lazy(() => import("../components/pages/Contact"));
 const RegisterUser = React.lazy(() =>
   import("../components/pages/Register/register-user")

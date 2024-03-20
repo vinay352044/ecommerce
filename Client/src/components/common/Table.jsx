@@ -1,4 +1,3 @@
-import React from 'react';
 import ButtonComponent from './ButtonComponent';
 
 const Table = ({ data, headers, handleUpdate, handleDelete }) => {
@@ -7,18 +6,22 @@ const Table = ({ data, headers, handleUpdate, handleDelete }) => {
       <table className="w-full border-collapse">
         <thead>
           <tr>
-            {headers.map(header => (
-              <th key={header.key} className="border px-4 py-2">{header.label}</th>
+            {headers.map((header) => (
+              <th key={header.key} className="border px-4 py-2">
+                {header.label}
+              </th>
             ))}
             <th className="border px-4 py-2">Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          {data.map(item => (
+          {data.map((item) => (
             <tr key={item.id}>
-              {headers.map(header => (
-                <td key={header.key} className="border px-4 py-2">{item[header.key]}</td>
+              {headers.map((header) => (
+                <td key={header.key} className="border px-4 py-2">
+                  {item[header.key]}
+                </td>
               ))}
               <td className="border px-4 py-2 flex justify-center items-center space-x-2">
                 <ButtonComponent onClick={() => handleUpdate(item.id)} buttonStyle="px-[8px] py-[4px] text-sm ">
