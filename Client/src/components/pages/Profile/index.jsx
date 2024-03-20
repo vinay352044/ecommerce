@@ -52,7 +52,7 @@ const Profile = () => {
         await updateUser(user);
         dispatch(setRole("user", user));
         setReadOnly(!readOnly);
-        toast.success('Profile Updated !!')
+        toast.success("Profile Updated !!");
       } catch (error) {
         console.log(error);
       }
@@ -62,7 +62,7 @@ const Profile = () => {
         await updateSeller(seller);
         dispatch(setRole("seller", seller));
         setReadOnly(!readOnly);
-        toast.success('Profile Updated !!')
+        toast.success("Profile Updated !!");
       } catch (error) {
         console.log(error);
       }
@@ -70,24 +70,25 @@ const Profile = () => {
   };
 
   const linkClass =
-    "w-full border-2 border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
+    "w-full border-2 border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-lg hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
   const labelClass =
     "mr-2 font-bold md:text-2xl text-[#2590db] flex items-center gap-2";
-  const inputClass =
-    `px-3 py-2 w-full md:w-[85%] text-xl md:text-2xl font-medium border-none bg-transparent focus:outline-none`;
-  const infoWrapperClass =
-    `flex items-center w-full md:w-[85%] ${readOnly ? 'border-b-[1px] border-transparent' : 'border-b-[1px] border-[#2590db]'}`;
-
+  const inputClass = `px-3 py-1 w-full md:w-[85%] text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
+  const infoWrapperClass = `flex items-center w-full md:w-[85%] ${
+    readOnly
+      ? "border-b-[1px] border-transparent"
+      : "border-b-[1px] border-[#2590db]"
+  }`;
 
   return (
-    <div className="py-4 px-8 size-full flex items-center">
+    <div className="py-4 px-8 w-full h-[95vh] flex items-center">
       <div className="w-full h-fit flex items-center gap-4 shadow-2xl">
         <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
           <img src={placeholder} alt="placeholder" className="w-full h-full" />
         </div>
         <div className="w-full h-full p-6 py-8 flex justify-between flex-col">
           <div className="mb-8">
-            <h1 className=" text-xl md:text-3xl font-semibold text-slate-700 text-center">
+            <h1 className=" text-xl md:text-2xl font-semibold text-slate-700 text-center">
               Welcome {user ? user.name : seller.name} !
             </h1>
           </div>
@@ -123,7 +124,7 @@ const Profile = () => {
                 required
               />
             </div>
-            <div className={`${infoWrapperClass} border-none`}>
+            <div className={`${infoWrapperClass} border-none relative`}>
               <label htmlFor="password" className={labelClass}>
                 <RiLockPasswordFill /> :
               </label>
@@ -138,12 +139,12 @@ const Profile = () => {
                 />
                 {!showPass ? (
                   <GoEye
-                    className="text-2xl cursor-pointer"
+                    className="text-2xl cursor-pointer absolute right-[30%]"
                     onClick={() => setShowPass(!showPass)}
                   />
                 ) : (
                   <GoEyeClosed
-                    className="text-2xl cursor-pointer"
+                    className="text-2xl cursor-pointer absolute right-[30%]"
                     onClick={() => setShowPass(!showPass)}
                   />
                 )}
@@ -151,11 +152,9 @@ const Profile = () => {
             </div>
             {role.seller !== null ? (
               <SellerDetails
-                labelClass={labelClass}
                 seller={seller}
                 handleChange={handleChange}
                 readOnly={readOnly}
-                className={inputClass}
                 infoWrapperClass={infoWrapperClass}
               />
             ) : null}
@@ -188,13 +187,13 @@ const Profile = () => {
                     Wishlist
                   </NavLink>
                   <NavLink to="/orders" className={linkClass}>
-                    <FaBoxOpen/>
+                    <FaBoxOpen />
                     Orders
                   </NavLink>
                 </>
               ) : (
                 <>
-                 <NavLink to='/seller-products' className={linkClass}>
+                  <NavLink to="/seller-products" className={linkClass}>
                     Your Products
                   </NavLink>
                 </>

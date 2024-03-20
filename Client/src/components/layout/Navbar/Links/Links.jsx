@@ -13,7 +13,7 @@ const Links = ({ children, linksToRender , toggleNavbar }) => {
                 className={({ isActive }) =>
                   `${
                     isActive ? "text-black" : "text-white"
-                  } flex items-center gap-1 text-[1.1rem] py-1 hover:text-black`
+                  } flex items-center gap-1 text-[1rem] md:text-[1rem] py-1 hover:text-black`
                 }
               >
                 {element.icon}

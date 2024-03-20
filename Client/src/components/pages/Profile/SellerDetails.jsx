@@ -1,6 +1,14 @@
 import { FaShop } from "react-icons/fa6";
 
-const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass , infoWrapperClass }) => {
+const SellerDetails = ({
+  seller,
+  readOnly,
+  handleChange,
+  infoWrapperClass,
+}) => {
+  const labelClass =
+    "mr-2 font-bold md:text-2xl text-[#2590db] flex items-center gap-2";
+  const inputClass = `px-3 py-1 w-full md:w-[85%] text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
   return (
     <>
       <div className={`${infoWrapperClass}  w-full`}>
@@ -13,7 +21,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.businessName}
           readOnly={readOnly}
           onChange={handleChange}
-          className={`${inputClass} font-medium text-xl border-none bg-transparent w-full`}
+          className={`${inputClass}`}
           required
         />
       </div>
@@ -27,7 +35,7 @@ const SellerDetails = ({ labelClass , seller, readOnly, handleChange, inputClass
           value={seller?.gstin}
           readOnly={true}
           onChange={handleChange}
-          className={`${inputClass} font-medium text-lg border-none bg-transparent w-[60%]`}
+          className={`${inputClass} w-[65%!important]`}
         />
       </div>
     </>
