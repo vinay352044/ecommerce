@@ -18,7 +18,7 @@ const Products = ({ productData, isAddToCart }) => {
   const [recordsPerPage] = useState(6);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(null);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchResults,setSearchResults] = useState([])
 const [sortingResult,setSortingResult] = useState([])
   const dispatch = useDispatch();
 
@@ -60,13 +60,13 @@ const [sortingResult,setSortingResult] = useState([])
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
           productData={productData}
-          setFilteredProducts={setFilteredProducts}
+          setSearchResults={setSearchResults}
         />
         <Sorting
           handleSortingChange={handleSortingChange}
           sortOrder={sortOrder}
           setSortingResult={setSortingResult}
-          filteredProducts={filteredProducts}
+          searchResults={searchResults}
         />
       </div>
       <br />

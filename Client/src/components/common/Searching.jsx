@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import useDebounceHook from '../../utils/custom-hooks/useDebounce'
-const Searching = ({ searchQuery, handleSearchChange, productData, setFilteredProducts }) => {
+const Searching = ({ searchQuery, handleSearchChange, productData, setSearchResults }) => {
     const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
 
   useEffect(() => {
-    const filteredProducts = productData.filter(
+    const searchResults = productData.filter(
       (product) =>
         product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
         product.description.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
     );
-    setFilteredProducts(filteredProducts);
-  }, [debouncedSearchQuery, productData, setFilteredProducts]);
+    setSearchResults(searchResults);
+  }, [debouncedSearchQuery, productData, setSearchResults]);
 
   return (
     <input

@@ -12,8 +12,8 @@ const Index = () => {
   const [recordsPerPage] = useState(6)
   const [searchQuery, setSearchQuery] = useState('')
   const [sortOrder, setSortOrder] = useState(null)
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [sortingResult,setSortingResult] = useState([])
+  const [searchResults,setSearchResults] = useState([])
+const [sortingResult,setSortingResult] = useState([])
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -93,7 +93,7 @@ const Index = () => {
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
           productData={products}
-          setFilteredProducts={setFilteredProducts}
+          setSearchResults={setSearchResults}
         />
             <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
               <AiOutlineSearch />
@@ -103,7 +103,7 @@ const Index = () => {
           handleSortingChange={handleSortingChange}
           sortOrder={sortOrder}
           setSortingResult={setSortingResult}
-          filteredProducts={filteredProducts}
+          searchResults={searchResults}
         />
         </div>
         <Link to="/admin-create-products" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD PRODUCT</Link>
