@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createUser } from "../../../../../utils/axios-instance";
 import Input from "../../../../common/Input";
+import ButtonComponent from "../../../../common/ButtonComponent";
 
 const errors = {};
 const passwordRules =
@@ -121,19 +122,19 @@ function AdminCreateUser() {
           />
           {errors.password !== "" ? <p>{errors.password}</p> : ""}
         </div>
-        <button
+        <ButtonComponent
           type="submit"
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          buttonStyle="mt-[0.6rem] text-sm"
         >
           Submit
-        </button>
-        <button
+        </ButtonComponent>
+        <ButtonComponent
           type="button"
-          className="inline-flex justify-center ml-2 py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
           onClick={() => navigate("/admin-users")}
         >
           Back
-        </button>
+        </ButtonComponent>
       </form>
     </div>
   );

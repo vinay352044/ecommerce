@@ -6,6 +6,7 @@ import {FaPhoneAlt, FaUser} from "react-icons/fa"
 import {IoIosMail} from "react-icons/io"
 import { MdMessage } from "react-icons/md";
 import Input from "../../common/Input"
+import ButtonComponent from "../../common/ButtonComponent"
 
 const Contact = () => {
 	const [formData, setFormData] = useState({
@@ -99,7 +100,7 @@ const Contact = () => {
 						</div>
 						<div className={inputGroupClass}>
 							<label htmlFor="email" className={inputLabelClass}>
-							<IoIosMail /> Email
+								<IoIosMail /> Email
 							</label>
 							<Input
 								className="border-gray-200"
@@ -128,7 +129,7 @@ const Contact = () => {
 						</div>
 						<div className={inputGroupClass}>
 							<label htmlFor="message" className={inputLabelClass}>
-							 <MdMessage />	Message
+								<MdMessage /> Message
 							</label>
 							<textarea
 								className="px-2 py-1 border-2 rounded-md focus:outline-none border-gray-200 focus:ring-0 w-[min(24rem,85vw)]"
@@ -143,11 +144,9 @@ const Contact = () => {
 							/>
 						</div>
 						<div className="form-btn">
-							<button
-								type="submit"
-								className="bg-[#0295db!important] outline-none hover:bg-[white!important] mt-4 px-3 py-1 rounded-md text-white hover:text-[#0295db] border-2 border-[#0295db!important] transition">
-								Send Message
-							</button>
+							<ButtonComponent type="submit" handleClick={() => {}}>
+								SEND MESSAGE
+							</ButtonComponent>
 						</div>
 					</form>
 				</div>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Table from '../../../../common/Table'
 import { DeleteCategoryById, getCategories } from '../../../../../utils/axios-instance'
 import ConfirmDeleteModal from '../../../../common/ConfirmDeleteModal'
+import ButtonComponent from '../../../../common/ButtonComponent'
 
 const AdminCategories = () => {
     const navigate = useNavigate()
@@ -67,7 +68,9 @@ const AdminCategories = () => {
 
 
             <div className="flex justify-end mb-4">
-                <Link to="/admin-createCategories" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20">+ ADD CATEGORY</Link>
+                <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
+                <Link to="/admin-createCategories">+ ADD CATEGORY</Link>
+                </ButtonComponent>
             </div>
             {/* <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" /> */}
             <Table data={categories}
@@ -77,7 +80,6 @@ const AdminCategories = () => {
 
         </>
     )
-
 }
 
 export default AdminCategories

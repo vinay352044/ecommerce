@@ -8,6 +8,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import Table from '../../../common/Table';
 import ConfirmDeleteModal from '../../../common/ConfirmDeleteModal';
 import Input from '../../../common/Input';
+import ButtonComponent from '../../../common/ButtonComponent';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -102,12 +103,9 @@ const Index = () => {
             searchResults={searchResults}
           />
         </div>
-        <Link
-          to="/admin-create-products"
-          className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-20"
-        >
-          + ADD PRODUCT
-        </Link>
+        <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
+        <Link to="/admin-create-products">+ ADD PRODUCT</Link>
+        </ButtonComponent>
       </div>
 
       <Table

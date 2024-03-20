@@ -17,6 +17,7 @@ import { MdConfirmationNumber, MdEmail } from "react-icons/md";
 import { TbBrandAirtable } from "react-icons/tb";
 import { RiLockPasswordFill } from "react-icons/ri";
 import Input from "../../../common/Input";
+import ButtonComponent from "../../../common/ButtonComponent";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -345,19 +346,19 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex justify-between gap-2">
-              <button
+            <ButtonComponent
                 type="submit"
-                className="w-full border-[2px] rounded-md border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+                buttonStyle="w-full flex items-center justify-center gap-2 basis-[30%]"
               >
-                Submit
-              </button>
+                SUBMIT
+              </ButtonComponent>
 
-              <button
+              <ButtonComponent
                 type="reset"
-                className="w-full border-[1px] border-red-800 rounded-md text-red-900 py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-red-700 hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+                buttonStyle={"w-full border-[#b91c1c!important] rounded-md flex items-center justify-center gap-2 bg-[#b91c1c!important] text-[white!important] hover:bg-[white!important] hover:text-[#b91c1c!important] basis-[30%]"}
               >
-                Reset
-              </button>
+                RESET
+              </ButtonComponent>
             </div>
 
             <div className="pt-5">
