@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import Pagination from '../../../../common/Pagination';
-import { toast } from 'react-toastify';
-import useDebounceHook from '../../../../../utils/custom-hooks/useDebounce';
-import { deleteUser, getUsers } from '../../../../../utils/axios-instance';
-import { AiOutlineSearch } from 'react-icons/ai'; // Importing search icon from react-icons
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import Pagination from "../../../../common/Pagination";
+import { toast } from "react-toastify";
+import Searching from "../../../../common/Searching";
+import { deleteUser, getUsers } from "../../../../../utils/axios-instance";
+import { AiOutlineSearch } from "react-icons/ai"; // Importing search icon from react-icons
 import Table from '../../../../common/Table';
 import ConfirmDeleteModal from '../../../../common/ConfirmDeleteModal';
 import Input from '../../../../common/Input';
 
 function Index() {
-    const [data, setData] = useState([]);
-    const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [userIdToBeDeleted, setUserIdToBeDeleted] = useState(null);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
     useEffect(() => {
         getUsers()
@@ -26,17 +26,13 @@ function Index() {
     const handleUpdate = (id) => {
         navigate(`/admin-update/${id}`);
     }
-
-    const debouncedQuery = useDebounceHook(searchQuery, 500);
-    const filteredData = data.filter(user => user.name && user.name.toLowerCase().includes(debouncedQuery.toLowerCase()));
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5);
-    const nPages = Math.ceil(filteredData.length / recordsPerPage);
+    const nPages = Math.ceil(searchResults.length / recordsPerPage);
 
-    const indexOfLastRecord = currentPage * recordsPerPage;
-    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const slicedData = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
-
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const slicedData = searchResults.slice(indexOfFirstRecord,indexOfLastRecord)
     const handleDelete = (userId) => {
         setUserIdToBeDeleted(userId)
         setShowConfirmationModal(true)
@@ -64,10 +60,6 @@ function Index() {
             })
     }
 
-    const handleSearchChange = e => {
-        setSearchQuery(e.target.value);
-        setCurrentPage(1);
-    };
 
     return (
         <>
@@ -82,14 +74,13 @@ function Index() {
                     <div>
                         <div className="flex justify-end mb-4">
                             <div className="relative">
-                                {/* <input
-                                    type='text'
-                                    placeholder='Search..'
-                                    onChange={handleSearchChange}
-                                    value={searchQuery}
-                                    className="pl-8 pr-4 py-2 rounded border w-48"
-                                /> */}
-                                <Input placeholder='Search...' onChange={handleSearchChange} value={searchQuery} className="pl-8 pr-4 py-2 rounded border w-48" />
+                            <Searching
+              dataToSearch={data}
+              setSearchResults={setSearchResults}
+              setCurrentPage={setCurrentPage}
+            />
+            
+                               
                                 <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <AiOutlineSearch />
                                 </div>
@@ -109,4 +100,3 @@ function Index() {
 }
 
 export default Index;
-
