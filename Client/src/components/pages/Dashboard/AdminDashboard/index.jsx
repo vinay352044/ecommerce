@@ -96,7 +96,7 @@ const Index = () => {
             
             <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
               <AiOutlineSearch />
-            </div>z
+            </div>
           </div>
           <Sorting
             setSortingResult={setSortingResult}
@@ -107,13 +107,16 @@ const Index = () => {
         <Link to="/admin-create-products">+ ADD PRODUCT</Link>
         </ButtonComponent>
       </div>
-
+      {sortingResult.length>0 ? (
       <Table
        data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
         headers={productsArray}
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
       />
+      ) : 
+      (<div className="justify-center">Oops not found</div>)
+      }   
       {shouldRenderPagination && (
         <div className="flex justify-center w-screen items-center">
           <Pagination

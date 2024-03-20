@@ -34,7 +34,7 @@ function Index() {
 	const indexOfLastRecord = currentPage * recordsPerPage
 	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 	const slicedData = searchResults.slice(indexOfFirstRecord, indexOfLastRecord) || []
-
+    const shouldRenderPagination = searchResults.length>recordsPerPage
 	const handleDelete = (userId) => {
 		setUserIdToBeDeleted(userId)
 		setShowConfirmationModal(true)
@@ -92,9 +92,13 @@ function Index() {
 								<Link to="/admin-createUser">+ ADD</Link>
 							</ButtonComponent>{" "}
 						</div>
-
+                        {searchResults.length>0 ? (
 						<Table data={slicedData} headers={userArray} handleUpdate={handleUpdate} handleDelete={handleDelete} />
-						<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                        ):(
+                            <div className="justify-center">Oops not found</div>
+                        )
+                        }
+						{shouldRenderPagination && (<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />)}
 					</div>
 				)}
 			</div>
