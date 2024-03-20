@@ -6,7 +6,7 @@ import {
   removeFromCart,
 } from "../../../redux/actions/cartActions";
 import Sorting from "../../common/Sorting";
-import Product from "../../common/Product";
+import Product from "./Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Searching from "../../common/Searching";
@@ -14,7 +14,6 @@ import Input from "../../common/Input";
 
 const Products = ({ productData, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(6);
 
@@ -24,7 +23,6 @@ const Products = ({ productData, isAddToCart }) => {
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-
   const role = JSON.parse(localStorage.getItem("role")) || "";
   const isLoggedIn = role.isAuth;
   const handleClick = (product) => {
