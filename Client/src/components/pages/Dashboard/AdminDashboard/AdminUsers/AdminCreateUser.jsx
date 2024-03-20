@@ -72,7 +72,10 @@ function AdminCreateUser() {
   return (
     <div className="flex justify-center flex-col items-center mt-10">
       <h1 className="text-3xl mb-5">Add user</h1>
-      <form onSubmit={handleSubmit} className="">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md py-6"
+      >
         <div className="mb-3">
           <label
             htmlFor="name"
@@ -122,19 +125,18 @@ function AdminCreateUser() {
           />
           {errors.password !== "" ? <p>{errors.password}</p> : ""}
         </div>
-        <ButtonComponent
-          type="submit"
-          buttonStyle="mt-[0.6rem] text-sm"
-        >
-          Submit
-        </ButtonComponent>
-        <ButtonComponent
-          type="button"
-          buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
-          onClick={() => navigate("/admin-users")}
-        >
-          Back
-        </ButtonComponent>
+        <div>
+          <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
+            Submit
+          </ButtonComponent>
+          <ButtonComponent
+            type="button"
+            buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
+            onClick={() => navigate("/admin-users")}
+          >
+            Back
+          </ButtonComponent>
+        </div>
       </form>
     </div>
   );

@@ -13,7 +13,8 @@ const Input = ({
   ...props //like for required
 }) => {
   const defaultStyle =
-    "border-2 border-black rounded-md focus:ring-0 w-[min(24rem,85vw)] " + className;
+    "border-2 border-gray-400 outline-0 rounded-md mt-1 px-2 py-1 h-11 w-[min(24rem,85vw)] focus:border-black " +
+    className;
 
   return (
     <input

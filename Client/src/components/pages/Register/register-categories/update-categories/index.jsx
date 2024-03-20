@@ -49,7 +49,7 @@ function UpdateCategories() {
       <h1 className="text-3xl mb-5">Update Category</h1>
       {categoryData && (
         <Formik initialValues={categoryData} onSubmit={handleSubmit}>
-          <Form>
+          <Form className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md py-6">
             <div className="mb-3">
               <label
                 htmlFor="name"
@@ -59,12 +59,9 @@ function UpdateCategories() {
               </label>
               <Input type="text" id="name" name="name" />
             </div>
-            <ButtonComponent
-                  type="submit"
-                  buttonStyle="mt-[0.6rem] text-sm"
-                >
-                  Update
-                </ButtonComponent>
+            <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
+              Update
+            </ButtonComponent>
           </Form>
         </Formik>
       )}

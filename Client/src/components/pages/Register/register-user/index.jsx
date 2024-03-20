@@ -15,6 +15,7 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
+import { GoEye, GoEyeClosed } from "react-icons/go";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -41,9 +42,12 @@ const userSchema = yup.object({
 
 const RegisterUser = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
-  const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+  const [showConfirmPass, setShowConfirmPass] = useState(false);
 
   const {
     values,
@@ -145,16 +149,7 @@ const RegisterUser = () => {
                   Name
                 </label>
               </div>
-              {/* <input
-                type="text"
-                name="name"
-                id="name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-                placeholder="Dhruv Prajapati"
-                className="border-2 rounded-md border-black focus:ring-0"
-              /> */}
+
               <Input
                 type="text"
                 name="name"
@@ -178,16 +173,7 @@ const RegisterUser = () => {
                   Email
                 </label>
               </div>
-              {/* <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                placeholder="dhruv@example.com"
-                className="border-2 rounded-md border-black focus:ring-0"
-              /> */}
+
               <Input
                 type="email"
                 name="email"
@@ -211,58 +197,72 @@ const RegisterUser = () => {
                   Password
                 </label>
               </div>
-              {/* <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                placeholder="ranDom1$"
-                className="border-2 rounded-md border-black focus:ring-0"
-              /> */}
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="randDom1$"
-              />
+
+              <div className="relative">
+                <Input
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="randDom1$"
+                />
+                <div className="absolute right-2 top-0 translate-y-1/2">
+                  {!showPass ? (
+                    <GoEye
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowPass(!showPass)}
+                    />
+                  ) : (
+                    <GoEyeClosed
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowPass(!showPass)}
+                    />
+                  )}
+                </div>
+              </div>
               {touched.password && errors.password ? (
-                <p className="text-[14px] text-red-700">{errors.password}</p>
+                <p className="text-[14px] text-red-700 w-[min(24rem,85vw)]">
+                  {errors.password}
+                </p>
               ) : (
                 <p className="text-[14px] opacity-0">null</p>
               )}
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <div className="flex items-center gap-1">
                 <RiLockPasswordFill />
                 <label htmlFor="cpassword" className="font-semibold">
                   Confirm Password
                 </label>
               </div>
-              {/* <input
-                type="password"
-                name="cpassword"
-                id="cpassword"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.cpassword}
-                placeholder="ranDom1$"
-                className="border-2 rounded-md border-black focus:ring-0"
-              /> */}
-              <Input
-                type="password"
-                name="cpassword"
-                id="cpassword"
-                value={values.cpassword}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="ranDom1$"
-              />
+
+              <div className="relative">
+                <Input
+                  type={showConfirmPass ? "text" : "password"}
+                  name="cpassword"
+                  id="cpassword"
+                  value={values.cpassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="ranDom1$"
+                />
+                <div className="absolute right-2 top-0 translate-y-1/2">
+                  {!showConfirmPass ? (
+                    <GoEye
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowConfirmPass(!showConfirmPass)}
+                    />
+                  ) : (
+                    <GoEyeClosed
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowConfirmPass(!showConfirmPass)}
+                    />
+                  )}
+                </div>
+              </div>
               {touched.cpassword && errors.cpassword ? (
                 <p className="text-[14px] text-red-700">{errors.cpassword}</p>
               ) : (
@@ -271,7 +271,7 @@ const RegisterUser = () => {
             </div>
 
             <div className="flex justify-between gap-2">
-            <ButtonComponent
+              <ButtonComponent
                 type="submit"
                 buttonStyle="w-full flex items-center justify-center gap-2 basis-[30%]"
               >
@@ -280,7 +280,9 @@ const RegisterUser = () => {
 
               <ButtonComponent
                 type="reset"
-                buttonStyle={"w-full border-[#b91c1c!important] rounded-md flex items-center justify-center gap-2 bg-[#b91c1c!important] text-[white!important] hover:bg-[white!important] hover:text-[#b91c1c!important] basis-[30%]"}
+                buttonStyle={
+                  "w-full border-[#b91c1c!important] rounded-md flex items-center justify-center gap-2 bg-[#b91c1c!important] text-[white!important] hover:bg-[white!important] hover:text-[#b91c1c!important] basis-[30%]"
+                }
               >
                 RESET
               </ButtonComponent>

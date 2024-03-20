@@ -66,7 +66,10 @@ function AdminUpdateUsers() {
   return (
     <div className="flex flex-col justify-center items-center h-[70vh]">
       <h1 className="text-3xl mb-5">Update User Details</h1>
-      <form onSubmit={handleSubmit} className="max-w-96">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md py-6"
+      >
         <div className="mb-3">
           <label
             htmlFor="name"
@@ -116,19 +119,18 @@ function AdminUpdateUsers() {
           />
           {errors.password && <p>{errors.password}</p>}
         </div>
-        <ButtonComponent
-          type="submit"
-          buttonStyle="mt-[0.6rem] text-sm"
-        >
-          Update
-        </ButtonComponent>
-        <ButtonComponent
-          type="button"
-          buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
-          onClick={() => navigate("/admin-users")}
-        >
-          Back
-        </ButtonComponent>
+        <div>
+          <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
+            Update
+          </ButtonComponent>
+          <ButtonComponent
+            type="button"
+            buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
+            onClick={() => navigate("/admin-users")}
+          >
+            Back
+          </ButtonComponent>
+        </div>
       </form>
     </div>
   );

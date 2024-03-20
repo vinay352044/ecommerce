@@ -85,14 +85,14 @@ const Index = () => {
     }
   };
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <h1 className="text-center text-2xl font-bold mt-8 mb-2 w-1/2 mx-auto">
         Register Product
       </h1>
 
       <Formik initialValues={InitialValues} onSubmit={handleSubmit}>
         <div>
-          <Form className=" flex justify-center items-center flex-col">
+          <Form className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md">
             <div className="mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label htmlFor="title" className={inputStyle}>
@@ -221,7 +221,7 @@ const Index = () => {
           </Form>
         </div>
       </Formik>
-    </>
+    </div>
   );
 };
 

@@ -49,7 +49,7 @@ function AdminCreateCategories() {
           resetForm();
         }}
       >
-        <Form>
+        <Form className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md py-6">
           <div className="mb-3">
             <label
               htmlFor="name"
@@ -65,12 +65,9 @@ function AdminCreateCategories() {
               required
             />
           </div>
-          <ButtonComponent
-                  type="submit"
-                  buttonStyle="mt-[0.6rem] text-sm"
-                >
-                  Add category
-                </ButtonComponent>
+          <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
+            Add category
+          </ButtonComponent>
         </Form>
       </Formik>
     </div>
