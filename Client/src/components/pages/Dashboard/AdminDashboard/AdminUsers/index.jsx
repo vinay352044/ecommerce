@@ -42,6 +42,13 @@ function Index() {
         setShowConfirmationModal(true)
     };
 
+
+    const userArray = [
+        { key: 'id', label: 'ID' },
+        { key: 'name', label: 'name' },
+        { key: 'email', label: 'email' },
+        { key: 'password', label: 'password' },
+    ]
     const deleteUserById = (userId) => {
         deleteUser(userId)
             .then(res => {
@@ -90,12 +97,7 @@ function Index() {
                             <Link to="/admin-createUser" className="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-5 ml-5">+ ADD</Link>
                         </div>
 
-                        <Table data={slicedData} headers={[
-                            { key: 'id', label: 'ID' },
-                            { key: 'name', label: 'name' },
-                            { key: 'email', label: 'email' },
-                            { key: 'password', label: 'password' },
-                        ]}
+                        <Table data={slicedData} headers={userArray}
                             handleUpdate={handleUpdate}
                             handleDelete={handleDelete} />
                         <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

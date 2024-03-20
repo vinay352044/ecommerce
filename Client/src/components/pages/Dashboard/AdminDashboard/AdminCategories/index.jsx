@@ -10,6 +10,11 @@ const AdminCategories = () => {
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [categoryIdToBeDeleted, setCategoryIdToBeDeleted] = useState(null);
 
+    const categoriesArray = [
+        { key: 'id', label: ' ID' },
+        { key: 'name', label: ' Name' },
+    ]
+
     const handleUpdate = (categoryID) => {
         // console.log(categoryID)
         navigate(`/admin-update-category/${categoryID}`)
@@ -57,7 +62,7 @@ const AdminCategories = () => {
     }, []);
     return (
         <>
-        { showConfirmationModal && <ConfirmDeleteModal Id={categoryIdToBeDeleted} handleDelete={deleteCategory} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setCategoryIdToBeDeleted}/>}
+            {showConfirmationModal && <ConfirmDeleteModal Id={categoryIdToBeDeleted} handleDelete={deleteCategory} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setCategoryIdToBeDeleted} />}
             <div className="text-center text-2xl font-bold mt-8 mb-8">Manage Category</div>
 
 
@@ -68,10 +73,7 @@ const AdminCategories = () => {
             <Table data={categories}
                 handleUpdate={handleUpdate}
                 handleDelete={handleDelete}
-                headers={[
-                    { key: 'id', label: ' ID' },
-                    { key: 'name', label: ' Name' },
-                ]} />
+                headers={categoriesArray} />
 
         </>
     )

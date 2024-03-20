@@ -21,11 +21,18 @@ const YourProducts = () => {
 	const indexOfFirstRecord = indexOfLastRecord - 5
 	const slicedData = products.slice(indexOfFirstRecord, indexOfLastRecord)
 
-	const handleProductUpdate = (productID) => {
+	const handleUpdate = (productID) => {
 		navigate(`/seller-update-products/${productID}`)
 	}
 
-	const handleProductDelete = async (productID) => {
+	const productArray = [
+		{ key: 'id', label: 'ID' },
+		{ key: 'title', label: 'title' },
+		{ key: 'price', label: 'price' },
+		{ key: 'brand', label: 'brand' },
+		{ key: 'category', label: 'category' },
+	]
+	const handleDelete = async (productID) => {
 		// console.log(productID);
 		setProductIdToBeDeleted(productID)
 		setShowConfirmationModal(true)
@@ -81,9 +88,9 @@ const YourProducts = () => {
 				<h1 className="text-3xl mb-8 font-bold">Your Products</h1>
 				<Table
 					data={slicedData}
-					type={"product"}
-					handleUpdate={handleProductUpdate}
-					handleProductDelete={handleProductDelete}
+					headers={productArray }
+					handleUpdate={handleUpdate}
+					handleDelete={handleDelete}
 				/>
 				<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 			</div>

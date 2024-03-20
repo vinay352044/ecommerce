@@ -23,6 +23,14 @@ const Index = () => {
   const indexOfLastRecord = currentPage * recordsPerPage
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 
+
+  const productsArray = [
+    { key: 'id', label: 'Product ID' },
+    { key: 'title', label: 'Title' },
+    { key: 'price', label: 'Price' },
+    { key: 'brand', label: 'Brand' },
+    { key: 'category', label: 'Category' }
+  ]
   // console.log(products)
   const debouncedQuery = useDebounceHook(searchQuery, 500)
   const handleSearchChange = e => {
@@ -99,7 +107,7 @@ const Index = () => {
 
   return (
     <>
-      { showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted}/>}
+      {showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted} />}
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
       <div className="flex justify-between mb-4">
         <div className='flex px-20'>
@@ -111,7 +119,7 @@ const Index = () => {
               value={searchQuery}
               onChange={handleSearchChange}
             /> */}
-            <Input placeholder='Search...'  className='pl-8 pr-4 py-2 rounded border' value={searchQuery} onChange={handleSearchChange}/>
+            <Input placeholder='Search...' className='pl-8 pr-4 py-2 rounded border' value={searchQuery} onChange={handleSearchChange} />
             <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
               <AiOutlineSearch />
             </div>
@@ -124,13 +132,7 @@ const Index = () => {
       {/* <Table data={paginateRecords} type="product" handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} /> */}
       <Table
         data={paginateRecords}
-        headers={[
-          { key: 'id', label: 'Product ID' },
-          { key: 'title', label: 'Title' },
-          { key: 'price', label: 'Price' },
-          { key: 'brand', label: 'Brand' },
-          { key: 'category', label: 'Category' }
-        ]}
+        headers={productsArray}
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
       />
