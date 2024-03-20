@@ -3,30 +3,26 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../../../../common/Pagination';
 import { toast } from 'react-toastify';
-import useDebounceHook from '../../../../../utils/custom-hooks/useDebounce';
+import Searching from '../../../../common/Searching';
 import { deleteUser, getUsers } from '../../../../../utils/axios-instance';
 import { AiOutlineSearch } from 'react-icons/ai'; // Importing search icon from react-icons
 
 function Index() {
+    
     const [data, setData] = useState([]);
+    const [searchResults,setSearchResults] = useState([])
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
 
-    useEffect(() => {
-            getUsers()
-            .then(res => setData(res.data))
-            .catch(err => console.log(err));
-    }, []);
+    
 
-    const debouncedQuery = useDebounceHook(searchQuery, 500);
-    const filteredData = data.filter(user => user.name && user.name.toLowerCase().includes(debouncedQuery.toLowerCase()));
     const [currentPage, setCurrentPage] = useState(1);
-    const [recordsPerPage] = useState(5);
-    const nPages = Math.ceil(filteredData.length / recordsPerPage);
+    const [recordsPerPage] = useState(6);
+
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const slicedData = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
+    const shouldRenderPagination = searchResults.length > recordsPerPage
 
     const handleDelete = (id) => {
         const confirmDelete = window.confirm('Are you sure you want to delete?');
@@ -46,7 +42,25 @@ function Index() {
         setSearchQuery(e.target.value);
         setCurrentPage(1);
     };
+     useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getUsers();
+        if (response.success) {
+          setData(response.data);
+          console.log(data)
+        } else {
+          console.error('Failed to fetch the Products Data', response.error);
+        }
+      } catch (error) {
+        console.error('Error while Fetching products', error);
+      }
+    };
 
+    fetchData();
+  }, []);
+
+console.log(data)
     return (
         <>
             <div className='p-10'>
@@ -59,13 +73,12 @@ function Index() {
                     <div>
                         <div className="flex justify-end mb-4">
                             <div className="relative">
-                                <input
-                                    type='text'
-                                    placeholder='Search..'
-                                    onChange={handleSearchChange}
-                                    value={searchQuery}
-                                    className="pl-8 pr-4 py-2 rounded border w-48"
-                                />
+                            <Searching
+          searchQuery={searchQuery}
+          handleSearchChange={handleSearchChange}
+          productData={data}
+          setSearchResults={setSearchResults}
+        />
                                 <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <AiOutlineSearch />
                                 </div>
@@ -84,7 +97,7 @@ function Index() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {slicedData.map((d, i) => (
+                                {searchResults.slice(indexOfFirstRecord,indexOfLastRecord).map((d, i) => (
                                     <tr key={i}>
                                         <td className="border px-4 py-2">{d.id}</td>
                                         <td className="border px-4 py-2">{d.name}</td>
@@ -98,7 +111,7 @@ function Index() {
                                 ))}
                             </tbody>
                         </table>
-                        <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                        <Pagination nPages={Math.ceil(searchResults.length / recordsPerPage)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     </div>
                 )}
             </div>

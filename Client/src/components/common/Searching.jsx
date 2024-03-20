@@ -4,12 +4,15 @@ const Searching = ({ searchQuery, handleSearchChange, productData, setSearchResu
     const debouncedSearchQuery = useDebounceHook(searchQuery, 500);
 
   useEffect(() => {
+    if(productData.length>0){
     const searchResults = productData.filter(
       (product) =>
-        product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+       (product.title && product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())) ||
+        (product.description && product.description.toLowerCase().includes(debouncedSearchQuery.toLowerCase())) ||
+        (product.name && product.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())) 
     );
     setSearchResults(searchResults);
+    }
   }, [debouncedSearchQuery, productData, setSearchResults]);
 
   return (
