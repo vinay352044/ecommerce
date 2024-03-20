@@ -10,6 +10,7 @@ import Product from "../../common/Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Searching from "../../common/Searching";
+import Input from "../../common/Input";
 
 const Products = ({ productData, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);

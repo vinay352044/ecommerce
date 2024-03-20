@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import Table from "../../../common/Table"
 import { useSelector } from "react-redux"
 import Pagination from "../../../common/Pagination"
+import ConfirmDeleteModal from "../../../common/ConfirmDeleteModal"
 
 const YourProducts = () => {
 	const [products, setProducts] = useState([])
@@ -12,22 +13,32 @@ const YourProducts = () => {
 		seller: { productsToSell: sellerProducts },
 	} = useSelector((state) => state.role)
 	const [currentPage, setCurrentPage] = useState(1)
+	const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+	const [productIdToBeDeleted, setProductIdToBeDeleted] = useState(null)
+
 	const nPages = Math.ceil(products.length / 5)
 	const indexOfLastRecord = currentPage * 5
 	const indexOfFirstRecord = indexOfLastRecord - 5
 	const slicedData = products.slice(indexOfFirstRecord, indexOfLastRecord)
 
-	const handleProductUpdate = (productID) => {
+	const handleUpdate = (productID) => {
 		navigate(`/seller-update-products/${productID}`)
 	}
 
-	const handleProductDelete = async (productID) => {
-		const shouldDelete = window.confirm("Are you sure you want to delete this product?")
+	const productArray = [
+		{ key: 'id', label: 'ID' },
+		{ key: 'title', label: 'title' },
+		{ key: 'price', label: 'price' },
+		{ key: 'brand', label: 'brand' },
+		{ key: 'category', label: 'category' },
+	]
+	const handleDelete = async (productID) => {
+		// console.log(productID);
+		setProductIdToBeDeleted(productID)
+		setShowConfirmationModal(true)
+	}
 
-		if (!shouldDelete) {
-			return
-		}
-
+	const deleteProduct = async (productID) => {
 		try {
 			const response = await DeleteProductbyId(productID)
 			if (response.success) {
@@ -37,6 +48,9 @@ const YourProducts = () => {
 			}
 		} catch (error) {
 			console.error("Failed to delete the Products Data", error)
+		} finally {
+			setShowConfirmationModal(false)
+			setProductIdToBeDeleted(null)
 		}
 	}
 
@@ -61,16 +75,26 @@ const YourProducts = () => {
 	}, [sellerProducts])
 
 	return (
-		<div className="text-center py-10 min-h-[90vh]">
-			<h1 className="text-3xl mb-8 font-bold">Your Products</h1>
-			<Table
-				data={slicedData}
-				type={"product"}
-				handleUpdate={handleProductUpdate}
-				handleProductDelete={handleProductDelete}
-			/>
-			<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-		</div>
+		<>
+			{showConfirmationModal && (
+				<ConfirmDeleteModal
+					Id={productIdToBeDeleted}
+					handleDelete={deleteProduct}
+					setShowConfirmationModal={setShowConfirmationModal}
+					setDataIdToBeDeleted={setProductIdToBeDeleted}
+				/>
+			)}
+			<div className="text-center py-10 min-h-[90vh]">
+				<h1 className="text-3xl mb-8 font-bold">Your Products</h1>
+				<Table
+					data={slicedData}
+					headers={productArray }
+					handleUpdate={handleUpdate}
+					handleDelete={handleDelete}
+				/>
+				<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+			</div>
+		</>
 	)
 }
 

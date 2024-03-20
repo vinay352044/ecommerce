@@ -16,6 +16,7 @@ import { FaBusinessTime } from "react-icons/fa";
 import { MdConfirmationNumber, MdEmail } from "react-icons/md";
 import { TbBrandAirtable } from "react-icons/tb";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Input from "../../../common/Input";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -99,11 +100,11 @@ const RegisterSeller = () => {
           sellers.length !== 0
             ? (parseInt(sellers[sellers.length - 1].id) + 1).toString()
             : "1",
-        name,
-        businessName,
+        name: name.trim(),
+        businessName: businessName.trim(),
         gstin,
-        brand,
-        email,
+        brand: brand.trim(),
+        email: email.trim(),
         password,
         productsToSell: [],
       };
@@ -158,7 +159,7 @@ const RegisterSeller = () => {
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
-            className="flex flex-col gap-2 w-[min(400px,90vw)]"
+            className="flex flex-col gap-2"
           >
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
@@ -167,7 +168,7 @@ const RegisterSeller = () => {
                   Name
                 </label>
               </div>
-              <input
+              {/* <input
                 type="text"
                 name="name"
                 id="name"
@@ -176,7 +177,9 @@ const RegisterSeller = () => {
                 value={values.name}
                 placeholder="Dhruv Prajapati"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="text" name="name" id="name" value={values.name} onChange={handleChange} onBlur={handleBlur} placeholder="Dhruv Prajapati"/>
+
               {touched.name && errors.name ? (
                 <p className="text-[14px] text-red-700">{errors.name}</p>
               ) : (
@@ -191,7 +194,7 @@ const RegisterSeller = () => {
                   Business Name
                 </label>
               </div>
-              <input
+              {/* <input
                 type="text"
                 name="businessName"
                 id="businessName"
@@ -200,7 +203,8 @@ const RegisterSeller = () => {
                 value={values.businessName}
                 placeholder="Dhruv Mobile World"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="text" name="businessName" id="businessName" value={values.businessName} onChange={handleChange} onBlur={handleBlur} placeholder="Dhruv Mobile World"/>
               {touched.businessName && errors.businessName ? (
                 <p className="text-[14px] text-red-700">
                   {errors.businessName}
@@ -217,7 +221,7 @@ const RegisterSeller = () => {
                   GST NO
                 </label>
               </div>
-              <input
+              {/* <input
                 type="text"
                 name="gstin"
                 id="gstin"
@@ -226,7 +230,9 @@ const RegisterSeller = () => {
                 value={values.gstin}
                 placeholder="22AAAAA0000A1Z5"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="text" name="gstin" id="gstin" value={values.gstin} onChange={handleChange} onBlur={handleBlur} placeholder="22AAAAA0000A1Z5"/>
+
               {touched.gstin && errors.gstin ? (
                 <p className="text-[14px] text-red-700">{errors.gstin}</p>
               ) : (
@@ -241,7 +247,7 @@ const RegisterSeller = () => {
                   Brand
                 </label>
               </div>
-              <input
+              {/* <input
                 type="text"
                 name="brand"
                 id="brand"
@@ -250,7 +256,9 @@ const RegisterSeller = () => {
                 value={values.brand}
                 placeholder="Samsung"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="text" name="brand" id="brand" value={values.brand} onChange={handleChange} onBlur={handleBlur} placeholder="Samsung"/>
+
               {touched.brand && errors.brand ? (
                 <p className="text-[14px] text-red-700">{errors.brand}</p>
               ) : (
@@ -265,7 +273,7 @@ const RegisterSeller = () => {
                   Email
                 </label>
               </div>
-              <input
+              {/* <input
                 type="email"
                 name="email"
                 id="email"
@@ -274,7 +282,9 @@ const RegisterSeller = () => {
                 value={values.email}
                 placeholder="dhruv@example.com"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="email" name="email" id="email" value={values.email} onChange={handleChange} onBlur={handleBlur} placeholder="dhruv@example.com"/>
+
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
               ) : (
@@ -289,7 +299,7 @@ const RegisterSeller = () => {
                   Password
                 </label>
               </div>
-              <input
+              {/* <input
                 type="password"
                 name="password"
                 id="password"
@@ -298,7 +308,9 @@ const RegisterSeller = () => {
                 value={values.password}
                 placeholder="ranDom1$"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="password" name="password" id="password" value={values.password} onChange={handleChange} onBlur={handleBlur} placeholder="randDom1$"/>
+
               {touched.password && errors.password ? (
                 <p className="text-[14px] text-red-700">{errors.password}</p>
               ) : (
@@ -313,7 +325,7 @@ const RegisterSeller = () => {
                   Confirm Password
                 </label>
               </div>
-              <input
+              {/* <input
                 type="password"
                 name="cpassword"
                 id="cpassword"
@@ -322,7 +334,9 @@ const RegisterSeller = () => {
                 value={values.cpassword}
                 placeholder="ranDom1$"
                 className="border-2 rounded-md border-black focus:ring-0"
-              />
+              /> */}
+              <Input type="password" name="cpassword" id="cpassword" value={values.cpassword} onChange={handleChange} onBlur={handleBlur} placeholder="ranDom1$"/>
+
               {touched.cpassword && errors.cpassword ? (
                 <p className="text-[14px] text-red-700">{errors.cpassword}</p>
               ) : (
