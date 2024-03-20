@@ -14,43 +14,25 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
   return (
     nPages > 0 && (
       <div className="mt-6">
-        <ul className="pagination">
+        <ul className="flex justify-center space-x-4">
           {currentPage !== 1 && (
-            <li className="page-item">
-              <button
-                onClick={goToPrevPage}
-                className="page-link bg-light-blue-500 text-white px-4 py-2 rounded-l focus:outline-none"
-              >
-                Previous
-              </button>
+            <li className="bg-blue-500 text-white px-4 py-2 rounded-l focus:outline-none">
+              <button onClick={goToPrevPage}>Previous</button>
             </li>
           )}
           {pageNumbers.map((pgNumber) => (
             <li
               key={pgNumber}
-              className={`page-item ${
-                currentPage === pgNumber ? "active" : ""
-              }`}
+              className={`${
+                currentPage === pgNumber ? "bg-blue-700" : "bg-blue-500"
+              } text-white px-4 py-2 rounded focus:outline-none`}
             >
-              <button
-                onClick={() => setCurrentPage(pgNumber)}
-                className={`page-link bg-light-blue-500 text-white px-4 py-2 focus:outline-none ${
-                  currentPage === pgNumber ? "bg-light-blue-700" : ""
-                }`}
-              >
-                {pgNumber}
-              </button>
+              <button onClick={() => setCurrentPage(pgNumber)}>{pgNumber}</button>
             </li>
           ))}
-
           {currentPage !== nPages && (
-            <li className="page-item">
-              <button
-                onClick={goToNextPage}
-                className="page-link bg-light-blue-500 text-white px-4 py-2 rounded-r focus:outline-none"
-              >
-                Next
-              </button>
+            <li className="bg-blue-500 text-white px-4 py-2 rounded-r focus:outline-none">
+              <button onClick={goToNextPage}>Next</button>
             </li>
           )}
         </ul>
