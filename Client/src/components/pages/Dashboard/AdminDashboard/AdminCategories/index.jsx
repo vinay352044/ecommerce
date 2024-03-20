@@ -2,31 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Table from '../../../../common/Table'
 import { DeleteCategoryById, getCategories } from '../../../../../utils/axios-instance'
+import ConfirmDeleteModal from '../../../../common/ConfirmDeleteModal'
 
 const AdminCategories = () => {
     const navigate = useNavigate()
     const [categories, setCategories] = useState([]);
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [categoryIdToBeDeleted, setCategoryIdToBeDeleted] = useState(null);
+
     const handleCreateCategories = () => {
         navigate("/admin-createCategories")
     }
 
     const handleUpdate = (categoryID) => {
-        console.log(categoryID)
+        // console.log(categoryID)
         navigate(`/admin-update-category/${categoryID}`)
     }
-    const handleProductDelete = async (categoryID) => {
-        console.log(categoryID);
 
-        const shouldDelete = window.confirm("Are you sure you want to delete this product?");
+    const handleProductDelete = (categoryID) => {
+        setCategoryIdToBeDeleted(categoryID)
+        setShowConfirmationModal(true)
+    };
 
-        if (!shouldDelete) {
-            return;
-        }
-
+    const deleteCategory = async (categoryID) => {
         try {
             const response = await DeleteCategoryById(categoryID);
             if (response.success) {
-                console.log("Product Deleted Successfully!");
+                // console.log("Product Deleted Successfully!");
 
                 setCategories((prevCategory) => prevCategory.filter(category => category.id !== categoryID));
             } else {
@@ -34,8 +36,11 @@ const AdminCategories = () => {
             }
         } catch (error) {
             console.error('Failed to delete the Products Data', error);
+        } finally {
+            setShowConfirmationModal(false)
+            setCategoryIdToBeDeleted(null)
         }
-    };
+    }
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -43,7 +48,7 @@ const AdminCategories = () => {
                 const response = await getCategories();
                 if (response.success) {
                     setCategories(response.data);
-                    console.log(response)
+                    // console.log(response)
                 } else {
                     console.error('Failed to fetch the Products Data', response.error);
                 }
@@ -56,6 +61,7 @@ const AdminCategories = () => {
     }, []);
     return (
         <>
+        { showConfirmationModal && <ConfirmDeleteModal Id={categoryIdToBeDeleted} handleDelete={deleteCategory} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setCategoryIdToBeDeleted}/>}
             <div className="text-center text-2xl font-bold mt-8 mb-8">Manage Category</div>
 
 

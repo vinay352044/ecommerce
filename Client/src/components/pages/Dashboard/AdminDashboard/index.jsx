@@ -6,6 +6,7 @@ import Pagination from '../../../common/Pagination';
 import Sorting from '../../../common/Sorting';
 import { AiOutlineSearch } from 'react-icons/ai'; 
 import Table from '../../../common/Table';
+import ConfirmDeleteModal from '../../../common/ConfirmDeleteModal';
 import Input from '../../../common/Input';
 
 const Index = () => {
@@ -13,15 +14,16 @@ const Index = () => {
   const [recordsPerPage] = useState(6)
   const [searchQuery, setSearchQuery] = useState('')
   const [sortOrder, setSortOrder] = useState(null)
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [productIdToBeDeleted, setProductIdToBeDeleted] = useState(null);
 
   const indexOfLastRecord = currentPage * recordsPerPage
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 
-  console.log(products)
+  // console.log(products)
   const debouncedQuery = useDebounceHook(searchQuery, 500)
   const handleSearchChange = e => {
     setSearchQuery(e.target.value)
@@ -39,9 +41,9 @@ const Index = () => {
     setSortOrder(order)
   }
   const paginateRecords = sortedData.slice(indexOfFirstRecord, indexOfLastRecord)
-  console.log(paginateRecords)
+  // console.log(paginateRecords)
   const nPages = Math.ceil(sortedData.length / recordsPerPage)
-  console.log(nPages)
+  // console.log(nPages)
   const shouldRenderPagination = products.length > recordsPerPage
 
 
@@ -50,33 +52,32 @@ const Index = () => {
   // };
 
   const handleUpdate = (productID) => {
-    console.log(productID)
+    // console.log(productID)
     navigate(`/admin-update-products/${productID}`);
   }
 
   const handleProductDelete = async (productID) => {
-    console.log(productID);
+    // console.log(productID);
+    setProductIdToBeDeleted(productID)
+    setShowConfirmationModal(true)
+  };
 
-    const shouldDelete = window.confirm("Are you sure you want to delete this product?");
-
-    if (!shouldDelete) {
-      return;
-    }
-
+  const deleteProduct = async (productId) => {
     try {
-      const response = await DeleteProductbyId(productID);
+      const response = await DeleteProductbyId(productId);
       if (response.success) {
-        console.log("Product Deleted Successfully!");
-
-        setProducts((prevProducts) => prevProducts.filter(product => product.id !== productID));
+        // console.log("Product Deleted Successfully!");
+        setProducts((prevProducts) => prevProducts.filter(product => product.id !== productId));
       } else {
         console.error('Failed to delete the Products Data', response.error);
       }
     } catch (error) {
       console.error('Failed to delete the Products Data', error);
+    } finally {
+      setShowConfirmationModal(false)
+      setProductIdToBeDeleted(null)
     }
-  };
-
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +85,7 @@ const Index = () => {
         const response = await getProducts();
         if (response.success) {
           setProducts(response.data);
-          console.log(response)
+          // console.log(response)
         } else {
           console.error('Failed to fetch the Products Data', response.error);
         }
@@ -98,6 +99,7 @@ const Index = () => {
 
   return (
     <>
+      { showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted}/>}
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
       <div className="flex justify-between mb-4">
         <div className='flex px-20'>
