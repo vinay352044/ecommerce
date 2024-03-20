@@ -6,6 +6,7 @@ import {
   getCategoryById,
 } from "../../../../../utils/axios-instance";
 import Input from "../../../../common/Input";
+import ButtonComponent from "../../../../common/ButtonComponent";
 
 function UpdateCategories() {
   const navigate = useNavigate();
@@ -58,12 +59,12 @@ function UpdateCategories() {
               </label>
               <Input type="text" id="name" name="name" />
             </div>
-            <button
-              type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Update
-            </button>
+            <ButtonComponent
+                  type="submit"
+                  buttonStyle="mt-[0.6rem] text-sm"
+                >
+                  Update
+                </ButtonComponent>
           </Form>
         </Formik>
       )}

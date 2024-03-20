@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { API } from "../../../utils/axios-instance";
 import { setRole } from "../../../redux/actions/roleAction";
 import Card from "../../common/Card";
+import ButtonComponent from "../../common/ButtonComponent";
 
 const Product = ({ product, handleClick, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
@@ -86,14 +87,12 @@ const Product = ({ product, handleClick, isAddToCart }) => {
           <span className="text-2xl font-bold text-gray-900">
             ${product.price}
           </span>
-          <button
-            className={`text-white bg-[#0295db] hover:bg-[#9d9da1]  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#0295db] dark:hover:bg-[#9d9da1] dark:focus:ring-blue-800 ${
-              isAddToCart ? `addCartBtn` : `removeCartBtn`
-            }`}
+          <ButtonComponent
             onClick={() => handleClick(product)}
+            buttonStyle="text-sm px-[8px!important] py-[5px!important]"
           >
             {isAddToCart ? "Add to cart" : "Remove"}
-          </button>
+          </ButtonComponent>
         </div>
         {!isAddToCart ? (
           <>

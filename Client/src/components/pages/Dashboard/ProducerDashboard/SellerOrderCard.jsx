@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { worker } from "../../../../redux/actions/orderActions";
 import { toast } from "react-toastify";
 import Card from "../../../common/Card";
+import ButtonComponent from "../../../common/ButtonComponent";
 
 function SellerOrderCard({ card_data, hideButtons }) {
   const sellerState = useSelector((state) => state.orderReducer);
@@ -127,12 +128,11 @@ function SellerOrderCard({ card_data, hideButtons }) {
 
   const Button = ({ onClick, text }) => {
     return (
-      <button
+      <ButtonComponent
         onClick={onClick}
-        className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2 text-center"
       >
         {text}
-      </button>
+      </ButtonComponent>
     );
   };
 
