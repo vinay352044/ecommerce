@@ -41,6 +41,7 @@ const Index = () => {
   };
 
   const handleDelete = async (productID) => {
+    // console.log(productID);
     setProductIdToBeDeleted(productID);
     setShowConfirmationModal(true);
   };
@@ -49,6 +50,7 @@ const Index = () => {
     try {
       const response = await DeleteProductbyId(productId);
       if (response.success) {
+        // console.log("Product Deleted Successfully!");
         setProducts((prevProducts) =>
           prevProducts.filter((product) => product.id !== productId)
         );
@@ -93,9 +95,9 @@ const Index = () => {
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">
         Admin Dashboard
       </h1>
-      <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:px-20">
-        <div className="flex flex-col justify-center md:justify-start items-center md:flex-row gap-4 w-screen">
-          <div>
+      <div className="flex justify-between mb-4">
+        <div className="flex px-20">
+          <div className="relative mr-4">
             <Searching
               dataToSearch={products}
               setSearchResults={setSearchResults}
@@ -114,14 +116,12 @@ const Index = () => {
       </div>
 
       {sortingResult.length > 0 ? (
-        <div className="overflow-x-auto">
-          <Table
-            data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
-            headers={productsArray}
-            handleUpdate={handleUpdate}
-            handleDelete={handleDelete}
-          />
-        </div>
+        <Table
+          data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
+          headers={productsArray}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+        />
       ) : (
         <div className="justify-center">Oops not found</div>
       )}
