@@ -97,10 +97,11 @@ function SellerOrderCard({ card_data, hideButtons }) {
 
   const DeliveryLabel = () => (
     <label
-      className="text-black text-sm  md:text-base lg:text-lg  "
+      className="text-black text-sm  md:text-base lg:text-lg mr-3
+      "
       htmlFor="delivery_calender"
     >
-      Delivery Date :
+      Delivery Date : 
     </label>
   );
 
@@ -114,17 +115,17 @@ function SellerOrderCard({ card_data, hideButtons }) {
         autoFocus={editable}
         onChange={onChange}
         readOnly={readOnly}
-        className={`bg-gray-200 px-3 py-1 rounded-md w-full text-center tracking-tight text-sm  md:text-base lg:text-lg ${
+        className={`bg-gray-200 px-3 py-1 rounded-md w-auto text-center tracking-tight text-sm  md:text-base lg:text-lg ${
           editable ? "cursor-not-allowed" : "cursor-text"
         }`}
         required
       />
     );
   };
-
-  const Button = ({ onClick, text }) => {
+  
+  const Button = ({ onClick, text ,buttonStyle}) => {
     return (
-      <ButtonComponent buttonStyle="mt-[0!important] mr-1   " onClick={onClick}>
+      <ButtonComponent buttonStyle={buttonStyle}   onClick={onClick}>
         {text}
       </ButtonComponent>
     );
@@ -134,11 +135,11 @@ function SellerOrderCard({ card_data, hideButtons }) {
     <>
       {productdetails ? (
         <>
-          <div className=" items-center lg:mx-auto mr-3  md:mr-0 ">
+          <div className="   mr-3  md:mr-0 ">
             <Card product={orderData.product} identifier={"ordersCard"}>
               {hideButtons ? (
                 editable ? (
-                  <div className="flex flex-col items-center justify-between text-black mb-4">
+                  <div className="flex flex-col md:flex-row items-center justify-between text-black mb-4">
                     <DeliveryLabel />
                     <DeliveryInput
                       id="delivery_calender"
@@ -153,7 +154,7 @@ function SellerOrderCard({ card_data, hideButtons }) {
                     />
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-between text-black mb-4">
+                  <div className="flex flex-col md:flex-row items-center justify-between text-black mb-4 ">
                     <DeliveryLabel />
                     <DeliveryInput
                       id="delivery_calender"
@@ -164,7 +165,7 @@ function SellerOrderCard({ card_data, hideButtons }) {
                 )
               ) : (
                 //for pending orders
-                <div className="flex flex-col items-center justify-between text-black mb-4 ">
+                <div className="flex flex-col md:flex-row items-center justify-center text-black mb-4 ">
                   <DeliveryLabel />
                   <DeliveryInput
                     onChange={(e) => {
@@ -178,22 +179,21 @@ function SellerOrderCard({ card_data, hideButtons }) {
               )}
 
               <div className="flex flex-row items-center justify-between ">
-                <span className="text-2xl lg:text-2xl font-bold text-gray-900 ">
+                <span className="text-2xl lg:text-2xl justify-start font-bold text-gray-900 ">
                   ${productdetails.price}
                 </span>
 
-                <div>
+                <div className="   ">
                   {hideButtons ? (
                     editable ? (
-                      <Button onClick={handleSubmit} text="submit" />
+                      <Button onClick={handleSubmit} text="submit" buttonStyle="mt-[0!important]  "   />
                     ) : (
-                      <Button onClick={handleDelay} text="Delay" />
+                      <Button onClick={handleDelay} text="Delay" buttonStyle="mt-[0!important]  border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]" />
                     )
                   ) : (
-                    <div className="flex flex-row md:flex-row">
-                      <Button onClick={handleAccept} text="Accept" />
-
-                      <Button onClick={handleReject} text="Reject" />
+                    <div className="flex flex-row space-x-2 ">
+                      <Button onClick={handleAccept} text="Accept" buttonStyle="mt-[0!important]  " />
+                      <Button onClick={handleReject} text="Reject" buttonStyle="mt-[0!important]  border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]" />
                     </div>
                   )}
                 </div>
