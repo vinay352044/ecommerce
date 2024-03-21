@@ -78,48 +78,58 @@ const Product = ({ product, handleClick, isAddToCart }) => {
 
   return (
     <>
-      <Card
-        product={product}
-        heartHandle={heartHandle}
-        identifier={"usersCard"}
-      >
-        <div className="flex items-center justify-between ">
-          <span className="text-2xl font-bold text-gray-900">
-            ${product.price}
-          </span>
-          <ButtonComponent
-            onClick={() => handleClick(product)}
-            buttonStyle="text-sm px-[8px!important] py-[5px!important]"
-          >
-            {isAddToCart ? "Add to cart" : "Remove"}
-          </ButtonComponent>
-        </div>
-        {!isAddToCart ? (
-          <>
-            <div className="flex justify-center text-3xl">
-              <button onClick={() => handleChangedQuantity(product, "dec")}>
-                -
-              </button>
-              <input
-                type="number"
-                min="0"
-                max="5"
-                value={quantity}
-                readOnly
-                className="text-center m-2"
-              />
-              <button onClick={() => handleChangedQuantity(product, "inc")}>
-                +
-              </button>
-            </div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white text-center">
-              Grand Total:- ${quantity * product.price}
-            </div>
-          </>
-        ) : (
-          null
-        )}
-      </Card>
+     <div className=" items-center lg:mx-auto mr-3  md:mr-0 ">
+        <Card
+          product={product}
+          heartHandle={heartHandle}
+          identifier={"usersCard"}
+        >
+          <div className="flex items-center justify-between ">
+            <span className="text-xl md:text-2xl font-bold text-gray-900">
+              ${product.price}
+            </span>
+            <ButtonComponent
+              onClick={() => handleClick(product)}
+              buttonStyle="text-sm px-[8px!important] py-[5px!important] mt-[0!important]"
+            >
+              {isAddToCart ? "Add to cart" : "Remove"}
+            </ButtonComponent>
+          </div>
+          {!isAddToCart ? (
+            <>
+              <div className="flex justify-center text-xl my-4 items-center w-[120px] h-[35px] mx-auto border-[2px] border-[#2590db] ">
+                <button
+                  className="p-2 font-bold text-[#2590db]"
+                  onClick={() => handleChangedQuantity(product, "dec")}
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  min="0"
+                  max="5"
+                  value={quantity}
+                  readOnly
+                  className="text-center w-[50px] pl-4 text-base outline-none border-none font-bold"
+                />
+                <button
+                  className="p-2 font-bold text-[#2590db]"
+                  onClick={() => handleChangedQuantity(product, "inc")}
+                >
+                  +
+                </button>
+              </div>
+              <div className=" text-lg md:text-xl font-bold text-gray-900  text-center mt-2">
+                Grand Total:{" "}
+                <span className="font-normal">
+                  {" "}
+                  ${quantity * product.price}
+                </span>
+              </div>
+            </>
+          ) : null}
+        </Card>
+      </div>
     </>
   );
 };
