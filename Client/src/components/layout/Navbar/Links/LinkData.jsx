@@ -1,4 +1,4 @@
-import { FaHeadphonesAlt, FaShoppingCart, FaUserAlt } from "react-icons/fa";
+import { FaHeadphonesAlt, FaHome, FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeart } from "react-icons/fa";
@@ -7,7 +7,7 @@ export const publicLinks = [
   {
     label: "Home",
     slug: "/",
-    icon: null,
+    icon: <FaHome />,
   },
   {
     label: "Become Seller",
