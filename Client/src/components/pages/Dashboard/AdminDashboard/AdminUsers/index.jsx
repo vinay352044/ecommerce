@@ -86,8 +86,8 @@ function Index() {
           </div>
         ) : (
           <div>
-            <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:px-20">
-              <div className="flex justify-start">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+              <div className="flex md:justify-start">
                 <Searching
                   dataToSearch={data}
                   setSearchResults={setSearchResults}
