@@ -25,7 +25,33 @@ function AdminCreateUser() {
       .catch((err) => console.log(err));
   }, []);
 
+  const validateErros = (name, value) => {};
+
   const handleChange = (e) => {
+    const validationErrors = {};
+
+    if (e.target.name === "name" && e.target.value.length < 2) {
+      validationErrors.name = "Name must be at least 2 characters";
+    } else if (e.target.name === "name" && e.target.value.length >= 2) {
+      validationErrors.name = "";
+    } else {
+      validationErrors.name = errors.name;
+    }
+
+    if (e.target.name === "password" && !passwordRules.test(e.target.value)) {
+      validationErrors.password =
+        "Password must contain 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 4 characters long";
+    } else if (
+      e.target.name === "password" &&
+      passwordRules.test(e.target.value)
+    ) {
+      validationErrors.password = "";
+    } else {
+      validationErrors.password = errors.password;
+    }
+
+    setErrors(validationErrors);
+
     setValues((prevValue) => {
       return {
         ...prevValue,
@@ -38,20 +64,8 @@ function AdminCreateUser() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = {};
 
-    if (values.name.length < 2) {
-      validationErrors.name = "Name must be at least 2 characters";
-    }
-
-    if (!passwordRules.test(values.password)) {
-      validationErrors.password =
-        "Password must contain 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 4 characters long";
-    }
-
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
+    if (errors.length === 0) {
       try {
         await createUser({
           id:
@@ -74,9 +88,9 @@ function AdminCreateUser() {
       <h1 className="text-3xl mb-5">Add user</h1>
       <form
         onSubmit={handleSubmit}
-        className="flex justify-center items-center flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]"
+        className="flex justify-center items-center gap-2 flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]"
       >
-        <div className="mb-3">
+        <div>
           <label
             htmlFor="name"
             className="block text-sm font-medium text-gray-700"
@@ -90,9 +104,13 @@ function AdminCreateUser() {
             onChange={handleChange}
             required
           />
-          {errors.name !== "" ? <p>{errors.name}</p> : null}
+          {errors.name ? (
+            <p className="text-[14px] text-red-700">{errors.name}</p>
+          ) : (
+            <p className="text-[14px] opacity-0">null</p>
+          )}
         </div>
-        <div className="mb-3">
+        <div>
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-700"
@@ -107,8 +125,13 @@ function AdminCreateUser() {
             onChange={handleChange}
             required
           />
+          {errors.email ? (
+                <p className="text-[14px] text-red-700">{errors.email}</p>
+              ) : (
+                <p className="text-[14px] opacity-0">null</p>
+          )}
         </div>
-        <div className="mb-3">
+        <div>
           <label
             htmlFor="password"
             className="block text-sm font-medium text-gray-700"
@@ -123,7 +146,13 @@ function AdminCreateUser() {
             onChange={handleChange}
             required
           />
-          {errors.password !== "" ? <p>{errors.password}</p> : ""}
+          {errors.password ? (
+            <p className="text-[14px] text-red-700 w-[min(24rem,85vw)]">
+              {errors.password}
+            </p>
+          ) : (
+            <p className="text-[14px] opacity-0">null</p>
+          )}
         </div>
         <div>
           <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">

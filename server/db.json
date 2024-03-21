@@ -438,18 +438,6 @@
       "brand": "Apple",
       "total_sell": 123,
       "thumbnail": "https://images.news18.com/ibnlive/uploads/2023/08/apple-iphone-15-pro-max-sale.jpg"
-    },
-    {
-      "id": "17",
-      "title": "",
-      "description": "",
-      "price": "",
-      "discountPercentage": "",
-      "stock": "",
-      "category": "",
-      "brand": "",
-      "total_sell": "",
-      "thumbnail": ""
     }
   ],
   "sellers": [
@@ -662,7 +650,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha",
+      "name": "Aisha xyzascascaz",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [
@@ -858,85 +846,7 @@
       "name": "Neha",
       "email": "neha@example.com",
       "password": "nehapass",
-      "favouriteProducts": [
-        {
-          "id": "1",
-          "title": "iPhone 9",
-          "description": "An apple mobile which is nothing like apple",
-          "price": 549,
-          "discountPercentage": 12.96,
-          "rating": 4.69,
-          "stock": 94,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/1/1.jpg",
-            "https://cdn.dummyjson.com/product-images/1/2.jpg",
-            "https://cdn.dummyjson.com/product-images/1/3.jpg",
-            "https://cdn.dummyjson.com/product-images/1/4.jpg",
-            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-          ],
-          "total_sell": "10"
-        },
-        {
-          "id": "4",
-          "title": "Samsung Galaxy Book",
-          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-          "price": "1499",
-          "discountPercentage": "4.15",
-          "rating": "4.25",
-          "stock": "50",
-          "brand": "Samsung",
-          "category": "laptops",
-          "total_sell": "14",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/7/1.jpg",
-            "https://cdn.dummyjson.com/product-images/7/2.jpg",
-            "https://cdn.dummyjson.com/product-images/7/3.jpg",
-            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "55",
-          "title": "Samsung Galaxy Book",
-          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-          "price": "1499",
-          "discountPercentage": "4.15",
-          "rating": "4.25",
-          "stock": "50",
-          "brand": "Samsung",
-          "category": "laptops",
-          "total_sell": "14",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/7/1.jpg",
-            "https://cdn.dummyjson.com/product-images/7/2.jpg",
-            "https://cdn.dummyjson.com/product-images/7/3.jpg",
-            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "54",
-          "title": "Samsung Galaxy Book",
-          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-          "price": "1499",
-          "discountPercentage": "4.15",
-          "rating": "4.25",
-          "stock": "50",
-          "brand": "Samsung",
-          "category": "laptops",
-          "total_sell": "14",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/7/1.jpg",
-            "https://cdn.dummyjson.com/product-images/7/2.jpg",
-            "https://cdn.dummyjson.com/product-images/7/3.jpg",
-            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-          ]
-        }
-      ]
+      "favouriteProducts": []
     },
     {
       "id": "10",
@@ -1033,10 +943,45 @@
       "password": "1234567890"
     },
     {
+      "id": "15",
+      "name": "Vinay Sharma",
+      "email": "vinay@gmail.com",
+      "password": "Vinay@25",
+      "favouriteProducts": [
+        {
+          "id": "5",
+          "title": "Fog Scent Xpressio Perfume",
+          "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+          "price": "13",
+          "discountPercentage": "8.14",
+          "rating": "4.59",
+          "stock": "61",
+          "brand": "Fog Scent Xpressio",
+          "category": "fragrances",
+          "total_sell": "22",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/13/1.jpg",
+            "https://cdn.dummyjson.com/product-images/13/2.png",
+            "https://cdn.dummyjson.com/product-images/13/3.jpg",
+            "https://cdn.dummyjson.com/product-images/13/4.jpg",
+            "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
+          ]
+        }
+      ]
+    },
+    {
       "id": "16",
-      "name": "VaideekBhai",
+      "name": "VaideekTest",
       "email": "VaideekTest@mail.com",
       "password": "Mail@12345"
+    },
+    {
+      "id": "17",
+      "name": "",
+      "email": "",
+      "password": "",
+      "favouriteProducts": []
     }
   ],
   "orders": [
@@ -1136,7 +1081,7 @@
       "product_id": "54",
       "ordered_at": "3/20/2024, 1:59:15 PM",
       "expected_delivery": "",
-      "order_accepted": "",
+      "order_accepted": "pending",
       "accepted_by": "",
       "quantity": 1,
       "product": {
@@ -1165,9 +1110,9 @@
       "user_id": "2",
       "product_id": "4",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "2024-03-23",
-      "order_accepted": "accepted",
-      "accepted_by": "2",
+      "expected_delivery": "",
+      "order_accepted": "pending",
+      "accepted_by": "",
       "quantity": 1,
       "product": {
         "id": "4",
@@ -1195,9 +1140,9 @@
       "user_id": "2",
       "product_id": "55",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "2024-03-23",
-      "order_accepted": "accepted",
-      "accepted_by": "2",
+      "expected_delivery": "",
+      "order_accepted": "pending",
+      "accepted_by": "",
       "quantity": 1,
       "product": {
         "id": "55",
@@ -1225,9 +1170,9 @@
       "user_id": "2",
       "product_id": "56",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "2024-03-23",
-      "order_accepted": "accepted",
-      "accepted_by": "2",
+      "expected_delivery": "",
+      "order_accepted": "pending",
+      "accepted_by": "",
       "quantity": 1,
       "product": {
         "id": "56",
