@@ -43,7 +43,7 @@ const Products = ({ productData, isAddToCart }) => {
 
   return (
     <>
-      <div className="display flex justify-center space-x-10">
+      <div className="display flex justify-center space-x-10 mt-5">
         <Searching
           dataToSearch={productData}
           setSearchResults={setSearchResults}
@@ -71,9 +71,6 @@ const Products = ({ productData, isAddToCart }) => {
       <div className="justify-center">Oops not found</div>
     )}
   </div>
-
-
-      
       {shouldRenderPagination && (
         <div className="flex justify-center items-center w-auto h-10 my-6">
           <Pagination

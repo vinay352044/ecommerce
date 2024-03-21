@@ -74,7 +74,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
 
   return (
     <>
-      <div className=" items-center lg:mx-auto mr-3  md:mr-0 ">
+     <div className=" items-center lg:mx-auto mr-3  md:mr-0 ">
         <Card
           product={product}
           heartHandle={heartHandle}
@@ -93,8 +93,11 @@ const Product = ({ product, handleClick, isAddToCart }) => {
           </div>
           {!isAddToCart ? (
             <>
-              <div className="flex justify-center text-2xl">
-                <button className="bg-sky-200 px-5 rounded-full" onClick={() => handleChangedQuantity(product, "dec")}>
+              <div className="flex justify-center text-xl my-4 items-center w-[120px] h-[35px] mx-auto border-[2px] border-[#2590db] ">
+                <button
+                  className="p-2 font-bold text-[#2590db]"
+                  onClick={() => handleChangedQuantity(product, "dec")}
+                >
                   -
                 </button>
                 <input
@@ -103,15 +106,21 @@ const Product = ({ product, handleClick, isAddToCart }) => {
                   max="5"
                   value={quantity}
                   readOnly
-                  className="text-center m-2 bg-sky-300 rounded pl-3"
-
+                  className="text-center w-[50px] pl-4 text-base outline-none border-none font-bold"
                 />
-                <button className="bg-sky-200 px-4 rounded-full" onClick={() => handleChangedQuantity(product, "inc")}>
+                <button
+                  className="p-2 font-bold text-[#2590db]"
+                  onClick={() => handleChangedQuantity(product, "inc")}
+                >
                   +
                 </button>
               </div>
-              <div className=" text-xl md:text-2xl font-bold text-gray-900  text-center mt-2">
-              Grand Total: <span className="font-normal"> ${quantity * product.price}</span>
+              <div className=" text-lg md:text-xl font-bold text-gray-900  text-center mt-2">
+                Grand Total:{" "}
+                <span className="font-normal">
+                  {" "}
+                  ${quantity * product.price}
+                </span>
               </div>
             </>
           ) : null}

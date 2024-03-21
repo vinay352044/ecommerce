@@ -29,7 +29,7 @@ function SellerOrderCard({ card_data, hideButtons }) {
   }, [cardData, order]);
 
   function handleAccept(string) {
-    if (selectedDate >= currentDate) {
+    
       if (
         (orderData &&
           orderData.order_accepted === "pending" &&
@@ -57,9 +57,7 @@ function SellerOrderCard({ card_data, hideButtons }) {
       } else {
         toast.error("Please add a delivery date");
       }
-    } else {
-      toast.error("Please select a correct date");
-    }
+   
 
     handleflag();
   }

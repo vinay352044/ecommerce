@@ -18,7 +18,7 @@ function Card({ product, heartHandle, identifier, children }) {
     <div>
       <div
         key={product.id}
-        className="w-full lg:max-w-sm  h-[min(470px,100%)]  bg-white border border-gray-200 rounded-lg shadow "
+        className="w-full lg:max-w-md  h-[min(470px,100%)]  bg-white border border-gray-200 rounded-lg shadow "
       >
         {flag ? (
           <button className="flex justify-center items-center  h-10 w-16 md:w-11 lg:w-11 max-h-10 -mb-8 md:-mb-4">
@@ -33,7 +33,7 @@ function Card({ product, heartHandle, identifier, children }) {
             to={`/products/${product.id}`}
           >
             <img
-              className="p-8 md:p-5 lg:p-5 rounded-t-lg w-96 h-60"
+              className="p-8 md:p-5 lg:p-5 rounded-t-lg w-96 lg:w-[30rem] h-60"
               src={product.thumbnail}
               alt="product image"
             />
@@ -48,13 +48,6 @@ function Card({ product, heartHandle, identifier, children }) {
               {product.title}
             </h5>
           </Link>
-          <p
-            className={` font-normal text-gray-800  ${
-              showFullDescription ? "" : "truncate"
-            }`}
-          >
-            {product.description}
-          </p>
           <p
             className={` font-normal text-gray-800  ${
               showFullDescription ? "" : "truncate"
