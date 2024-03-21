@@ -982,6 +982,13 @@
       "email": "",
       "password": "",
       "favouriteProducts": []
+    },
+    {
+      "id": "18",
+      "name": "skk",
+      "email": "dp@gmail.com",
+      "password": "kDhruv@1",
+      "favouriteProducts": []
     }
   ],
   "orders": [

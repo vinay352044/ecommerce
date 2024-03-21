@@ -6,9 +6,11 @@ import { createUser } from "../../../../../utils/axios-instance";
 import Input from "../../../../common/Input";
 import ButtonComponent from "../../../../common/ButtonComponent";
 
-const errors = {};
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
+const emailRules =
+/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+
 function AdminCreateUser() {
   const [data, setData] = useState([]);
   const [values, setValues] = useState({
@@ -25,8 +27,6 @@ function AdminCreateUser() {
       .catch((err) => console.log(err));
   }, []);
 
-  const validateErros = (name, value) => {};
-
   const handleChange = (e) => {
     const validationErrors = {};
 
@@ -36,6 +36,18 @@ function AdminCreateUser() {
       validationErrors.name = "";
     } else {
       validationErrors.name = errors.name;
+    }
+
+    if (e.target.name === "email" && !emailRules.test(e.target.value)) {
+      validationErrors.email =
+        "Invalid email address!";
+    } else if (
+      e.target.name === "email" &&
+      emailRules.test(e.target.value)
+    ) {
+      validationErrors.email = "";
+    } else {
+      validationErrors.email = errors.email;
     }
 
     if (e.target.name === "password" && !passwordRules.test(e.target.value)) {
@@ -65,7 +77,7 @@ function AdminCreateUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (errors.length === 0) {
+    if (errors.name === "" && errors.email === "" && errors.password === "") {
       try {
         await createUser({
           id:
@@ -118,7 +130,7 @@ function AdminCreateUser() {
             Email
           </label>
           <Input
-            type="email"
+            type="text"
             id="email"
             name="email"
             value={values.email}
