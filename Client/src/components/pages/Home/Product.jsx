@@ -19,6 +19,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
   const dispatch = useDispatch();
 
   const heartHandle = async (item) => {
+    if(user){
     const alreaydLiked = user.favouriteProducts.filter(
       (product) => product.id === item.id
     );
@@ -39,6 +40,9 @@ const Product = ({ product, handleClick, isAddToCart }) => {
         position: "top-right",
       });
     }
+  }else{
+    toast.error("Please Login")
+  }
   };
 
   function handleChangedQuantity(product, change) {

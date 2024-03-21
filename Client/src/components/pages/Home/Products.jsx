@@ -43,7 +43,7 @@ const Products = ({ productData, isAddToCart }) => {
 
   return (
     <>
-      <div className="display flex justify-center space-x-10 mt-5">
+      <div className="display gap-5 flex flex-start flex-col md:flex-row justify-center items-start">
         <Searching
           dataToSearch={productData}
           setSearchResults={setSearchResults}
