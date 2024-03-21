@@ -29,35 +29,33 @@ function SellerOrderCard({ card_data, hideButtons }) {
   }, [cardData, order]);
 
   function handleAccept(string) {
-    
-      if (
-        (orderData &&
-          orderData.order_accepted === "pending" &&
-          deliveryDateFilled) ||
-        string === "handlesubmit"
-      ) {
-        const temporder = {
-          ...orderData,
-          order_accepted: "accepted",
-          accepted_by: `${sellerid}`,
-          expected_delivery: `${selectedDate}`,
-        };
+    if (
+      (orderData &&
+        orderData.order_accepted === "pending" &&
+        deliveryDateFilled) ||
+      string === "handlesubmit"
+    ) {
+      const temporder = {
+        ...orderData,
+        order_accepted: "accepted",
+        accepted_by: `${sellerid}`,
+        expected_delivery: `${selectedDate}`,
+      };
 
-        setorderData(temporder);
+      setorderData(temporder);
 
-        dispatch(
-          worker(
-            "UPDATE_ORDER",
-            "UPDATE_ACCEPT_ORDER",
-            `http://localhost:3000/orders/${temporder.id}`,
-            temporder
-          )
-        );
-        toast.success("Order accepted");
-      } else {
-        toast.error("Please add a delivery date");
-      }
-   
+      dispatch(
+        worker(
+          "UPDATE_ORDER",
+          "UPDATE_ACCEPT_ORDER",
+          `http://localhost:3000/orders/${temporder.id}`,
+          temporder
+        )
+      );
+      toast.success("Order accepted");
+    } else {
+      toast.error("Please add a delivery date");
+    }
 
     handleflag();
   }
@@ -126,18 +124,12 @@ function SellerOrderCard({ card_data, hideButtons }) {
 
   const Button = ({ onClick, text }) => {
     return (
-      <ButtonComponent
-        // buttonStyle="text-sm px-[8px!important] py-[5px!important] mt-[0!important]"
-        buttonStyle="mt-[0!important] mr-1   "
-        onClick={onClick}
-      >
+      <ButtonComponent buttonStyle="mt-[0!important] mr-1   " onClick={onClick}>
         {text}
       </ButtonComponent>
     );
   };
 
-  //
-  // console.log(orderData.product);
   return (
     <>
       {productdetails ? (
@@ -159,23 +151,6 @@ function SellerOrderCard({ card_data, hideButtons }) {
                       }}
                       readOnly={!editable}
                     />
-                    {/* <input
-                    name="delivery_calender"
-                    id="delivery_calender"
-                    type="date"
-                    placeholder="select date to deliver"
-                    autoFocus={editable}
-                    onChange={(e) => {
-                      const formattedDate = e.target.value;
-                      formattedDate.split("-").reverse().join("-");
-                      setSelectedDate(formattedDate);
-                      setDeliveryDateFilled(true);
-                    }}
-                    className={`bg-gray-200 px-3 py-1   rounded-md w-full text-center tracking-tight text:xs md:text-base ${
-                      editable ? "cursor-text" : "cursor-not-allowed"
-                    }`}
-                    required
-                  /> */}
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-between text-black mb-4">
@@ -185,22 +160,6 @@ function SellerOrderCard({ card_data, hideButtons }) {
                       value={orderData.expected_delivery}
                       readOnly={!editable}
                     />
-
-                    {/* <input
-                    name="delivery_calender"
-                    id="delivery_calender"
-                    type="text"
-                    placeholder="select date to deliver"
-                    value={orderData.expected_delivery
-                      .split("-")
-                      .reverse()
-                      .join("-")}
-                    readOnly={!editable}
-                    autoFocus={editable}
-                    className={`bg-gray-200 px-3 py-1   rounded-md w-full text-center tracking-tight text:xs md:text-base ${
-                      editable ? "cursor-text" : "cursor-not-allowed"
-                    }`}
-                  /> */}
                   </div>
                 )
               ) : (
@@ -215,20 +174,6 @@ function SellerOrderCard({ card_data, hideButtons }) {
                       setDeliveryDateFilled(true);
                     }}
                   />
-
-                  {/* <input
-                  name="delivery_calender"
-                  type="date"
-                  placeholder="select date to deliver"
-                  className="border-2 border-gray-200 rounded-md w-full text-center tracking-tight text:xs md:text-base"
-                  onChange={(e) => {
-                    const formattedDate = e.target.value;
-                    formattedDate.split("-").reverse().join("-");
-                    setSelectedDate(formattedDate);
-                    setDeliveryDateFilled(true);
-                  }}
-                  required
-                /> */}
                 </div>
               )}
 
@@ -242,36 +187,13 @@ function SellerOrderCard({ card_data, hideButtons }) {
                     editable ? (
                       <Button onClick={handleSubmit} text="submit" />
                     ) : (
-                      // <button
-                      //   onClick={handleSubmit}
-                      //   className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
-                      // >
-                      //   submit
-                      // </button>
                       <Button onClick={handleDelay} text="Delay" />
-                      // <button
-                      //   onClick={handleDelay}
-                      //   className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
-                      // >
-                      //   Delay
-                      // </button>
                     )
                   ) : (
                     <div className="flex flex-row md:flex-row">
                       <Button onClick={handleAccept} text="Accept" />
-                      {/* <button
-                      onClick={handleAccept}
-                      className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2  text-center "
-                    >
-                      Accept
-                    </button> */}
+
                       <Button onClick={handleReject} text="Reject" />
-                      {/* <button
-                      onClick={handleReject}
-                      className="text-white bg-[#0295db] hover:bg-[#9d9da1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mx-1 md:px-5 md:py-2 text-center "
-                    >
-                      Reject
-                    </button> */}
                     </div>
                   )}
                 </div>
