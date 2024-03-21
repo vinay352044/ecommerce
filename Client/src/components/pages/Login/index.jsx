@@ -89,6 +89,9 @@ const Login = () => {
   }
 
   useEffect(() => {
+    // if looged in then don't give access to this page
+    isAuth ? navigate("/") : null;
+    
     (async () => {
       const {
         success: usersSuccess,
@@ -111,9 +114,6 @@ const Login = () => {
       setUsers(usersData);
       setSellers(sellersData);
     })();
-
-    // if looged in then don't give access to this page
-    isAuth ? navigate("/") : null;
   }, []);
 
   return (
