@@ -23,22 +23,22 @@ export const publicLinks = [
 
 export const sellerLinks = [
   {
-    label: "Pending Orders",
+    label: "Pending",
     slug: "/seller-dashboard/pendingorders",
     icon: null,
   },
   {
-    label: "Accepted Orders",
+    label: "Accepted",
     slug: "/seller-dashboard/acceptedorders",
     icon: null,
   },
   {
-    label: "Your Products",
+    label: "Products",
     slug: "/seller-products",
     icon: null,
   },
   {
-    label: "Add Products",
+    label: "Add Product",
     slug: "/seller-create-products",
     icon: null,
   },
