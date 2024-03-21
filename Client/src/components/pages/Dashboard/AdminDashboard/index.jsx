@@ -92,6 +92,7 @@ const Index = () => {
           setDataIdToBeDeleted={setProductIdToBeDeleted}
         />
       )}
+      <div className="p-10 px-6 md:p-10">
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">
         Admin Dashboard
       </h1>
@@ -132,6 +133,7 @@ const Index = () => {
           setCurrentPage={setCurrentPage}
         />
       )}
+      </div>
     </>
   );
 };

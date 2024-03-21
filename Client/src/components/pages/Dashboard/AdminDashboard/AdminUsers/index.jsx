@@ -78,7 +78,7 @@ function Index() {
           setDataIdToBeDeleted={setUserIdToBeDeleted}
         />
       )}
-      <div className="p-10">
+      <div className="p-10 px-6 md:p-10">
         <h1 className="text-2xl font-bold mb-4 text-center">List of Users</h1>
         {data.length === 0 ? (
           <div className="text-center py-4">
