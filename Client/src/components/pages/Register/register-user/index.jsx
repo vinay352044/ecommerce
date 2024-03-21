@@ -46,7 +46,6 @@ const RegisterUser = () => {
   const { isAuth } = useSelector((state) => state.role);
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
-  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
 
@@ -107,8 +106,8 @@ const RegisterUser = () => {
   }
 
   useEffect(() => {
-     // if looged in then don't give access to this page
-     isAuth ? navigate("/") : null;
+    // if looged in then don't give access to this page
+    isAuth ? navigate("/") : null;
 
     (async () => {
       const {

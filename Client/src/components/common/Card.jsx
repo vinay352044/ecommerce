@@ -18,7 +18,7 @@ function Card({ product, heartHandle, identifier, children }) {
     <div>
       <div
         key={product.id}
-        className="w-full lg:max-w-md  h-[min(470px,100%)]  bg-white border border-gray-200 rounded-lg shadow "
+        className="w-full lg:max-w-[22rem]  h-[min(470px,100%)]  bg-white border border-gray-200 rounded-lg shadow "
       >
         {flag ? (
           <button className="flex justify-center items-center  h-10 w-16 md:w-11 lg:w-11 max-h-10 -mb-8 md:-mb-4">

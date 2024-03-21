@@ -33,7 +33,7 @@ const Wishlist = () => {
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center p-6">
         {user.favouriteProducts.length > 0 ? (
           user.favouriteProducts.map((product, index) => (
-            <div className=" items-center lg:mx-auto mr-3  md:mr-0 mt-5 ">
+            <div className=" items-center lg:mx-auto mr-3  md:mr-0  ">
             <Card key= {product.id} product={product} identifier='wishlist'>
               <div className="place-content-center">
               <ButtonComponent 
