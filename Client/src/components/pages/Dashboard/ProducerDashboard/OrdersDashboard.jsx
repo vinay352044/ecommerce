@@ -59,10 +59,7 @@ function OrdersDashboard({ whichcomponent }) {
       // "http://localhost:3000/products/3"]
       dispatch(worker("FETCH_MULTI", "FETCH_NEEDED_PRODUCTS", apitosend));
     } 
-    // else {
-    //   // console.log("else worked");
-    // }
-
+    
     setinventory(sellersState.needed_products);
   }, [productidArray, sellersState.needed_products]);
 
@@ -88,7 +85,7 @@ function OrdersDashboard({ whichcomponent }) {
 
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className="mt-5 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6">
         {whichcomponent === "pendingorders" ? (
           availabeleorders &&
           availabeleorders.length &&
@@ -145,46 +142,3 @@ function OrdersDashboard({ whichcomponent }) {
 }
 
 export default OrdersDashboard;
-{
-  /* {availabeleorders &&
-          availabeleorders.length &&
-          cardData &&
-          cardData.length != 0 ? (
-            availabeleorders.map((order, index) => (
-              <Card
-                key={order.id}
-                card_data={{
-                  cardData: cardData[index],
-                  order: order,
-                  sellerid: sellerId,
-                
-                }}
-              />
-              
-            ))
-          ) : (
-            <h1>No Orders</h1>
-          )} */
-}
-
-{
-  /* {totalorders && totalorders.length ? (
-  totalorders.map((order, index) => {
-    if (order.order_accepted === "accepted" && productidArray.includes(order.product_id)) {
-      return (
-        <Card
-          key={order.id}
-          card_data={{
-            order: order,
-            cardData: inventory.find((product) => product.id === order.product_id),
-            sellerid: sellerId
-          }}
-          hideButtons = {true}
-        />
-      );
-    } 
-  })
-) : (
-  <h1>No Orders</h1>
-)} */
-}

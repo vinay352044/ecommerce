@@ -21,7 +21,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
           <li className="bg-[#2590db] text-white rounded-l focus:outline-none focus:ring-blue-500 focus:border-blue-500">
             <button
               onClick={goToPrevPage}
-              className={`w-full h-full px-4 py-2 ${
+              className={`w-full h-full px-2 py-1 ${
                 currentPage === 1 ? "bg-[#85c7f7]" : ""
               }`}
               disabled={currentPage === 1}
@@ -39,7 +39,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
               }`}
             >
               <button
-                className="px-4 py-2"
+                className="px-2 py-1"
                 onClick={() => setCurrentPage(pgNumber)}
               >
                 {pgNumber}
@@ -49,7 +49,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
           <li className="bg-[#2590db] text-white  rounded-r focus:outline-none">
             <button
               onClick={goToNextPage}
-              className={`w-full h-full px-4 py-2 ${
+              className={`w-full h-full px-2 py-1 ${
                 currentPage === nPages ? "bg-[#85c7f7]" : ""
               }`}
               disabled={currentPage === nPages}

@@ -69,7 +69,7 @@ const UsersCart = () => {
   return (
     <div>
       {cartItems.length > 0 ? (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center px-6">
           <Products productData={cartItems} isAddToCart={false} />
           <ButtonComponent
             onClick={handleCheckout}

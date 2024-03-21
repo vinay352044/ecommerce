@@ -41,6 +41,7 @@ const Index = () => {
   };
 
   const handleDelete = async (productID) => {
+    // console.log(productID);
     setProductIdToBeDeleted(productID);
     setShowConfirmationModal(true);
   };
@@ -49,6 +50,7 @@ const Index = () => {
     try {
       const response = await DeleteProductbyId(productId);
       if (response.success) {
+        // console.log("Product Deleted Successfully!");
         setProducts((prevProducts) =>
           prevProducts.filter((product) => product.id !== productId)
         );
@@ -116,14 +118,12 @@ const Index = () => {
       </div>
 
       {sortingResult.length > 0 ? (
-        <div className="overflow-x-auto">
-          <Table
-            data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
-            headers={productsArray}
-            handleUpdate={handleUpdate}
-            handleDelete={handleDelete}
-          />
-        </div>
+        <Table
+          data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
+          headers={productsArray}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+        />
       ) : (
         <div className="justify-center">Oops not found</div>
       )}

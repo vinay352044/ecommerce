@@ -858,7 +858,85 @@
       "name": "Neha",
       "email": "neha@example.com",
       "password": "nehapass",
-      "favouriteProducts": []
+      "favouriteProducts": [
+        {
+          "id": "1",
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 549,
+          "discountPercentage": 12.96,
+          "rating": 4.69,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/1/1.jpg",
+            "https://cdn.dummyjson.com/product-images/1/2.jpg",
+            "https://cdn.dummyjson.com/product-images/1/3.jpg",
+            "https://cdn.dummyjson.com/product-images/1/4.jpg",
+            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+          ],
+          "total_sell": "10"
+        },
+        {
+          "id": "4",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": "1499",
+          "discountPercentage": "4.15",
+          "rating": "4.25",
+          "stock": "50",
+          "brand": "Samsung",
+          "category": "laptops",
+          "total_sell": "14",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+          ]
+        },
+        {
+          "id": "55",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": "1499",
+          "discountPercentage": "4.15",
+          "rating": "4.25",
+          "stock": "50",
+          "brand": "Samsung",
+          "category": "laptops",
+          "total_sell": "14",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+          ]
+        },
+        {
+          "id": "54",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": "1499",
+          "discountPercentage": "4.15",
+          "rating": "4.25",
+          "stock": "50",
+          "brand": "Samsung",
+          "category": "laptops",
+          "total_sell": "14",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+          ]
+        }
+      ]
     },
     {
       "id": "10",
@@ -1058,7 +1136,7 @@
       "product_id": "54",
       "ordered_at": "3/20/2024, 1:59:15 PM",
       "expected_delivery": "",
-      "order_accepted": "pending",
+      "order_accepted": "",
       "accepted_by": "",
       "quantity": 1,
       "product": {
@@ -1087,9 +1165,9 @@
       "user_id": "2",
       "product_id": "4",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "",
-      "order_accepted": "pending",
-      "accepted_by": "",
+      "expected_delivery": "2024-03-23",
+      "order_accepted": "accepted",
+      "accepted_by": "2",
       "quantity": 1,
       "product": {
         "id": "4",
@@ -1117,9 +1195,9 @@
       "user_id": "2",
       "product_id": "55",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "",
-      "order_accepted": "pending",
-      "accepted_by": "",
+      "expected_delivery": "2024-03-23",
+      "order_accepted": "accepted",
+      "accepted_by": "2",
       "quantity": 1,
       "product": {
         "id": "55",
@@ -1147,9 +1225,9 @@
       "user_id": "2",
       "product_id": "56",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "",
-      "order_accepted": "pending",
-      "accepted_by": "",
+      "expected_delivery": "2024-03-23",
+      "order_accepted": "accepted",
+      "accepted_by": "2",
       "quantity": 1,
       "product": {
         "id": "56",
