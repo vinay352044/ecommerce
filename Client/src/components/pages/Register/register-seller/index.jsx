@@ -384,7 +384,7 @@ const RegisterSeller = () => {
               <ButtonComponent
                 type="reset"
                 buttonStyle={
-                  "w-full border-[#b91c1c!important] rounded-md flex items-center justify-center gap-2 bg-[#b91c1c!important] text-[white!important] hover:bg-[white!important] hover:text-[#b91c1c!important] basis-[30%]"
+                  "border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]"
                 }
               >
                 RESET
