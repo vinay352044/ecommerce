@@ -12,6 +12,7 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import ButtonComponent from "../../common/ButtonComponent";
 import Input from "../../common/Input";
+import { GoEye, GoEyeClosed } from "react-icons/go";
 
 const loginSchema = yup.object({
   role: yup
@@ -28,6 +29,7 @@ const Login = () => {
   const { isAuth } = useSelector((state) => state.role);
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
+  const [showPass, setShowPass] = useState(false);
 
   const {
     values,
@@ -87,6 +89,9 @@ const Login = () => {
   }
 
   useEffect(() => {
+    // if looged in then don't give access to this page
+    isAuth ? navigate("/") : null;
+    
     (async () => {
       const {
         success: usersSuccess,
@@ -109,14 +114,11 @@ const Login = () => {
       setUsers(usersData);
       setSellers(sellersData);
     })();
-
-    // if looged in then don't give access to this page
-    isAuth ? navigate("/") : null;
   }, []);
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Login</h3>
 
         <div className="flex justify-center items-center gap-10">
@@ -138,11 +140,11 @@ const Login = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 defaultValue="user"
-                className="border-2 rounded-md border-gray-500 focus:ring-0 w-[min(24rem,85vw)]"
+                className="border-2 border-gray-400 outline-0 rounded-md mt-1 px-2 py-1 h-11 w-[min(24rem,85vw)] focus:border-black"
               >
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="seller">Seller</option>
+                <option value="user" selected={values.role=='user'}>User</option>
+                <option value="admin" selected={values.role=='admin'}>Admin</option>
+                <option value="seller" selected={values.role=='seller'}>Seller</option>
               </select>
               {touched.role && errors.role ? (
                 <p className="text-[14px] text-red-700">{errors.role}</p>
@@ -158,16 +160,7 @@ const Login = () => {
                   Email
                 </label>
               </div>
-              {/* <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                placeholder="dhruv@example.com"
-                className="border-2 rounded-md border-black focus:ring-0"
-              /> */}
+
               <Input
                 type="email"
                 name="email"
@@ -184,25 +177,16 @@ const Login = () => {
               )}
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <div className="flex items-center gap-1">
                 <RiLockPasswordFill />
                 <label htmlFor="password" className="font-semibold">
                   Password
                 </label>
               </div>
-              {/* <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                placeholder="ranDom1$"
-                className="border-2 rounded-md border-black focus:ring-0"
-              /> */}
+
               <Input
-                type="password"
+                type={showPass ? "text" : "password"}
                 name="password"
                 id="password"
                 onChange={handleChange}
@@ -210,6 +194,17 @@ const Login = () => {
                 value={values.password}
                 placeholder="ranDom1$"
               />
+              {!showPass ? (
+                <GoEye
+                  className="text-2xl cursor-pointer absolute right-2 bottom-1/3"
+                  onClick={() => setShowPass(!showPass)}
+                />
+              ) : (
+                <GoEyeClosed
+                  className="text-2xl cursor-pointer absolute right-2 bottom-1/3"
+                  onClick={() => setShowPass(!showPass)}
+                />
+              )}
 
               {touched.password && errors.password ? (
                 <p className="text-[14px] text-red-700">{errors.password}</p>
@@ -228,7 +223,9 @@ const Login = () => {
 
               <ButtonComponent
                 type="reset"
-                buttonStyle={"w-full border-[#b91c1c!important] rounded-md flex items-center justify-center gap-2 bg-[#b91c1c!important] text-[white!important] hover:bg-[white!important] hover:text-[#b91c1c!important] basis-[30%]"}
+                buttonStyle={
+                  "border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]"
+                }
               >
                 RESET
               </ButtonComponent>

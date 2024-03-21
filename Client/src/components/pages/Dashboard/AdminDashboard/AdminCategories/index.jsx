@@ -77,7 +77,7 @@ const AdminCategories = () => {
         Manage Category
       </div>
 
-            <div className="flex justify-end mb-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
                 <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
                 <Link to="/admin-createCategories">+ ADD CATEGORY</Link>
                 </ButtonComponent>

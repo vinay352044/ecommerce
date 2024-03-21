@@ -40,7 +40,7 @@ function AdminCreateCategories() {
   };
 
   return (
-    <div className="flex justify-center items-center flex-col h-60">
+    <div className="flex justify-center items-center flex-col h-60 my-10">
       <h1 className="text-3xl mb-5">Create Categories</h1>
       <Formik
         initialValues={{ name: "" }}
@@ -49,7 +49,7 @@ function AdminCreateCategories() {
           resetForm();
         }}
       >
-        <Form>
+        <Form className="flex justify-center items-center flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]">
           <div className="mb-3">
             <label
               htmlFor="name"
@@ -65,12 +65,9 @@ function AdminCreateCategories() {
               required
             />
           </div>
-          <ButtonComponent
-                  type="submit"
-                  buttonStyle="mt-[0.6rem] text-sm"
-                >
-                  Add category
-                </ButtonComponent>
+          <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
+            Add category
+          </ButtonComponent>
         </Form>
       </Formik>
     </div>
