@@ -84,46 +84,46 @@ const Index = () => {
     <>
       {showConfirmationModal && <ConfirmDeleteModal Id={productIdToBeDeleted} handleDelete={deleteProduct} setShowConfirmationModal={setShowConfirmationModal} setDataIdToBeDeleted={setProductIdToBeDeleted} />}
       <h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
-      <div className="flex justify-between mb-4">
-        <div className="flex px-20">
-          <div className="display gap-5 flex flex-start flex-col md:flex-row justify-center items-start">
-            <Searching
-              dataToSearch={products}
-              setSearchResults={setSearchResults}
-              setCurrentPage={setCurrentPage}
-            />
-          
-          <Sorting
-            setSortingResult={setSortingResult}
-            searchResults={searchResults}
-          />
-          </div>
-          {/* <div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">
-            <AiOutlineSearch />
-          </div> */}
-        </div>
-        
-        <ButtonComponent buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer">
-          <Link to="/admin-create-products">+ ADD PRODUCT</Link>
-        </ButtonComponent>
-      </div>
-      {sortingResult.length>0 ? (
-      <Table
-       data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
-        headers={productsArray}
-        handleUpdate={handleUpdate}
-        handleDelete={handleDelete}
-      />
-      ) : 
-      (<div className="text-center py-4 text-xl text-grey-500">Oops not found</div>)
-      }   
-      {shouldRenderPagination && (
-        <Pagination
-          nPages={Math.ceil(sortingResult.length / recordsPerPage)}
-          currentPage={currentPage}
+<div className="flex flex-col md:flex-row justify-between items-start px-20 mb-4">
+  <div className="flex items-center w-full">
+    <div className="w-full md:flex md:flex-row flex-col items-start justify-between">
+      <div className="md:flex items-center w-full">
+        <Searching
+          dataToSearch={products}
+          setSearchResults={setSearchResults}
           setCurrentPage={setCurrentPage}
+          className="w-full md:w-auto md:mr-2" 
         />
-      )}
+      </div>
+      <div className="mt-2 md:mt-0">
+        <Sorting
+          setSortingResult={setSortingResult}
+          searchResults={searchResults}
+          className="w-full md:w-auto" 
+        />
+      </div>
+    </div>
+  </div>
+
+  <ButtonComponent buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer">
+    <Link to="/admin-create-products">+ ADD PRODUCT</Link>
+  </ButtonComponent>
+</div>
+
+
+{sortingResult.length > 0 ? (
+  <div className="overflow-x-auto">
+    <Table
+      data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
+      headers={productsArray}
+      handleUpdate={handleUpdate}
+      handleDelete={handleDelete}
+    />
+  </div>
+) : (
+  <div className="text-center py-4 text-xl text-grey-500">Oops not found</div>
+)}
+
     </>
   );
 };
