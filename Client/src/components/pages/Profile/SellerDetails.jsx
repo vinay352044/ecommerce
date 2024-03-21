@@ -1,4 +1,5 @@
 import { FaShop } from "react-icons/fa6";
+import { MdConfirmationNumber} from "react-icons/md";
 
 const SellerDetails = ({
   seller,
@@ -25,9 +26,9 @@ const SellerDetails = ({
           required
         />
       </div>
-      <div className={`${infoWrapperClass} border-none`}>
+      <div className={`${infoWrapperClass} border-gray-400`}>
         <label htmlFor="email" className={`${labelClass}`}>
-          GST :
+          <MdConfirmationNumber /> :
         </label>
         <input
           type="text"
