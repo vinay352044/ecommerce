@@ -54,7 +54,7 @@ const Profile = () => {
         setReadOnly(!readOnly);
         toast.success("Profile Updated !!");
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong. Try again later!");
       }
     }
     if (seller !== null) {
@@ -64,7 +64,7 @@ const Profile = () => {
         setReadOnly(!readOnly);
         toast.success("Profile Updated !!");
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong. Try again later!");
       }
     }
   };
