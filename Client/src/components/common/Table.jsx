@@ -2,7 +2,7 @@ import ButtonComponent from './ButtonComponent';
 
 const Table = ({ data, headers, handleUpdate, handleDelete }) => {
   return (
-    <div className="px-20 overflow-x-auto ">
+    <div className="overflow-x-auto ">
       <table className="w-full border-collapse">
         <thead>
           <tr>
