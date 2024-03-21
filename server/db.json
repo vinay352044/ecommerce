@@ -438,6 +438,18 @@
       "brand": "Apple",
       "total_sell": 123,
       "thumbnail": "https://images.news18.com/ibnlive/uploads/2023/08/apple-iphone-15-pro-max-sale.jpg"
+    },
+    {
+      "id": "17",
+      "title": "",
+      "description": "",
+      "price": "",
+      "discountPercentage": "",
+      "stock": "",
+      "category": "",
+      "brand": "",
+      "total_sell": "",
+      "thumbnail": ""
     }
   ],
   "sellers": [

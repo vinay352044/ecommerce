@@ -40,8 +40,7 @@ const Products = ({ productData, isAddToCart }) => {
   };
 
   const shouldRenderPagination = sortingResult.length > recordsPerPage;
-  console.log(searchResults)
-console.log(sortingResult)
+
   return (
     <>
       <div className="display gap-5 flex flex-start flex-col md:flex-row justify-center items-start">

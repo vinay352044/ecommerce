@@ -86,16 +86,17 @@ function Index() {
           </div>
         ) : (
           <div>
-            <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
-              <div className="relative mb-3 sm:mb-0 mr-0 sm:mr-4">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:px-20">
+              <div className="flex justify-start">
                 <Searching
                   dataToSearch={data}
                   setSearchResults={setSearchResults}
                   setCurrentPage={setCurrentPage}
+                 
                 />
               </div>
               <ButtonComponent buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer">
-                <Link to="/admin-createUser">+ ADD USER</Link>
+                <Link to="/admin-createUser">ADD</Link>
               </ButtonComponent>
             </div>
             {searchResults.length > 0 ? (
