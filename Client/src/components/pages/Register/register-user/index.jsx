@@ -6,7 +6,7 @@ import {
   getUsers,
   registerUser,
 } from "../../../../utils/axios-instance";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setRole } from "../../../../redux/actions/roleAction";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -44,6 +44,7 @@ const RegisterUser = () => {
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
   const navigate = useNavigate();
+  const { isAuth } = useSelector((state) => state.role);
 
   const {
     values,
@@ -102,6 +103,9 @@ const RegisterUser = () => {
   }
 
   useEffect(() => {
+     // if looged in then don't give access to this page
+     isAuth ? navigate("/") : null;
+
     (async () => {
       const {
         success: usersSuccess,

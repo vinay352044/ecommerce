@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import {
   getSellers,
@@ -59,9 +59,9 @@ const sellerSchema = yup.object({
 const RegisterSeller = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
+  const { isAuth } = useSelector((state) => state.role);
 
   const {
     values,
@@ -125,6 +125,9 @@ const RegisterSeller = () => {
   }
 
   useEffect(() => {
+     // if looged in then don't give access to this page
+     isAuth ? navigate("/") : null;
+
     (async () => {
       const {
         sucess: usersSucess,
