@@ -68,7 +68,7 @@ function AdminUpdateUsers() {
       <h1 className="text-3xl mb-5">Update User Details</h1>
       <form
         onSubmit={handleSubmit}
-        className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md py-6"
+        className="flex justify-center items-center flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]"
       >
         <div className="mb-3">
           <label

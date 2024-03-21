@@ -118,7 +118,7 @@ const Login = () => {
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Login</h3>
 
         <div className="flex justify-center items-center gap-10">

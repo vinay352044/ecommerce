@@ -85,130 +85,121 @@ const Index = () => {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h1 className="text-center text-2xl font-bold mt-8 mb-2 w-1/2 mx-auto">
-        Register Product
-      </h1>
+    <div className="flex flex-col justify-center items-center my-10">
+      <h1 className="text-center text-2xl font-bold">Register Product</h1>
 
       <Formik initialValues={InitialValues} onSubmit={handleSubmit}>
         <div>
-          <Form className="w-[min(26rem,90vw)] flex justify-center items-center flex-col shadow-md rounded-md">
-            <div className="mb-6">
-              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label htmlFor="title" className={inputStyle}>
-                  Title
-                </label>
-                <Input
-                  type="text"
-                  id="title"
-                  name="title"
-                  placeholder="Product Title"
-                />
-              </div>
-              <div className="w-full md:w-1/2 px-3">
-                <label htmlFor="description" className={inputStyle}>
-                  Description
-                </label>
-                <Input
-                  type="text"
-                  id="description"
-                  name="description"
-                  placeholder="Product Description"
-                />
-              </div>
+          <Form className="flex justify-center items-center flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]">
+            <div>
+              <label htmlFor="title" className={inputStyle}>
+                Title
+              </label>
+              <Input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Product Title"
+              />
             </div>
 
-            <div className="mb-6">
-              <div className="w-full md:w-1/2 px-3">
-                <label htmlFor="price" className={inputStyle}>
-                  Price
-                </label>
-                <Input
-                  type="number"
-                  id="price"
-                  name="price"
-                  placeholder="Product Price"
-                />
-              </div>
-
-              <div className="w-full md:w-1/2 px-3">
-                <label htmlFor="discountPercentage" className={inputStyle}>
-                  Discount Percentage
-                </label>
-                <Input
-                  type="number"
-                  id="discountPercentage"
-                  name="discountPercentage"
-                  placeholder="Discount Percentage"
-                />
-              </div>
+            <div>
+              <label htmlFor="description" className={inputStyle}>
+                Description
+              </label>
+              <Input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Product Description"
+              />
             </div>
 
-            <div className="mb-6">
-              <div className="w-full md:w-1/3 px-3">
-                <label htmlFor="stock" className={inputStyle}>
-                  Stock
-                </label>
-                <Input
-                  type="number"
-                  id="stock"
-                  name="stock"
-                  placeholder="Product Stock"
-                />
-              </div>
-
-              <div className="w-full md:w-1/3 px-3">
-                <label htmlFor="category" className={inputStyle}>
-                  Category
-                </label>
-                <Input
-                  type="text"
-                  id="category"
-                  name="category"
-                  placeholder="Product category"
-                />
-              </div>
-
-              <div className="w-full md:w-1/3 px-3">
-                <label htmlFor="brand" className={inputStyle}>
-                  Brand
-                </label>
-                <Input
-                  type="text"
-                  id="brand"
-                  name="brand"
-                  placeholder="Product Brand"
-                />
-              </div>
+            <div>
+              <label htmlFor="price" className={inputStyle}>
+                Price
+              </label>
+              <Input
+                type="number"
+                id="price"
+                name="price"
+                placeholder="Product Price"
+              />
             </div>
 
-            <div className="mb-6">
-              <div className="w-full md:w-1/3 px-3">
-                <label htmlFor="total_sell" className={inputStyle}>
-                  Total Sell
-                </label>
-                <Input
-                  type="number"
-                  id="total_sell"
-                  name="total_sell"
-                  placeholder="Total Sell"
-                />
-              </div>
-
-              <div className="w-full md:w-1/3 px-3">
-                <label htmlFor="thumbnail" className={inputStyle}>
-                  Add Image URL
-                </label>
-                <Input
-                  type="text"
-                  id="thumbnail"
-                  name="thumbnail"
-                  placeholder="Image URLs"
-                />
-              </div>
+            <div>
+              <label htmlFor="discountPercentage" className={inputStyle}>
+                Discount Percentage
+              </label>
+              <Input
+                type="number"
+                id="discountPercentage"
+                name="discountPercentage"
+                placeholder="Discount Percentage"
+              />
             </div>
 
-            <div className="mb-6">
+            <div>
+              <label htmlFor="stock" className={inputStyle}>
+                Stock
+              </label>
+              <Input
+                type="number"
+                id="stock"
+                name="stock"
+                placeholder="Product Stock"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="category" className={inputStyle}>
+                Category
+              </label>
+              <Input
+                type="text"
+                id="category"
+                name="category"
+                placeholder="Product category"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="brand" className={inputStyle}>
+                Brand
+              </label>
+              <Input
+                type="text"
+                id="brand"
+                name="brand"
+                placeholder="Product Brand"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="total_sell" className={inputStyle}>
+                Total Sell
+              </label>
+              <Input
+                type="number"
+                id="total_sell"
+                name="total_sell"
+                placeholder="Total Sell"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="thumbnail" className={inputStyle}>
+                Add Image URL
+              </label>
+              <Input
+                type="text"
+                id="thumbnail"
+                name="thumbnail"
+                placeholder="Image URLs"
+              />
+            </div>
+
+            <div>
               <div className="w-full px-3">
                 <ButtonComponent
                   type="submit"

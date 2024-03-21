@@ -82,7 +82,7 @@ const Contact = () => {
         <h1>Contact Us</h1>
       </div>
       <div className="flex justify-center items-center">
-        <div className="contact-form mt-3 p-2 md:p-[1.5rem!important] rounded shadow bg-slate-100">
+        <div className="contact-form mt-3 rounded shadow-2xl py-8 px-5 md:px-[5rem]">
           <form onSubmit={handleSubmit}>
             <div className={inputGroupClass}>
               <label htmlFor="name" className={inputLabelClass}>
