@@ -102,12 +102,10 @@ const Index = () => {
               setCurrentPage={setCurrentPage}
             />
           </div>
-          <div>
-            <Sorting
-              setSortingResult={setSortingResult}
-              searchResults={searchResults}
-            />
-          </div>
+          <Sorting
+            setSortingResult={setSortingResult}
+            searchResults={searchResults}
+          />
         </div>
 
         <ButtonComponent buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer">

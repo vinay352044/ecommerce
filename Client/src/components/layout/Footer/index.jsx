@@ -12,7 +12,7 @@ const Footer = () => {
 		<footer className="bg-[#0295db] shadow mt-10 py-5">
 			<div className="w-full mx-auto p-4 md:py-3">
 				<div className="text-center">
-					<ul className="w-3/4 md:w-[550px] mx-auto grid grid-cols-2 sm:grid-cols-4 place-items-center mb-4 text-sm md:text-base lg:text-lg font-medium text-white sm:mb-0 ">
+					<ul className="w-3/4 md:w-[550px] mx-auto grid grid-cols-2 sm:grid-cols-4 place-items-center mb-4 text-sm md:text-base font-medium text-white sm:mb-0 ">
 						<li className="justify-self-start sm:justify-self-auto">
 							<Link to="/" className={linkStyle} onClick={scrollToTop}>
 								<FaHome /> Home
