@@ -54,7 +54,7 @@ const Profile = () => {
         setReadOnly(!readOnly);
         toast.success("Profile Updated !!");
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong. Try again later!");
       }
     }
     if (seller !== null) {
@@ -64,7 +64,7 @@ const Profile = () => {
         setReadOnly(!readOnly);
         toast.success("Profile Updated !!");
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong. Try again later!");
       }
     }
   };
@@ -73,11 +73,11 @@ const Profile = () => {
     "w-full border-2 border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-lg hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
   const labelClass =
     "mr-2 font-bold md:text-2xl text-[#2590db] flex items-center gap-2";
-  const inputClass = `px-3 py-1 w-full md:w-[85%] text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
-  const infoWrapperClass = `flex items-center w-full md:w-[85%] ${
+  const inputClass = `px-3 py-1 w-full text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
+  const infoWrapperClass = `flex py-1 px-2 rounded-md items-center w-full ${
     readOnly
-      ? "border-b-[1px] border-transparent"
-      : "border-b-[1px] border-[#2590db]"
+      ? "border-[2px] border-transparent"
+      : "border-[2px] border-[#2590db] focus:border-black"
   }`;
 
   return (
@@ -124,7 +124,7 @@ const Profile = () => {
                 required
               />
             </div>
-            <div className={`${infoWrapperClass} border-none relative`}>
+            <div className={`${infoWrapperClass} border-gray-400`}>
               <label htmlFor="password" className={labelClass}>
                 <RiLockPasswordFill /> :
               </label>
@@ -139,12 +139,12 @@ const Profile = () => {
                 />
                 {!showPass ? (
                   <GoEye
-                    className="text-2xl cursor-pointer absolute right-[30%]"
+                    className="text-2xl cursor-pointer"
                     onClick={() => setShowPass(!showPass)}
                   />
                 ) : (
                   <GoEyeClosed
-                    className="text-2xl cursor-pointer absolute right-[30%]"
+                    className="text-2xl cursor-pointer"
                     onClick={() => setShowPass(!showPass)}
                   />
                 )}
