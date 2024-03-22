@@ -19,7 +19,7 @@ const Table = ({ data, headers, handleUpdate, handleDelete }) => {
           {data.map((item, index) => (
             <tr key={item.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
               {headers.map((header) => (
-                <td key={header.key} className="border px-4 py-2">
+                <td key={header.key} className="border px-4 py-2 ">
                   {item[header.key]}
                 </td>
               ))}
