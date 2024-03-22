@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Table from '../../../../common/Table'
-import { DeleteCategoryById, getCategories } from '../../../../../utils/axios-instance'
-import ConfirmDeleteModal from '../../../../common/ConfirmDeleteModal'
-import ButtonComponent from '../../../../common/ButtonComponent'
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import Table from "../../../../common/Table"
+import { DeleteCategoryById, getCategories } from "../../../../../utils/axios-instance"
+import ConfirmDeleteModal from "../../../../common/ConfirmDeleteModal"
+import ButtonComponent from "../../../../common/ButtonComponent"
 
 const AdminCategories = () => {
     const navigate = useNavigate();
@@ -91,4 +91,3 @@ const AdminCategories = () => {
 }
 
 export default AdminCategories
-
