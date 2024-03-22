@@ -33,13 +33,8 @@ export const sellerLinks = [
     icon: null,
   },
   {
-    label: "Products",
+    label: "Your-Products",
     slug: "/seller-products",
-    icon: null,
-  },
-  {
-    label: "Add Product",
-    slug: "/seller-create-products",
     icon: null,
   },
   {
