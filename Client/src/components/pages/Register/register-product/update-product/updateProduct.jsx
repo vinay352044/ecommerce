@@ -6,16 +6,21 @@ import {
 } from "../../../../../utils/axios-instance";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Input from "../../../../common/Input";
 import ButtonComponent from "../../../../common/ButtonComponent";
 import * as Yup from 'yup';
+import Loader from "../../../../common/Loader";
+import {setLoader} from "../../../../../redux/actions/appActions";
+import {toast} from "react-toastify";
 
 const UpdateProduct = () => {
   const { productID } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [product, setProduct] = useState(null);
   const { seller } = useSelector((state) => state.role);
+  const { loader } = useSelector((state) => state.app)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -53,6 +58,7 @@ const UpdateProduct = () => {
 
   const handleSubmit = async (values) => {
     try {
+      dispatch(setLoader(true))
       const updatedProduct = {
         ...product,
         ...values,
@@ -63,19 +69,36 @@ const UpdateProduct = () => {
       if (success) {
         // console.log('Product updated successfully!');
         seller ? navigate("/seller-products") : navigate("/admin");
+        toast.success("Product updated successfully")
       } else {
         console.error("Error updating product:", error);
+        toast.error("Problem updating product, Please try after some time!")
       }
     } catch (error) {
       console.error("Unexpected error:", error);
+    } finally{
+      dispatch(setLoader(false))
     }
   };
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <div className="w-[min(90%,700px)] text-center mx-auto">
+      <div className="text-lg md:text-xl lg:text-2xl mt-14">Problem fetching product details, Please try after some time!</div>
+      <ButtonComponent
+            type="button"
+            buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </ButtonComponent>
+    </div>;
   }
 
   return (
+    <>
+    {
+      loader && <Loader />
+    }
     <div className="flex flex-col justify-center items-center my-10">
       <h1 className="text-center text-2xl font-bold">Update Product</h1>
       <Formik initialValues={product} onSubmit={handleSubmit} validationSchema={ProductSchema}>
@@ -246,6 +269,7 @@ const UpdateProduct = () => {
         </div>
       </Formik>
     </div>
+    </>
   );
 };
 
