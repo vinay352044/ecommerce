@@ -27,13 +27,12 @@ const Index = () => {
 	const indexOfLastRecord = currentPage * recordsPerPage
 	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
 
-	const productsArray = [
-		{ key: "id", label: "Product ID" },
-		{ key: "title", label: "Title" },
-		{ key: "price", label: "Price" },
-		{ key: "brand", label: "Brand" },
-		{ key: "category", label: "Category" },
-	]
+  const productsArray = [
+    { key: "title", label: "Title" },
+    { key: "price", label: "Price" },
+    { key: "brand", label: "Brand" },
+    { key: "category", label: "Category" },
+  ];
 
 	const shouldRenderPagination = sortingResult.length > recordsPerPage
 
@@ -104,38 +103,40 @@ const Index = () => {
 						<Searching dataToSearch={products} setSearchResults={setSearchResults} setCurrentPage={setCurrentPage} />
 					</div>
 
-					<div className="w-full flex flex-row items-center justify-between md:flex-row">
-						<Sorting setSortingResult={setSortingResult} searchResults={searchResults} />
-						<ButtonComponent
-							buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-sm cursor-pointer"
-							handleClick={() => navigate("/admin-create-products")}>
-							ADD PRODUCT
-						</ButtonComponent>
-					</div>
-				</div>
+          <div className="w-full flex flex-row items-center justify-between md:flex-row">
+          <Sorting
+          
+            setSortingResult={setSortingResult}
+            searchResults={searchResults}
+          />
+        <ButtonComponent buttonStyle="ml-0 sm:ml-4 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer mt-[0px!important]">
+          <Link to="/admin-create-products">ADD</Link>
+        </ButtonComponent>
+        </div>
+      </div>
 
-				{sortingResult.length > 0 ? (
-					<Table
-						data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
-						headers={productsArray}
-						handleUpdate={handleUpdate}
-						handleDelete={handleDelete}
-					/>
-				) : (
-					<div className="justify-center">Oops not found</div>
-				)}
-				{shouldRenderPagination && (
-					<div className="w-full">
-						<Pagination
-							nPages={Math.ceil(sortingResult.length / recordsPerPage)}
-							currentPage={currentPage}
-							setCurrentPage={setCurrentPage}
-						/>
-					</div>
-				)}
-			</div>
-		</div>
-	)
-}
+      {sortingResult.length > 0 ? (
+        <Table
+          data={sortingResult.slice(indexOfFirstRecord, indexOfLastRecord)}
+          headers={productsArray}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+        />
+      ) : (
+        <div className="justify-center">Oops not found</div>
+      )}
+      {shouldRenderPagination && (
+        <div className="w-full">
+        <Pagination
+          nPages={Math.ceil(sortingResult.length / recordsPerPage)}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+        </div>
+      )}
+      </div>
+    </div>
+  );
+};
 
 export default Index
