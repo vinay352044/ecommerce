@@ -22,7 +22,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             <button
               onClick={goToPrevPage}
               className={`w-full h-full px-2 py-1 ${
-                currentPage === 1 ? "bg-[#85c7f7]" : ""
+                currentPage === 1 ? "bg-[#85c7f7] cursor-not-allowed" : "" 
               }`}
               disabled={currentPage === 1}
             >
@@ -34,7 +34,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
               key={pgNumber}
               className={`rounded focus:outline-none ${
                 currentPage === pgNumber
-                  ? "bg-[#2590db] text-white"
+                  ? "bg-[#2590db] border-2 border-[#2590db] text-white"
                   : "border-2 border:[#2590db] text-black"
               }`}
             >
@@ -50,11 +50,11 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             <button
               onClick={goToNextPage}
               className={`w-full h-full px-2 py-1 ${
-                currentPage === nPages ? "bg-[#85c7f7]" : ""
+                currentPage === nPages ? "bg-[#85c7f7] cursor-not-allowed" : ""
               }`}
               disabled={currentPage === nPages}
             >
-              <GrNext className="mt-1" />
+              <GrNext />
             </button>
           </li>
         </ul>

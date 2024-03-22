@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CiHeart } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import {
   quantityOfProducts,
   removeFromCart,
@@ -17,6 +17,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
   const [quantity, setquantity] = useState(product.quantity);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const heartHandle = async (item) => {
     if(user){
@@ -41,7 +42,8 @@ const Product = ({ product, handleClick, isAddToCart }) => {
       });
     }
   }else{
-    toast.error("Please Login")
+    toast.warn("Please Login First")
+    navigate('/login')
   }
   };
 
