@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { DeleteProductbyId, getProducts } from "../../../../utils/axios-instance"
 import Pagination from "../../../common/Pagination"
 import Sorting from "../../../common/Sorting"
 import Searching from "../../../common/Searching"
 import Table from "../../../common/Table"
 import ConfirmDeleteModal from "../../../common/ConfirmDeleteModal"
-import Input from "../../../common/Input"
 import ButtonComponent from "../../../common/ButtonComponent"
+import {useDispatch, useSelector} from "react-redux"
+import {setLoader} from "../../../../redux/actions/appActions"
+import { toast } from 'react-toastify'
+import Loader from "../../../common/Loader"
 
 const Index = () => {
 	const [currentPage, setCurrentPage] = useState(1)
 	const [recordsPerPage] = useState(6)
-
 	const [searchResults, setSearchResults] = useState([])
 	const [sortingResult, setSortingResult] = useState([])
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 	const [products, setProducts] = useState([])
 	const [showConfirmationModal, setShowConfirmationModal] = useState(false)
 	const [productIdToBeDeleted, setProductIdToBeDeleted] = useState(null)
+	const { loader } = useSelector((state) => state.app)
 
 	const indexOfLastRecord = currentPage * recordsPerPage
 	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
@@ -43,20 +47,23 @@ const Index = () => {
 		setShowConfirmationModal(true)
 	}
 
-	const deleteProduct = async (productId) => {
+	const deleteProduct = async (productID) => {
 		try {
-			const response = await DeleteProductbyId(productId)
+			dispatch(setLoader(true))
+			const response = await DeleteProductbyId(productID)
 			if (response.success) {
-				// console.log("Product Deleted Successfully!");
-				setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId))
+				setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productID))
+				toast.success("Product deleted successfully")
 			} else {
 				console.error("Failed to delete the Products Data", response.error)
+				toast.error("Problem deleting product, Please try after some time!")
 			}
 		} catch (error) {
 			console.error("Failed to delete the Products Data", error)
 		} finally {
 			setShowConfirmationModal(false)
 			setProductIdToBeDeleted(null)
+			dispatch(setLoader(false))
 		}
 	}
 
@@ -79,6 +86,9 @@ const Index = () => {
 
 	return (
 		<div>
+			{
+				loader && <Loader />
+			}
 			{showConfirmationModal && (
 				<ConfirmDeleteModal
 					Id={productIdToBeDeleted}
