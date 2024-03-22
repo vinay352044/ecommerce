@@ -40,7 +40,24 @@ const userSchema = yup.object({
     .oneOf([yup.ref("password")], "*Passwords must match"),
 });
 
-const RegisterUser = () => {
+const userSchemaAdmin = yup.object({
+  name: yup
+    .string()
+    .required("*required")
+    .min(2, "*Name must contain atleast 2 characters")
+    .max(15, "*Name must not contain more than 15 characters")
+    .trim(),
+  email: yup.string().required("*required").email("*Email is not valid").trim(),
+  password: yup
+    .string()
+    .required("*required")
+    .matches(
+      passwordRules,
+      "*Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number"
+    ),
+});
+
+const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuth } = useSelector((state) => state.role);
@@ -64,7 +81,7 @@ const RegisterUser = () => {
       password: "",
       cpassword: "",
     },
-    validationSchema: userSchema,
+    validationSchema: !isAdminCreateUser ? userSchema : userSchemaAdmin,
     onSubmit,
   });
 
@@ -107,7 +124,10 @@ const RegisterUser = () => {
 
   useEffect(() => {
     // if looged in then don't give access to this page
-    isAuth ? navigate("/") : null;
+    if (!isAdminCreateUser) {
+      isAuth ? navigate("/") : null;
+      // return;
+    }
 
     (async () => {
       const {
@@ -136,9 +156,11 @@ const RegisterUser = () => {
   }, []);
 
   return (
-    <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem] shadow-2xl rounded-md">
-        <h3 className="text-center text-3xl font-bold ">Register User</h3>
+    <div className="flex justify-center items-center py-10">
+      <div className="flex flex-col gap-5 bg-white py-8 px-5 md:px-[5rem] rounded-md">
+        <h3 className="text-center text-3xl font-bold ">
+          {isAdminCreateUser ? "Add User" : "Register User"}
+        </h3>
         <div className="flex justify-center items-center gap-10">
           <form
             onSubmit={handleSubmit}
@@ -157,7 +179,7 @@ const RegisterUser = () => {
                 type="text"
                 name="name"
                 id="name"
-                value={values.name}
+                value={values.name === "" ? userData?.name : values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Dhruv Prajapati"
@@ -234,44 +256,46 @@ const RegisterUser = () => {
               )}
             </div>
 
-            <div className="flex flex-col relative">
-              <div className="flex items-center gap-1">
-                <RiLockPasswordFill />
-                <label htmlFor="cpassword" className="font-semibold">
-                  Confirm Password
-                </label>
-              </div>
-
-              <div className="relative">
-                <Input
-                  type={showConfirmPass ? "text" : "password"}
-                  name="cpassword"
-                  id="cpassword"
-                  value={values.cpassword}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="ranDom1$"
-                />
-                <div className="absolute right-2 top-0 translate-y-1/2">
-                  {!showConfirmPass ? (
-                    <GoEye
-                      className="text-2xl cursor-pointer"
-                      onClick={() => setShowConfirmPass(!showConfirmPass)}
-                    />
-                  ) : (
-                    <GoEyeClosed
-                      className="text-2xl cursor-pointer"
-                      onClick={() => setShowConfirmPass(!showConfirmPass)}
-                    />
-                  )}
+            {!isAdminCreateUser && (
+              <div className="flex flex-col relative">
+                <div className="flex items-center gap-1">
+                  <RiLockPasswordFill />
+                  <label htmlFor="cpassword" className="font-semibold">
+                    Confirm Password
+                  </label>
                 </div>
+
+                <div className="relative">
+                  <Input
+                    type={showConfirmPass ? "text" : "password"}
+                    name="cpassword"
+                    id="cpassword"
+                    value={values.cpassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="ranDom1$"
+                  />
+                  <div className="absolute right-2 top-0 translate-y-1/2">
+                    {!showConfirmPass ? (
+                      <GoEye
+                        className="text-2xl cursor-pointer"
+                        onClick={() => setShowConfirmPass(!showConfirmPass)}
+                      />
+                    ) : (
+                      <GoEyeClosed
+                        className="text-2xl cursor-pointer"
+                        onClick={() => setShowConfirmPass(!showConfirmPass)}
+                      />
+                    )}
+                  </div>
+                </div>
+                {touched.cpassword && errors.cpassword ? (
+                  <p className="text-[14px] text-red-700">{errors.cpassword}</p>
+                ) : (
+                  <p className="text-[14px] opacity-0">null</p>
+                )}
               </div>
-              {touched.cpassword && errors.cpassword ? (
-                <p className="text-[14px] text-red-700">{errors.cpassword}</p>
-              ) : (
-                <p className="text-[14px] opacity-0">null</p>
-              )}
-            </div>
+            )}
 
             <div className="flex justify-between gap-2">
               <ButtonComponent
@@ -281,17 +305,28 @@ const RegisterUser = () => {
                 SUBMIT
               </ButtonComponent>
 
-              <ButtonComponent
-                type="reset"
-                buttonStyle={
-                  "border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]"
-                }
-              >
-                RESET
-              </ButtonComponent>
+              {!isAdminCreateUser ? (
+                <ButtonComponent
+                  type="reset"
+                  buttonStyle={
+                    "border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]"
+                  }
+                >
+                  RESET
+                </ButtonComponent>
+              ) : (
+                <ButtonComponent
+                  type="button"
+                  buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
+                  onClick={() => navigate("/admin-users")}
+                >
+                  BACK
+                </ButtonComponent>
+              )}
             </div>
 
-            <div className="pt-5">
+            {
+              !isAdminCreateUser && <div className="pt-5">
               <p>
                 Already have an account?{" "}
                 <NavLink
@@ -302,6 +337,7 @@ const RegisterUser = () => {
                 </NavLink>
               </p>
             </div>
+            }
           </form>
 
           <div className="hidden lg:block">

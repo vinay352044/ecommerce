@@ -989,6 +989,34 @@
       "email": "dp@gmail.com",
       "password": "kDhruv@1",
       "favouriteProducts": []
+    },
+    {
+      "id": "19",
+      "name": "dpp",
+      "email": "dp@gmail.com",
+      "password": "Dhruv123@",
+      "favouriteProducts": []
+    },
+    {
+      "id": "20",
+      "name": "sh4fddff",
+      "email": "dp@gmail.com",
+      "password": "Dhruv@123",
+      "favouriteProducts": []
+    },
+    {
+      "id": "21",
+      "name": "new product",
+      "email": "abc@gmail.commmm",
+      "password": "Dhruv123@",
+      "favouriteProducts": []
+    },
+    {
+      "id": "22",
+      "name": "dhrnjn",
+      "email": "dp@gmkxkmkail.com",
+      "password": "Dh@1",
+      "favouriteProducts": []
     }
   ],
   "orders": [
