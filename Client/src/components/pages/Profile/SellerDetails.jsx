@@ -26,7 +26,7 @@ const SellerDetails = ({
           required
         />
       </div>
-      <div className={`${infoWrapperClass} border-gray-400`}>
+      <div className={`${infoWrapperClass}`}>
         <label htmlFor="email" className={`${labelClass}`}>
           <MdConfirmationNumber /> :
         </label>
@@ -36,7 +36,7 @@ const SellerDetails = ({
           value={seller?.gstin}
           readOnly={true}
           onChange={handleChange}
-          className={`${inputClass} w-[65%!important]`}
+          className={`${inputClass}`}
         />
       </div>
     </>
