@@ -96,6 +96,7 @@ const YourProducts = () => {
 			}
 			{showConfirmationModal && (
 				<ConfirmDeleteModal
+					itemType="Product"
 					Id={productIdToBeDeleted}
 					handleDelete={deleteProduct}
 					setShowConfirmationModal={setShowConfirmationModal}

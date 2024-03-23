@@ -88,6 +88,7 @@ const Index = () => {
 			{loader && <Loader />}
 			{showConfirmationModal && (
 				<ConfirmDeleteModal
+					itemType="Product"
 					Id={productIdToBeDeleted}
 					handleDelete={deleteProduct}
 					setShowConfirmationModal={setShowConfirmationModal}
