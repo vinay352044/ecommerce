@@ -104,7 +104,7 @@ const Profile = () => {
     "size-[4rem] text-white flex flex-col items-center justify-center font-medium text-[.95rem] transition-all duration-250 ease-in-out bg-[#2590db] rounded";
   const labelClass =
     "mr-2 font-bold text-2xl md:text-3xl text-[#2590db] flex items-center gap-2";
-  const inputClass = `px-3 py-1 w-full text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
+  const inputClass = `p-1 w-full text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
   const infoWrapperClass = `flex px-2 py-1 rounded-md items-center w-full ${
     readOnly
       ? "border-[2px] border-transparent"
@@ -236,7 +236,7 @@ const Profile = () => {
                   infoWrapperClass={infoWrapperClass}
                 />
               ) : null}
-              <div className="mt-4 w-full flex gap-4">
+              <div className="w-full flex gap-4">
                 <ButtonComponent
                   handleClick={handleClick}
                   buttonStyle="flex gap-2 text-[white!important] mt-[0!important] hover:text-[#2590db!important] focus:outline-none"
