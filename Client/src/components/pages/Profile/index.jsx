@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 import SellerDetails from "./SellerDetails";
 import placeholder from "/images/profileImg.gif";
 import ButtonComponent from "../../common/ButtonComponent";
+import { setLoader } from "../../../redux/actions/appActions";
+import Loader from "../../common/Loader";
 
 const Profile = () => {
   const role = useSelector((state) => state.role);
@@ -24,6 +26,7 @@ const Profile = () => {
   const [user, setUser] = useState(role.user);
   const [seller, setSeller] = useState(role.seller);
   const dispatch = useDispatch();
+  const { loader } = useSelector((state) => state.app);
 
   const scrollToTop = () => {
     window.scrollTo({ top, behavior: "smooth" });
@@ -54,192 +57,206 @@ const Profile = () => {
 
     if (user !== null) {
       try {
+        dispatch(setLoader(true));
         const res = await updateUser(user);
         if (res.sucess) {
           dispatch(setRole("user", user));
           toast.success("Profile Updated !!");
           return;
         } else {
+          dispatch(setLoader(false));
           toast.error("Something went wrong. Try again later!");
           setUser(role.user);
         }
         setReadOnly(!readOnly);
       } catch (error) {
         toast.error("Something went wrong. Try again later!");
+      } finally {
+        dispatch(setLoader(false));
+        setReadOnly(!readOnly);
       }
     }
+
     if (seller !== null) {
       try {
+        dispatch(setLoader(true));
         const res = await updateSeller(seller);
         if (res.sucess) {
           dispatch(setRole("seller", seller));
           toast.success("Profile Updated !!");
         } else {
+          dispatch(setLoader(false));
           toast.error("Something went wrong. Try again later!");
           setSeller(role.seller);
         }
         setReadOnly(!readOnly);
       } catch (error) {
         toast.error("Something went wrong. Try again later!");
+      } finally {
+        dispatch(setLoader(false));
+        setReadOnly(!readOnly);
       }
     }
-    setShowPass(false)
+    setShowPass(false);
   };
 
   const linkClass =
-    "w-full border-2 border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-lg md:text-lg hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[48%] rounded-md";
+    "size-[4rem] text-white flex flex-col items-center justify-center font-medium text-[.95rem] transition-all duration-250 ease-in-out bg-[#2590db] rounded";
   const labelClass =
-    "mr-2 font-bold md:text-2xl text-[#2590db] flex items-center gap-2";
+    "mr-2 font-bold text-2xl md:text-3xl text-[#2590db] flex items-center gap-2";
   const inputClass = `px-3 py-1 w-full text-lg md:text-xl font-medium border-none bg-transparent focus:outline-none`;
-  const infoWrapperClass = `flex py-1 px-2 rounded-md items-center w-full ${
+  const infoWrapperClass = `flex px-2 py-1 rounded-md items-center w-full ${
     readOnly
       ? "border-[2px] border-transparent"
       : "border-[2px] border-[#2590db] focus:border-black"
   }`;
 
   return (
-    <div className="py-4 px-8 w-full h-[95vh] flex items-center">
-      <div className="w-full h-fit flex items-center gap-4 ">
-        <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
-          <img src={placeholder} alt="placeholder" className="w-full h-full" />
-        </div>
-        <div className="w-full h-full px-4 md:p-6 py-8 flex justify-between flex-col">
-          <div className="mb-8">
-            <h1 className=" text-xl md:text-2xl px-4 font-semibold text-slate-700">
-              Welcome {user ? role.user.name : role.seller.name} !
-            </h1>
+    <>
+      {loader && <Loader />}
+      <div className="py-4 px-4 md:px-8 w-full h-[85vh] flex items-center">
+        <div className="w-full h-fit flex items-center gap-4 ">
+          <div className="hidden w-full h-full overflow-hidden rounded-md md:block">
+            <img
+              src={placeholder}
+              alt="placeholder"
+              className="w-full h-full"
+            />
           </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="w-full flex flex-col gap-2"
-          >
-            <div className={infoWrapperClass}>
-              <label htmlFor="name" className={labelClass}>
-                <FaUser />:
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={user ? user?.name : seller?.name}
-                readOnly={readOnly}
-                onChange={handleChange}
-                className={inputClass}
-                required
-              />
+          <div className="w-full h-full px-2 md:p-6 py-8 flex flex-col gap-4">
+            <div>
+              <h1 className=" text-2xl md:text-3xl px-2 font-semibold text-slate-700 text-center md:text-left">
+                Welcome {user ? role?.user?.name : role?.seller?.name} !
+              </h1>
             </div>
-            <div className={infoWrapperClass}>
-              <label htmlFor="email" className={labelClass}>
-                <IoIosMail /> :
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={user ? user?.email : seller?.email}
-                readOnly={readOnly}
-                onChange={handleChange}
-                className={inputClass}
-                required
-              />
-            </div>
-            <div className={`${infoWrapperClass} ${readOnly ? '' : 'bg-gray-200 border-[#2590db]'}`}>
-              <label htmlFor="password" className={labelClass}>
-                <RiLockPasswordFill /> :
-              </label>
-              <div className="flex items-center w-full">
-                <input
-                  type={showPass ? "text" : "password"}
-                  name="password"
-                  value={user ? user?.password : seller?.password}
-                  readOnly={true}
-                  className={`${inputClass} w-[70%]`}
-                  required
-                />
-                {readOnly ? null : (
+            <div className="w-full flex justify-center md:hidden">
+              <div className="w-full flex items-center justify-center gap-5">
+                {user ? (
                   <>
-                    {!showPass ? (
-                      <GoEye
-                        className="text-2xl cursor-pointer"
-                        onClick={() => setShowPass(!showPass)}
-                      />
-                    ) : (
-                      <GoEyeClosed
-                        className="text-2xl cursor-pointer"
-                        onClick={() => setShowPass(!showPass)}
-                      />
-                    )}
+                    <NavLink
+                      to="/cart"
+                      className={linkClass}
+                      onClick={scrollToTop}
+                    >
+                      <FaShoppingCart />
+                      Cart
+                    </NavLink>
+                    <NavLink
+                      to="/wishlist"
+                      className={linkClass}
+                      onClick={scrollToTop}
+                    >
+                      <FaHeart />
+                      Wishlist
+                    </NavLink>
+                    <NavLink
+                      to="/orders"
+                      className={linkClass}
+                      onClick={scrollToTop}
+                    >
+                      <FaBoxOpen />
+                      Orders
+                    </NavLink>
                   </>
-                )}
+                ) : null}
               </div>
             </div>
-            {role.seller !== null ? (
-              <SellerDetails
-                seller={seller}
-                handleChange={handleChange}
-                readOnly={readOnly}
-                infoWrapperClass={infoWrapperClass}
-              />
-            ) : null}
-            <div className="mt-4 w-full mr-auto">
-              <ButtonComponent
-                handleClick={handleClick}
-                buttonStyle="flex gap-2 text-[white!important] mt-[0!important] hover:text-[#2590db!important] focus:outline-none"
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="w-full flex flex-col gap-2"
+            >
+              <div className={infoWrapperClass}>
+                <label htmlFor="name" className={labelClass}>
+                  <FaUser />:
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={user ? user?.name : seller?.name}
+                  readOnly={readOnly}
+                  onChange={handleChange}
+                  className={inputClass}
+                  required
+                />
+              </div>
+              <div className={infoWrapperClass}>
+                <label htmlFor="email" className={labelClass}>
+                  <IoIosMail /> :
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={user ? user?.email : seller?.email}
+                  readOnly={readOnly}
+                  onChange={handleChange}
+                  className={inputClass}
+                  required
+                />
+              </div>
+              <div
+                className={`${infoWrapperClass} ${
+                  readOnly ? "" : "bg-gray-200 border-[#2590db]"
+                }`}
               >
-                {readOnly ? (
-                  <>
-                    Edit
-                    <AiFillEdit className="text-xl" />
-                  </>
-                ) : (
-                  "Update"
+                <label htmlFor="password" className={labelClass}>
+                  <RiLockPasswordFill /> :
+                </label>
+                <div className="flex items-center w-full">
+                  <input
+                    type={showPass ? "text" : "password"}
+                    name="password"
+                    value={user ? user?.password : seller?.password}
+                    readOnly={true}
+                    className={`${inputClass} w-[70%]`}
+                    required
+                  />
+                  {readOnly ? null : (
+                    <>
+                      {!showPass ? (
+                        <GoEye
+                          className="text-2xl cursor-pointer"
+                          onClick={() => setShowPass(!showPass)}
+                        />
+                      ) : (
+                        <GoEyeClosed
+                          className="text-2xl cursor-pointer"
+                          onClick={() => setShowPass(!showPass)}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+              {console.log(readOnly)}
+              {role.seller !== null ? (
+                <SellerDetails
+                  seller={seller}
+                  handleChange={handleChange}
+                  readOnly={readOnly}
+                  infoWrapperClass={infoWrapperClass}
+                />
+              ) : null}
+              <div className="mt-4 w-full flex gap-4">
+                <ButtonComponent
+                  handleClick={handleClick}
+                  buttonStyle="flex gap-2 text-[white!important] mt-[0!important] hover:text-[#2590db!important] focus:outline-none"
+                >
+                  {readOnly ? "Edit" : "Update"}
+                </ButtonComponent>
+                {readOnly ? null : (
+                  <ButtonComponent
+                    handleClick={() => setReadOnly(!readOnly)}
+                    buttonStyle="flex gap-2 text-[white!important] mt-[0!important] hover:text-[#2590db!important] focus:outline-none"
+                  >
+                    Cancel
+                  </ButtonComponent>
                 )}
-              </ButtonComponent>
-            </div>
-          </form>
-          <div className="mt-6 w-full flex justify-center md:hidden">
-            <div className="w-full flex items-center gap-2 flex-col md:flex-row">
-              {user ? (
-                <>
-                  <NavLink
-                    to="/cart"
-                    className={linkClass}
-                    onClick={scrollToTop}
-                  >
-                    <FaShoppingCart />
-                    Cart
-                  </NavLink>
-                  <NavLink
-                    to="/wishlist"
-                    className={linkClass}
-                    onClick={scrollToTop}
-                  >
-                    <FaHeart />
-                    Wishlist
-                  </NavLink>
-                  <NavLink
-                    to="/orders"
-                    className={linkClass}
-                    onClick={scrollToTop}
-                  >
-                    <FaBoxOpen />
-                    Orders
-                  </NavLink>
-                </>
-              ) : (
-                <>
-                  <NavLink
-                    to="/seller-products"
-                    className={linkClass}
-                    onClick={scrollToTop}
-                  >
-                    Your Products
-                  </NavLink>
-                </>
-              )}
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
