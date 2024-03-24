@@ -355,7 +355,7 @@
       "discountPercentage": "16.8",
       "rating": "4.94",
       "stock": "113",
-      "brand": "fauji",
+      "brand": "Apple",
       "category": "groceries",
       "total_sell": "10",
       "thumbnail": "https://cdn.dummyjson.com/product-images/24/thumbnail.jpg",
@@ -426,18 +426,6 @@
         "https://cdn.dummyjson.com/product-images/29/4.webp",
         "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
       ]
-    },
-    {
-      "id": "16",
-      "title": "Demo",
-      "description": "Demo",
-      "price": "Demo",
-      "discountPercentage": "Demo",
-      "stock": "Demo",
-      "category": "New Mexico",
-      "brand": "Apple",
-      "total_sell": 123,
-      "thumbnail": "https://images.news18.com/ibnlive/uploads/2023/08/apple-iphone-15-pro-max-sale.jpg"
     },
     {
       "id": "17",

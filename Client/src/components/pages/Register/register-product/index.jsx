@@ -104,140 +104,146 @@ const Index = () => {
       <h1 className="text-center text-2xl font-bold mb-5">Register Product</h1>
 
       <Formik initialValues={InitialValues} onSubmit={handleSubmit} validationSchema={ProductSchema}>
-        <div>
-          <Form className="flex justify-center items-center gap-2 flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]">
-            <div className="mb-3">
-              <label htmlFor="title" className={inputStyle}>
-                Title
-              </label>
-              <Input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="Product Title"
-              />
-              <ErrorMessage name="title" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+        <Form className="flex justify-center items-center gap-2 flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]">
+          <div className="mb-3">
+            <label htmlFor="title" className={inputStyle}>
+              Title
+            </label>
+            <Field
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Product Title"
+              as={Input}
+            />
+            <ErrorMessage name="title" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="description" className={inputStyle}>
-                Description
-              </label>
-              <Input
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Product Description"
-              />
-              <ErrorMessage name="description" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="description" className={inputStyle}>
+              Description
+            </label>
+            <Field
+              type="text"
+              id="description"
+              name="description"
+              placeholder="Product Description"
+              as={Input}
+            />
+            <ErrorMessage name="description" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="price" className={inputStyle}>
-                Price
-              </label>
-              <Input
-                type="number"
-                id="price"
-                name="price"
-                placeholder="Product Price"
-              />
-              <ErrorMessage name="price" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="price" className={inputStyle}>
+              Price
+            </label>
+            <Field
+              type="number"
+              id="price"
+              name="price"
+              placeholder="Product Price"
+              as={Input}
+            />
+            <ErrorMessage name="price" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="discountPercentage" className={inputStyle}>
-                Discount Percentage
-              </label>
-              <Input
-                type="number"
-                id="discountPercentage"
-                name="discountPercentage"
-                placeholder="Discount Percentage"
-              />
-              <ErrorMessage name="discountPercentage" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="discountPercentage" className={inputStyle}>
+              Discount Percentage
+            </label>
+            <Field
+              type="number"
+              id="discountPercentage"
+              name="discountPercentage"
+              placeholder="Discount Percentage"
+              as={Input}
+            />
+            <ErrorMessage name="discountPercentage" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="stock" className={inputStyle}>
-                Stock
-              </label>
-              <Input
-                type="number"
-                id="stock"
-                name="stock"
-                placeholder="Product Stock"
-              />
-              <ErrorMessage name="stock" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="stock" className={inputStyle}>
+              Stock
+            </label>
+            <Field
+              type="number"
+              id="stock"
+              name="stock"
+              placeholder="Product Stock"
+              as={Input}
+            />
+            <ErrorMessage name="stock" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="category" className={inputStyle}>
-                Category
-              </label>
-              <Input
-                type="text"
-                id="category"
-                name="category"
-                placeholder=
-                "Product category"
-              />
-              <ErrorMessage name="category" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="category" className={inputStyle}>
+              Category
+            </label>
+            <Field
+              type="text"
+              id="category"
+              name="category"
+              placeholder="Product category"
+              as={Input}
+            />
+            <ErrorMessage name="category" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="brand" className={inputStyle}>
-                Brand
-              </label>
-              <Input
-                type="text"
-                id="brand"
-                name="brand"
-                placeholder="Product Brand"
-              />
-              <ErrorMessage name="brand" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="brand" className={inputStyle}>
+              Brand
+            </label>
+            <Field
+              type="text"
+              id="brand"
+              name="brand"
+              placeholder="Product Brand"
+              as={Input}
+            />
+            <ErrorMessage name="brand" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="total_sell" className={inputStyle}>
-                Total Sell
-              </label>
-              <Input
-                type="number"
-                id="total_sell"
-                name="total_sell"
-                placeholder="Total Sell"
-              />
-              <ErrorMessage name="total_sell" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="total_sell" className={inputStyle}>
+              Total Sell
+            </label>
+            <Field
+              type="number"
+              id="total_sell"
+              name="total_sell"
+              placeholder="Total Sell"
+              as={Input}
+            />
+            <ErrorMessage name="total_sell" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="thumbnail" className={inputStyle}>
-                Add Image URL
-              </label>
-              <Input
-                type="text"
-                id="thumbnail"
-                name="thumbnail"
-                placeholder="Image URLs"
-              />
-              <ErrorMessage name="thumbnail" component="div" className="text-red-500 text-xs mt-1" />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="thumbnail" className={inputStyle}>
+              Add Image URL
+            </label>
+            <Field
+              type="text"
+              id="thumbnail"
+              name="thumbnail"
+              placeholder="Image URLs"
+              as={Input}
+            />
+            <ErrorMessage name="thumbnail" component="div" className="text-red-500 text-xs mt-1" />
+          </div>
 
-            <div>
-              <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
-                Submit
-              </ButtonComponent>
-              <ButtonComponent
-                type="button"
-                buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
-                onClick={() => navigate("/admin-users")}
-              >
-                Back
-              </ButtonComponent>
-            </div>
-          </Form>
-        </div>
+          <div>
+            <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
+              Submit
+            </ButtonComponent>
+            <ButtonComponent
+              type="button"
+              buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
+              onClick={() => navigate("/admin-users")}
+            >
+              Back
+            </ButtonComponent>
+          </div>
+        </Form>
       </Formik>
     </div>
   );
