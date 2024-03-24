@@ -73,6 +73,7 @@ function Index() {
     <>
       {showConfirmationModal && (
         <ConfirmDeleteModal
+          itemType="User"
           Id={userIdToBeDeleted}
           handleDelete={deleteUserById}
           setShowConfirmationModal={setShowConfirmationModal}

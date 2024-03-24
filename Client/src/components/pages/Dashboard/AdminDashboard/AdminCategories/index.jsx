@@ -71,6 +71,7 @@ const AdminCategories = () => {
     <>
       {showConfirmationModal && (
         <ConfirmDeleteModal
+        itemType="Category"
           Id={categoryIdToBeDeleted}
           handleDelete={deleteCategory}
           setShowConfirmationModal={setShowConfirmationModal}

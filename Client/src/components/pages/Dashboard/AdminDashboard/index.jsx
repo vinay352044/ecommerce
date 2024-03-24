@@ -90,29 +90,24 @@ const Index = () => {
     fetchData();
   }, []);
 
-  return (
-    <div>
-      {loader && <Loader />}
-      {showConfirmationModal && (
-        <ConfirmDeleteModal
-          Id={productIdToBeDeleted}
-          handleDelete={deleteProduct}
-          setShowConfirmationModal={setShowConfirmationModal}
-          setDataIdToBeDeleted={setProductIdToBeDeleted}
-        />
-      )}
-      <div className="p-10 px-6 md:p-10">
-        <h1 className="text-center text-2xl font-bold mt-8 mb-8">
-          Admin Dashboard
-        </h1>
-        <div className=" w-full flex flex-col gap-4 md:flex-row justify-between items-center mb-4">
-          <div className="w-full flex flex-col justify-center md:justify-start items-center md:flex-row gap-4">
-            <Searching
-              dataToSearch={products}
-              setSearchResults={setSearchResults}
-              setCurrentPage={setCurrentPage}
-            />
-          </div>
+	return (
+		<div>
+			{loader && <Loader />}
+			{showConfirmationModal && (
+				<ConfirmDeleteModal
+					itemType="Product"
+					Id={productIdToBeDeleted}
+					handleDelete={deleteProduct}
+					setShowConfirmationModal={setShowConfirmationModal}
+					setDataIdToBeDeleted={setProductIdToBeDeleted}
+				/>
+			)}
+			<div className="p-10 px-6 md:p-10">
+				<h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
+				<div className=" w-full flex flex-col gap-4 md:flex-row justify-between items-center mb-4">
+					<div className="w-full flex flex-col justify-center md:justify-start items-center md:flex-row gap-4">
+						<Searching dataToSearch={products} setSearchResults={setSearchResults} setCurrentPage={setCurrentPage} />
+					</div>
 
           <div className="w-full flex flex-row items-center justify-between md:flex-row">
             <Sorting
