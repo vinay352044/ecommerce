@@ -1,5 +1,4 @@
 import React from "react";
-import { MdNavigateNext } from "react-icons/md";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 
@@ -22,7 +21,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             <button
               onClick={goToPrevPage}
               className={`w-full h-full px-2 py-1 ${
-                currentPage === 1 ? "bg-[#85c7f7] cursor-not-allowed" : "" 
+                currentPage === 1 ? "bg-[#85c7f7] cursor-not-allowed" : ""
               }`}
               disabled={currentPage === 1}
             >

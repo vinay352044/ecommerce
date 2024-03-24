@@ -5,7 +5,7 @@ const Sorting = ({ searchResults, setSortingResult }) => {
 
   useEffect(() => {
     if (Array.isArray(searchResults)) {
-      
+    
       let tempProducts = [...searchResults];
       if (sortOrder === "ascPrice") {
         tempProducts.sort((a, b) => a.price - b.price);

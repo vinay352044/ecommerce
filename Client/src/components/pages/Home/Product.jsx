@@ -16,19 +16,23 @@ import ButtonComponent from "../../common/ButtonComponent";
 const Product = ({ product, handleClick, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
   const [quantity, setquantity] = useState(product.quantity);
+  const[isAlreadyLiked,setIsAlreadyLiked] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  
 
   const heartHandle = async (item) => {
     if(user){
     const alreaydLiked = user.favouriteProducts.filter(
       (product) => product.id === item.id
     );
+    console.log(alreaydLiked)
 
     if (alreaydLiked.length === 0) {
       user.favouriteProducts.push(item);
       try {
-        const data = await API.patch(`/users/${user.id}`, user);
+        await API.patch(`/users/${user.id}`, user);
         dispatch(setRole("user", user));
       } catch (error) {
         console.log(error);
@@ -37,7 +41,11 @@ const Product = ({ product, handleClick, isAddToCart }) => {
         position: "top-right",
       });
     } else {
-      toast.success("Already in whishlist!", {
+      const updatedProducts = user.favouriteProducts.filter((product) => product.id != item.id)
+      const updatedUser = {...user,favouriteProducts:updatedProducts}
+      await API.patch(`/users/${user.id}`,updatedUser)
+      dispatch(setRole("user",updatedUser))
+      toast.success("Removed from whishlist!", {
         position: "top-right",
       });
     }
@@ -46,6 +54,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
     navigate('/login')
   }
   };
+  
 
   function handleChangedQuantity(product, change) {
     if (change == "dec") {
@@ -85,6 +94,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
           product={product}
           heartHandle={heartHandle}
           identifier={"usersCard"}
+          user={user}
         >
           <div className="flex items-center justify-between ">
             <span className="text-xl md:text-2xl font-bold text-gray-900">
