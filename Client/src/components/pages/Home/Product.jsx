@@ -27,7 +27,6 @@ const Product = ({ product, handleClick, isAddToCart }) => {
     const alreaydLiked = user.favouriteProducts.filter(
       (product) => product.id === item.id
     );
-    console.log(alreaydLiked)
 
     if (alreaydLiked.length === 0) {
       user.favouriteProducts.push(item);
