@@ -17,6 +17,9 @@ const UpdateProduct = () => {
   const [product, setProduct] = useState(null);
   const { seller } = useSelector((state) => state.role);
 
+  const isAdmin = useSelector((state) => state.role.admin)
+  const isSeller = useSelector((state) => state.role.seller)
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -63,7 +66,7 @@ const UpdateProduct = () => {
       if (success) {
         // console.log('Product updated successfully!');
         seller ? navigate("/seller-products") : navigate("/admin");
-      } else {
+      } else { 
         console.error("Error updating product:", error);
       }
     } catch (error) {
@@ -182,15 +185,22 @@ const UpdateProduct = () => {
               >
                 Brand
               </label>
-              <Input
-                type="text"
-                id="brand"
-                name="brand"
-                placeholder="Product Brand"
-                value={product.brand}
-                onChange={handleChange}
-
-              />
+              {isAdmin !== null ? (
+                <Input
+                  type="text"
+                  id="brand"
+                  name="brand"
+                  placeholder="Product Brand"
+                />
+              ) : (
+                <Input
+                  type="text"
+                  id="brand"
+                  name="brand"
+                  placeholder="Product Brand"
+                  disabled
+                />
+              )}
               <ErrorMessage name="brand" component="div" className="text-red-500 text-xs mt-1" />
 
             </div>

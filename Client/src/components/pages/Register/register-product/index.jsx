@@ -33,6 +33,8 @@ const Index = () => {
   const [products, setProducts] = useState([]);
   const { seller } = useSelector((state) => state.role);
   const dispatch = useDispatch();
+  const isAdmin = useSelector((state) => state.role.admin)
+  const isSeller = useSelector((state) => state.role.seller)
 
   useEffect(() => {
     const fetchData = async () => {
