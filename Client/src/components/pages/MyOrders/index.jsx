@@ -27,8 +27,6 @@ const MyOrders = () => {
   const indexOfFirstRecord = indexOfLastRecord - recordPerPage;
 
   const sliceOrders = orders.slice(indexOfFirstRecord, indexOfLastRecord);
-
-  console.log(sliceOrders);
   const nPages = Math.ceil(orders.length / recordPerPage);
 
   useEffect(() => {
@@ -36,7 +34,7 @@ const MyOrders = () => {
       const { success, data, error } = await getOrders();
 
       if (error) {
-        toast.error("Something went wronge. Try again later!");
+        toast.error("Something went wrong. Try again later!");
       }
 
       const newOrders = data.filter((order) => order.user_id === user.id);

@@ -1,16 +1,12 @@
 import RegisterUser from "../../../Register/register-user";
 
 function AdminCreateUser() {
-  return <RegisterUser isAdminCreateUser={true} />;
+  return <RegisterUser isFromAdmin={true} />;
 }
 
 export default AdminCreateUser;
 
-
-
-
 /*********************CUSTOM VALIDATION ************************/
-
 
 // import axios from "axios";
 // import React, { useState, useEffect } from "react";

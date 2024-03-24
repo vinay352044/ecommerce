@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import {
   getSellers,
   getUsers,
   registerUser,
+  updateUserFromAdmin,
 } from "../../../../utils/axios-instance";
 import { useDispatch, useSelector } from "react-redux";
 import { setRole } from "../../../../redux/actions/roleAction";
@@ -57,7 +58,20 @@ const userSchemaAdmin = yup.object({
     ),
 });
 
-const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
+let initialValuesUser = {
+  name: "",
+  email: "",
+  password: "",
+  cpassword: "",
+};
+
+let initialValuesAdmin = {
+  name: "",
+  email: "",
+  password: "",
+};
+
+const RegisterUser = ({ isFromAdmin = false, userData }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuth } = useSelector((state) => state.role);
@@ -75,18 +89,38 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
     handleBlur,
     handleReset,
   } = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-      cpassword: "",
-    },
-    validationSchema: !isAdminCreateUser ? userSchema : userSchemaAdmin,
+    initialValues: !isFromAdmin ? initialValuesUser : initialValuesAdmin,
+    validationSchema: !isFromAdmin ? userSchema : userSchemaAdmin,
     onSubmit,
   });
 
+  userData?.name !== "" && !values.name
+    ? (values.name = userData?.name) && (userData.name = "")
+    : null;
+  userData?.email !== "" && !values.email
+    ? (values.email = userData?.email) && (userData.email = "")
+    : null;
+  userData?.password !== "" && !values.password
+    ? (values.password = userData?.password) && (userData.password = "")
+    : null;
+
   async function onSubmit(values) {
     const { name, email, password } = values;
+
+    // handleSubmit for Update
+    if (isFromAdmin && userData) {
+      const { success, data, error } = await updateUserFromAdmin(userData?.id, {
+        name: values.name.trim(),
+        email: values.email,
+        password: values.password.trim(),
+      });
+      if (success) {
+        toast.success("User updated successfully");
+        handleReset();
+        navigate("/admin-users");
+      }
+      return;
+    }
 
     const emailExistsInUsers = users.findIndex(
       (user) => user.email === values.email
@@ -96,7 +130,6 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
     );
 
     if (emailExistsInUsers === -1 && emailExistsInSellers === -1) {
-      // user not exists
       let userObj = {
         id:
           users.length !== 0
@@ -110,10 +143,10 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
 
       const { success, data, error } = await registerUser(userObj);
       if (success) {
-        dispatch(setRole("user", userObj));
+        !isFromAdmin && dispatch(setRole("user", userObj));
         handleReset();
         toast.success("User registered successfully");
-        navigate("/");
+        !isFromAdmin ? navigate("/") : navigate("/admin-users");
       }
     } else {
       // user exists already
@@ -123,8 +156,7 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
   }
 
   useEffect(() => {
-    // if looged in then don't give access to this page
-    if (!isAdminCreateUser) {
+    if (!isFromAdmin) {
       isAuth ? navigate("/") : null;
       // return;
     }
@@ -143,11 +175,11 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
 
       if (userError) {
         // dispatch error
-        toast.error("Something went wronge. Try again later!");
+        toast.error("Something went wrong. Try again later!");
       }
       if (sellerError) {
         // dispatch error
-        toast.error("Something went wronge. Try again later!");
+        toast.error("Something went wrong. Try again later!");
       }
 
       setUsers(usersData);
@@ -159,7 +191,11 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
     <div className="flex justify-center items-center py-10">
       <div className="flex flex-col gap-5 bg-white py-8 px-5 md:px-[5rem] rounded-md">
         <h3 className="text-center text-3xl font-bold ">
-          {isAdminCreateUser ? "Add User" : "Register User"}
+          {userData
+            ? "Update User"
+            : isFromAdmin
+            ? "Add User"
+            : "Register User"}
         </h3>
         <div className="flex justify-center items-center gap-10">
           <form
@@ -179,11 +215,12 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
                 type="text"
                 name="name"
                 id="name"
-                value={values.name === "" ? userData?.name : values.name}
+                value={values.name || ""}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Dhruv Prajapati"
               />
+
               {touched.name && errors.name ? (
                 <p className="text-[14px] text-red-700">{errors.name}</p>
               ) : (
@@ -204,9 +241,14 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
                 name="email"
                 id="email"
                 value={values.email}
-                onChange={handleChange}
+                onChange={!userData ? handleChange : null}
                 onBlur={handleBlur}
                 placeholder="dhruv@example.com"
+                autocomplete={userData && "off"}
+                className={
+                  userData &&
+                  "bg-gray-300 border-transparent focus:border-transparent caret-transparent"
+                }
               />
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
@@ -228,20 +270,21 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
                   type={showPass ? "text" : "password"}
                   name="password"
                   id="password"
-                  value={values.password}
+                  value={values.password || ""}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="randDom1$"
+                  autocomplete="off"
                 />
-                <div className="absolute right-2 top-0 translate-y-1/2">
+                <div className="absolute right-2 top-0 translate-y-1/2 text-2xl bg-white pl-3 mt-[1px]">
                   {!showPass ? (
                     <GoEye
-                      className="text-2xl cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => setShowPass(!showPass)}
                     />
                   ) : (
                     <GoEyeClosed
-                      className="text-2xl cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => setShowPass(!showPass)}
                     />
                   )}
@@ -256,7 +299,7 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
               )}
             </div>
 
-            {!isAdminCreateUser && (
+            {!isFromAdmin && (
               <div className="flex flex-col relative">
                 <div className="flex items-center gap-1">
                   <RiLockPasswordFill />
@@ -270,20 +313,20 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
                     type={showConfirmPass ? "text" : "password"}
                     name="cpassword"
                     id="cpassword"
-                    value={values.cpassword}
+                    value={values.cpassword || ""}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="ranDom1$"
                   />
-                  <div className="absolute right-2 top-0 translate-y-1/2">
+                  <div className="absolute right-2 top-0 translate-y-1/2 text-2xl bg-white pl-3 mt-[1px]">
                     {!showConfirmPass ? (
                       <GoEye
-                        className="text-2xl cursor-pointer"
+                        className="cursor-pointer"
                         onClick={() => setShowConfirmPass(!showConfirmPass)}
                       />
                     ) : (
                       <GoEyeClosed
-                        className="text-2xl cursor-pointer"
+                        className="cursor-pointer"
                         onClick={() => setShowConfirmPass(!showConfirmPass)}
                       />
                     )}
@@ -300,12 +343,19 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
             <div className="flex justify-between gap-2">
               <ButtonComponent
                 type="submit"
-                buttonStyle="w-full flex items-center justify-center gap-2 basis-[30%]"
+                buttonStyle={
+                  errors.name || errors.password || errors.email
+                    ? "bg-[#59c2f3] cursor-not-allowed border-[#59c2f3] hover:text-[#59c2f3] px-5  w-full flex items-center justify-center gap-2 basis-[30%]"
+                    : "w-full flex items-center justify-center gap-2 basis-[30%]"
+                }
+                disabled={
+                  errors.name || errors.password || errors.email ? true : false
+                }
               >
-                SUBMIT
+                {!userData ? "SUBMIT" : "UPDATE"}
               </ButtonComponent>
 
-              {!isAdminCreateUser ? (
+              {!isFromAdmin ? (
                 <ButtonComponent
                   type="reset"
                   buttonStyle={
@@ -325,20 +375,20 @@ const RegisterUser = ({ isAdminCreateUser = false, userData }) => {
               )}
             </div>
 
-            {
-              !isAdminCreateUser && <div className="pt-5">
-              <p>
-                Already have an account?{" "}
-                <NavLink
-                  to="/login"
-                  className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
-                  onClick={()=>window.scrollTo({ top, behavior: "smooth" })}
-                >
-                  Login here
-                </NavLink>
-              </p>
-            </div>
-            }
+            {!isFromAdmin && (
+              <div className="pt-5">
+                <p>
+                  Already have an account?{" "}
+                  <NavLink
+                    to="/login"
+                    className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
+                    onClick={() => window.scrollTo({ top, behavior: "smooth" })}
+                  >
+                    Login here
+                  </NavLink>
+                </p>
+              </div>
+            )}
           </form>
 
           <div className="hidden lg:block">

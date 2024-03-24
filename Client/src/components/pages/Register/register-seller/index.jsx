@@ -128,28 +128,28 @@ const RegisterSeller = () => {
   }
 
   useEffect(() => {
-     // if looged in then don't give access to this page
-     isAuth ? navigate("/") : null;
+    // if looged in then don't give access to this page
+    isAuth ? navigate("/") : null;
 
     (async () => {
       const {
-        sucess: usersSucess,
+        success: usersSuccess,
         data: usersData,
         error: userError,
       } = await getUsers();
       const {
-        sucess: sellerSucess,
+        success: sellerSuccess,
         data: sellersData,
         error: sellerError,
       } = await getSellers();
 
       if (userError) {
         // dispatch error
-        toast.error("Something went wronge. Try again later!");
+        toast.error("Something went wrong. Try again later!");
       }
       if (sellerError) {
         // dispatch error
-        toast.error("Something went wronge. Try again later!");
+        toast.error("Something went wrong. Try again later!");
       }
 
       setUsers(usersData);
@@ -158,8 +158,8 @@ const RegisterSeller = () => {
   }, []);
 
   return (
-    <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem] shadow-2xl rounded-md">
+    <div className="flex justify-center items-center py-10">
+      <div className="flex flex-col gap-5 bg-white py-8 px-5 md:px-[5rem] rounded-md">
         <h3 className="text-center text-3xl font-bold ">Register Seller</h3>
 
         <div className="flex justify-center items-center gap-10">
@@ -312,15 +312,15 @@ const RegisterSeller = () => {
                   onBlur={handleBlur}
                   placeholder="randDom1$"
                 />
-                <div className="absolute right-2 top-0 translate-y-1/2">
+                <div className="absolute right-2 top-0 translate-y-1/2 text-2xl bg-white pl-3 mt-[1px]">
                   {!showPass ? (
                     <GoEye
-                      className="text-2xl cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => setShowPass(!showPass)}
                     />
                   ) : (
                     <GoEyeClosed
-                      className="text-2xl cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => setShowPass(!showPass)}
                     />
                   )}
@@ -354,15 +354,15 @@ const RegisterSeller = () => {
                   onBlur={handleBlur}
                   placeholder="ranDom1$"
                 />
-                <div className="absolute right-2 top-0 translate-y-1/2">
+                <div className="text-2xl absolute right-2 top-0 translate-y-1/2 bg-white pl-3 mt-[1px]">
                   {!showConfirmPass ? (
                     <GoEye
-                      className="text-2xl cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => setShowConfirmPass(!showConfirmPass)}
                     />
                   ) : (
                     <GoEyeClosed
-                      className="text-2xl cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => setShowConfirmPass(!showConfirmPass)}
                     />
                   )}
@@ -379,7 +379,26 @@ const RegisterSeller = () => {
             <div className="flex justify-between gap-2">
               <ButtonComponent
                 type="submit"
-                buttonStyle="w-full flex items-center justify-center gap-2 basis-[30%]"
+                buttonStyle={
+                  errors.name ||
+                  errors.businessName ||
+                  errors.gstin ||
+                  errors.brand ||
+                  errors.email ||
+                  errors.password
+                    ? "bg-[#59c2f3] cursor-not-allowed border-[#59c2f3] hover:text-[#59c2f3] px-5  w-full flex items-center justify-center gap-2 basis-[30%]"
+                    : "w-full flex items-center justify-center gap-2 basis-[30%]"
+                }
+                disabled={
+                  errors.name ||
+                  errors.businessName ||
+                  errors.gstin ||
+                  errors.brand ||
+                  errors.email ||
+                  errors.password
+                    ? true
+                    : false
+                }
               >
                 SUBMIT
               </ButtonComponent>
@@ -400,7 +419,7 @@ const RegisterSeller = () => {
                 <NavLink
                   to="/login"
                   className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
-                  onClick={()=>window.scrollTo({ top, behavior: "smooth" })}
+                  onClick={() => window.scrollTo({ top, behavior: "smooth" })}
                 >
                   Login here
                 </NavLink>
