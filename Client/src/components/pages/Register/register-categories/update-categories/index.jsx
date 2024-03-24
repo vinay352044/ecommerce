@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   UpdateCategory,
@@ -7,6 +7,7 @@ import {
 } from "../../../../../utils/axios-instance";
 import Input from "../../../../common/Input";
 import ButtonComponent from "../../../../common/ButtonComponent";
+import * as Yup from "yup";
 
 function UpdateCategories() {
   const navigate = useNavigate();
@@ -31,6 +32,10 @@ function UpdateCategories() {
     fetchCategory();
   }, [categoryID]);
 
+  const CategorySchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+  });
+
   const handleSubmit = async (values) => {
     try {
       const response = await UpdateCategory(values);
@@ -49,7 +54,11 @@ function UpdateCategories() {
       <div className="flex justify-center items-center bg-white py-8 px-5 md:px-[5rem] flex-col rounded-md">
         <h1 className="text-3xl mb-5 font-bold">Update Category</h1>
         {categoryData && (
-          <Formik initialValues={categoryData} onSubmit={handleSubmit}>
+          <Formik
+            initialValues={categoryData}
+            onSubmit={handleSubmit}
+            validationSchema={CategorySchema}
+          >
             <Form className="flex justify-center items-center flex-col rounded-md py-8 px-5 md:px-[5rem]">
               <div className="mb-3">
                 <label
@@ -59,6 +68,11 @@ function UpdateCategories() {
                   Update Category Name
                 </label>
                 <Input type="text" id="name" name="name" />
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className="text-red-500 text-xs mt-1"
+                />
               </div>
               <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
                 Update

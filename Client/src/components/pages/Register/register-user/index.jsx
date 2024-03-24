@@ -58,19 +58,6 @@ const userSchemaAdmin = yup.object({
     ),
 });
 
-let initialValuesUser = {
-  name: "",
-  email: "",
-  password: "",
-  cpassword: "",
-};
-
-let initialValuesAdmin = {
-  name: "",
-  email: "",
-  password: "",
-};
-
 const RegisterUser = ({ isFromAdmin = false, userData }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -79,6 +66,19 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
   const [sellers, setSellers] = useState([]);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
+
+  let initialValuesUser = {
+    name: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  };
+
+  let initialValuesAdmin = {
+    name: "",
+    email: "",
+    password: "",
+  };
 
   const {
     values,
@@ -97,9 +97,11 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
   userData?.name !== "" && !values.name
     ? (values.name = userData?.name) && (userData.name = "")
     : null;
+
   userData?.email !== "" && !values.email
     ? (values.email = userData?.email) && (userData.email = "")
     : null;
+
   userData?.password !== "" && !values.password
     ? (values.password = userData?.password) && (userData.password = "")
     : null;
@@ -215,7 +217,7 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
                 type="text"
                 name="name"
                 id="name"
-                value={values.name || ""}
+                value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Dhruv Prajapati"
@@ -240,7 +242,7 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
                 type="email"
                 name="email"
                 id="email"
-                value={values.email}
+                value={values.email || ""}
                 onChange={!userData ? handleChange : null}
                 onBlur={handleBlur}
                 placeholder="dhruv@example.com"
@@ -270,7 +272,7 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
                   type={showPass ? "text" : "password"}
                   name="password"
                   id="password"
-                  value={values.password || ""}
+                  value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="randDom1$"
@@ -313,7 +315,7 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
                     type={showConfirmPass ? "text" : "password"}
                     name="cpassword"
                     id="cpassword"
-                    value={values.cpassword || ""}
+                    value={values.cpassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="ranDom1$"
