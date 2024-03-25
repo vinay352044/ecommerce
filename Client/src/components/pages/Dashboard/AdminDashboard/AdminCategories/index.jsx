@@ -78,16 +78,15 @@ const AdminCategories = () => {
           setDataIdToBeDeleted={setCategoryIdToBeDeleted}
         />
       )}
-      <div className="text-center text-2xl font-bold mt-8 mb-8">
+      <div className="p-6 px-6 md:p-6 md:px-10">
+      <div className="text-center text-2xl font-bold mb-4">
         Manage Category
       </div>
-
-      <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
-        <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default">
+      <div className="flex flex-col sm:flex-row items-center justify-end mb-4">
+        <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default mt-[0px!important]">
           <Link to="/admin-createCategories">+ ADD CATEGORY</Link>
         </ButtonComponent>
       </div>
-      {/* <Table data={categories} handleUpdate={handleUpdate} handleProductDelete={handleProductDelete} type="category" /> */}
       <Table
         data={categories.slice(indexOfFirstRecord, indexOfLastRecord)}
         handleUpdate={handleUpdate}
@@ -95,7 +94,7 @@ const AdminCategories = () => {
         headers={categoriesArray}
       />
       <div className="flex flex-row mt-5">
-        <label>Rows Per Page :</label>{" "}
+        <label>Rows Per Page :</label>
         <RecordsPerPage
           recordsPerPage={recordsPerPage}
           setCurrentPage={setCurrentPage}
@@ -109,6 +108,7 @@ const AdminCategories = () => {
           setCurrentPage={setCurrentPage}
         />
       )}
+      </div>
     </>
   );
 };

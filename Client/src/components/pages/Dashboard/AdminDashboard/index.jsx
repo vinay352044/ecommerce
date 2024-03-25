@@ -102,8 +102,8 @@ const Index = () => {
 					setDataIdToBeDeleted={setProductIdToBeDeleted}
 				/>
 			)}
-			<div className="p-10 px-6 md:p-10">
-				<h1 className="text-center text-2xl font-bold mt-8 mb-8">Admin Dashboard</h1>
+			<div className="p-6 px-6 md:p-6 md:px-10">
+				<h1 className="text-center text-2xl font-bold mb-4">Admin Dashboard</h1>
 				<div className=" w-full flex flex-col gap-4 md:flex-row justify-between items-center mb-4">
 					<div className="w-full flex flex-col justify-center md:justify-start items-center md:flex-row gap-4">
 						<Searching dataToSearch={products} setSearchResults={setSearchResults} setCurrentPage={setCurrentPage} />
@@ -115,7 +115,7 @@ const Index = () => {
               searchResults={searchResults}
             />
             <ButtonComponent buttonStyle="ml-0 sm:ml-4 bg-green-500 border-green-500 hover:text-green-500 text-base cursor-pointer mt-[0px!important]">
-              <Link to="/admin-create-products">ADD</Link>
+              <Link to="/admin-create-products">+ ADD</Link>
             </ButtonComponent>
             {/* <RecordsPerPage recordsPerPage={recordsPerPage} setCurrentPage={setCurrentPage} setRecordsPerPage={setRecordsPerPage}/> */}
           </div>

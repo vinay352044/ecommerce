@@ -6,22 +6,22 @@ const Table = ({ data, headers, handleUpdate, handleDelete }) => {
       <table className="w-full border-collapse">
         <thead>
           <tr>
-            <th className="border px-4 py-2 text-left">No.</th>
+            <th className="border px-4 py-2 text-left text-sm md:text-base">No.</th>
             {headers.map((header) => (
-              <th key={header.key} className="border px-4 py-2 text-left">
+              <th key={header.key} className="border px-4 py-2 text-left text-sm md:text-base">
                 {header.label}
               </th>
             ))}
-            <th className="border px-4 py-2">Actions</th>
+            <th className="border px-4 py-2 text-sm md:text-base">Actions</th>
           </tr>
         </thead>
 
         <tbody>
           {data.map((item, index) => (
             <tr key={item.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
-              <td className="border px-4 py-2">{index + 1}</td>
+              <td className="border px-4 py-2 text-sm md:text-base">{index + 1}</td>
               {headers.map((header) => (
-                <td key={header.key} className="border px-4 py-2 ">
+                <td key={header.key} className="border px-4 py-2 text-sm md:text-base ">
                   {item[header.key]}
                 </td>
               ))}

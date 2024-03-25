@@ -80,7 +80,7 @@ function Index() {
           setDataIdToBeDeleted={setUserIdToBeDeleted}
         />
       )}
-      <div className="p-10 px-6 md:p-10">
+      <div className="p-6 px-6 md:p-6 md:px-10">
         <h1 className="text-2xl font-bold mb-4 text-center">List of Users</h1>
         {data.length === 0 ? (
           <div className="text-center py-4">
@@ -97,10 +97,10 @@ function Index() {
                 />
               </div>
               <ButtonComponent
-                buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-sm cursor-pointer"
+                buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-sm cursor-pointer ml-[0px!important]"
                 handleClick={() => navigate("/admin-createUser")}
               >
-                ADD USER
+               + ADD USER
               </ButtonComponent>
             </div>
             {searchResults.length > 0 ? (
