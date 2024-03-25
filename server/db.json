@@ -277,7 +277,7 @@
     },
     {
       "id": "2",
-      "name": "Meet bhimani",
+      "name": "Meet",
       "businessName": "Neha Traders",
       "gstin": "GSTIN456B",
       "category": "Clothing",
@@ -474,7 +474,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha ",
+      "name": "Aisha  new",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [

@@ -134,12 +134,12 @@ const RegisterSeller = () => {
 
     (async () => {
       const {
-        sucess: usersSucess,
+        success: usersSucess,
         data: usersData,
         error: userError,
       } = await getUsers();
       const {
-        sucess: sellerSucess,
+        success: sellerSucess,
         data: sellersData,
         error: sellerError,
       } = await getSellers();

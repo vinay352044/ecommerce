@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   const navCloseHandler = (e) => {
-    if (!navRef.current.contains(e.target)) {
+    if (!navRef?.current.contains(e.target)) {
       setShow(false);
     }
   };
