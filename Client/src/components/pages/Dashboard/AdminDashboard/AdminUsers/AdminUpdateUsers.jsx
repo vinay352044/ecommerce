@@ -34,7 +34,7 @@ function AdminUpdateUsers() {
       .then((res) => {
         setValues(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err) );
   }, [id]);
 
   const handleSubmit = async (e) => {

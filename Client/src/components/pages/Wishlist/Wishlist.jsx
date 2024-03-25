@@ -22,7 +22,7 @@ const Wishlist = () => {
       dispatch(setRole("user", updatedUser));
       toast.success('Removed from wishlist')
     } catch (err) {
-      console.log(err);
+      toast.error(err);
     }
   };
 

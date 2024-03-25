@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createUser } from "../../../../../utils/axios-instance";
 import Input from "../../../../common/Input";
 import ButtonComponent from "../../../../common/ButtonComponent";
 
-const errors = {};
+
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
 function AdminCreateUser() {
@@ -22,7 +22,7 @@ function AdminCreateUser() {
     axios
       .get("http://localhost:3000/users")
       .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   }, []);
 
   const handleChange = (e) => {

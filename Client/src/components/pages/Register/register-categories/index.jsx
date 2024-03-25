@@ -5,6 +5,7 @@ import { addCategory, getCategories } from "../../../../utils/axios-instance";
 import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 function AdminCreateCategories() {
   const navigate = useNavigate();
@@ -14,13 +15,12 @@ function AdminCreateCategories() {
     getCategories()
       .then((res) => {
         if (res.success) {
-          console.log(res.data);
           setCategories(res.data);
         } else {
-          console.log("Error fetching categories:", res.error);
+          toast.error("Error fetching categories:", res.error);
         }
       })
-      .catch((err) => console.log("Error fetching categories:", err));
+      .catch((err) => toast.error("Error fetching categories:", err));
   }, []);
 
   const CategorySchema = Yup.object().shape({
@@ -37,9 +37,9 @@ function AdminCreateCategories() {
         .then((res) => {
           navigate("/admin-categories");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => toast.error(err));
     } catch (error) {
-      // console.log("Error calculating new category ID:", error);
+      console.log("Error calculating new category ID:", error);
     }
   };
 

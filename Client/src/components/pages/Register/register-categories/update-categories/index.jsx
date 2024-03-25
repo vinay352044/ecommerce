@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useState, useEffect } from "react";
+import { Formik, Form, ErrorMessage } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   UpdateCategory,
@@ -41,7 +41,6 @@ function UpdateCategories() {
       const response = await UpdateCategory(values);
       if (response.success) {
         navigate("/admin-categories");
-        console.log("Category updated successfully:", response.data);
       } else {
         console.error("Failed to update category:", response.error);
       }

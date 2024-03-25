@@ -1,79 +1,53 @@
-const intitalstate = {
-  needed_products: [],
-  total_orders: [],
-  sellers_details: {},
-  // inventory : [],
-  current_orders: [],
-  accptedorders: [],
+const initialState = {
+  neededProducts: [],
+  totalOrders: [],
+  sellersDetails: {},
+  currentOrders: [],
+  acceptedOrders: [],
 };
 
-export function orderReducer(state = intitalstate, action) {
+export function orderReducer(state = initialState, action) {
   switch (action.type) {
     case "FETCH_NEEDED_PRODUCTS":
-      return { ...state, needed_products: action.payload };
-    // if(state.sellers_details.productsToSell !== undefined && state.needed_products.length < state.sellers_details.productsToSell ){
-    //   console.log("this block worked")
-    //  return  {...state, needed_products : [...state.needed_products,action.payload] };
-    //  }
-    //  else{console.log("else worked") ;return state; }
-
+      return { ...state, neededProducts: action.payload };
     case "FETCH_TOTAL_ORDERS":
-      return { ...state, total_orders: action.payload };
-
+      return { ...state, totalOrders: action.payload };
     case "FETCH_SELLERS_DETAILS":
-      return { ...state, sellers_details: action.payload };
-    case "SET_SELLERS_INVENTORY":
-      return { ...state, inventory: action.payload };
+      return { ...state, sellersDetails: action.payload };
     case "CURRENT_ORDERS":
-      return { ...state, current_orders: action.payload };
-
-    // case "CHANGE_CURRUNT_ORDER":
-    // console.log("this worked");
-    //   const id = action.payload;
-    //   const currentorderArray = [...state.current_orders];
-    //   const index = currentorderArray.findIndex(order => order.id === action.payload);
-    //   console.log(index);
-    // currentorderArray.splice(index,1);
-    // return {...state,current_orders:currentorderArray};
-
-    case "UPDATE_REJECT_ORDER":
-      const order_id = parseInt(action.payload, 10);
-      const currentorder_Array = [...state.current_orders];
-      const Index = currentorder_Array.findIndex((order) => {
+      return { ...state, currentOrders: action.payload };
+    case "UPDATE_REJECT_ORDER": {
+      const orderId = parseInt(action.payload, 10);
+      const currentOrderArray = [...state.currentOrders];
+      const Index = currentOrderArray.findIndex((order) => {
         const id = parseInt(order.id, 10);
-
-        return id === order_id;
+        return id === orderId;
       });
-      currentorder_Array.splice(Index, 1);
+      currentOrderArray.splice(Index, 1);
       const new_State = {
         ...state,
-        current_orders: currentorder_Array,
+        current_orders: currentOrderArray,
       };
-     
       return new_State;
+    }
 
-    case "UPDATE_ACCEPT_ORDER":
-      const orderid = action.payload;
-
-      const currentorderArray = [...state.current_orders];
-
-      const index = currentorderArray.findIndex((order) => {
+    case "UPDATE_ACCEPT_ORDER": {
+      const orderId = action.payload;
+      const currentOrderArray = [...state.currentOrders];
+      const index = currentOrderArray.findIndex((order) => {
         const id = parseInt(order.id, 10);
-
-        return id === orderid;
+        return id === orderId;
       });
+      const acceptedOrder = currentOrderArray[index];
 
-      const accptedorder = currentorderArray[index];
-
-      currentorderArray.splice(index, 1);
+      currentOrderArray.splice(index, 1);
       const newState = {
         ...state,
-        current_orders: currentorderArray,
-        accptedorders: [...state.accptedorders, accptedorder],
+        current_orders: currentOrderArray,
+        acceptedOrders: [...state.acceptedOrders, acceptedOrder],
       };
-      console.log(newState);
       return newState;
-
+    }
     default:
       return state;
   }

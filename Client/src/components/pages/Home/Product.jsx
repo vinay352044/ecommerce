@@ -15,8 +15,7 @@ import ButtonComponent from "../../common/ButtonComponent";
 
 const Product = ({ product, handleClick, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
-  const [quantity, setquantity] = useState(product.quantity);
-  const[isAlreadyLiked,setIsAlreadyLiked] = useState(false)
+  const [quantity, setQuantity] = useState(product.quantity);
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -34,9 +33,9 @@ const Product = ({ product, handleClick, isAddToCart }) => {
         await API.patch(`/users/${user.id}`, user);
         dispatch(setRole("user", user));
       } catch (error) {
-        console.log(error);
+        toast.error(error)
       }
-      toast.success("Added to whishlist!", {
+      toast.success("Added to wishlist!", {
         position: "top-right",
       });
     } else {
@@ -44,7 +43,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
       const updatedUser = {...user,favouriteProducts:updatedProducts}
       await API.patch(`/users/${user.id}`,updatedUser)
       dispatch(setRole("user",updatedUser))
-      toast.success("Removed from whishlist!", {
+      toast.success("Removed from wishlist!", {
         position: "top-right",
       });
     }
@@ -57,7 +56,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
 
   function handleChangedQuantity(product, change) {
     if (change == "dec") {
-      setquantity(quantity - 1);
+      setQuantity(quantity - 1);
       product.stock += 1;
       dispatch(quantityOfProducts({ id: product.id, quantity: quantity - 1 }));
       toast.info(" Product Quantity Decreased!", {
@@ -72,7 +71,7 @@ const Product = ({ product, handleClick, isAddToCart }) => {
       }
     } else {
       if (product.stock > 0) {
-        setquantity(quantity + 1);
+        setQuantity(quantity + 1);
         product.stock -= 1;
         dispatch(
           quantityOfProducts({ id: product.id, quantity: quantity + 1 })
@@ -131,9 +130,8 @@ const Product = ({ product, handleClick, isAddToCart }) => {
                 </button>
               </div>
               <div className=" text-lg md:text-xl font-bold text-gray-900  text-center mt-2">
-                Grand Total:{" "}
+                Grand Total:
                 <span className="font-normal">
-                  {" "}
                   ${quantity * product.price}
                 </span>
               </div>
