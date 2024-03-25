@@ -21,196 +21,6 @@
       "total_sell": "10"
     },
     {
-      "id": "2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": "899",
-      "discountPercentage": "17.94",
-      "rating": "4.44",
-      "stock": "34",
-      "brand": "Apple",
-      "category": "smartphones",
-      "total_sell": "13",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/2/1.jpg",
-        "https://cdn.dummyjson.com/product-images/2/2.jpg",
-        "https://cdn.dummyjson.com/product-images/2/3.jpg",
-        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "3",
-      "title": "MacBook Pro",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": "1749",
-      "discountPercentage": "11.02",
-      "rating": "4.57",
-      "stock": "83",
-      "brand": "Apple",
-      "category": "laptops",
-      "total_sell": "10",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/6/1.png",
-        "https://cdn.dummyjson.com/product-images/6/2.jpg",
-        "https://cdn.dummyjson.com/product-images/6/3.png",
-        "https://cdn.dummyjson.com/product-images/6/4.jpg"
-      ]
-    },
-    {
-      "id": "4",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "54",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "55",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "56",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "57",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "58",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "59",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "60",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "1499",
-      "discountPercentage": "4.15",
-      "rating": "4.25",
-      "stock": "50",
-      "brand": "Samsung",
-      "category": "laptops",
-      "total_sell": "14",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
       "id": "5",
       "title": "Fog Scent Xpressio Perfume",
       "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
@@ -482,7 +292,9 @@
         "57",
         "58",
         "59",
-        "60"
+        "60",
+        "18",
+        "19"
       ]
     },
     {
@@ -662,88 +474,47 @@
   "users": [
     {
       "id": "2",
-      "name": "Aisha",
+      "name": "Aisha  new",
       "email": "aisha@gmail.com",
       "password": "aishapass",
       "favouriteProducts": [
         {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": "899",
-          "discountPercentage": "17.94",
-          "rating": "4.44",
-          "stock": "34",
-          "brand": "Apple",
-          "category": "smartphones",
-          "total_sell": "13",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+          "id": "56",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": "1499",
+          "discountPercentage": "4.15",
+          "rating": "4.25",
+          "stock": "50",
+          "brand": "Samsung",
+          "category": "laptops",
+          "total_sell": "14",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
           "images": [
-            "https://cdn.dummyjson.com/product-images/2/1.jpg",
-            "https://cdn.dummyjson.com/product-images/2/2.jpg",
-            "https://cdn.dummyjson.com/product-images/2/3.jpg",
-            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
           ]
         },
         {
-          "id": "5",
-          "title": "Fog Scent Xpressio Perfume",
-          "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
-          "price": "13",
-          "discountPercentage": "8.14",
-          "rating": "4.59",
-          "stock": "61",
-          "brand": "Fog Scent Xpressio",
-          "category": "fragrances",
-          "total_sell": "22",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp",
+          "id": "60",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": "1499",
+          "discountPercentage": "4.15",
+          "rating": "4.25",
+          "stock": "50",
+          "brand": "Samsung",
+          "category": "laptops",
+          "total_sell": "14",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
           "images": [
-            "https://cdn.dummyjson.com/product-images/13/1.jpg",
-            "https://cdn.dummyjson.com/product-images/13/2.png",
-            "https://cdn.dummyjson.com/product-images/13/3.jpg",
-            "https://cdn.dummyjson.com/product-images/13/4.jpg",
-            "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
           ]
-        },
-        {
-          "id": "6",
-          "title": "Eau De Perfume Spray",
-          "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
-          "price": "30",
-          "discountPercentage": "10.99",
-          "rating": "4.7",
-          "stock": "105",
-          "brand": "Lord - Al-Rehab",
-          "category": "fragrances",
-          "total_sell": "11",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/15/1.jpg",
-            "https://cdn.dummyjson.com/product-images/15/2.jpg",
-            "https://cdn.dummyjson.com/product-images/15/3.jpg",
-            "https://cdn.dummyjson.com/product-images/15/4.jpg",
-            "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "1",
-          "title": "iPhone 9",
-          "description": "An apple mobile which is nothing like apple",
-          "price": 549,
-          "discountPercentage": 12.96,
-          "rating": 4.69,
-          "stock": 94,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/1/1.jpg",
-            "https://cdn.dummyjson.com/product-images/1/2.jpg",
-            "https://cdn.dummyjson.com/product-images/1/3.jpg",
-            "https://cdn.dummyjson.com/product-images/1/4.jpg",
-            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-          ],
-          "total_sell": "10"
         }
       ]
     },
@@ -900,6 +671,25 @@
           "total_sell": "10"
         },
         {
+          "id": "4",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": "1499",
+          "discountPercentage": "4.15",
+          "rating": "4.25",
+          "stock": "50",
+          "brand": "Samsung",
+          "category": "laptops",
+          "total_sell": "14",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+          ]
+        },
+        {
           "id": "55",
           "title": "Samsung Galaxy Book",
           "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
@@ -935,44 +725,6 @@
             "https://cdn.dummyjson.com/product-images/7/2.jpg",
             "https://cdn.dummyjson.com/product-images/7/3.jpg",
             "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": "899",
-          "discountPercentage": "17.94",
-          "rating": "4.44",
-          "stock": "34",
-          "brand": "Apple",
-          "category": "smartphones",
-          "total_sell": "13",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/2/1.jpg",
-            "https://cdn.dummyjson.com/product-images/2/2.jpg",
-            "https://cdn.dummyjson.com/product-images/2/3.jpg",
-            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-          ]
-        },
-        {
-          "id": "3",
-          "title": "MacBook Pro",
-          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-          "price": "1749",
-          "discountPercentage": "11.02",
-          "rating": "4.57",
-          "stock": "83",
-          "brand": "Apple",
-          "category": "laptops",
-          "total_sell": "10",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
-          "images": [
-            "https://cdn.dummyjson.com/product-images/6/1.png",
-            "https://cdn.dummyjson.com/product-images/6/2.jpg",
-            "https://cdn.dummyjson.com/product-images/6/3.png",
-            "https://cdn.dummyjson.com/product-images/6/4.jpg"
           ]
         }
       ]
@@ -1076,6 +828,13 @@
       "name": "VaideekBhai",
       "email": "VaideekTest@mail.com",
       "password": "Mail@12345"
+    },
+    {
+      "id": "17",
+      "name": "mansi",
+      "email": "mansi@gmail.com",
+      "password": "Mansi@12333",
+      "favouriteProducts": []
     }
   ],
   "orders": [
@@ -1175,7 +934,7 @@
       "product_id": "54",
       "ordered_at": "3/20/2024, 1:59:15 PM",
       "expected_delivery": "",
-      "order_accepted": "",
+      "order_accepted": "pending",
       "accepted_by": "",
       "quantity": 1,
       "product": {
@@ -1204,9 +963,9 @@
       "user_id": "2",
       "product_id": "4",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "2024-03-23",
-      "order_accepted": "accepted",
-      "accepted_by": "2",
+      "expected_delivery": "",
+      "order_accepted": "pending",
+      "accepted_by": "",
       "quantity": 1,
       "product": {
         "id": "4",
@@ -1264,9 +1023,9 @@
       "user_id": "2",
       "product_id": "56",
       "ordered_at": "3/20/2024, 1:59:51 PM",
-      "expected_delivery": "2024-03-23",
-      "order_accepted": "accepted",
-      "accepted_by": "2",
+      "expected_delivery": "",
+      "order_accepted": "pending",
+      "accepted_by": "",
       "quantity": 1,
       "product": {
         "id": "56",
