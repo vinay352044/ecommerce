@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addCategory, getCategories } from "../../../../utils/axios-instance";
 import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 function AdminCreateCategories() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function AdminCreateCategories() {
   }, []);
 
   const CategorySchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
+    name: Yup.string().required("Name is required"),
   });
 
   const handleSubmit = (values) => {
@@ -35,12 +35,11 @@ function AdminCreateCategories() {
           : parseInt(categories[categories.length - 1].id) + 1;
       addCategory({ id: newCategoryId.toString(), name: values.name })
         .then((res) => {
-          console.log(res);
           navigate("/admin-categories");
         })
         .catch((err) => console.log(err));
     } catch (error) {
-      console.log("Error calculating new category ID:", error);
+      // console.log("Error calculating new category ID:", error);
     }
   };
 
@@ -63,13 +62,12 @@ function AdminCreateCategories() {
             >
               Enter Name
             </label>
-            <Input
-              type="text"
-              id="name"
+            <Input type="text" id="name" name="name" autoComplete="name" />
+            <ErrorMessage
               name="name"
-              autoComplete="name"
+              component="div"
+              className="text-red-500 text-xs mt-1"
             />
-            <ErrorMessage name="name" component="div" className="text-red-500 text-xs mt-1" /> 
           </div>
           <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
             Add category

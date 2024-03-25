@@ -25,10 +25,7 @@ const MyOrders = () => {
 
   const indexOfLastRecord = currPage * recordPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordPerPage;
-
   const sliceOrders = orders.slice(indexOfFirstRecord, indexOfLastRecord);
-
-  console.log(sliceOrders);
   const nPages = Math.ceil(orders.length / recordPerPage);
 
   useEffect(() => {
