@@ -82,8 +82,8 @@ const AdminCategories = () => {
       <div className="text-center text-2xl font-bold mb-4">
         Manage Category
       </div>
-      <div className="flex flex-col sm:flex-row items-center justify-end mb-4">
-        <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-base mt-0 cursor-default mt-[0px!important]">
+      <div className="flex items-center justify-end mb-4">
+        <ButtonComponent buttonStyle="bg-green-500 border-green-500 hover:text-green-500 text-sm mt-0 cursor-default mt-[0px!important]">
           <Link to="/admin-createCategories">+ ADD CATEGORY</Link>
         </ButtonComponent>
       </div>

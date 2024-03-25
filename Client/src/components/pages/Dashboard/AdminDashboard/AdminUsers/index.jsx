@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Pagination from "../../../../common/Pagination";
 import { toast } from "react-toastify";
 import { deleteUser, getUsers } from "../../../../../utils/axios-instance";
@@ -46,7 +46,7 @@ function Index() {
 
   const deleteUserById = (userId) => {
     deleteUser(userId)
-      .then((res) => {
+      .then(() => {
         setData(data.filter((user) => user.id !== userId));
         toast.success("User deleted Successfully!");
         navigate("/admin-users");
@@ -88,7 +88,7 @@ function Index() {
           </div>
         ) : (
           <div>
-            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+            <div className="flex flex-row justify-between items-center mb-4">
               <div className="flex md:justify-start">
                 <Searching
                   dataToSearch={data}
@@ -97,7 +97,7 @@ function Index() {
                 />
               </div>
               <ButtonComponent
-                buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-sm cursor-pointer ml-[0px!important]"
+                buttonStyle="ml-0 sm:ml-4 mt-3 sm:mt-0 bg-green-500 border-green-500 hover:text-green-500 text-sm cursor-pointer ml-[0px!important] mt-[0px!important]"
                 handleClick={() => navigate("/admin-createUser")}
               >
                + ADD USER

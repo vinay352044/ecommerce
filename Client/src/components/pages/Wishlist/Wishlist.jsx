@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API } from "../../../utils/axios-instance";
-
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { setRole } from "../../../redux/actions/roleAction";
 import Card from "../../common/Card";
@@ -20,7 +17,6 @@ const Wishlist = () => {
       const updatedProducts = user.favouriteProducts.filter(
         (product) => product.id != productId
       );
-      // setFavouriteProducts(updatedProducts)
       const updatedUser = { ...user, favouriteProducts: updatedProducts };
       await API.patch(`/users/${user.id}`, updatedUser);
       dispatch(setRole("user", updatedUser));
@@ -34,9 +30,9 @@ const Wishlist = () => {
     <div>
       <div className="mt-5 mx-auto grid gap-4 lg:gap-10  w-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-3 p-6 ">
         {user.favouriteProducts.length > 0 ? (
-          user.favouriteProducts.map((product, index) => (
-            <div className=" items-center lg:mx-auto mr-3  md:mr-0  ">
-              <Card key={product.id} product={product} identifier="wishlist">
+          user.favouriteProducts.map((product) => (
+            <div className=" items-center lg:mx-auto mr-3  md:mr-0" key={product.id}>
+              <Card product={product} identifier="wishlist">
                 <div className="flex justify-between items-center  ">
                   <span className="text-xl md:text-2xl font-bold text-gray-900">
                     ${product.price}
