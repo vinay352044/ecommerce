@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Links = ({ children, linksToRender , toggleNavbar }) => {
+const Links = ({ children, linksToRender, toggleNavbar }) => {
   return (
     <>
       <ul className="font-medium text-base flex flex-col items-center gap-4 md:gap-0 md:flex-row">

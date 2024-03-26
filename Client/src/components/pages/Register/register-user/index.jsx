@@ -22,6 +22,7 @@ import Loader from "../../../common/Loader";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
+
 const userSchema = yup.object({
   name: yup
     .string()
@@ -163,7 +164,9 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
 
       try {
         dispatch(setLoader(true));
+        // setTimeout(async () => {
         const { success, data, error } = await registerUser(userObj);
+        // }, 2000);
         if (success) {
           !isFromAdmin && dispatch(setRole("user", userObj));
           handleReset();
@@ -266,7 +269,7 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
                 type="email"
                 name="email"
                 id="email"
-                value={values.email || ""}
+                value={values.email}
                 onChange={!userData ? handleChange : null}
                 onBlur={handleBlur}
                 placeholder="dhruv@example.com"
