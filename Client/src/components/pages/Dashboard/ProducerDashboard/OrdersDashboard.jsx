@@ -37,7 +37,6 @@ function OrdersDashboard({ whichcomponent }) {
 
   useEffect(() => {
     settotalorders(sellersState.total_orders);
-    // console.log(sellersState)
     setavailabeleorders(sellersState.current_orders);
 
     setacceptedorders(sellersState.accptedorders);
@@ -92,17 +91,15 @@ function OrdersDashboard({ whichcomponent }) {
           cardData &&
           cardData.length !== 0 ? (
             availabeleorders.map((order, index) => (
-              
-                <SellerOrderCard
-                  key={order.id}
-                  card_data={{
-                    cardData: cardData[index],
-                    order: order,
-                    sellerid: sellerId,
-                    handleflag: handleflag,
-                  }}
-                />
-            
+              <SellerOrderCard
+                key={order.id}
+                card_data={{
+                  cardData: cardData[index],
+                  order: order,
+                  sellerid: sellerId,
+                  handleflag: handleflag,
+                }}
+              />
             ))
           ) : (
             <h1>No Pending Orders</h1>

@@ -1,51 +1,55 @@
-const initialState = {
-  neededProducts: [],
-  totalOrders: [],
-  sellersDetails: {},
-  currentOrders: [],
-  acceptedOrders: [],
+const intitalstate = {
+  needed_products: [],
+  total_orders: [],
+  sellers_details: {},
+  // inventory : [],
+  current_orders: [],
+  accptedorders: [],
 };
 
-export function orderReducer(state = initialState, action) {
+export function orderReducer(state = intitalstate, action) {
   switch (action.type) {
     case "FETCH_NEEDED_PRODUCTS":
-      return { ...state, neededProducts: action.payload };
+      return { ...state, needed_products: action.payload };
     case "FETCH_TOTAL_ORDERS":
-      return { ...state, totalOrders: action.payload };
+      return { ...state, total_orders: action.payload };
     case "FETCH_SELLERS_DETAILS":
-      return { ...state, sellersDetails: action.payload };
+      return { ...state, sellers_details: action.payload };
+    case "SET_SELLERS_INVENTORY":
+      return { ...state, inventory: action.payload };
     case "CURRENT_ORDERS":
-      return { ...state, currentOrders: action.payload };
+      return { ...state, current_orders: action.payload };
     case "UPDATE_REJECT_ORDER": {
-      const orderId = parseInt(action.payload, 10);
-      const currentOrderArray = [...state.currentOrders];
-      const Index = currentOrderArray.findIndex((order) => {
+      const order_id = parseInt(action.payload, 10);
+      const currentorder_Array = [...state.current_orders];
+      const Index = currentorder_Array.findIndex((order) => {
         const id = parseInt(order.id, 10);
-        return id === orderId;
+
+        return id === order_id;
       });
-      currentOrderArray.splice(Index, 1);
+      currentorder_Array.splice(Index, 1);
       const new_State = {
         ...state,
-        current_orders: currentOrderArray,
+        current_orders: currentorder_Array,
       };
       return new_State;
     }
 
     case "UPDATE_ACCEPT_ORDER": {
-      const orderId = action.payload;
-      const currentOrderArray = [...state.currentOrders];
-      const index = currentOrderArray.findIndex((order) => {
+      const orderid = action.payload;
+      const currentorderArray = [...state.current_orders];
+      const index = currentorderArray.findIndex((order) => {
         const id = parseInt(order.id, 10);
-        return id === orderId;
+        return id === orderid;
       });
-      const acceptedOrder = currentOrderArray[index];
-
-      currentOrderArray.splice(index, 1);
+      const accptedorder = currentorderArray[index];
+      currentorderArray.splice(index, 1);
       const newState = {
         ...state,
-        current_orders: currentOrderArray,
-        acceptedOrders: [...state.acceptedOrders, acceptedOrder],
+        current_orders: currentorderArray,
+        accptedorders: [...state.accptedorders, accptedorder],
       };
+      console.log(newState);
       return newState;
     }
     default:

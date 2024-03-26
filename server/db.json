@@ -1023,6 +1023,13 @@
       "email": "testing@gmail.com",
       "password": "Testing@123",
       "favouriteProducts": []
+    },
+    {
+      "id": "21",
+      "name": "jay p",
+      "email": "jay@gmail.commm",
+      "password": "Jay@123",
+      "favouriteProducts": []
     }
   ],
   "orders": [
