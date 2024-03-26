@@ -96,7 +96,7 @@ const Navbar = () => {
               {isAuth ? (
                 <NavLink
                   onClick={(e) => handleLogOut(e)}
-                  className="border-transparent bg-white py-[.5rem] px-2 text-[1rem]  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white"
+                  className="border-transparent bg-white py-[.5rem] px-2 text-[1rem]  text-[#0295db] rounded border-[2px] transition-all duration-300 ease-in-out hover:border-[2px] hover:border-white hover:bg-transparent hover:text-white " 
                 >
                   Logout
                 </NavLink>
