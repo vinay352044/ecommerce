@@ -126,7 +126,7 @@ const YourProducts = () => {
                   searchResults={searchResults}
                 />
                 <ButtonComponent
-                  buttonStyle="ml-0 sm:ml-4 mt-0 py-[4px!important] md:py-[6px!important] bg-green-500 border-green-500 hover:text-green-500 text-sm cursor-pointer"
+                  buttonStyle="ml-0 sm:ml-4 mt-[0!important] py-[4px!important] md:py-[6px!important] bg-green-500 border-green-500 hover:text-green-500 px-[5px!important] xsm:px-[1.25rem!important] text-xs xsm:text-sm cursor-pointer"
                   handleClick={() => navigate("/seller-create-products")}
                 >
                   ADD PRODUCT

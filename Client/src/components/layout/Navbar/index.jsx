@@ -92,7 +92,7 @@ const Navbar = () => {
             }
             toggleNavbar={toggleNavbar}
           >
-            <li>
+            <li className="md:ml-2">
               {isAuth ? (
                 <NavLink
                   onClick={(e) => handleLogOut(e)}
