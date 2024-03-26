@@ -12,19 +12,22 @@ import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
 import * as Yup from 'yup';
 
-const InitialValues = {
-  title: "",
-  description: "",
-  price: "",
-  discountPercentage: "",
-  stock: "",
-  category: "",
-  brand: "",
-  total_sell: "",
-  thumbnail: "",
-};
-
 const Index = () => {
+  const isSeller = useSelector((state) => state.role.seller)
+  console.log(isSeller)
+
+  const InitialValues = {
+    title: "",
+    description: "",
+    price: "",
+    discountPercentage: "",
+    stock: "",
+    category: "",
+    brand: isSeller !== null ? isSeller.brand : "",
+    // total_sell: "",
+    thumbnail: "",
+  };
+
   const inputStyle =
     "block uppercase tracking-wide text-gray-700 text-xs font-bold";
   const inputStyle1 =
@@ -34,7 +37,7 @@ const Index = () => {
   const { seller } = useSelector((state) => state.role);
   const dispatch = useDispatch();
   const isAdmin = useSelector((state) => state.role.admin)
-  const isSeller = useSelector((state) => state.role.seller)
+  // const isSeller = useSelector((state) => state.role.seller)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,7 +64,7 @@ const Index = () => {
     stock: Yup.number().required('Stock is required').integer('Stock must be an integer').min(0, 'Stock must be 0 or greater'),
     category: Yup.string().required('Category is required'),
     brand: Yup.string().required('Brand is required'),
-    total_sell: Yup.number().required('Total sell is required').integer('Total sell must be an integer').min(0, 'Total sell must be 0 or greater'),
+    // total_sell: Yup.number().required('Total sell is required').integer('Total sell must be an integer').min(0, 'Total sell must be 0 or greater'),
     thumbnail: Yup.string().url('Thumbnail must be a valid URL').required('Thumbnail URL is required'),
   });
 
@@ -199,11 +202,12 @@ const Index = () => {
               name="brand"
               placeholder="Product Brand"
               as={Input}
+              disabled={isSeller !== null}
             />
             <ErrorMessage name="brand" component="div" className="text-red-500 text-xs mt-1" />
           </div>
 
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label htmlFor="total_sell" className={inputStyle}>
               Total Sell
             </label>
@@ -215,7 +219,7 @@ const Index = () => {
               as={Input}
             />
             <ErrorMessage name="total_sell" component="div" className="text-red-500 text-xs mt-1" />
-          </div>
+          </div> */}
 
           <div className="mb-3">
             <label htmlFor="thumbnail" className={inputStyle}>

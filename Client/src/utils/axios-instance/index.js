@@ -81,27 +81,9 @@ export const getProductById = async (id) => {
   }
 };
 
-// export const updateProduct = async (product) => {
-//   try {
-//     const res = await API.put(`products/${product.id}`, product);
-//     return {
-//       success: true,
-//       data: res.data,
-//       error: null,
-//     };
-//   } catch (error) {
-//     return {
-//       success: false,
-//       data: null,
-//       error: error.message,
-//     };
-//   }
-// };
-
-
-export const updateProduct = async (productId, updatedFields) => {
+export const updateProduct = async (product) => {
   try {
-    const res = await API.patch(`products/${productId}`, updatedFields);
+    const res = await API.put(`products/${product.id}`, product);
     return {
       success: true,
       data: res.data,
@@ -115,6 +97,24 @@ export const updateProduct = async (productId, updatedFields) => {
     };
   }
 };
+
+
+// export const updateProduct = async (productId, updatedFields) => {
+//   try {
+//     const res = await API.patch(`products/${productId}`, updatedFields);
+//     return {
+//       success: true,
+//       data: res.data,
+//       error: null,
+//     };
+//   } catch (error) {
+//     return {
+//       success: false,
+//       data: null,
+//       error: error.message,
+//     };
+//   }
+// };
 export const DeleteProductbyId = async (id) => {
   try {
     const res = await API.delete(`products/${id}`);

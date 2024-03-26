@@ -97,6 +97,25 @@
       ]
     },
     {
+      "product": {
+        "id": "55",
+        "title": "Samsung Galaxy Book1111",
+        "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+        "price": "1499",
+        "discountPercentage": "4.15",
+        "rating": "4.25",
+        "stock": "50",
+        "brand": "Samsung",
+        "category": "laptops",
+        "total_sell": "14",
+        "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+        "images": [
+          "https://cdn.dummyjson.com/product-images/7/1.jpg",
+          "https://cdn.dummyjson.com/product-images/7/2.jpg",
+          "https://cdn.dummyjson.com/product-images/7/3.jpg",
+          "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+        ]
+      },
       "id": "55",
       "title": "Samsung Galaxy Book",
       "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
@@ -470,7 +489,8 @@
         "57",
         "58",
         "59",
-        "60"
+        "60",
+        "18"
       ]
     },
     {
@@ -1340,7 +1360,7 @@
   ],
   "categories": [
     {
-      "name": "Smartphones",
+      "name": "Smartphones ",
       "id": "1"
     },
     {

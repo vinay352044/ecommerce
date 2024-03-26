@@ -58,7 +58,8 @@ const MyOrders = () => {
       <h2 className="text-center mb-8 border-b-2 pb-2 text-3xl font-bold">
         Order Summary - {user.name}
       </h2>
-      <table className="w-full border-collapse">
+      <div className="overflow-x-auto">
+      <table className="w-full border-collapse overflow-x-auto">
         <thead>
           <tr>
             <th className="border px-4 py-2 font-bold text-lg">Product Name</th>
@@ -107,6 +108,7 @@ const MyOrders = () => {
           ))}
         </tbody>
       </table>
+      </div>
 
       <Pagination
         nPages={nPages}

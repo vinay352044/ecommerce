@@ -60,50 +60,31 @@ const UpdateProduct = () => {
       ...prevProduct,
       [name]: value
     }));
-  }
+  };
 
-  // const handleSubmit = async (values) => {
-  //   try {
-  //     dispatch(setLoader(true))
-  //     const updatedProduct = {
-  //       ...product,
-  //       ...values,
-  //     };
 
-  //     const { success, error } = await updateProduct(updatedProduct);
-
-  //     if (success) {
-  //       // console.log('Product updated successfully!');
-  //       seller ? navigate("/seller-products") : navigate("/admin");
-  //       toast.success("Product updated successfully")
-  //     } else {
-  //       console.error("Error updating product:", error);
-  //       toast.error("Problem updating product, Please try after some time!")
-  //     }
-  //   } catch (error) {
-  //     console.error("Unexpected error:", error);
-  //   } finally {
-  //     dispatch(setLoader(false))
-  //   }
-  // };
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
+    console.log("values", values)
     try {
-      dispatch(setLoader(true));
-      const { success, error } = await updateProduct(product.id);
+      dispatch(setLoader(true))
+      const updatedProduct = {
+        ...product,
+        ...values,
+      };
+      console.log("updatedProduct:", updatedProduct);
+      const { success, error } = await updateProduct(updatedProduct);
 
       if (success) {
-        console.log("Data Updated Successfully");
         seller ? navigate("/seller-products") : navigate("/admin");
-        toast.success("Product updated successfully");
+        toast.success("Product updated successfully")
       } else {
         console.error("Error updating product:", error);
-        toast.error("Problem updating product, Please try after some time!");
+        toast.error("Problem updating product, Please try after some time!")
       }
     } catch (error) {
       console.error("Unexpected error:", error);
     } finally {
-      dispatch(setLoader(false));
+      dispatch(setLoader(false))
     }
   };
 
@@ -245,6 +226,7 @@ const UpdateProduct = () => {
                     id="brand"
                     name="brand"
                     placeholder="Product Brand"
+                    value = {isSeller.brand}
                     disabled
                   />
                 )}
@@ -252,7 +234,7 @@ const UpdateProduct = () => {
 
               </div>
 
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <label
                   htmlFor="total_sell"
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
@@ -270,7 +252,7 @@ const UpdateProduct = () => {
                 />
                 <ErrorMessage name="total_sell" component="div" className="text-red-500 text-xs mt-1" />
 
-              </div>
+              </div> */}
 
               <div className="mb-3">
                 <label
