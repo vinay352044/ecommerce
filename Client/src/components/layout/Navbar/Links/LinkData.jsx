@@ -1,5 +1,5 @@
-import { FaHeadphonesAlt, FaHome, FaShoppingCart, FaUserAlt } from "react-icons/fa";
-import { FaRegCircleUser } from "react-icons/fa6";
+import { FaBoxOpen, FaHeadphonesAlt, FaHome, FaShoppingCart} from "react-icons/fa";
+import { FaRegCircleUser, FaUser } from "react-icons/fa6";
 import { HiHomeModern } from "react-icons/hi2";
 import { FaHeart } from "react-icons/fa";
 
@@ -71,7 +71,7 @@ export const userLinks = [
   {
     label: "Home",
     slug: "/",
-    icon: null,
+    icon: <FaHome/>,
   },
   {
     label: "Wishlist",
@@ -82,11 +82,17 @@ export const userLinks = [
     label: "Cart",
     slug: "/cart",
     icon: <FaShoppingCart />,
+    orderCount: true
+  },
+  {
+    label: "Orders",
+    slug: "/orders",
+    icon: <FaBoxOpen/>,
   },
   {
     label: "Profile",
     slug: "/profile",
-    icon: <FaUserAlt />,
+    icon: <FaUser />,
   },
   {
     label: "Contact Us",

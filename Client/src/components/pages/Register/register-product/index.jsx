@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setRole } from "../../../../redux/actions/roleAction";
 import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const Index = () => {
   const isSeller = useSelector((state) => state.role.seller)
@@ -36,8 +36,7 @@ const Index = () => {
   const [products, setProducts] = useState([]);
   const { seller } = useSelector((state) => state.role);
   const dispatch = useDispatch();
-  const isAdmin = useSelector((state) => state.role.admin)
-  // const isSeller = useSelector((state) => state.role.seller)
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -103,8 +102,9 @@ const Index = () => {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center my-10">
-      <h1 className="text-center text-2xl font-bold mb-5">Register Product</h1>
+    <div className="flex justify-center items-center py-10">
+      <div className="flex justify-center items-center bg-white py-8 px-5 md:px-[5rem] flex-col rounded-md">
+        <h1 className="text-center text-3xl font-bold">Register Product</h1>
 
       <Formik initialValues={InitialValues} onSubmit={handleSubmit} validationSchema={ProductSchema}>
         <Form className="flex justify-center items-center gap-2 flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]">
@@ -249,6 +249,7 @@ const Index = () => {
           </div>
         </Form>
       </Formik>
+    </div>
     </div>
   );
 };

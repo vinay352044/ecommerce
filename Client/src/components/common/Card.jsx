@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Rating, RatingStar } from "flowbite-react";
 import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Card({ product, heartHandle, identifier, children }) {
+function Card({ product, heartHandle, identifier, children,user }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
   let flag;
 
@@ -14,6 +15,12 @@ function Card({ product, heartHandle, identifier, children }) {
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
   };
+  const isProductLiked = () => {
+    if (user && user.favouriteProducts) {
+      return user.favouriteProducts.some((favProduct) => favProduct.id === product.id);
+    }
+    return false;
+  };
   return (
     <div>
       <div
@@ -22,8 +29,10 @@ function Card({ product, heartHandle, identifier, children }) {
       >
         {flag ? (
           <button className="flex justify-center items-center absolute h-10 w-10 md:w-11 lg:w-11 max-h-10  right-0 border-[1px] border-slate-300 m-2 bg-slate-100 rounded-full ">
-            <CiHeart
-              className="text-2xl text-slate-950"
+            <FaHeart
+              className={`text-2xl  ${
+                isProductLiked() ? "text-red-500" : "text-neutral-300"
+              }`}
               onClick={() => heartHandle(product)}
             />
           </button>
