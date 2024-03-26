@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Links = ({ children, linksToRender , toggleNavbar }) => {
   return (
     <>
-      <ul className="font-medium text-base flex flex-col items-center gap-3 md:p-0 md:flex-row">
+      <ul className="font-medium text-base flex flex-col items-center gap-4 md:gap-0 md:flex-row">
         {linksToRender.map((element, idx) => {
           return (
             <li key={idx}>
@@ -12,12 +12,12 @@ const Links = ({ children, linksToRender , toggleNavbar }) => {
                 onClick={() => toggleNavbar()}
                 className={({ isActive }) =>
                   `${
-                    isActive ? "text-black" : "text-white"
-                  } flex items-center gap-1 text-[1rem] md:text-[1rem] py-1 hover:text-black`
+                    isActive ? "text-black bg-[#7CBCE9]" : "text-white"
+                  } flex items-center gap-1 text-[1rem] p-2 rounded transition-all duration-200 ease-in-out hover:text-black`
                 }
               >
-                {element.icon}
-                {element.label}
+                {element?.icon}
+                {element?.label}
               </NavLink>
             </li>
           );

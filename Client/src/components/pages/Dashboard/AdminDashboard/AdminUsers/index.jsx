@@ -7,6 +7,7 @@ import Table from "../../../../common/Table";
 import ConfirmDeleteModal from "../../../../common/ConfirmDeleteModal";
 import Searching from "../../../../common/Searching";
 import ButtonComponent from "../../../../common/ButtonComponent";
+import RecordsPerPage from "../../../../common/RecordsPerPage";
 
 function Index() {
   const [data, setData] = useState([]);
@@ -15,7 +16,7 @@ function Index() {
   const [userIdToBeDeleted, setUserIdToBeDeleted] = useState(null);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(5);
+  const [recordsPerPage, setRecordsPerPage] = useState(6);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,6 +116,14 @@ function Index() {
             ) : (
               <div className="text-center">Oops not found</div>
             )}
+            <div className="flex flex-row mt-5">
+              <label>Rows Per Page :</label>{" "}
+              <RecordsPerPage
+                recordsPerPage={recordsPerPage}
+                setCurrentPage={setCurrentPage}
+                setRecordsPerPage={setRecordsPerPage}
+              />
+            </div>
             {shouldRenderPagination && (
               <Pagination
                 nPages={Math.ceil(searchResults.length / recordsPerPage)}

@@ -19,7 +19,6 @@ function UpdateCategories() {
       try {
         const response = await getCategoryById(categoryID);
         if (response.success) {
-          console.log(response.data);
           setCategoryData(response.data);
         } else {
           console.error("Category not found");

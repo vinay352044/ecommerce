@@ -26,7 +26,7 @@ const ProductViewDetails = () => {
   useEffect(() => {
     const getProductDetails = async () => {
       const response = await API.get(`/products/${productId}`);
-      // console.log(response.data);
+      
       setData(response.data);
     };
     getProductDetails();

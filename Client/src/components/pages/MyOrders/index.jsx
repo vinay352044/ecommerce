@@ -16,7 +16,6 @@ const MyOrders = () => {
 
   const indexOfLastRecord = currPage * recordPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordPerPage;
-
   const sliceOrders = orders.slice(indexOfFirstRecord, indexOfLastRecord);
   const nPages = Math.ceil(orders.length / recordPerPage);
 

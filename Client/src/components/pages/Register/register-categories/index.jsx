@@ -35,12 +35,11 @@ function AdminCreateCategories() {
           : parseInt(categories[categories.length - 1].id) + 1;
       addCategory({ id: newCategoryId.toString(), name: values.name })
         .then((res) => {
-          console.log(res);
           navigate("/admin-categories");
         })
         .catch((err) => console.log(err));
     } catch (error) {
-      console.log("Error calculating new category ID:", error);
+      // console.log("Error calculating new category ID:", error);
     }
   };
 

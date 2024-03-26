@@ -10,11 +10,12 @@ import Product from "./Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Searching from "../../common/Searching";
+import RecordsPerPage from "../../common/RecordsPerPage";
 
 const Products = ({ productData, isAddToCart }) => {
   const user = useSelector((state) => state.role.user);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(6);
+  const [recordsPerPage,setRecordsPerPage] = useState(6);
 
   const [searchResults, setSearchResults] = useState([]);
   const [sortingResult, setSortingResult] = useState([]);
@@ -53,6 +54,7 @@ const Products = ({ productData, isAddToCart }) => {
           setSortingResult={setSortingResult}
           searchResults={searchResults}
         />
+        {/* <RecordsPerPage recordsPerPage={recordsPerPage} setRecordsPerPage={setRecordsPerPage} setCurrentPage={setCurrentPage}/> */}
       </div>
       
   <div className="mt-5 mx-auto grid gap-4 lg:gap-10  w-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-3">
