@@ -104,13 +104,6 @@ const Login = () => {
         error: sellerError,
       } = await getSellers();
 
-      if (userError) {
-        toast.error("Something went wrong. Try again later!");
-      }
-      if (sellerError) {
-        toast.error("Something went wrong. Try again later!");
-      }
-
       setUsers(usersData);
       setSellers(sellersData);
     })();

@@ -17,6 +17,8 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import { setLoader } from "../../../../redux/actions/appActions";
+import Loader from "../../../common/Loader";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -61,7 +63,10 @@ const userSchemaAdmin = yup.object({
 const RegisterUser = ({ isFromAdmin = false, userData }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { isAuth } = useSelector((state) => state.role);
+  const { loader } = useSelector((state) => state.app);
+
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
   const [showPass, setShowPass] = useState(false);
@@ -111,15 +116,28 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
 
     // handleSubmit for Update
     if (isFromAdmin && userData) {
-      const { success, data, error } = await updateUserFromAdmin(userData?.id, {
-        name: values.name.trim(),
-        email: values.email,
-        password: values.password.trim(),
-      });
-      if (success) {
-        toast.success("User updated successfully");
-        handleReset();
-        navigate("/admin-users");
+      try {
+        dispatch(setLoader(true));
+        const { success, data, error } = await updateUserFromAdmin(
+          userData?.id,
+          {
+            name: values.name.trim(),
+            email: values.email,
+            password: values.password.trim(),
+          }
+        );
+        if (success) {
+          toast.success("User updated successfully");
+          handleReset();
+          navigate("/admin-users");
+        } else {
+          console.log("Failed to update user ", error);
+          toast.error("Problem for updating user, Please try after some time!");
+        }
+      } catch (error) {
+        console.log("Failed to update user ", error);
+      } finally {
+        dispatch(setLoader(false));
       }
       return;
     }
@@ -143,12 +161,24 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
         favouriteProducts: [],
       };
 
-      const { success, data, error } = await registerUser(userObj);
-      if (success) {
-        !isFromAdmin && dispatch(setRole("user", userObj));
-        handleReset();
-        toast.success("User registered successfully");
-        !isFromAdmin ? navigate("/") : navigate("/admin-users");
+      try {
+        dispatch(setLoader(true));
+        const { success, data, error } = await registerUser(userObj);
+        if (success) {
+          !isFromAdmin && dispatch(setRole("user", userObj));
+          handleReset();
+          toast.success("User registered successfully");
+          !isFromAdmin ? navigate("/") : navigate("/admin-users");
+        } else {
+          console.log("Failed to register user ", error);
+          toast.error(
+            "Problem for registering user, Please try after some time!"
+          );
+        }
+      } catch (error) {
+        console.log("Failed to register user ", error);
+      } finally {
+        dispatch(setLoader(false));
       }
     } else {
       // user exists already
@@ -160,7 +190,6 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
   useEffect(() => {
     if (!isFromAdmin) {
       isAuth ? navigate("/") : null;
-      // return;
     }
 
     (async () => {
@@ -175,19 +204,14 @@ const RegisterUser = ({ isFromAdmin = false, userData }) => {
         error: sellerError,
       } = await getSellers();
 
-      if (userError) {
-        // dispatch error
-        toast.error("Something went wrong. Try again later!");
-      }
-      if (sellerError) {
-        // dispatch error
-        toast.error("Something went wrong. Try again later!");
-      }
-
       setUsers(usersData);
       setSellers(sellersData);
     })();
   }, []);
+
+  if (loader) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex justify-center items-center py-10">

@@ -19,6 +19,8 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import Input from "../../../common/Input";
 import ButtonComponent from "../../../common/ButtonComponent";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import { setLoader } from "../../../../redux/actions/appActions";
+import Loader from "../../../common/Loader";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
@@ -60,7 +62,10 @@ const sellerSchema = yup.object({
 const RegisterSeller = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { isAuth } = useSelector((state) => state.role);
+  const { loader } = useSelector((state) => state.app);
+
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
   const [showPass, setShowPass] = useState(false);
@@ -113,12 +118,24 @@ const RegisterSeller = () => {
         productsToSell: [],
       };
 
-      const { success, data, error } = await registerSeller(sellerObj);
-      if (success) {
-        dispatch(setRole("seller", sellerObj));
-        handleReset();
-        toast.success("Seller registered successfully");
-        navigate("/");
+      try {
+        dispatch(setLoader(true));
+        const { success, data, error } = await registerSeller(sellerObj);
+        if (success) {
+          dispatch(setRole("seller", sellerObj));
+          handleReset();
+          toast.success("Seller registered successfully");
+          navigate("/");
+        } else {
+          console.log("Failed to register seller ", error);
+          toast.error(
+            "Problem for registering seller, Please try after some time!"
+          );
+        }
+      } catch (error) {
+        console.log("Failed to register seller ", error);
+      } finally {
+        dispatch(setLoader(false));
       }
     } else {
       // user exists already
@@ -143,19 +160,14 @@ const RegisterSeller = () => {
         error: sellerError,
       } = await getSellers();
 
-      if (userError) {
-        // dispatch error
-        toast.error("Something went wrong. Try again later!");
-      }
-      if (sellerError) {
-        // dispatch error
-        toast.error("Something went wrong. Try again later!");
-      }
-
       setUsers(usersData);
       setSellers(sellersData);
     })();
   }, []);
+
+  if (loader) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex justify-center items-center py-10">

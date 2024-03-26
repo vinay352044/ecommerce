@@ -7,11 +7,15 @@ import { IoIosMail } from "react-icons/io";
 import { MdMessage } from "react-icons/md";
 import Input from "../../common/Input";
 import ButtonComponent from "../../common/ButtonComponent";
+import { useSelector } from "react-redux";
 
 const Contact = () => {
+  const user = useSelector((state) => state.role.user);
+  const seller = useSelector((state) => state.role.seller);
+
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    name: user?.name || seller?.name || "",
+    email: user?.email || seller?.email || "",
     phone: "",
     message: "",
   });
@@ -118,7 +122,7 @@ const Contact = () => {
                 </div>
                 <div className={inputGroupClass}>
                   <label htmlFor="phone" className={inputLabelClass}>
-                    <FaPhoneAlt /> Contact No <small>(optional)</small>
+                    <FaPhoneAlt /> Contact No<small>(optional)</small>
                   </label>
                   <Input
                     className="border-gray-200"
