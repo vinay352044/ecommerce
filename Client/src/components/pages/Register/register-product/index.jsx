@@ -24,15 +24,13 @@ const InitialValues = {
   thumbnail: "",
 };
 
-const Index = () => {
-  const inputStyle =
-    "block uppercase tracking-wide text-gray-700 text-xs font-bold";
-  const inputStyle1 =
-    "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500";
+const Index = () => {  
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const { seller } = useSelector((state) => state.role);
   const dispatch = useDispatch();
+  
+  const inputStyle = "block uppercase tracking-wide text-gray-700 text-xs font-bold";
 
   useEffect(() => {
     const fetchData = async () => {

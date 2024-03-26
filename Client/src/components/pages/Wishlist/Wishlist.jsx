@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { setRole } from "../../../redux/actions/roleAction";
 import Card from "../../common/Card";
 import ButtonComponent from "../../common/ButtonComponent";
+import { toast } from "react-toastify";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Wishlist = () => {
       const updatedUser = { ...user, favouriteProducts: updatedProducts };
       await API.patch(`/users/${user.id}`, updatedUser);
       dispatch(setRole("user", updatedUser));
+      toast.success('Removed from wishlist')
     } catch (err) {
       console.log(err);
     }
