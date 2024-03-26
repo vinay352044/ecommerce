@@ -324,6 +324,170 @@
       "brand": "Apple",
       "total_sell": 123,
       "thumbnail": "https://images.news18.com/ibnlive/uploads/2023/08/apple-iphone-15-pro-max-sale.jpg"
+    },
+    {
+      "id": "17",
+      "title": "",
+      "description": "",
+      "price": "",
+      "discountPercentage": "",
+      "stock": "",
+      "category": "",
+      "brand": "",
+      "total_sell": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "56",
+      "title": "Samsung Galaxy Book updated",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "57",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "58",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "59",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "60",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "61",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "62",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "63",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": "1499",
+      "discountPercentage": "4.15",
+      "rating": "4.25",
+      "stock": "50",
+      "brand": "Samsung",
+      "category": "laptops",
+      "total_sell": "14",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ]
     }
   ],
   "sellers": [
@@ -356,7 +520,10 @@
         "57",
         "58",
         "59",
-        "60"
+        "60",
+        "61",
+        "62",
+        "63"
       ]
     },
     {

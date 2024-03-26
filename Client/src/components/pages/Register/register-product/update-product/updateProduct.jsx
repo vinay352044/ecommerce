@@ -68,15 +68,11 @@ const UpdateProduct = () => {
     setProduct({ ...product, [name]: value });
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async () => {
     try {
       dispatch(setLoader(true));
-      const updatedProduct = {
-        ...product,
-        ...values,
-      };
 
-      const { success, error } = await updateProduct(updatedProduct);
+      const { success, error } = await updateProduct(product);
 
       if (success) {
         // console.log('Product updated successfully!');
