@@ -1493,7 +1493,7 @@
   ],
   "categories": [
     {
-      "name": "Smartphones ",
+      "name": "Smartphones",
       "id": "1"
     },
     {
@@ -1575,14 +1575,6 @@
     {
       "id": "21",
       "name": "Demo123"
-    },
-    {
-      "id": "22",
-      "name": "VinayNew123"
-    },
-    {
-      "id": "23",
-      "name": "VinayNew123"
     }
   ]
 }

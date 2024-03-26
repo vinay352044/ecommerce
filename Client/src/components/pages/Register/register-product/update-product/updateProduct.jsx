@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../../../../common/Input";
 import ButtonComponent from "../../../../common/ButtonComponent";
-import * as Yup from "yup";
+import * as Yup from 'yup';
 import Loader from "../../../../common/Loader";
 import { setLoader } from "../../../../../redux/actions/appActions";
 import { toast } from "react-toastify";
@@ -17,10 +17,13 @@ import { toast } from "react-toastify";
 const UpdateProduct = () => {
   const { productID } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [product, setProduct] = useState(null);
   const { seller } = useSelector((state) => state.role);
   const { loader } = useSelector((state) => state.app)
+
+  const isAdmin = useSelector((state) => state.role.admin)
+  const isSeller = useSelector((state) => state.role.seller)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -40,27 +43,15 @@ const UpdateProduct = () => {
   }, [productID]);
 
   const ProductSchema = Yup.object().shape({
-    title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
-    price: Yup.number()
-      .required("Price is required")
-      .positive("Price must be a positive number"),
-    discountPercentage: Yup.number()
-      .min(0, "Discount percentage must be 0 or greater")
-      .max(100, "Discount percentage cannot be greater than 100"),
-    stock: Yup.number()
-      .required("Stock is required")
-      .integer("Stock must be an integer")
-      .min(0, "Stock must be 0 or greater"),
-    category: Yup.string().required("Category is required"),
-    brand: Yup.string().required("Brand is required"),
-    total_sell: Yup.number()
-      .required("Total sell is required")
-      .integer("Total sell must be an integer")
-      .min(0, "Total sell must be 0 or greater"),
-    thumbnail: Yup.string()
-      .url("Thumbnail must be a valid URL")
-      .required("Thumbnail URL is required"),
+    title: Yup.string().required('Title is required'),
+    description: Yup.string().required('Description is required'),
+    price: Yup.number().required('Price is required').positive('Price must be a positive number'),
+    discountPercentage: Yup.number().min(0, 'Discount percentage must be 0 or greater').max(100, 'Discount percentage cannot be greater than 100'),
+    stock: Yup.number().required('Stock is required').integer('Stock must be an integer').min(0, 'Stock must be 0 or greater'),
+    category: Yup.string().required('Category is required'),
+    brand: Yup.string().required('Brand is required'),
+    total_sell: Yup.number().required('Total sell is required').integer('Total sell must be an integer').min(0, 'Total sell must be 0 or greater'),
+    thumbnail: Yup.string().url('Thumbnail must be a valid URL').required('Thumbnail URL is required'),
   });
 
   const handleChange = (e) => {
@@ -72,45 +63,39 @@ const UpdateProduct = () => {
   };
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
     try {
       dispatch(setLoader(true))
       const updatedProduct = {
         ...product,
-        ...values,
       };
-
-      const { success, error } = await updateProduct(updatedProduct);
+      const { success, error } = await updateProduct(product);
 
       if (success) {
         seller ? navigate("/seller-products") : navigate("/admin");
-        toast.success("Product updated successfully");
+        toast.success("Product updated successfully")
       } else {
         console.error("Error updating product:", error);
-        toast.error("Problem updating product, Please try after some time!");
+        toast.error("Problem updating product, Please try after some time!")
       }
     } catch (error) {
       console.error("Unexpected error:", error);
     } finally {
-      dispatch(setLoader(false));
+      dispatch(setLoader(false))
     }
   };
 
   if (!product) {
-    return (
-      <div className="w-[min(90%,700px)] text-center mx-auto">
-        <div className="text-lg md:text-xl lg:text-2xl mt-14">
-          Problem fetching product details, Please try after some time!
-        </div>
-        <ButtonComponent
-          type="button"
-          buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </ButtonComponent>
-      </div>
-    );
+    return <div className="w-[min(90%,700px)] text-center mx-auto">
+      <div className="text-lg md:text-xl lg:text-2xl mt-14">Problem fetching product details, Please try after some time!</div>
+      <ButtonComponent
+        type="button"
+        buttonStyle="ml-3 border-gray-300 text-sm bg-white hover:bg-gray-200 text-[gray!important]"
+        onClick={() => navigate(-1)}
+      >
+        Back
+      </ButtonComponent>
+    </div>;
   }
 
   return (
@@ -246,25 +231,25 @@ const UpdateProduct = () => {
 
               </div>
 
-            <div className="mb-3">
-              <label
-                htmlFor="total_sell"
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
-              >
-                Total Sell
-              </label>
-              <Input
-                type="text"
-                id="total_sell"
-                name="total_sell"
-                placeholder="Total Sell"
-                value={product.total_sell}
-                onChange={handleChange}
+              {/* <div className="mb-3">
+                <label
+                  htmlFor="total_sell"
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
+                >
+                  Total Sell
+                </label>
+                <Input
+                  type="text"
+                  id="total_sell"
+                  name="total_sell"
+                  placeholder="Total Sell"
+                  value={product.total_sell}
+                  onChange={handleChange}
 
-              />
-              <ErrorMessage name="total_sell" component="div" className="text-red-500 text-xs mt-1" />
+                />
+                <ErrorMessage name="total_sell" component="div" className="text-red-500 text-xs mt-1" />
 
-            </div>
+              </div> */}
 
               <div className="mb-3">
                 <label
