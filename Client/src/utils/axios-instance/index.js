@@ -16,7 +16,7 @@ export const getProducts = async () => {
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };
@@ -98,6 +98,23 @@ export const updateProduct = async (product) => {
   }
 };
 
+
+// export const updateProduct = async (productId, updatedFields) => {
+//   try {
+//     const res = await API.patch(`products/${productId}`, updatedFields);
+//     return {
+//       success: true,
+//       data: res.data,
+//       error: null,
+//     };
+//   } catch (error) {
+//     return {
+//       success: false,
+//       data: null,
+//       error: error.message,
+//     };
+//   }
+// };
 export const DeleteProductbyId = async (id) => {
   try {
     const res = await API.delete(`products/${id}`);
@@ -273,13 +290,13 @@ export const updateUser = async (updatedUser) => {
   try {
     const res = await API.patch(`users/${updatedUser.id}`, updatedUser);
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };
@@ -289,13 +306,13 @@ export const updateSeller = async (updatedSeller) => {
   try {
     const res = await API.patch(`sellers/${updatedSeller.id}`, updatedSeller);
     return {
-      sucess: true,
+      success: true,
       data: res.data,
       error: null,
     };
   } catch (error) {
     return {
-      sucess: false,
+      success: false,
       data: [],
       error: error.message,
     };
@@ -358,7 +375,7 @@ export const deleteUser = async (id) => {
 //update user from admin
 export const updateUserFromAdmin = async (id, userData) => {
   try {
-      const res = await API.put(`/users/${id}`, userData);
+      const res = await API.patch(`/users/${id}`, userData);
       return {
           success: true,
           data: res.data,

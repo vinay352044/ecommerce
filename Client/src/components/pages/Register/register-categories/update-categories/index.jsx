@@ -1,20 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate, useParams } from 'react-router-dom';
-import { UpdateCategory, getCategoryById } from '../../../../../utils/axios-instance';
-
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  UpdateCategory,
+  getCategoryById,
+} from "../../../../../utils/axios-instance";
+import Input from "../../../../common/Input";
+import ButtonComponent from "../../../../common/ButtonComponent";
+import * as Yup from "yup";
 
 function UpdateCategories() {
   const navigate = useNavigate();
   const { categoryID } = useParams();
   const [categoryData, setCategoryData] = useState(null);
 
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCategoryData(prevProduct => ({
+      ...prevProduct,
+      [name]: value
+    }));
+  };
+
+
   useEffect(() => {
     const fetchCategory = async () => {
       try {
         const response = await getCategoryById(categoryID);
         if (response.success) {
-          console.log(response.data);
           setCategoryData(response.data);
         } else {
           console.error("Category not found");
@@ -27,11 +41,16 @@ function UpdateCategories() {
     fetchCategory();
   }, [categoryID]);
 
-  const handleSubmit = async (values) => {
+  const CategorySchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+  });
+
+  const handleSubmit = async () => {
+    console.log("categoryData", categoryData)
     try {
-      const response = await UpdateCategory(values);
+      const response = await UpdateCategory(categoryData);
       if (response.success) {
-        navigate("/admin-categories")
+        navigate("/admin-categories");
         console.log("Category updated successfully:", response.data);
       } else {
         console.error("Failed to update category:", response.error);
@@ -41,24 +60,25 @@ function UpdateCategories() {
     }
   };
   return (
-    <div className="container mx-auto mt-5">
+    <div className="flex justify-center items-center flex-col h-60 my-10">
       <h1 className="text-3xl mb-5">Update Category</h1>
       {categoryData && (
-        <Formik
-          initialValues={categoryData}
-          onSubmit={handleSubmit}
+        <Formik initialValues={categoryData} onSubmit={handleSubmit} validationSchema={CategorySchema}
         >
-          <Form>
+          <Form className="flex justify-center items-center flex-col shadow-2xl rounded-md py-8 px-5 md:px-[5rem]">
             <div className="mb-3">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Update Category Name</label>
-              <Field type="text" id="name" name="name"
-                className="mt-1 p-2 block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm"
-              />
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Update Category Name
+              </label>
+              <Input type="text" id="name" name="name" value={categoryData.name} onChange={handleChange} />
+              <ErrorMessage name="name" component="div" className="text-red-500 text-xs mt-1" />
             </div>
-            <button type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <ButtonComponent type="submit" buttonStyle="mt-[0.6rem] text-sm">
               Update
-            </button>
+            </ButtonComponent>
           </Form>
         </Formik>
       )}
@@ -67,4 +87,3 @@ function UpdateCategories() {
 }
 
 export default UpdateCategories;
-
