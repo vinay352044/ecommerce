@@ -11,32 +11,15 @@ export function orderReducer(state = intitalstate, action) {
   switch (action.type) {
     case "FETCH_NEEDED_PRODUCTS":
       return { ...state, needed_products: action.payload };
-    // if(state.sellers_details.productsToSell !== undefined && state.needed_products.length < state.sellers_details.productsToSell ){
-    //   console.log("this block worked")
-    //  return  {...state, needed_products : [...state.needed_products,action.payload] };
-    //  }
-    //  else{console.log("else worked") ;return state; }
-
     case "FETCH_TOTAL_ORDERS":
       return { ...state, total_orders: action.payload };
-
     case "FETCH_SELLERS_DETAILS":
       return { ...state, sellers_details: action.payload };
     case "SET_SELLERS_INVENTORY":
       return { ...state, inventory: action.payload };
     case "CURRENT_ORDERS":
       return { ...state, current_orders: action.payload };
-
-    // case "CHANGE_CURRUNT_ORDER":
-    // console.log("this worked");
-    //   const id = action.payload;
-    //   const currentorderArray = [...state.current_orders];
-    //   const index = currentorderArray.findIndex(order => order.id === action.payload);
-    //   console.log(index);
-    // currentorderArray.splice(index,1);
-    // return {...state,current_orders:currentorderArray};
-
-    case "UPDATE_REJECT_ORDER":
+    case "UPDATE_REJECT_ORDER": {
       const order_id = parseInt(action.payload, 10);
       const currentorder_Array = [...state.current_orders];
       const Index = currentorder_Array.findIndex((order) => {
@@ -49,22 +32,17 @@ export function orderReducer(state = intitalstate, action) {
         ...state,
         current_orders: currentorder_Array,
       };
-     
       return new_State;
+    }
 
-    case "UPDATE_ACCEPT_ORDER":
+    case "UPDATE_ACCEPT_ORDER": {
       const orderid = action.payload;
-
       const currentorderArray = [...state.current_orders];
-
       const index = currentorderArray.findIndex((order) => {
         const id = parseInt(order.id, 10);
-
         return id === orderid;
       });
-
       const accptedorder = currentorderArray[index];
-
       currentorderArray.splice(index, 1);
       const newState = {
         ...state,
@@ -73,7 +51,7 @@ export function orderReducer(state = intitalstate, action) {
       };
       console.log(newState);
       return newState;
-
+    }
     default:
       return state;
   }

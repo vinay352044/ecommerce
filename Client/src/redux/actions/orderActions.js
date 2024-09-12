@@ -87,6 +87,7 @@ export function worker(task_name, action_name, api, data) {
           break;
         case "UPDATE_REJECT_ORDER":
           dispatch();
+          break;
 
         default:
           return;

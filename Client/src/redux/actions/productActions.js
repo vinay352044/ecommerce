@@ -1,8 +1,6 @@
 import axios from "axios"
 import { setLoader } from "./appActions"
-import { API, getProducts } from "../../utils/axios-instance"
-import { useSelector } from "react-redux"
-import { ToastContainer, toast } from 'react-toastify';
+import { getProducts } from "../../utils/axios-instance"
 import 'react-toastify/dist/ReactToastify.css';
 
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
@@ -26,7 +24,7 @@ export const fetchProductData = () =>{
       dispatch(fetchProductsSuccess(response.data))
       dispatch(setLoader(false))
      }catch(error){
-        console.log("Error Occured while fetching data:",error);
+        console.log("Error Occurred while fetching data:",error);
      }
     
   }
