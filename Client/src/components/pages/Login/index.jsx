@@ -10,6 +10,9 @@ import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+import ButtonComponent from "../../common/ButtonComponent";
+import Input from "../../common/Input";
+import { GoEye, GoEyeClosed } from "react-icons/go";
 
 const loginSchema = yup.object({
   role: yup
@@ -26,6 +29,7 @@ const Login = () => {
   const { isAuth } = useSelector((state) => state.role);
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
+  const [showPass, setShowPass] = useState(false);
 
   const {
     values,
@@ -85,6 +89,9 @@ const Login = () => {
   }
 
   useEffect(() => {
+    // if looged in then don't give access to this page
+    isAuth ? navigate("/") : null;
+    
     (async () => {
       const {
         success: usersSuccess,
@@ -107,21 +114,18 @@ const Login = () => {
       setUsers(usersData);
       setSellers(sellersData);
     })();
-    
-    // if looged in then don't give access to this page
-    isAuth ? navigate("/") : null;
   }, []);
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Login</h3>
 
         <div className="flex justify-center items-center gap-10">
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
-            className="flex flex-col gap-2 w-[400px]"
+            className="flex flex-col gap-2"
           >
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
@@ -136,11 +140,11 @@ const Login = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 defaultValue="user"
-                className="border-2 rounded-md border-gray-500 focus:ring-0"
+                className="border-2 border-gray-400 outline-0 rounded-md mt-1 px-2 py-1 h-11 w-[min(24rem,85vw)] focus:border-black"
               >
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="seller">Seller</option>
+                <option value="user" selected={values.role=='user'}>User</option>
+                <option value="admin" selected={values.role=='admin'}>Admin</option>
+                <option value="seller" selected={values.role=='seller'}>Seller</option>
               </select>
               {touched.role && errors.role ? (
                 <p className="text-[14px] text-red-700">{errors.role}</p>
@@ -156,7 +160,8 @@ const Login = () => {
                   Email
                 </label>
               </div>
-              <input
+
+              <Input
                 type="email"
                 name="email"
                 id="email"
@@ -164,7 +169,6 @@ const Login = () => {
                 onBlur={handleBlur}
                 value={values.email}
                 placeholder="dhruv@example.com"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
@@ -173,23 +177,35 @@ const Login = () => {
               )}
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <div className="flex items-center gap-1">
                 <RiLockPasswordFill />
                 <label htmlFor="password" className="font-semibold">
                   Password
                 </label>
               </div>
-              <input
-                type="password"
+
+              <Input
+                type={showPass ? "text" : "password"}
                 name="password"
                 id="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
                 placeholder="ranDom1$"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
+              {!showPass ? (
+                <GoEye
+                  className="text-2xl cursor-pointer absolute right-2 bottom-1/3"
+                  onClick={() => setShowPass(!showPass)}
+                />
+              ) : (
+                <GoEyeClosed
+                  className="text-2xl cursor-pointer absolute right-2 bottom-1/3"
+                  onClick={() => setShowPass(!showPass)}
+                />
+              )}
+
               {touched.password && errors.password ? (
                 <p className="text-[14px] text-red-700">{errors.password}</p>
               ) : (
@@ -198,19 +214,21 @@ const Login = () => {
             </div>
 
             <div className="flex justify-between gap-2">
-              <button
+              <ButtonComponent
                 type="submit"
-                className="w-full border-[2px] rounded-md border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+                buttonStyle="w-full flex items-center justify-center gap-2 basis-[30%]"
               >
-                Submit
-              </button>
+                SUBMIT
+              </ButtonComponent>
 
-              <button
+              <ButtonComponent
                 type="reset"
-                className="w-full border-[1px] border-red-800 rounded-md text-red-900 py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-red-700 hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+                buttonStyle={
+                  "border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]"
+                }
               >
-                Reset
-              </button>
+                RESET
+              </ButtonComponent>
             </div>
 
             <div className="pt-5">
@@ -219,6 +237,7 @@ const Login = () => {
                 <NavLink
                   to="/register"
                   className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
+                  onClick={()=>window.scrollTo({ top, behavior: "smooth" })}
                 >
                   Register here
                 </NavLink>

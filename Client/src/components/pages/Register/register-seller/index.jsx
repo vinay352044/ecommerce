@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import {
   getSellers,
@@ -16,10 +16,14 @@ import { FaBusinessTime } from "react-icons/fa";
 import { MdConfirmationNumber, MdEmail } from "react-icons/md";
 import { TbBrandAirtable } from "react-icons/tb";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Input from "../../../common/Input";
+import ButtonComponent from "../../../common/ButtonComponent";
+import { GoEye, GoEyeClosed } from "react-icons/go";
 
 const passwordRules =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
 const gstinRules = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+
 const sellerSchema = yup.object({
   name: yup
     .string()
@@ -57,9 +61,11 @@ const sellerSchema = yup.object({
 const RegisterSeller = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { isAuth } = useSelector((state) => state.role);
   const [users, setUsers] = useState([]);
   const [sellers, setSellers] = useState([]);
+  const [showPass, setShowPass] = useState(false);
+  const [showConfirmPass, setShowConfirmPass] = useState(false);
 
   const {
     values,
@@ -99,11 +105,11 @@ const RegisterSeller = () => {
           sellers.length !== 0
             ? (parseInt(sellers[sellers.length - 1].id) + 1).toString()
             : "1",
-        name,
-        businessName,
+        name: name.trim(),
+        businessName: businessName.trim(),
         gstin,
-        brand,
-        email,
+        brand: brand.trim(),
+        email: email.trim(),
         password,
         productsToSell: [],
       };
@@ -123,14 +129,17 @@ const RegisterSeller = () => {
   }
 
   useEffect(() => {
+     // if looged in then don't give access to this page
+     isAuth ? navigate("/") : null;
+
     (async () => {
       const {
-        sucess: usersSucess,
+        success: usersSucess,
         data: usersData,
         error: userError,
       } = await getUsers();
       const {
-        sucess: sellerSucess,
+        success: sellerSucess,
         data: sellersData,
         error: sellerError,
       } = await getSellers();
@@ -151,14 +160,14 @@ const RegisterSeller = () => {
 
   return (
     <div className="flex bg-white justify-center items-center py-10">
-      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem!important] shadow-2xl rounded-md">
+      <div className="flex flex-col gap-5 py-8 px-5 md:px-[5rem] shadow-2xl rounded-md">
         <h3 className="text-center text-3xl font-bold ">Register Seller</h3>
 
         <div className="flex justify-center items-center gap-10">
           <form
             onSubmit={handleSubmit}
             onReset={handleReset}
-            className="flex flex-col gap-2 w-[min(400px,90vw)]"
+            className="flex flex-col gap-2"
           >
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
@@ -167,16 +176,17 @@ const RegisterSeller = () => {
                   Name
                 </label>
               </div>
-              <input
+
+              <Input
                 type="text"
                 name="name"
                 id="name"
+                value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
                 placeholder="Dhruv Prajapati"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
+
               {touched.name && errors.name ? (
                 <p className="text-[14px] text-red-700">{errors.name}</p>
               ) : (
@@ -191,15 +201,15 @@ const RegisterSeller = () => {
                   Business Name
                 </label>
               </div>
-              <input
+
+              <Input
                 type="text"
                 name="businessName"
                 id="businessName"
+                value={values.businessName}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.businessName}
                 placeholder="Dhruv Mobile World"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
               {touched.businessName && errors.businessName ? (
                 <p className="text-[14px] text-red-700">
@@ -217,16 +227,17 @@ const RegisterSeller = () => {
                   GST NO
                 </label>
               </div>
-              <input
+
+              <Input
                 type="text"
                 name="gstin"
                 id="gstin"
+                value={values.gstin}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.gstin}
                 placeholder="22AAAAA0000A1Z5"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
+
               {touched.gstin && errors.gstin ? (
                 <p className="text-[14px] text-red-700">{errors.gstin}</p>
               ) : (
@@ -241,16 +252,17 @@ const RegisterSeller = () => {
                   Brand
                 </label>
               </div>
-              <input
+
+              <Input
                 type="text"
                 name="brand"
                 id="brand"
+                value={values.brand}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.brand}
                 placeholder="Samsung"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
+
               {touched.brand && errors.brand ? (
                 <p className="text-[14px] text-red-700">{errors.brand}</p>
               ) : (
@@ -265,16 +277,17 @@ const RegisterSeller = () => {
                   Email
                 </label>
               </div>
-              <input
+
+              <Input
                 type="email"
                 name="email"
                 id="email"
+                value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.email}
                 placeholder="dhruv@example.com"
-                className="border-2 rounded-md border-black focus:ring-0"
               />
+
               {touched.email && errors.email ? (
                 <p className="text-[14px] text-red-700">{errors.email}</p>
               ) : (
@@ -289,18 +302,36 @@ const RegisterSeller = () => {
                   Password
                 </label>
               </div>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                placeholder="ranDom1$"
-                className="border-2 rounded-md border-black focus:ring-0"
-              />
+
+              <div className="relative">
+                <Input
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="randDom1$"
+                />
+                <div className="absolute right-2 top-0 translate-y-1/2">
+                  {!showPass ? (
+                    <GoEye
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowPass(!showPass)}
+                    />
+                  ) : (
+                    <GoEyeClosed
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowPass(!showPass)}
+                    />
+                  )}
+                </div>
+              </div>
+
               {touched.password && errors.password ? (
-                <p className="text-[14px] text-red-700">{errors.password}</p>
+                <p className="text-[14px] text-red-700 w-[min(24rem,85vw)]">
+                  {errors.password}
+                </p>
               ) : (
                 <p className="text-[14px] opacity-0">null</p>
               )}
@@ -313,16 +344,32 @@ const RegisterSeller = () => {
                   Confirm Password
                 </label>
               </div>
-              <input
-                type="password"
-                name="cpassword"
-                id="cpassword"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.cpassword}
-                placeholder="ranDom1$"
-                className="border-2 rounded-md border-black focus:ring-0"
-              />
+
+              <div className="relative">
+                <Input
+                  type={showConfirmPass ? "text" : "password"}
+                  name="cpassword"
+                  id="cpassword"
+                  value={values.cpassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="ranDom1$"
+                />
+                <div className="absolute right-2 top-0 translate-y-1/2">
+                  {!showConfirmPass ? (
+                    <GoEye
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowConfirmPass(!showConfirmPass)}
+                    />
+                  ) : (
+                    <GoEyeClosed
+                      className="text-2xl cursor-pointer"
+                      onClick={() => setShowConfirmPass(!showConfirmPass)}
+                    />
+                  )}
+                </div>
+              </div>
+
               {touched.cpassword && errors.cpassword ? (
                 <p className="text-[14px] text-red-700">{errors.cpassword}</p>
               ) : (
@@ -331,19 +378,21 @@ const RegisterSeller = () => {
             </div>
 
             <div className="flex justify-between gap-2">
-              <button
+              <ButtonComponent
                 type="submit"
-                className="w-full border-[2px] rounded-md border-[#0295db] text-[#0295db] py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-[#0295db] hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+                buttonStyle="w-full flex items-center justify-center gap-2 basis-[30%]"
               >
-                Submit
-              </button>
+                SUBMIT
+              </ButtonComponent>
 
-              <button
+              <ButtonComponent
                 type="reset"
-                className="w-full border-[1px] border-red-800 rounded-md text-red-900 py-2 flex items-center justify-center gap-2 font-medium text-xl hover:bg-red-700 hover:text-white transition-all duration-250 ease-in-out basis-[30%]"
+                buttonStyle={
+                  "border-[#b91c1c] bg-[#b91c1c] hover:text-[#b91c1c]"
+                }
               >
-                Reset
-              </button>
+                RESET
+              </ButtonComponent>
             </div>
 
             <div className="pt-5">
@@ -352,6 +401,7 @@ const RegisterSeller = () => {
                 <NavLink
                   to="/login"
                   className="text-[#0295db]  border-[#0295db] hover:border-b-[1px]"
+                  onClick={()=>window.scrollTo({ top, behavior: "smooth" })}
                 >
                   Login here
                 </NavLink>

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Pagination from "../../common/Pagination";
+import Table from "../../common/Table";
 
 // {
 //   "id": "2",
@@ -24,10 +25,7 @@ const MyOrders = () => {
 
   const indexOfLastRecord = currPage * recordPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordPerPage;
-
   const sliceOrders = orders.slice(indexOfFirstRecord, indexOfLastRecord);
-
-  console.log(sliceOrders);
   const nPages = Math.ceil(orders.length / recordPerPage);
 
   useEffect(() => {
